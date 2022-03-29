@@ -36,5 +36,23 @@ VD:
 
 #CSS:
 
-- SASS là gì?
-- SASS (Syntactically Awesome StyleSheets) là một CSS Preprocessor giúp bạn viết CSS nhanh hơn và có cấu trúc rõ ràng hơn. Với SASS, bạn có thể viết CSS theo thứ tự rõ ràng, quản lý các biến đã được định nghĩa sẵn, các class dùng chung hay có thể tự động nén tập tin CSS lại để bạn tiết kiệm dung lượng.
+- CSS Selector là thứ cho phép bạn nhắm mục tiêu tới các phần tử HTML để áp dụng các thuộc tính CSS cho chúng.
+  CSS Selector giống như là đường đẫn, chỉ định để cho CSS biết bạn đang muốn điều chỉnh, tạo kiểu cho phần tử HTML nào vậy.
+  "thẻ tag là Element Selector"
+
+- SASS:
+- SASS (Syntactically Awesome StyleSheets) là một CSS Preprocessor giúp bạn viết CSS nhanh hơn và có cấu trúc rõ ràng hơn. Với SASS, bạn có
+  thể viết CSS theo thứ tự rõ ràng, quản lý các biến đã được định nghĩa sẵn, các class dùng chung hay có thể tự động nén tập tin CSS lại để bạn tiết kiệm dung lượng.
+
+- CSS Grid:
+  là một hệ thống bố cục dựa trên lưới 2 chiều nhằm mục đích không làm gì khác hơn là thay đổi hoàn toàn cách chúng ta thiết kế giao diện người dùng dựa trên lưới. Bố cục Grid phù hợp để thiết kế các website có độ phức tạp cao. display : grid tạo lưới cấp khối (block level).
+
+- Flexbox Layout (hay còn gọi là Flexible Box):
+  là một kiểu bố cục trang có khả năng tự cân đối kích thước, thay đổi chiều rộng/chiều cao và thứ tự phần tử bên trong để phù hợp với tất cả các loại thiết bị hiển thị và kích thước màn hình.
+
+- Atomic CSS(Css nguyên tử):
+  hiểu ngắn gọn là một cách viết CSS mà chúng ta không cần viết một dòng CSS nào cả. Tức là không cần phải
+  define trong CSS source nữa, chỉ cần reuse nhưng thuộc tính đã khai báo trước đó là xong. Thay vì viết code CSS, chúng ta sẽ sử dụng các class có sẵn mà một Atomic CSS Framework cung cấp.
+- Responsive Web Design (RWD):
+  là xu hướng mới theo đó quy trình thiết kế và phát triển web sẽ đáp ứng mọi thiết bị và môi trường của người
+  dùng theo các tiêu chí kích thước và chiều của màn hình thiết bị.

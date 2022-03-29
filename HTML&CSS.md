@@ -2,7 +2,7 @@
 
 1. Sematic HTML:
 
-- Là cách viết HTML mà sử dụng các thẻ HTML ứng với nội dung được chứa trong nó(Yếu tố ngữ nghĩa).ư
+- Là cách viết HTML mà sử dụng các thẻ HTML ứng với nội dung được chứa trong nó(Yếu tố ngữ nghĩa).
 
 VD:
 

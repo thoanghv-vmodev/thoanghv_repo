@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* css chung */
+.hover-bgr:hover {
+  background-color: #059862;
+  cursor: pointer;
+}
+.bgr-radius:hover {
+  border-radius: 25px;
+  background-color: #059862;
+}
+.bgr-pink {
+  background-color: #ffc0c7;
+  border-radius: 25px;
+}
+.item-new {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 10px;
+  margin-left: 3px;
+  text-align: center;
+  color: black;
+  border-radius: 25px;
+  border: 1px solid black;
+  position: relative;
+  top: -2px;
+  background-color: white;
+}
+/* css chung */
+
+.wapper {
+  width: 1200px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 -16px;
+}
+
+.content-item {
+  display: flex;
+  align-items: center;
+}
+
+.content-img {
+  width: 55px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.item-title {
+  color: #282a35;
+  font-size: 16px;
+  font-weight: 700;
+
+  padding: 8px 16px;
+}

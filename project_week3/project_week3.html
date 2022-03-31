@@ -6,57 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./project-week3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="wapper">
-        <header>
+    <div class="main">
+        <header class="pd-page">
          <div class="header">
              <div class="header-content">
-                <div class="content-item">
+                <div class="header-content-item">
                     <img class="content-img"
                         src="https://yt3.ggpht.com/dW6to0x5Crmeh7yi-YPLcQRqVrBtx2BSh8eoKTJbE8NbjloQ0sqlmdszIlxokJU_97-ndOt_=s900-c-k-c0x00ffffff-no-rj"
                         alt="logo-img">
                 </div>
-                <div class="content-item hover-bgr">
-                    <p class="item-title">
+                <div class="header-content-item hidden-on-mobile">
+                    <p class="item-title hover-bgr">
                         Tutorials
+                        <i class="fa-solid fa-caret-down"></i>
                     </p>
                 </div>
-                <div class="content-item hover-bgr">
-                    <p class="item-title">
+                <div class="header-content-item hidden-on-mobile">
+                    <p class="item-title hover-bgr">
                         References
+                        <i class="fa-solid fa-caret-down"></i>
                     </p>
                 </div>
-                <div class="content-item hover-bgr">
-                    <p class="item-title">
+                <div class="header-content-item hidden-on-tablet-mobile">
+                    <p class="item-title hover-bgr">
                         Exercises
+                        <i class="fa-solid fa-caret-down"></i>  
                     </p>
                 </div>
-                <div class="content-item hover-bgr">
-                    <p class="item-title">
+                <div class="header-content-item hidden-on-ipad-pro hidden-on-tablet-mobile">
+                    <p class="item-title hover-bgr">
                         Videos
                     </p>
                 </div>
-                <div class="content-item hover-bgr">
-                    <p class="item-title">
+                <div class="header-content-item hidden-on-tablet-mobile">
+                    <p class="item-title hover-bgr">
                         Pro
                         <span class="item-new">NEW</span>
                     </p>
                 </div>
-             </div>
-            <div class="header-content">
-                <div class="content-item ">
-                    <p class="item-title bgr-pink bgr-radius">
-                       Website 
-                       <span class="item-new">NEW</span>
+                <div id="header-content-item" class="header-content-item ">
+                    <p class="item-title dis-none block-on-mobile hidden-on-tablet"  onclick="onClickNavMenu()">
+                        Menu
+                        <i class="fa-solid fa-caret-down"></i>
                     </p>
                 </div>
-                <div class="content-item">
-                    <p class="item-title bgr-radius">
+             </div>
+            <div class="header-content">
+                <div class="header-content-item content-item-right hidden-on-tablet-mobile">
+                    <p class="item-title-right bgr-pink bgr-radius">
+                       Website 
+                       <span class="item-new  hidden-on-ipad-pro">NEW</span>
+                    </p>
+                </div>
+                <div class="header-content-item content-item-right hidden-on-mobile">
+                    <p class="item-title-right bgr-radius">
                      Paid Courses
                     </p>
                 </div>
-                <div class="content-item">
+                <div class="header-content-item">
                    <button class="btn-login">
                        Log in
                    </button>
@@ -64,6 +76,696 @@
             </div>
          </div>
         </header>  
+        <nav>
+            <div class="nav-bar">
+                <div class="nav-bar-content">
+                    <div class="menu-icon nav-content-item dis-none block-on-tablet-mobile" onclick="onClick()">
+                        <i class="nav-item-icon fa-solid fa-bars"></i>
+                    </div>
+                    <div class="nav-content-item">
+                            <i class="nav-item-icon fa-solid fa-house"></i>
+                    </div>
+                    <div class="nav-content-item active">
+                        <p class="nav-title">
+                            HTML
+                        </p>
+                    </div>
+                    <div class="nav-content-item hidden-on-mobile">
+                        <p class="nav-title">
+                            CSS
+                        </p>
+                    </div>
+                    <div class="nav-content-item hidden-on-mobile">
+                        <p class="nav-title">
+                            JAVASCRIPT
+                        </p>
+                    </div>
+                    <div class="nav-content-item hidden-on-mobile">
+                        <p class="nav-title">
+                            SQL
+                        </p>
+                    </div>
+                    <div class="nav-content-item hidden-on-tablet-mobile">
+                        <p class="nav-title">
+                            PYTHON
+                        </p>
+                    </div>
+                    <div class="nav-content-item hidden-on-tablet-mobile">
+                        <p class="nav-title">
+                            PHP
+                        </p>
+                    </div>
+                    <div class="nav-content-item hidden-on-tablet-mobile">
+                        <p class="nav-title">
+                            BOOTSTRAP
+                        </p>
+                    </div>
+                    <div class="nav-content-item hidden-on-tablet-mobile">
+                        <p class="nav-title">
+                            HOW TO
+                        </p>
+                    </div>
+                    <div class="nav-content-item hidden-on-ipad-pro hidden-on-tablet-mobile">
+                        <p class="nav-title">
+                            W3.CSS
+                        </p>
+                    </div>
+                    <div class="nav-content-item hidden-on-ipad-pro hidden-on-tablet-mobile">
+                        <p class="nav-title">
+                            JAVA
+                        </p>
+                    </div>
+                    <div class="nav-content-item hidden-on-ipad-pro hidden-on-tablet-mobile">
+                        <p class="nav-title">
+                            JQUERY
+                        </p>
+                    </div>
+                </div>
+                <div class="nav-bar-content ">
+                        <div class="nav-content-item">
+                            <i class="nav-item-icon fa-solid fa-circle-half-stroke"></i>
+                        </div>
+                        <div class="nav-content-item">
+                            <i class="nav-item-icon fa-solid fa-earth-americas"></i>
+                        </div>
+                        <div class="nav-content-item">
+                            <i class="nav-item-icon fa-solid fa-magnifying-glass"></i>
+                        </div>
+                </div>
+            </div>
+        </nav>
+        <div id="nav-menu" class="nav-menu dis-none">
+            <div class="nav-menu-item ">
+                <p class="item-title hover-bgr">
+                    Tutorials
+                    <i class="fa-solid fa-caret-down"></i>
+                </p>
+            </div>
+            <div class="nav-menu-item ">
+                <p class="item-title hover-bgr">
+                    References
+                    <i class="fa-solid fa-caret-down"></i>
+                </p>
+            </div>
+            <div class="nav-menu-item ">
+                <p class="item-title hover-bgr">
+                    Exercises
+                    <i class="fa-solid fa-caret-down"></i>
+                </p>
+            </div>
+            <div class="nav-menu-item ">
+                <p class="item-title hover-bgr">
+                    Videos
+                </p>
+            </div>
+            <div class="nav-menu-item ">
+                <p class="item-title hover-bgr">
+                    Pro
+                    <span class="item-new">NEW</span>
+                </p>
+            </div>
+            <div class="nav-menu-item">
+                <p class="item-tit hover-bgr">
+                    Paid Courses
+                </p>
+            </div>
+            <div class="nav-menu-item">
+                <p class="item-tit hover-bgr">
+                    Shop
+                </p>
+            </div>
+            <div class="nav-menu-item">
+                <p class="item-tit hover-bgr">
+                    Spaces
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <aside class="menu-left hidden-on-tablet-mobile">
+                <ul class="menu-left-content">
+                    <p class="menu-left-title">
+                         HTML Tutorial
+                    </p>
+                    <li class="menu-left-content-item active">
+                        <p>
+                            HTML HOME
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML introduction
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Editor
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Basic
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Elements
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Attributes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Headings
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Paragraphs
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Styles
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Quotations
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Comments
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Colors
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML CSS
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Links
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Images
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Favicons
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Tables
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML List
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Block & Inline
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Classes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Id
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Iframes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML JavaScript
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML File Paths
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Head
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Layout
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Basic
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Elements
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Attributes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Headings
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Paragraphs
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Styles
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Quotations
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Comments
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Colors
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML CSS
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Links
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Images
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Favicons
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Tables
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML List
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Block & Inline
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Classes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Id
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Iframes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML JavaScript
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML File Paths
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Head
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Layout
+                        </p>
+                    </li>
+                </ul>
+            </aside>
+            <aside id="menu-left-mobile" class="dis-none">
+                <ul class="menu-left-content">
+                    <p class="menu-left-title">
+                        HTML Tutorial
+                    </p>
+                    <li class="menu-left-content-item active">
+                        <p>
+                            HTML HOME
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML introduction
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Editor
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Basic
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Elements
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Attributes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Headings
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Paragraphs
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Styles
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Quotations
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Comments
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Colors
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML CSS
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Links
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Images
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Favicons
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Tables
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML List
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Block & Inline
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Classes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Id
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Iframes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML JavaScript
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML File Paths
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Head
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Layout
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Basic
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Elements
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Attributes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Headings
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Paragraphs
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Styles
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Quotations
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Comments
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Colors
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML CSS
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Links
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Images
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Favicons
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Tables
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML List
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Block & Inline
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Classes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Id
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Iframes
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML JavaScript
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML File Paths
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Head
+                        </p>
+                    </li>
+                    <li class="menu-left-content-item">
+                        <p>
+                            HTML Layout
+                        </p>
+                    </li>
+                </ul>
+            </aside>
+        <div class="content-right pd-page">
+            <div class="content-right--box">
+               <div class="content-right--item">
+                  <section class="content-right-details bgr-green">
+                      <h1 class="content-right--item-title">
+                        WWF
+                      </h1>
+                      <article>
+                          <p class="content-right--item-desc">
+                            The Panda has become the symbol of WWF. 
+                                The well-known panda logo of WWF originated from a panda named Chi Chi that was
+                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
+                          </p>
+                      </article>
+                  </section>
+               </div>
+               <div class="content-right--item ">
+                    <section class="content-right-details bgr-orange">
+                        <h1 class="content-right--item-title">
+                        WWF's Panda symbol
+                        </h1>
+                        <article>
+                            <p class="content-right--item-desc">
+                                The Panda has become the symbol of WWF.
+                                The well-known panda logo of WWF originated from a panda named Chi Chi that was
+                                transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
+                            </p>
+                        </article>
+                    </section>
+               </div>
+               <div class="content-right--item ">
+                   <section class="content-right-details bgr-red">
+                    <h1 class="content-right--item-title">
+                        WWF's Panda symbols
+                    </h1>
+                    <article>
+                        <p class="content-right--item-desc">
+                            The Panda has become the symbol of WWF.
+                            The well-known panda logo of WWF originated from a panda named Chi Chi that was
+                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
+                        </p>
+                    </article>
+                </section>
+               </div>
+               <div class="content-right--item ">
+                    <section class="content-right-details bgr-grey">
+                    <h1 class="content-right--item-title">
+                    WWF's Panda symbo
+                    </h1>
+                    <article>
+                        <p class="content-right--item-desc">
+                            The Panda has become the symbol of WWF.
+                            The well-known panda logo of WWF originated from a panda named Chi Chi that was
+                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
+                        </p>
+                    </article>
+                </section>
+               </div>
+            </div>
+        </div>
+        </div>
     </div>
 </body>
 <script src="./project_week3.js"></script>

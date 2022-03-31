@@ -54,6 +54,9 @@ html {
   /* visibility: hidden; */
   display: none;
 }
+.hidden-menu {
+  visibility: hidden;
+}
 /* css chung */
 
 .main {
@@ -73,6 +76,7 @@ html {
 .header-content-item {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .content-img {
@@ -193,7 +197,7 @@ html {
 
 .content-right--box {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   padding: 10px;
 }
 .content-right--item {
@@ -275,6 +279,11 @@ html {
 
     .block-on-tablet {
       display: block;
+    }
+    .content-right--box {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding: 10px;
     }
 }
 

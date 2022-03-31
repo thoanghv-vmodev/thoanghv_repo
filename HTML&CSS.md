@@ -56,3 +56,13 @@ VD:
 - Responsive Web Design (RWD):
   là xu hướng mới theo đó quy trình thiết kế và phát triển web sẽ đáp ứng mọi thiết bị và môi trường của người
   dùng theo các tiêu chí kích thước và chiều của màn hình thiết bị.
+
+#Single Page Application:
+
+- Single page Application là một ứng dụng web giúp nâng cao trải nghiệm người dùng bằng cách sử dụng HTML5 và AJAX,
+  Đầu tiên khi tải một trang web bất kỳ, SPA sẽ tải một trang HTML đơn, sau đó dựa trên request của người dùng, SPA sẽ tiếp tục tải các HTML khác trong cùng một trang đó.
+- Khi duyệt web sẽ gửi 1 request lên server.
+- Server trả về HTMLM, CSS , JS thuần
+- Gửi request AJAX yêu cầu chuyển trang
+- Trả về JSON, HTML, Chỉ dữ liệu cần thiết của trang đó.
+  => như vậy mỗi khi gửi request server sẽ không phải trả về toàn bộ HTML CSS JS của trang web nữa, bỏ qua được việc render lại trang web.

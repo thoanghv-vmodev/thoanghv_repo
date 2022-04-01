@@ -50,10 +50,10 @@ VD:
 - Flexbox Layout (hay còn gọi là Flexible Box):
   là một kiểu bố cục trang có khả năng tự cân đối kích thước, thay đổi chiều rộng/chiều cao và thứ tự phần tử bên trong để phù hợp với tất cả các loại thiết bị hiển thị và kích thước màn hình.
 
-- Atomic CSS(Css nguyên tử):
+- Atomic CSS(Css nguyên tử - nghĩa là chia nhỏ):
   hiểu ngắn gọn là một cách viết CSS mà chúng ta không cần viết một dòng CSS nào cả. Tức là không cần phải
   define trong CSS source nữa, chỉ cần reuse nhưng thuộc tính đã khai báo trước đó là xong. Thay vì viết code CSS, chúng ta sẽ sử dụng các class có sẵn mà một Atomic CSS Framework cung cấp.
-- Responsive Web Design (RWD):
+- Responsive Web Design:
   là xu hướng mới theo đó quy trình thiết kế và phát triển web sẽ đáp ứng mọi thiết bị và môi trường của người
   dùng theo các tiêu chí kích thước và chiều của màn hình thiết bị.
 
@@ -62,7 +62,7 @@ VD:
 - Single page Application là một ứng dụng web giúp nâng cao trải nghiệm người dùng bằng cách sử dụng HTML5 và AJAX,
   Đầu tiên khi tải một trang web bất kỳ, SPA sẽ tải một trang HTML đơn, sau đó dựa trên request của người dùng, SPA sẽ tiếp tục tải các HTML khác trong cùng một trang đó.
 - Khi duyệt web sẽ gửi 1 request lên server.
-- Server trả về HTMLM, CSS , JS thuần
+- Server trả về HTML, CSS , JS thuần
 - Gửi request AJAX yêu cầu chuyển trang
 - Trả về JSON, HTML, Chỉ dữ liệu cần thiết của trang đó.
-  => như vậy mỗi khi gửi request server sẽ không phải trả về toàn bộ HTML CSS JS của trang web nữa, bỏ qua được việc render lại trang web.
+  => như vậy mỗi khi gửi request server sẽ không phải trả về toàn bộ HTML CSS JS của trang web nữa, mà trả về những gì request, bỏ qua được việc render lại trang web.

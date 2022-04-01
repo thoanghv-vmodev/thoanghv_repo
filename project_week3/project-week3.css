@@ -50,8 +50,7 @@ html {
 .active p{
   color: #fff;
 }
-.dis-none{
-  /* visibility: hidden; */
+.dis-none {
   display: none;
 }
 .hidden-menu {
@@ -230,7 +229,7 @@ html {
 } 
 
 .menu-click {
-  display: block;
+  display: none;
 }
 
 .nav-menu {
@@ -266,6 +265,9 @@ html {
     }
 
     .block-on-tablet-mobile {
+      display: block;
+    }
+    .menu-click {
       display: block;
     }
 }

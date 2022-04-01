@@ -1,3 +1,4 @@
+/* Scope */
 // global scope
 // biến thuộc phạm vi toàn cầu nên truy cập xuyên suốt được.
 /* var name = 'Thoang'
@@ -27,35 +28,41 @@ function log2() {
 log2();
  */
 
-// code block 
+// code - block 
 // code nằm trong 1 khối code: let, const;
 // var thì vẫn truy cập được.
-// không thể sử dụng biến khi ở ngoài phạm vi khối mã: {}, if, loop, white.
+// Chỉ có thể sử dụng biến khi ở ngoài phạm vi khối mã: {}, if, loop, white.
 
-/* if(1<2) {
-var nameMentor = 'Bang'
+// if(1<2) {
 
-let nameFresher = 'Thoang Hoang'
-}
+//   let nameFresher = 'Thoang Hoang'
+//   var nameMentor = 'Bang'
 
-console.log(nameMentor)
-console.log(nameFresher) */
+// }
 
-//local scope: var, function
-// phạm vi trong hàm, và expression func.
+// console.log(nameMentor)
+// console.log(nameFresher)
 
-/*  function local() {
-  let nameFriend = 'Tuyen'
-  console.log('in loacl-scope:',nameFriend)
- 
- }
- local()
- console.log(nameFriend)  */
-/* var local2 = function loacl3() {
-   console.log('abc')
-}
-loacl3()
- */
+// local scope: function.
+// function tự định nghĩa phạm vi truy cập cục bộ (local scope) của riêng nó.
+// phạm vi trong function.
+
+// function local() {
+//   var nameFriend = 'Tuyen'
+//   console.log('in loacl-scope:',nameFriend)
+//  }
+// local()
+// console.log(nameFriend) 
+
+
+// đây gọi là function scope
+// var local2 = function loacl3() {
+//     console.log('abc')
+//     var local4 = function loacl5() {
+//        }
+// }
+// console.log(loacl3())
+
  
  //LEXICAL SCOPE (closure)
  // là funtion trong 1 func có thể dùng được biến của func ngoài.
@@ -82,19 +89,25 @@ loacl3()
  }
  
  a();
- var text = "in gloal"; // var được hoisting var text */
+ var text = "in global"; // var được hoisting var text */
  
- // Closures:
+ // Closures: giống như 1 bao đóng.
  // Là 1 hàm có thể ghi nhớ nơi nó đc tạo và truy cập được ở biến bên ngoài phạm vi của nó.
- //Một closure là một hàm bên trong mà có thể truy cập biến của hàm   bên ngoài (chứa nó). 
- //Closure có 3 scope chain, đó là:
+ // Một closure là một hàm bên trong mà có thể truy cập biến của hàm   bên ngoài (chứa nó). 
+ // Closure có 3 scope chain, đó là:
  //- Có thể truy cập đến biến của chính nó (biến được định nghĩa trong dấu ngoặc nhọn của nó);
  //- Có thể truy cập biến của hàm bên ngoài; 
  //- Có thể truy cập biến toàn cục (global).
-/*  function a() {
-    var name = "I'm a Copy";
+
+ /* let fullName = 'Hoang Van Thoang' // variable global
+ function a() { // Closure
+    var name = "Thoang";
     function b() { // Closure
         console.log(name);
+        function c() { // Closure
+          console.log(fullName)
+        }
+        c();
     }
     b();
  }

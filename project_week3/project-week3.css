@@ -267,9 +267,7 @@ html {
     .block-on-tablet-mobile {
       display: block;
     }
-    .menu-click {
-      display: block;
-    }
+    
 }
 
 /* Tablet */
@@ -304,6 +302,9 @@ html {
       display: grid;
       grid-template-columns: auto;
       padding: 10px;
+    }
+    .menu-click {
+      display: block;
     }
 }
 /* Responsive web */

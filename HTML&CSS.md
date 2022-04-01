@@ -66,3 +66,38 @@ VD:
 - Gửi request AJAX yêu cầu chuyển trang
 - Trả về JSON, HTML, Chỉ dữ liệu cần thiết của trang đó.
   => như vậy mỗi khi gửi request server sẽ không phải trả về toàn bộ HTML CSS JS của trang web nữa, mà trả về những gì request, bỏ qua được việc render lại trang web.
+
+#CSR và SSR:
+
+SSR:
+
+- Server side rendering hay SSR là cách thông thường cho việc render trang web ở trình duyệt. Như các bước mô tả bên dưới cách truyền
+  thống để rendering nội dung web như các bước dưới đây :
+
+- 1.Người dùng gửi một yêu cầu tới website( Thông thường thông qua trình duyệt).
+- 2.Phía server kiểm tra và chuẩn bị nội dung HTML sau khi đã đi qua một lượt các script có trong trang web.
+- 3.Các đoạn HTML đã được biên dịch được gửi tới trình duyệt của người dùng cho việc render.
+- 4.Trình duyệt tải về HTML và làm các trang có thể nhìn thấy với người dùng.
+- 5.Trình duyệt sau đó tải về Javasciprt(JS) và tiến hành thực thi JS, nó làm cho trang web có thể tương tác.
+
+CSR:
+
+- Client side rendering là một cách tiếp cận khác về việc làm thế nào một trang web được xử lí để hiển thị trên trình duyệt.
+  Ở CSR, gánh nặng về việc biên dịch nội dung, sinh ra HTML được chuyển tới phía trình duyệt người dùng.
+
+- Cách tiếp cận này được tiếp sức mạnh từ các framework Javascript và các thư viện.
+  Luồng chính của một trang web render trong trường hợp Client-side rendering như sau:
+
+- 1.Người dùng gửi request tới webiste
+- 2.Thay vì một server, một con CDN có thể được sử dụng để gửi HTML, CSS và các file hỗ trợ cho người dùng.
+- 3.Trình duyệt tải HTML và JS trong khi nhìn thấy một biểu tượng loading
+- 4.Sau khi trình duyệt lấy JS về, nó sẽ tạo các yêu cầu API thông qua Ajax và lấy về các nội dung động và xử lí chúng để render ra
+  nội dung cuối cùng.
+- 5.Sau khi server phản hồi, nội dung cuối cùng sẽ được render sử dụng quá trình xử lí DOM trên trình duyệt người dùng.
+
+#JS
+
+- Lan truyền sự kiện (Event Propagation) là một cơ chế xác định cách các sự kiện lan truyền hoặc di chuyển qua cây DOM để đến mục
+  tiêu của nó và điều gì xảy ra với nó sau đó.
+
+- Trong giai đoạn bubbling, quá trình sự kiện kích hoạt ngược lại. Nếu capturing thực hiện từ ngoài vào trong thì bubbling thực hiện từ trong ra ngoài.

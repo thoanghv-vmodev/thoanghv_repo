@@ -15,10 +15,15 @@ function onClickNavMenu() {
 window.addEventListener("scroll", onScroll);
 
 function onScroll() {
-    if(window.pageYOffset <= 60) {
+    if(window.pageYOffset <= 35) {
         listItemLeft.classList.remove('hidden-menu');
     }
     else {
         listItemLeft.classList.add('hidden-menu');
     }
+}
+
+function onBlur() {
+    console.log('a')
+    listItemLeft.classList.add('hidden-menu');
 }

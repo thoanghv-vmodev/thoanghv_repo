@@ -79,7 +79,7 @@
         <nav>
             <div class="nav-bar ">
                 <div class="nav-bar-content">
-                    <div class="menu-icon nav-content-item dis-none block-on-tablet-mobile" onclick="onClick()" onblur="onBlur()">
+                    <div class="menu-icon nav-content-item dis-none block-on-tablet-mobile" onclick="onClick()">
                         <i class="nav-item-icon fa-solid fa-bars"></i>
                     </div>
                     <div class="nav-content-item">
@@ -201,7 +201,7 @@
             </div>
         </div>
         <div class="container">
-            <aside class="menu-left hidden-on-tablet-mobile">
+            <aside class="menu-left hidden-on-ipad-pro hidden-on-tablet-mobile">
                 <ul class="menu-left-content">
                     <p class="menu-left-title">
                          HTML Tutorial
@@ -453,7 +453,7 @@
                     </li>
                 </ul>
             </aside>
-            <aside id="menu-left-mobile" class="dis-none ">
+            <aside id="menu-left-mobile" class="dis-none hidden-on-ipad-pro">
                 <ul class="menu-left-content">
                     <p class="menu-left-title">
                         HTML Tutorial
@@ -706,136 +706,48 @@
                 </ul>
             </aside>
         <div class="content-right pd-page">
-            <div class="content-right--box">
-               <div class="content-right--item">
-                  <section class="content-right-details bgr-green">
-                      <h1 class="content-right--item-title">
-                        WWF
-                      </h1>
-                      <article>
-                          <p class="content-right--item-desc">
-                            The Panda has become the symbol of WWF. 
-                                The well-known panda logo of WWF originated from a panda named Chi Chi that was
-                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
-                          </p>
-                      </article>
-                  </section>
-               </div>
-               <div class="content-right--item ">
-                    <section class="content-right-details bgr-orange">
-                        <h1 class="content-right--item-title">
-                        WWF's Panda symbol
-                        </h1>
-                        <article>
-                            <p class="content-right--item-desc">
-                                The Panda has become the symbol of WWF.
-                                The well-known panda logo of WWF originated from a panda named Chi Chi that was
-                                transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
-                            </p>
-                        </article>
-                    </section>
-               </div>
-               <div class="content-right--item ">
-                   <section class="content-right-details bgr-red">
-                    <h1 class="content-right--item-title">
-                        WWF's Panda symbols
-                    </h1>
-                    <article>
-                        <p class="content-right--item-desc">
-                            The Panda has become the symbol of WWF.
-                            The well-known panda logo of WWF originated from a panda named Chi Chi that was
-                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
-                        </p>
-                    </article>
-                </section>
-               </div>
-               <div class="content-right--item ">
-                    <section class="content-right-details bgr-grey">
-                    <h1 class="content-right--item-title">
-                    WWF's Panda symbo
-                    </h1>
-                    <article>
-                        <p class="content-right--item-desc">
-                            The Panda has become the symbol of WWF.
-                            The well-known panda logo of WWF originated from a panda named Chi Chi that was
-                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
-                        </p>
-                    </article>
-                </section>
-               </div>
-            <div class="content-right--item">
-                <section class="content-right-details bgr-green">
-                    <h1 class="content-right--item-title">
-                        WWF
-                    </h1>
-                    <article>
-                        <p class="content-right--item-desc">
-                            The Panda has become the symbol of WWF.
-                            The well-known panda logo of WWF originated from a panda named Chi Chi that was
-                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
-                        </p>
-                    </article>
-                </section>
+            <div class="btn-add-content">
+                <button type="button" class="btn-add" id="btn-add">
+                    Add content
+                </button>
             </div>
-            <div class="content-right--item ">
-                <section class="content-right-details bgr-orange">
-                    <h1 class="content-right--item-title">
-                        WWF's Panda symbol
-                    </h1>
-                    <article>
-                        <p class="content-right--item-desc">
-                            The Panda has become the symbol of WWF.
-                            The well-known panda logo of WWF originated from a panda named Chi Chi that was
-                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
-                        </p>
-                    </article>
-                </section>
+            <form id="form-addContent" action="#">
+                <div id="modal-add" class="modal">
+                    <div class="modal-add-content">
+                        <div class="modal-top">
+                            <div class="close">
+                                <i class="close-icon fa-solid fa-xmark" onclick="closeModal()"></i>
+                            </div>
+                            <p class="show-content-title">Add a content</p>
+                        </div>
+                        <div class="show-content">
+                            <label>Title:</label>
+                            </br>
+                            <input type="text" name="title" value="" class="add-title">
+                        </br> 
+                        </br>
+                            <label>Description:</label>
+                            </br>
+                            <textarea class="add-title"  name="desc" value="" cols="30" rows="3">
+                            </textarea>
+                        </br>
+                        </br>
+                            <label>Name user:</label>
+                            </br>
+                            <input name="author" value="" type="text" class="add-title">
+                        </br>
+                        </br>
+                        <div class="submit-box">
+                            <button class="submit" id="submit">
+                                Done
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="content-right--box"  id="list-content">
             </div>
-            <div class="content-right--item ">
-                <section class="content-right-details bgr-red">
-                    <h1 class="content-right--item-title">
-                        WWF's Panda symbols
-                    </h1>
-                    <article>
-                        <p class="content-right--item-desc">
-                            The Panda has become the symbol of WWF.
-                            The well-known panda logo of WWF originated from a panda named Chi Chi that was
-                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
-                        </p>
-                    </article>
-                </section>
-            </div>
-            <div class="content-right--item ">
-                <section class="content-right-details bgr-grey">
-                    <h1 class="content-right--item-title">
-                        WWF's Panda symbo
-                    </h1>
-                    <article>
-                        <p class="content-right--item-desc">
-                            The Panda has become the symbol of WWF.
-                            The well-known panda logo of WWF originated from a panda named Chi Chi that was
-                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
-                        </p>
-                    </article>
-                </section>
-            </div>
-            <div class="content-right--item">
-                <section class="content-right-details bgr-green">
-                    <h1 class="content-right--item-title">
-                        WWF
-                    </h1>
-                    <article>
-                        <p class="content-right--item-desc">
-                            The Panda has become the symbol of WWF.
-                            The well-known panda logo of WWF originated from a panda named Chi Chi that was
-                            transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.
-                        </p>
-                    </article>
-                </section>
-            </div>
-            </div>
-        </div>
-        </div>
     </div>
 </body>
 <script src="./project_week3.js"></script>

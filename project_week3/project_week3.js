@@ -76,7 +76,7 @@ var listContent= document.querySelector('#list-content');
     var htmls = contentList.map((content)=> {
         return `
         <div class="content-right--item">
-            <section class="content-right-details bgr-orange" 
+            <section class="content-right-details bgr-orange">
                 <p class="content-right--item-title">
                     ${content.title}             
                 </p>
@@ -111,7 +111,7 @@ done.onclick = function() {
 function addPost(title, desc, author) {
 
     if(title != '' && desc != '' && author != '') {
-        contentList.push({
+        contentList.unshift({
             title: title,
             description: desc,
             userName: author

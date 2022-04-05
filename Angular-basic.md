@@ -7,7 +7,7 @@ Angular overview & structure
 - Móc vòng đời , cho phép chèn những tác vụ cần thiết trong những khoảng khắc quan trọng trong
   quá trình init cho đến khi destroy component.
 
-- ngOnChanges(): khi Angular thiết lập các thuộc tính đầu vào và ràng buộc dữ liệu, gọi trước ngOnInit.
+- ngOnChanges (): khi Angular thiết lập các thuộc tính đầu vào và ràng buộc dữ liệu, gọi trước ngOnInit.
 
 - ngOnInit() : khi component/directive được khởi tạo, gọi sau ngOnchanges.
 
@@ -15,10 +15,10 @@ Angular overview & structure
 
 - ngAfterContentInit(): Thực thi sau khi thêm nội dung bên ngoài vào view của component/ view mà directive đưa vào, sau ngOnDoCheck.
 
-- ngAfterContentChecked(): Thự thi sau khi Angular đã kiểm tra nội dung bên ngoài đã được đưa vào view của component. Được gọi sau
+- ngAfterContentChecked(): Thực thi sau khi Angular đã kiểm tra nội dung bên ngoài đã được đưa vào view của component. Được gọi sau
   ngAfterContentInit() và mọi ngDoCheck() tiếp theo.
 
-- ngAfterViewInit(): hự thi sau khi Angular khởi tạo các view của component và các view con / view mà directive được đưa vào. Được gọi một
+- ngAfterViewInit(): Thự thi sau khi Angular khởi tạo các view của component và các view con / view mà directive được đưa vào. Được gọi một
   lần sau ngAfterContentChecked() đầu tiên.
 
 - ngAfterViewChecked(): Thực thi sau khi Angular kiểm tra các view của component và các view con /view mà directive được đưa vào. Được gọi sau
@@ -45,3 +45,11 @@ Class, template metadata:
 - Two-way data binding: Dạng này thì luồng dữ liệu sẽ đi 2 chiều từ component sang view và ngược lại.
   Dạng này thường dùng trong form để cập nhật giá trị khi người dùng nhập vào.
   vd: [(ngModel)]
+
+# Directive
+
+1. Components directives: selector component <component-name></component-name>.
+
+2. Structural directives: structural directive thường có dấu '*' ở trước của directive: *ngFor, *ngIf, *ngSwitchCase...
+
+3. Attribute directives: thuộc tính của đối tượng: \*ngStyle

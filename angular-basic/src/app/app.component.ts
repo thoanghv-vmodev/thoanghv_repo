@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { flatten } from '@angular/compiler';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-basic';
-  fullName = 'Hoàng Văn Thoáng';
 }

@@ -1,4 +1,4 @@
-#HTML
+# HTML
 
 1. Sematic HTML:
 
@@ -23,6 +23,8 @@ VD:
 - "summary"
 - "time"
 
+#Ví dụ về một vài semantic element trong HTML bao gồm: <a>, <form>, <table>, <img>, <h1> -> <h6>,...
+
 2. HTML Accessibility:
 
 - Accessible Rich Internet Applications (ARIA) là một bộ thuộc tính HTML giúp xác định nội dung ứng dụng và
@@ -34,18 +36,18 @@ VD:
 - Đối với HTML DOM, cấu trúc dạng cây gọi là DOM Tree có nghĩa là mọi thành phần đều được xem là 1 nút (node), được biểu diễn trên 1 cây.
   Các phần tử khác nhau sẽ được phân loại nút khác nhau nhưng quan trọng nhất là 3 loại: nút gốc (document node), nút phần tử (element node), nút văn bản (text node).
 
-#CSS:
+# CSS:
 
 - CSS Selector là thứ cho phép bạn nhắm mục tiêu tới các phần tử HTML để áp dụng các thuộc tính CSS cho chúng.
   CSS Selector giống như là đường đẫn, chỉ định để cho CSS biết bạn đang muốn điều chỉnh, tạo kiểu cho phần tử HTML nào vậy.
-  "thẻ tag là Element Selector"
+  "thẻ tag là Element Selector".
 
 - SASS:
 - SASS (Syntactically Awesome StyleSheets) là một CSS Preprocessor giúp bạn viết CSS nhanh hơn và có cấu trúc rõ ràng hơn. Với SASS, bạn có
   thể viết CSS theo thứ tự rõ ràng, quản lý các biến đã được định nghĩa sẵn, các class dùng chung hay có thể tự động nén tập tin CSS lại để bạn tiết kiệm dung lượng.
 
 - CSS Grid:
-  là một hệ thống bố cục dựa trên lưới 2 chiều nhằm mục đích không làm gì khác hơn là thay đổi hoàn toàn cách chúng ta thiết kế giao diện người dùng dựa trên lưới. Bố cục Grid phù hợp để thiết kế các website có độ phức tạp cao. display : grid tạo lưới cấp khối (block level).
+  là một hệ thống bố cục dựa trên lưới 2 chiều nhằm mục đích thiết kế giao diện người dùng dựa trên lưới. Bố cục Grid phù hợp để thiết kế các website có độ phức tạp cao. display : grid tạo lưới cấp khối (block level).
 
 - Flexbox Layout (hay còn gọi là Flexible Box):
   là một kiểu bố cục trang có khả năng tự cân đối kích thước, thay đổi chiều rộng/chiều cao và thứ tự phần tử bên trong để phù hợp với tất cả các loại thiết bị hiển thị và kích thước màn hình.
@@ -57,17 +59,7 @@ VD:
   là xu hướng mới theo đó quy trình thiết kế và phát triển web sẽ đáp ứng mọi thiết bị và môi trường của người
   dùng theo các tiêu chí kích thước và chiều của màn hình thiết bị.
 
-#Single Page Application:
-
-- Single page Application là một ứng dụng web giúp nâng cao trải nghiệm người dùng bằng cách sử dụng HTML5 và AJAX,
-  Đầu tiên khi tải một trang web bất kỳ, SPA sẽ tải một trang HTML đơn, sau đó dựa trên request của người dùng, SPA sẽ tiếp tục tải các HTML khác trong cùng một trang đó.
-- Khi duyệt web sẽ gửi 1 request lên server.
-- Server trả về HTML, CSS , JS thuần
-- Gửi request AJAX yêu cầu chuyển trang
-- Trả về JSON, HTML, Chỉ dữ liệu cần thiết của trang đó.
-  => như vậy mỗi khi gửi request server sẽ không phải trả về toàn bộ HTML CSS JS của trang web nữa, mà trả về những gì request, bỏ qua được việc render lại trang web.
-
-#CSR và SSR:
+# CSR và SSR:
 
 SSR:
 
@@ -95,9 +87,45 @@ CSR:
   nội dung cuối cùng.
 - 5.Sau khi server phản hồi, nội dung cuối cùng sẽ được render sử dụng quá trình xử lí DOM trên trình duyệt người dùng.
 
-#JS
+# JavaScript
+
+- Rest: phần còn lại, làm tham số của 1 hàm.
+- Spread: Truyền tham số lấy ra từ mảng.
 
 - Lan truyền sự kiện (Event Propagation) là một cơ chế xác định cách các sự kiện lan truyền hoặc di chuyển qua cây DOM để đến mục
   tiêu của nó và điều gì xảy ra với nó sau đó.
 
 - Trong giai đoạn bubbling, quá trình sự kiện kích hoạt ngược lại. Nếu capturing thực hiện từ ngoài vào trong thì bubbling thực hiện từ trong ra ngoài.
+
+- This trong JavaScript đề cập đến đối tượng mà nó thuộc về
+
+- Primitive Types & Reference Types (Tham trị, tham chiếu)
+
+- The event loop.
+
+1. khi một hàm được gọi trong JS, hàm đó được thêm vào 1 vùng nhớ được gọi là call stack,
+   Call stack là một phần của JS Engine không phải của Browser. sd cơ chế FILO (first in last out)
+
+2. Các hàm bất đồng bộ sẽ được đưa vào web API để xử lý (setTimeout, setInterval).
+   các hàm callback được truyền vào lúc này sẽ không nhảy qua Call Stack ngay mà nó được chuyển vào một hàng đợi Queue chờ được gọi lại.
+
+3. Event Loop có một nhiệm vụ duy nhất là đồng bộ Queue với Call Stack,
+   Nếu Call Stack trống thì chúng ta gọi hàm trong Queue, Queue hoạt động theo cơ chế FIFO nên hàm nào nằm trong hàng đợi trước thì được gọi thực thi trong Call Stack trước.
+
+- SPA:
+- Single Page Application:
+
+- Single page Application là một ứng dụng web giúp nâng cao trải nghiệm người dùng bằng cách sử dụng HTML5 và AJAX,
+  Đầu tiên khi tải một trang web bất kỳ, SPA sẽ tải một trang HTML đơn, sau đó dựa trên request của người dùng, SPA sẽ tiếp tục tải các HTML khác trong cùng một trang đó.
+- Khi duyệt web sẽ gửi 1 request lên server.
+- Server trả về HTML, CSS , JS thuần
+- Gửi request AJAX yêu cầu chuyển trang
+- Trả về JSON, HTML, Chỉ dữ liệu cần thiết của trang đó.
+  => như vậy mỗi khi gửi request server sẽ không phải trả về toàn bộ HTML CSS JS của trang web nữa, mà trả về những gì request, bỏ qua được việc render lại trang web.
+
+# Shallow copy vs Deep copy:
+
+- shallow copy có nghĩa là một số giá trị sẽ vẫn kết nối với bản gốc.
+  vd: let a = 10, let b = a => shallow coppy.
+
+- deep coppy: Một bản deep copy nghĩa là toàn bộ giá trị được gán vào biến sẽ được sao chéo và tách rời hoàn toàn với bản gốc

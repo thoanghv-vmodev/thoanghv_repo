@@ -31,17 +31,17 @@ log2();
 // code - block 
 // code nằm trong 1 khối code: let, const;
 // var thì vẫn truy cập được.
-// Chỉ có thể sử dụng biến khi ở ngoài phạm vi khối mã: {}, if, loop, white.
+// sử dụng biến khi ở trong phạm vi khối mã: {}, if, loop, white.
 
-// if(1<2) {
+if(1<2) {
 
-//   let nameFresher = 'Thoang Hoang'
-//   var nameMentor = 'Bang'
+  let nameFresher = 'Thoang Hoang'
+  var nameMentor = 'Bang'
 
-// }
+}
 
-// console.log(nameMentor)
-// console.log(nameFresher)
+console.log(nameMentor)
+console.log(nameFresher)
 
 // local scope: function.
 // function tự định nghĩa phạm vi truy cập cục bộ (local scope) của riêng nó.
@@ -112,7 +112,7 @@ log2();
     b();
  }
  a(); */
-/*  
+ 
  function createApp() {
   const phones = [];
   return {
@@ -131,17 +131,4 @@ log2();
  app.add('iphone13')
  app.add('iphone14')
  
- app.show() */
- 
- //This trong JavaScript đề cập đến đối tượng mà nó thuộc về
-
-
-
- // Primitive Types & Reference Types (Tham trị, tham chiếu)
-
-
- // The event loop.
-
- // SPA.
-
- // sallow
+ app.show()

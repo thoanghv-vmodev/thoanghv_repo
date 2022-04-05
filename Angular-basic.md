@@ -44,4 +44,4 @@ Class, template metadata:
 
 - Two-way data binding: Dạng này thì luồng dữ liệu sẽ đi 2 chiều từ component sang view và ngược lại.
   Dạng này thường dùng trong form để cập nhật giá trị khi người dùng nhập vào.
-  vd: [(ngMoldu)]
+  vd: [(ngModel)]

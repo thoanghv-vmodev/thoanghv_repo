@@ -23,7 +23,7 @@ VD:
 - "summary"
 - "time"
 
-#Ví dụ về một vài semantic element trong HTML bao gồm: <a>, <form>, <table>, <img>, <h1> -> <h6>,...
+- Ví dụ về một vài semantic element trong HTML bao gồm: <a>, <form>, <table>, <img>, <h1> -> <h6>,...
 
 2. HTML Accessibility:
 
@@ -129,3 +129,8 @@ CSR:
   vd: let a = 10, let b = a => shallow coppy.
 
 - deep coppy: Một bản deep copy nghĩa là toàn bộ giá trị được gán vào biến sẽ được sao chéo và tách rời hoàn toàn với bản gốc
+
+# Web Api là gì:
+
+- Web API(ở trình duyệt 'bowser') là phương thức dùng để cho phép các ứng dụng khác nhau có thể giao tiếp, tra đổi dữ liệu qua lại.
+  Dữ liệu được Web API trả lại thường ở dạng JSON hoặc XML thông qua giao thức HTTP hoặc HTTPS.

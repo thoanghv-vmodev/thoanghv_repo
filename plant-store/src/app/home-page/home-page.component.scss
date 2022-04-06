@@ -1,0 +1,70 @@
+//Btn
+.btn-shop {
+  background-color: var(--color-text-brown);
+  border-style: none;
+  color: #fff;
+  padding: 12px 60px;
+  transition: all ease-in-out 0.2s;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn-shop:hover {
+  background-color: #d0b0a6;
+  transition: all ease-in-out 0.2s;
+  color: #000;
+}
+
+/* Home page */
+.home-page {
+  position: relative;
+  top: 112px;
+}
+
+.intro-bg {
+  background-image: url('../../assets/images/hinh-anh-hoa-sen-da-10.jpg');
+  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 140vh;
+  background-color: rgb(107, 107, 107);
+  -webkit-background-size: 100%;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+  background-blend-mode: overlay;
+}
+
+.intro-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.intro-box--title {
+  margin-top: 24px;
+}
+
+.title-top {
+  font-size: 18px;
+  letter-spacing: 4px;
+}
+
+.title-name {
+ font-size: 112px;
+ font-weight: 300;
+}
+
+.title-desc {
+  font-size: 18px;
+  letter-spacing: 4px;
+}
+
+.product-demo {
+  height: 1000px;
+}
+

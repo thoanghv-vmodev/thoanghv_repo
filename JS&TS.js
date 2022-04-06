@@ -33,15 +33,15 @@ log2();
 // var thì vẫn truy cập được.
 // sử dụng biến khi ở trong phạm vi khối mã: {}, if, loop, white.
 
-if(1<2) {
+// if(1<2) {
 
-  let nameFresher = 'Thoang Hoang'
-  var nameMentor = 'Bang'
+//   let nameFresher = 'Thoang Hoang'
+//   var nameMentor = 'Bang'
 
-}
+// }
 
-console.log(nameMentor)
-console.log(nameFresher)
+// console.log(nameMentor)
+// console.log(nameFresher)
 
 // local scope: function.
 // function tự định nghĩa phạm vi truy cập cục bộ (local scope) của riêng nó.
@@ -113,22 +113,32 @@ console.log(nameFresher)
  }
  a(); */
  
- function createApp() {
-  const phones = [];
-  return {
-    add(iphone) {
-      phones.push(iphone)
-    },
-    show() {
-    console.log(phones)
-    } 
-  } 
- }
+//  function createApp() {
+//   const phones = [];
+//   return {
+//     add(iphone) {
+//       phones.push(iphone)
+//     },
+//     show() {
+//     console.log(phones)
+//     } 
+//   } 
+//  }
  
- const app = createApp()
+//  const app = createApp()
  
- app.add('iphone12')
- app.add('iphone13')
- app.add('iphone14')
+//  app.add('iphone12')
+//  app.add('iphone13')
+//  app.add('iphone14')
  
- app.show()
+//  app.show()
+
+let a = {firstName: 'Thanh'}
+
+let b = {firstName: 'Thanh'}
+
+// let a = '1'
+
+// let b = 1 
+
+console.log(a.firstName === b.firstName)

@@ -90,12 +90,13 @@ CSR:
 # JavaScript
 
 - Rest: phần còn lại, làm tham số của 1 hàm.
-- Spread: Truyền tham số lấy ra từ mảng.
+- Spread: Gộp phần tử của mảng lại thành 1 mảng.
 
 - Lan truyền sự kiện (Event Propagation) là một cơ chế xác định cách các sự kiện lan truyền hoặc di chuyển qua cây DOM để đến mục
   tiêu của nó và điều gì xảy ra với nó sau đó.
 
-- Trong giai đoạn bubbling, quá trình sự kiện kích hoạt ngược lại. Nếu capturing thực hiện từ ngoài vào trong thì bubbling thực hiện từ trong ra ngoài.
+- Trong giai đoạn bubbling, quá trình sự kiện kích hoạt ngược lại. Nếu capturing thực hiện từ ngoài vào trong thì bubbling thực hiện từ
+  trong ra ngoài.
 
 - This trong JavaScript đề cập đến đối tượng mà nó thuộc về
 

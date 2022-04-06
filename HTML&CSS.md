@@ -135,3 +135,5 @@ CSR:
 
 - Web API(ở trình duyệt 'bowser') là phương thức dùng để cho phép các ứng dụng khác nhau có thể giao tiếp, tra đổi dữ liệu qua lại.
   Dữ liệu được Web API trả lại thường ở dạng JSON hoặc XML thông qua giao thức HTTP hoặc HTTPS.
+
+# Mảng là từ object.

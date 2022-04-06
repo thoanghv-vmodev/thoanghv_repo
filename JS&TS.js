@@ -133,12 +133,42 @@ log2();
  
 //  app.show()
 
-let a = {firstName: 'Thanh'}
 
-let b = {firstName: 'Thanh'}
+// So sánh == và ===;
+// So sa sánh == là so sánh dữ liệu
 
-// let a = '1'
+// let c = '1'
 
-// let b = 1 
+// let d = 1 
 
-console.log(a.firstName === b.firstName)
+// console.log(c == d)
+
+// let a = {firstName: 'Thanh'}
+
+// let b = {firstName: 'Thanh'}
+
+// console.log(a.firstName === b.firstName)
+
+console.log("This is a string." == new String("This is a string.")); //true
+// so sánh == thì value đều là string
+
+console.log("This is a string." === new String("This is a string.")); //false
+//new String("This is a string." kiểu của nó là object
+
+
+console.log(undefined == null); // true
+ 
+console.log(undefined === null); // false. Undefined and null are distinct types and are not interchangeable.
+
+console.log(true == 'true'); // false. A string will not be converted to a boolean and vice versa.
+ 
+console.log(true === 'true'); // false
+
+var a = [];
+var b = []; // a và b có vùng nhớ riêng biệt
+var c = a; // đều trỏ về 1 vùng nhớ
+ 
+console.log(a == b); // false
+console.log(a === b); // false
+console.log(a == c); // true
+console.log(a === c); // true

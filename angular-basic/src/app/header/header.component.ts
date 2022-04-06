@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     setTimeout(()=>{
       this.inputFocus?.nativeElement.focus()
-      console.log('ViewChild - ElementRef')
+      console.log('ViewChild - focus')
     },2000)
   }
 

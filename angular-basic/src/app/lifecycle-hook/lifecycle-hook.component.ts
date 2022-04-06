@@ -41,7 +41,7 @@ export class LifecycleHookComponent implements OnInit {
     }
 
   ngDoCheck() {
-    console.log('ngDoCheck: lifecycleComponent')
+    console.log('ngDoCheck: lifecycleHook')
     console.log('OnDoCheck - ' + this.contentView)
 
   }

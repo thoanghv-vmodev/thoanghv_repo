@@ -1,8 +1,8 @@
 Angular overview & structure
 
-#Install & Project structure
+# Install & Project structure
 
-#Life cycle hooks :
+# Life cycle hooks :
 
 - Móc vòng đời , cho phép chèn những tác vụ cần thiết trong những khoảng khắc quan trọng trong
   quá trình init cho đến khi destroy component.
@@ -27,12 +27,30 @@ Angular overview & structure
 - ngOnDestroy(): Dọn dẹp ngay trước khi Angular phá hủy directive / component. Hủy đăng ký Observables và tách trình xử lý sự kiện để tránh rò
   rỉ bộ nhớ. Được gọi ngay trước khi Angular phá hủy directive / component.
 
-#Component
+# Component
+
 Class, template metadata:
 
-- Component metadata: selector, tempateUrl, template, styleUrl, providers.
+- Cấu trúc của một project Angular:
+- angular.json là tập tin cấu hình cho Angular CLI -> chạy các dòng
+- karma.config.js : file này dùng để chạy các testing (kiểm thử) các chức năng.
+- package.json : file này chứa các thư viện cần thiết cho dự án angular, ngoài ra nếu ta thêm một thư viện bên thứ 3 vào thì khai báo t
+  rong này.
+- environment: Chứa các option config cho môi trường. Mặc định, sẽ có một số môi tường phát triển tiêu chuẩn và production.
+  có thể thêm một số config cho môi trường vào đây.
 
-#Template:
+# app.module:
+
+- declarations: Dùng để khai báo component, directive và pipe
+- providers: Dùng để khai báo các service dùng trong toàn bộ các module của con.
+- imports: Dùng để nạp các module cần sử dụng
+- bootstrap: Định nghĩa component gốc của module, có thể là component bất kỳ, miễn là tất cả component con chạy vào component đó.
+
+# Component metadata: selector, tempateUrl, template, styleUrl, providers.
+
+- selector : Là tên được đặt để gọi một component trong code html. Ở ví dụ vừa rồi, từ khóa hello-ng-world được đặt tên cho component này. Khi cần gọi component này ra ở màn hình html cha, ta sẽ gọi bằng html tag <app-category-list></app-category-list>. Gọi như vậy thì component con sẽ được render ra component cha.
+
+# Template:
 
 - interpolation: là phép nội suy, render giá trị trong biến của component, cú pháp: {{}} vd: {{data.name}}.
 
@@ -53,3 +71,5 @@ Class, template metadata:
 2. Structural directives: structural directive thường có dấu '*' ở trước của directive: *ngFor, *ngIf, *ngSwitchCase...
 
 3. Attribute directives: thuộc tính của đối tượng: \*ngStyle
+
+- Built-in attribute directives: NgClass, NgStyle, NgModule.

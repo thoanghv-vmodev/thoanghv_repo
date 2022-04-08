@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 *{
+  padding: 0%;
   margin: 0;
 }
 
@@ -10,16 +11,22 @@ html{
   sans-serif;
 }
 
+ul,li {
+  padding: 0;
+  margin: 0;
+}
+
+$bg-white: rgb(255 255 255);
+$color-text-brown: rgb(160, 88, 65);
+$bg-page: #ededee;
+$bg-color-green: rgb(18 49 50);
+
 body {
-  background-color: var(--bg-page);
+  background-color: $bg-page;
 }
-
-:root {
- --bg-white: rgb(255 255 255);
- --color-text-brown: rgb(160, 88, 65);
- --bg-page: #ededee;
+input {
+  box-sizing: border-box;
 }
-
 .size-page {
   width: 1200px;
   width: calc(100% - 50px - 50px);
@@ -27,7 +34,7 @@ body {
 }
 
 .bg-page {
-  background-color: var(--bg-page);
+  background-color: $bg-page;
 }
 
 .pd-tb-18 {

@@ -1,0 +1,142 @@
+@use '../../styles.scss';
+.footer {
+  position: relative;
+  background-color: styles.$bg-color-green;
+  top: 112px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 52px;
+
+  .footer-top--contact {
+    list-style: none;
+    text-align: center;
+    color: #fff;
+
+    .contact-item h1{
+      padding: 24px 0;
+      font-size: 18px;
+      font-weight: 100;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+    }
+    .contact-item p {
+      padding: 4px 0;
+      font-size: 15px;
+    }
+    .contact-item a {
+      color: #fff;
+    }
+  }
+}
+
+.btn-footer-middle {
+  background-color: #fff;
+  border-style: none;
+  color: styles.$bg-color-green;
+  padding: 12px 18px;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+  font-size: 15px;
+  white-space: nowrap;
+  margin-left: 12px;
+
+  &:hover {
+    transition: all ease-in-out 0.3s;
+    color: #fff;
+    background-color: #3e5a5b;
+  }
+}
+
+.footer-middle {
+  padding: 46px 0;
+
+}
+
+.footer-middle--box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .footer-middle--box-content {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+
+    .footer-middle--box-title {
+      padding: 18px 0;
+      font-size: 18px;
+      font-weight: 100;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      color: #fff;
+      text-align: center;
+    }
+    .footer-middle--box-email {
+      color: #fff;
+      padding: 8px 0;
+    }
+
+    .footer-middle--box-item {
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #fff;
+        background-color: styles.$bg-color-green;
+      }
+
+      input:hover {
+        border: 2px solid #fff;
+      }
+
+      input:focus {
+        border: 2px solid #fff !important;
+        outline: none;
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.footer-middle--social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 48px;
+
+  .social-item {
+    display: flex;
+
+    .social-icon {
+      padding: 0 16px;
+      a {
+        text-decoration: none;
+      }
+      i {
+        color: #fff;
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+
+.footer-map {
+  padding: 0 54px;
+  .map {
+    width: 100%;
+    height: 80vh;
+  }
+}
+
+.end-title {
+  position: relative;
+  top: 112px;
+  padding: 28px;
+  color: styles.$color-text-brown;
+  text-align: center;
+  font-size: 14px;
+}

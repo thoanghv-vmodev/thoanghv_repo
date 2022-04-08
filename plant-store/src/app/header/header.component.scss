@@ -1,5 +1,6 @@
+@use '../../styles.scss';
 .bg-white {
-  background-color: var(--bg-white);
+  background-color: styles.$bg-white;
 }
 .font-22 {
   font-size: 22px;
@@ -9,58 +10,62 @@
   position: fixed;
   width: calc(100% - 50px - 50px);
   z-index: 100;
+  .header-content,
+  .login {
+    display: flex;
+    height: 56px;
+    justify-content: space-between;
+    color: styles.$color-text-brown;
+    align-items: center;
+  }
 }
 
-.header-content,
-.login {
-  display: flex;
-  height: 56px;
-  justify-content: space-between;
-  color: var(--color-text-brown);
-  align-items: center;
-}
 
 .header-content--box {
   padding: 0px 12px;
   height: 100%;
   display: flex;
   align-items: center;
+  .header-content--item {
+    border-style: none;
+    padding: 0px 6px;
+  }
 }
 
 ::placeholder{
-  color:
-  var(--color-text-brown);
+  color: styles.$color-text-brown;
 }
 
-.header-content--item {
-  border-style: none;
-  padding: 0px 6px;
-}
 
 .header-content--item:focus {
   outline: none;
 }
+
 
 .content--box-hover {
   padding: 10px 0;
 }
 
 .content--box-hover:hover {
-  border: 1px solid var(--color-text-brown);
+  border: 1px solid styles.$color-text-brown;
 }
 
-.login a{
-  text-decoration: none;
-  color: var(--color-text-brown);
+.login {
+  a{
+    text-decoration: none;
+    color: styles.$color-text-brown;
+  }
 }
+.login:hover {
+  p{
+    opacity: 0.8;
+  }
+}
+
 
 .login-item {
   padding: 0px 6px;
   cursor: pointer;
-}
-
-.login:hover > p {
-  opacity: 0.8;
 }
 
 .cart {
@@ -71,13 +76,12 @@
 .nav-header-content {
   display: flex;
   align-items: center;
-}
-
-.nav-menu--item {
-  padding: 0 14px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all ease-in-out 0.3s;
+  .nav-menu--item {
+    padding: 0 14px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+  }
 }
 
 .name-shop {

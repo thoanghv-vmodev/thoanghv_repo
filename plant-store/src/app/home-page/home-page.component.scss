@@ -104,11 +104,18 @@
 
   .box-item-type {
     color: styles.$color-text-brown;
+    cursor: pointer;
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 4px;
     padding: 8px 0;
-    text-transform: uppercase
+    text-transform: uppercase;
+    transition: all ease-in-out 0.3s;
+
+    &:hover {
+      color: #000;
+      transition: all ease-in-out 0.3s;
+    }
   }
 
   .btn-product {

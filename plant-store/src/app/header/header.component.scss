@@ -44,6 +44,11 @@
 
 .content--box-hover {
   padding: 10px 0;
+  border: 1px solid #fff;
+
+  i {
+    cursor: pointer;
+  }
 }
 
 .content--box-hover:hover {
@@ -79,9 +84,14 @@
   .nav-menu--item {
     padding: 0 14px;
     font-size: 14px;
-    cursor: pointer;
     transition: all ease-in-out 0.3s;
   }
+}
+
+.menu-hover {
+  display: none;
+  background-color: styles.$bg-page;
+  list-style: none;
 }
 
 .name-shop {
@@ -90,10 +100,13 @@
   transition: all ease-in-out 0.3s;
 }
 
-.name-shop:hover,
-.nav-menu--item:hover {
-  color: #000;
-  transition: all ease-in-out 0.3s;
+.name-shop,
+.nav-menu--item p{
+  cursor: pointer;
+  &:hover {
+    color: #000;
+    transition: all ease-in-out 0.3s;
+  }
 }
 
 .nav-header-content-title {
@@ -101,4 +114,8 @@
   font-size: 18px;
   font-weight: 500;
   margin-right: 10px;
+}
+
+.active {
+  display: none;
 }

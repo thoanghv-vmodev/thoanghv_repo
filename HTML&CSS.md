@@ -65,4 +65,5 @@ VD:
 - Server trả về HTML, CSS , JS thuần
 - Gửi request AJAX yêu cầu chuyển trang
 - Trả về JSON, HTML, Chỉ dữ liệu cần thiết của trang đó.
-  => như vậy mỗi khi gửi request server sẽ không phải trả về toàn bộ HTML CSS JS của trang web nữa, mà trả về những gì request, bỏ qua được việc render lại trang web.
+  => như vậy mỗi khi gửi request server sẽ không phải trả về toàn bộ HTML CSS JS của trang web nữa, mà trả về những gì request,
+  bỏ qua được việc render lại trang web.

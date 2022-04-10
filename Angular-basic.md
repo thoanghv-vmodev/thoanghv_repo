@@ -7,25 +7,25 @@ Angular overview & structure
 - Móc vòng đời , cho phép chèn những tác vụ cần thiết trong những khoảng khắc quan trọng trong
   quá trình init cho đến khi destroy component.
 
-- ngOnChanges (): khi Angular thiết lập các thuộc tính đầu vào và ràng buộc dữ liệu, gọi trước ngOnInit.
+- ngOnChanges(): khi Angular thiết lập các thuộc tính đầu vào và ràng buộc dữ liệu, gọi trước ngOnInit().
 
-- ngOnInit() : khi component/directive được khởi tạo, gọi sau ngOnchanges.
+- ngOnInit(): khi component/directive được khởi tạo, gọi sau ngOnchanges().
 
 - ngDoCheck(): Phát hiện 1 hành động thay đổi, ngay sau ngOnChanges() và ngOnInit().
 
-- ngAfterContentInit(): Thực thi sau khi thêm nội dung bên ngoài vào view của component/ view mà directive đưa vào, sau ngOnDoCheck.
+- ngAfterContentInit(): Thực thi sau khi thêm nội dung bên ngoài vào view của component/ view mà directive đưa vào, sau ngOnDoCheck().
 
 - ngAfterContentChecked(): Thực thi sau khi Angular đã kiểm tra nội dung bên ngoài đã được đưa vào view của component. Được gọi sau
   ngAfterContentInit() và mọi ngDoCheck() tiếp theo.
 
-- ngAfterViewInit(): Thự thi sau khi Angular khởi tạo các view của component và các view con / view mà directive được đưa vào. Được gọi một
+- ngAfterViewInit(): Thực thi sau khi Angular khởi tạo các view của component và các view con / view mà directive được đưa vào. Được gọi một
   lần sau ngAfterContentChecked() đầu tiên.
 
 - ngAfterViewChecked(): Thực thi sau khi Angular kiểm tra các view của component và các view con /view mà directive được đưa vào. Được gọi sau
   ngAfterViewInit() và mọi ngAfterContentChecked() tiếp theo.
 
-- ngOnDestroy(): Dọn dẹp ngay trước khi Angular phá hủy directive / component. Hủy đăng ký Observables và tách trình xử lý sự kiện để tránh rò
-  rỉ bộ nhớ. Được gọi ngay trước khi Angular phá hủy directive / component.
+- ngOnDestroy(): Dọn dẹp ngay trước khi Angular phá hủy directive/component. Hủy đăng ký Observables và tách trình xử lý sự kiện để tránh rò
+  rỉ bộ nhớ. Được gọi ngay trước khi Angular phá hủy directive/component.
 
 # Component
 
@@ -34,8 +34,8 @@ Class, template metadata:
 - Cấu trúc của một project Angular:
 - angular.json là tập tin cấu hình cho Angular CLI -> chạy các dòng
 - karma.config.js : file này dùng để chạy các testing (kiểm thử) các chức năng.
-- package.json : file này chứa các thư viện cần thiết cho dự án angular, ngoài ra nếu ta thêm một thư viện bên thứ 3 vào thì khai báo t
-  rong này.
+- package.json : file này chứa các thư viện cần thiết cho dự án angular, ngoài ra nếu ta thêm một thư viện bên thứ 3 vào thì khai
+  báo trong này.
 - environment: Chứa các option config cho môi trường. Mặc định, sẽ có một số môi tường phát triển tiêu chuẩn và production.
   có thể thêm một số config cho môi trường vào đây.
 
@@ -64,7 +64,7 @@ Class, template metadata:
   Dạng này thường dùng trong form để cập nhật giá trị khi người dùng nhập vào.
   vd: [(ngModel)]
 
-# Directive
+# Directive:
 
 1. Components directives: selector component <component-name></component-name>.
 

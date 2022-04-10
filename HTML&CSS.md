@@ -66,7 +66,7 @@ SSR:
 - Server side rendering hay SSR là cách thông thường cho việc render trang web ở trình duyệt. Như các bước mô tả bên dưới cách truyền
   thống để rendering nội dung web như các bước dưới đây :
 
-- 1.Người dùng gửi một yêu cầu tới website( Thông thường thông qua trình duyệt).
+- 1.Người dùng gửi một request tới website( Thông thường thông qua browser).
 - 2.Phía server kiểm tra và chuẩn bị nội dung HTML sau khi đã đi qua một lượt các script có trong trang web.
 - 3.Các đoạn HTML đã được biên dịch được gửi tới trình duyệt của người dùng cho việc render.
 - 4.Trình duyệt tải về HTML và làm các trang có thể nhìn thấy với người dùng.
@@ -82,14 +82,15 @@ CSR:
 
 - 1.Người dùng gửi request tới webiste
 - 2.Thay vì một server, một con CDN có thể được sử dụng để gửi HTML, CSS và các file hỗ trợ cho người dùng.
-- 3.Trình duyệt tải HTML và JS trong khi nhìn thấy một biểu tượng loading
-- 4.Sau khi trình duyệt lấy JS về, nó sẽ tạo các yêu cầu API thông qua Ajax và lấy về các nội dung động và xử lí chúng để render ra
+- 3.Trình duyệt tải HTML và JS trong khi nhìn thấy một biểu tượng loading.
+- 4.Sau khi trình duyệt lấy JS về, nó sẽ tạo các request API thông qua Ajax và lấy về các nội dung động và xử lí chúng để render ra
   nội dung cuối cùng.
 - 5.Sau khi server phản hồi, nội dung cuối cùng sẽ được render sử dụng quá trình xử lí DOM trên trình duyệt người dùng.
 
 # JavaScript
 
 - Rest: phần còn lại, làm tham số của 1 hàm.
+
 - Spread: Gộp phần tử của mảng lại thành 1 mảng.
 
 - Lan truyền sự kiện (Event Propagation) là một cơ chế xác định cách các sự kiện lan truyền hoặc di chuyển qua cây DOM để đến mục
@@ -100,12 +101,16 @@ CSR:
 
 - This trong JavaScript đề cập đến đối tượng mà nó thuộc về
 
-- Primitive Types & Reference Types (Tham trị, tham chiếu)
+# Primitive Types & Reference Types (Tham trị, tham chiếu)
 
-- The event loop.
+- Primitive Types ( tham trị) là biến được gán kiểu dữ liệu nguyên thủy, khi gán giá trị sẽ tạo ra ô nhớ mới.
 
-1. khi một hàm được gọi trong JS, hàm đó được thêm vào 1 vùng nhớ được gọi là call stack,
-   Call stack là một phần của JS Engine không phải của Browser. sd cơ chế FILO (first in last out)
+- Reference Types ( tham chiếu) là biến được gán kiểu dữ liệu phức tạp, biến được gán lại điạ chỉ ô nhớ
+
+# The event loop.
+
+1. Khi một hàm được gọi trong JS, hàm đó được thêm vào 1 vùng nhớ được gọi là call stack,
+   Call stack là một phần của JS Engine, không phải của Browser. Sử dụng cơ chế FILO (first in last out).
 
 2. Các hàm bất đồng bộ sẽ được đưa vào web API để xử lý (setTimeout, setInterval).
    các hàm callback được truyền vào lúc này sẽ không nhảy qua Call Stack ngay mà nó được chuyển vào một hàng đợi Queue chờ được gọi lại.
@@ -113,14 +118,13 @@ CSR:
 3. Event Loop có một nhiệm vụ duy nhất là đồng bộ Queue với Call Stack,
    Nếu Call Stack trống thì chúng ta gọi hàm trong Queue, Queue hoạt động theo cơ chế FIFO nên hàm nào nằm trong hàng đợi trước thì được gọi thực thi trong Call Stack trước.
 
-- SPA:
-- Single Page Application:
+# Single Page Application.
 
-- Single page Application là một ứng dụng web giúp nâng cao trải nghiệm người dùng bằng cách sử dụng HTML5 và AJAX,
+- Single page Application: là một ứng dụng web giúp nâng cao trải nghiệm người dùng bằng cách sử dụng HTML5 và AJAX,
   Đầu tiên khi tải một trang web bất kỳ, SPA sẽ tải một trang HTML đơn, sau đó dựa trên request của người dùng, SPA sẽ tiếp tục tải các HTML khác trong cùng một trang đó.
 - Khi duyệt web sẽ gửi 1 request lên server.
-- Server trả về HTML, CSS , JS thuần
-- Gửi request AJAX yêu cầu chuyển trang
+- Server trả về HTML, CSS , JS thuần.
+- Gửi request AJAX yêu cầu chuyển trang.
 - Trả về JSON, HTML, Chỉ dữ liệu cần thiết của trang đó.
   => như vậy mỗi khi gửi request server sẽ không phải trả về toàn bộ HTML CSS JS của trang web nữa, mà trả về những gì request, bỏ qua được việc render lại trang web.
 
@@ -133,7 +137,7 @@ CSR:
 
 # Web Api là gì:
 
-- Web API(ở trình duyệt 'bowser') là phương thức dùng để cho phép các ứng dụng khác nhau có thể giao tiếp, tra đổi dữ liệu qua lại.
+- Web API(ở trình duyệt 'browser') là phương thức dùng để cho phép các ứng dụng khác nhau có thể giao tiếp, tra đổi dữ liệu qua lại.
   Dữ liệu được Web API trả lại thường ở dạng JSON hoặc XML thông qua giao thức HTTP hoặc HTTPS.
 
-# Mảng là từ object.
+# Mảng được định nghĩa từ object.

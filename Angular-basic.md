@@ -70,6 +70,6 @@ Class, template metadata:
 
 2. Structural directives: structural directive thường có dấu '*' ở trước của directive: *ngFor, *ngIf, *ngSwitchCase...
 
-3. Attribute directives: thuộc tính của đối tượng: \*ngStyle
+3. Attribute directives: thuộc tính của đối tượng: \*ngStyle vd [directive]
 
 - Built-in attribute directives: NgClass, NgStyle, NgModule.

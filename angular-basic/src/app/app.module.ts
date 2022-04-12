@@ -6,14 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LifecycleHookComponent } from './lifecycle-hook/lifecycle-hook.component';
 import { HeaderComponent } from './header/header.component';
-import { AppAutoFocus } from './Directive/hightlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     LifecycleHookComponent,
     HeaderComponent,
-    AppAutoFocus
   ],
   imports: [
     BrowserModule,

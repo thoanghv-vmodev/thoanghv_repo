@@ -6,13 +6,14 @@
   <p #contentView>Hello world!</p>
 </app-lifecycle-hook>
 <br>
-<input #inputFocus type="text" [(ngModel)]="changes">
+<!-- <input #inputFocus type="text" [(ngModel)]="changes"> -->
 <br>
 <br>
 <span>{{time | date: 'fullDate'}}</span>
 <br>
 <span>{{money | currency: 'VND'}}</span>
 
+<input type="text" appAutoFocus>
 
 <!-- <div>
   Số thứ nhất : <input type="number" class="form-control" [(ngModel)]="num1">

@@ -2,9 +2,11 @@
 
 <button (click)="toggleMe()">Toggle me!</button>
 <br>
-<app-lifecycle-hook *ngIf="isShow" [changes]="changes">
-  <p #contentView>Hello world!</p>
-</app-lifecycle-hook>
+<ng-container *ngIf="isShow" >
+  <app-lifecycle-hook [changes]="changes">
+    <p #contentView>Hello world!</p>
+  </app-lifecycle-hook>
+</ng-container>
 <br>
 <!-- <input #inputFocus type="text" [(ngModel)]="changes"> -->
 <br>

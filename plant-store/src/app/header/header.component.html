@@ -2,9 +2,9 @@
     <div class="header">
         <div class="header-content bg-white">
             <div class="header-content--box">
-                <div class="content--box-hover" id="content--box-hover" >
+                <div class="content--box-hover" id="content--box-hover" #item >
                   <i class="box-hover-item fa-solid fa-magnifying-glass"></i>
-                  <input class="box-hover-item" type="text" placeholder="Search..." (focus)="onFocus()">
+                  <input class="box-hover-item"  type="text" placeholder="Search..." (focus)="onFocus()" (blur)="onBlur()" appFocusinput>
                 </div>
             </div>
             <div class="header-content--box">

@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
 import { CategoryComponent } from './product/category/category.component';
+import { FocusinputDirective } from './Directive/focusinput.directive';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CategoryComponent } from './product/category/category.component';
     FooterComponent,
     HomePageComponent,
     CategoryComponent,
+    FocusinputDirective,
   ],
   imports: [
     BrowserModule,

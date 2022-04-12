@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   onActive1 = true
   onActive2 = false
-
+  @ViewChild ('item') item: ElementRef<HTMLElement> | undefined;
   constructor() { }
 
   ngOnInit(): void {
@@ -37,9 +37,11 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  hoverBox = document.getElementById('content--box-hover')
   onFocus() {
-    this.hoverBox?.classList.add('border-box')
+    this.item?.nativeElement.classList.add('border-box')
   }
 
+  onBlur() {
+    this.item?.nativeElement.classList.remove('border-box')
+  }
 }

@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CategoryComponent implements OnInit {
 
   constructor() { }
-  @Input() data: any;
+  @Input() data: any; // data home-component
 
   ngOnInit(): void {
   }

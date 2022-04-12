@@ -26,7 +26,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  .header-content--item {
+  .box-hover-item {
     border-style: none;
     padding: 0px 6px;
   }
@@ -37,7 +37,7 @@
 }
 
 
-.header-content--item:focus {
+.box-hover-item:focus {
   outline: none;
 }
 
@@ -49,9 +49,13 @@
   i {
     cursor: pointer;
   }
+
+  &:hover {
+    border: 1px solid styles.$color-text-brown;
+  }
 }
 
-.content--box-hover:hover {
+.border-box {
   border: 1px solid styles.$color-text-brown;
 }
 
@@ -81,17 +85,41 @@
 .nav-header-content {
   display: flex;
   align-items: center;
+  opacity: 1;
+  transition: all ease-in-out 0.3s;
   .nav-menu--item {
     padding: 0 14px;
     font-size: 14px;
     transition: all ease-in-out 0.3s;
   }
 }
+.nav-menu--hover {
+  position: relative;
+}
 
-.menu-hover {
-  display: none;
+.hover-list {
   background-color: styles.$bg-page;
+  display: none;
+  position: absolute;
   list-style: none;
+  padding: 6px 10px;
+  left: -6px;
+  transition: all ease-in-out 0.3s;
+
+  .hover-list-item p {
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
+    padding: 6px 0;
+
+    &:hover {
+      color: #000;
+      transition: all ease-in-out 0.3s;
+    }
+  }
+}
+
+.nav-menu--hover:hover>.hover-list {
+  display: block;
 }
 
 .name-shop {
@@ -114,8 +142,12 @@
   font-size: 18px;
   font-weight: 500;
   margin-right: 10px;
+  opacity: 1;
+  transition: opacity ease-in-out 0.3s;
 }
 
 .active {
   display: none;
+  opacity: 0.7;
+  transition: opacity ease-in-out 0.3s;
 }

@@ -7,7 +7,7 @@ Angular overview & structure
 - Móc vòng đời , cho phép chèn những tác vụ cần thiết trong những khoảng khắc quan trọng trong
   quá trình init cho đến khi destroy component.
 
-- ngOnChanges (): khi Angular thiết lập các thuộc tính đầu vào và ràng buộc dữ liệu, gọi trước ngOnInit.
+- ngOnChanges(): khi Angular thiết lập các thuộc tính đầu vào và ràng buộc dữ liệu, gọi trước ngOnInit.
 
 - ngOnInit() : khi component/directive được khởi tạo, gọi sau ngOnchanges.
 

@@ -1,0 +1,74 @@
+/* Product-demo */
+@use '../../../styles.scss';
+
+@mixin btn ($btn: styles.$color-text-brown) {
+  background-color: $btn;
+  border-style: none;
+  color: #fff;
+  padding: 12px 60px;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+  font-size: 15px;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #d0b0a6;
+    transition: all ease-in-out 0.3s;
+    color: #444;
+  }
+}
+
+.product-demo--box {
+  margin: 50px auto;
+  padding: 0 24px;
+
+  .product-demo--box-item {
+    background-color: #fff;
+    position: relative;
+    max-height: 565px;
+
+    .box-item-image img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.box-item-content {
+  position: absolute;
+  top: 36px;
+  left: 90px;
+  text-align: center;
+
+  .box-item-type {
+    color: styles.$color-text-brown;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    padding: 8px 0;
+    text-transform: uppercase;
+    transition: all ease-in-out 0.3s;
+
+    &:hover {
+      color: #000;
+      transition: all ease-in-out 0.3s;
+    }
+  }
+
+  .btn-product {
+    @include btn;
+    padding: 12px 40px;
+  }
+}
+
+.box-item-line {
+  display: flex;
+  justify-content: center;
+
+  p {
+    border-bottom: 4px solid #a05841;
+    width: 10%;
+    margin: 16px 0px;
+  }
+}

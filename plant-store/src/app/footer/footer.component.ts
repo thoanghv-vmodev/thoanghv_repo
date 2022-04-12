@@ -7,18 +7,14 @@ declare const google: any;
 })
 export class FooterComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
-
   map: any;
-
   @ViewChild('mapElement') mapElement: any;
 
-
+  constructor() { }
 
   ngOnInit(): void {
 
-  }
-
+   }
 
   ngAfterViewInit(): void {
     this.map = new google.maps.Map(this.mapElement.nativeElement, {

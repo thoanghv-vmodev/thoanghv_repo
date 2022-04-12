@@ -2,9 +2,9 @@
     <div class="header">
         <div class="header-content bg-white">
             <div class="header-content--box">
-                <div class="content--box-hover">
-                  <i class="header-content--item fa-solid fa-magnifying-glass"></i>
-                  <input class="header-content--item" type="text" placeholder="Search...">
+                <div class="content--box-hover" id="content--box-hover" >
+                  <i class="box-hover-item fa-solid fa-magnifying-glass"></i>
+                  <input class="box-hover-item" type="text" placeholder="Search..." (focus)="onFocus()">
                 </div>
             </div>
             <div class="header-content--box">
@@ -24,17 +24,23 @@
               <p class="name-shop font-22">
                 PRICKLES & CO.
               </p>
-              <div class="nav-menu--item">
+              <div class="nav-menu--item nav-menu--hover">
                   <p>Shop</p>
-                    <ul class="menu-hover">
-                        <li class="menu-hover-item">
+                    <ul class="hover-list">
+                        <li class="hover-list-item">
+                          <p>
                             Cacti
+                          </p>
                         </li>
-                        <li class="menu-hover-item">
+                        <li class="hover-list-item">
+                          <p>
                             Plants
+                          </p>
                         </li>
-                        <li class="menu-hover-item">
+                        <li class="hover-list-item">
+                          <p>
                             Succulents
+                          </p>
                         </li>
                     </ul>
               </div>
@@ -49,8 +55,8 @@
               </div>
             </nav>
             <div class="nav-header-content">
-              <p class="nav-header-content-title " #title1>Call Us Now! 123-456-7890</p>
-              <p class="nav-header-content-title active" #title2 >We Deliver to Your Doorste</p>
+              <p class="nav-header-content-title " #title1 [class.active]="onActive1">Call Us Now! 123-456-7890</p>
+              <p class="nav-header-content-title active" #title2 [class.active]="onActive2">We Deliver to Your Doorste</p>
             </div>
         </div>
     </div>

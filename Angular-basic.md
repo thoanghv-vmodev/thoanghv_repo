@@ -2,6 +2,8 @@ Angular overview & structure
 
 # Install & Project structure
 
+- Constructor là hàm tạo của một class, nó là một function đặc biệt mà khi bạn khởi tạo một instance của class thì nó sẽ được tự động chạy, và chỉ chạy duy nhất một lần
+
 # Life cycle hooks :
 
 - Móc vòng đời , cho phép chèn những tác vụ cần thiết trong những khoảng khắc quan trọng trong

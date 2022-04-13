@@ -8,7 +8,11 @@ import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
 import { CategoryComponent } from './product/category/category.component';
-import { FocusinputDirective } from './Directive/focusinput.directive';
+import { FocusInputDirective } from './Directive/focusinput.directive';
+import { ShopAllComponent } from './product/shop-all/shop-all.component';
+import { CactiComponent } from './product/cacti/cacti.component';
+import { PlantsComponent } from './product/plants/plants.component';
+import { SucculentsComponent } from './product/succulents/succulents.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { FocusinputDirective } from './Directive/focusinput.directive';
     FooterComponent,
     HomePageComponent,
     CategoryComponent,
-    FocusinputDirective,
+    FocusInputDirective,
+    ShopAllComponent,
+    CactiComponent,
+    PlantsComponent,
+    SucculentsComponent,
   ],
   imports: [
     BrowserModule,

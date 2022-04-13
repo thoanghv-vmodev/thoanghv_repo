@@ -1,9 +1,9 @@
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[appFocusinput]'
+  selector: '[appFocusInput]'
 })
-export class FocusinputDirective {
+export class FocusInputDirective {
 
   constructor(
     private el: ElementRef

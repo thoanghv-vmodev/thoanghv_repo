@@ -1,5 +1,8 @@
-import { style } from '@angular/animations';
+import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -8,24 +11,18 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @ViewChild ('title1' ,{static: true}) title1: ElementRef<HTMLElement> | undefined;
-  @ViewChild ('title2' ,{static: true}) title2: ElementRef<HTMLElement> | undefined;
-
   onActive1 = true
   onActive2 = false
+
   @ViewChild ('item') item: ElementRef<HTMLElement> | undefined;
-  constructor() { }
+
+  constructor(
+    private scroller: ViewportScroller,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) { }
 
   ngOnInit(): void {
-    /* setInterval(() => {
-        this.title1?.nativeElement.classList.add('active')
-        this.title2?.nativeElement.classList.remove('active')
-    }, 3000);
-    setInterval(() => {
-        this.title1?.nativeElement.classList.remove('active')
-        this.title2?.nativeElement.classList.add('active')
-    }, 6000);
- */
     setInterval(() => {
         this.onActive1 = true
         this.onActive2 = false
@@ -44,4 +41,25 @@ export class HeaderComponent implements OnInit {
   onBlur() {
     this.item?.nativeElement.classList.remove('border-box')
   }
+
+  goAbout() {
+    this.scroller.scrollToAnchor("about");
+  }
+
+  goContact() {
+    this.scroller.scrollToAnchor("contact");
+  }
+
+
+  //Specifying a relative route (đường dẫn tương đối)
+  goToItems() {
+  this.router.navigate(['succulents'], { relativeTo: this.route });
+  }
+
+  //Accessing query parameters and fragments
+
+  /* products$!: Observable<Item[]>;
+  selectedId!: number;
+  products = PRODUCT;
+ */
 }

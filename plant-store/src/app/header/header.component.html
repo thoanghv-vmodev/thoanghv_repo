@@ -2,9 +2,9 @@
     <div class="header">
         <div class="header-content bg-white">
             <div class="header-content--box">
-                <div class="content--box-hover" id="content--box-hover" #item >
+                <div class="content--box-hover" #item >
                   <i class="box-hover-item fa-solid fa-magnifying-glass"></i>
-                  <input class="box-hover-item"  type="text" placeholder="Search..." (focus)="onFocus()" (blur)="onBlur()" appFocusinput>
+                  <input class="box-hover-item"  type="text" placeholder="Search..." (focus)="onFocus()" (blur)="onBlur()" appFocusInput>
                 </div>
             </div>
             <div class="header-content--box">
@@ -21,44 +21,53 @@
         </div>
         <div class="header-content bg-page">
             <nav class="nav-header-content">
-              <p class="name-shop font-22">
+              <a routerLink="/home-page" class="name-shop font-22">
                 PRICKLES & CO.
-              </p>
+              </a>
               <div class="nav-menu--item nav-menu--hover">
-                  <p>Shop</p>
+                  <a routerLink="/shop-all" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Shop</a>
                     <ul class="hover-list">
                         <li class="hover-list-item">
-                          <p>
+                          <a routerLink="/cacti"  [routerLinkActive]="['active']">
                             Cacti
-                          </p>
+                          </a>
                         </li>
                         <li class="hover-list-item">
-                          <p>
+                          <a routerLink="/plants" [routerLinkActive]="['active']">
                             Plants
-                          </p>
+                          </a>
                         </li>
                         <li class="hover-list-item">
-                          <p>
+                          <a routerLink="/succulents" [routerLinkActive]="['active']">
                             Succulents
-                          </p>
+                          </a>
+                        </li>
+                        <li class="hover-list-item">
+                          <a (click)="goToItems()">
+                            Test 1
+                          </a>
+                        </li>
+                        <li class="hover-list-item">
+                          <a routerLink="/" [routerLinkActive]="['active']">
+                            Test 2
+                          </a>
                         </li>
                     </ul>
               </div>
               <div class="nav-menu--item">
-                <p>About</p>
+                <a (click)="goAbout()">About</a>
               </div>
               <div class="nav-menu--item">
-                <p>FAQ</p>
+                <a href="#">FAQ</a>
               </div>
               <div class="nav-menu--item">
-                <p>Contact</p>
+                <a (click)="goContact()">Contact</a>
               </div>
             </nav>
             <div class="nav-header-content">
-              <p class="nav-header-content-title " #title1 [class.active]="onActive1">Call Us Now! 123-456-7890</p>
-              <p class="nav-header-content-title active" #title2 [class.active]="onActive2">We Deliver to Your Doorste</p>
+              <p class="nav-header-content-title " [class.actived]="onActive1">Call Us Now! 123-456-7890</p>
+              <p class="nav-header-content-title actived" [class.actived]="onActive2">We Deliver to Your Doorste</p>
             </div>
         </div>
     </div>
   </header>
-  <app-home-page></app-home-page>

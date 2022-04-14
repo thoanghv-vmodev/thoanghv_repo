@@ -1,8 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -55,11 +53,4 @@ export class HeaderComponent implements OnInit {
   goToItems() {
   this.router.navigate(['succulents'], { relativeTo: this.route });
   }
-
-  //Accessing query parameters and fragments
-
-  /* products$!: Observable<Item[]>;
-  selectedId!: number;
-  products = PRODUCT;
- */
 }

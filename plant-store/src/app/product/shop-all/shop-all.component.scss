@@ -1,5 +1,41 @@
+@use '../../../styles.scss';
+
+
+/* Btn reuse */
+@mixin btn ($btn: styles.$color-text-brown) {
+  background-color: $btn;
+  border-style: none;
+  color: #fff;
+  padding: 12px 60px;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+  font-size: 15px;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #d0b0a6;
+    transition: all ease-in-out 0.3s;
+    color: #444;
+  }
+}
+.btn-list {
+  @include btn;
+}
 .shop-all {
   position: relative;
   top: 112px;
   padding: 28px 0;
+}
+
+.shop-all-product {
+  padding: 12px 0;
+}
+.product-list-item {
+  padding: 8px 0;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

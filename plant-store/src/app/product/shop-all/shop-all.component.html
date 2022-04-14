@@ -2,4 +2,24 @@
   <div class="shop-all-product">
     <h1>Shop all</h1>
   </div>
+  <button (click)="sub()">Subscribe</button>
+  <button (click)="unsub()">Unsubscribe</button>
+  <div class="product-list">
+    <div  *ngFor="let data of productList">
+      <div class="product-list-item">
+        <p>{{data.prdName}}</p>
+      </div>
+      <div class="product-list-item">
+        <img src="" alt="image">
+      </div>
+      <div class="product-list-item">
+        <p>Description</p>
+      </div>
+      <div class="product-list-item">
+        <button class="btn-list" [routerLink]="['details', data.id]">
+          Details
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

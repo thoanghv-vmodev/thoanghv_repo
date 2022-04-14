@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
+import { PreloadAllModules } from '@angular/router';
+
 import { HomePageComponent } from './home-page/home-page.component';
 import { CactiComponent } from './product/cacti/cacti.component';
 import { PlantsComponent } from './product/plants/plants.component';
@@ -10,19 +12,23 @@ const routes: Routes = [
   {
     path: 'home-page', component: HomePageComponent
   },
+
   {
     path:'', redirectTo:'/home-page', pathMatch:'full'
   },
-
+/*
   {
     path: 'shop-all', component: ShopAllComponent
-  },
+  }, */
   {
-    path: 'cacti', component: CactiComponent
+    path: 'cacti', component: CactiComponent,
+    canActivate: ['canActivateTeam']
   },
+
   {
     path: 'plants', component: PlantsComponent
   },
+
   {
     path: 'succulents', component: SucculentsComponent
   },
@@ -35,8 +41,18 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes,
+ /*  {
+    preloadingStrategy: PreloadAllModules
+  } */
+  )],
+  exports: [RouterModule],
+   providers: [
+    {
+      provide: 'canActivateTeam',
+      useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => false
+    }
+  ]
 })
 export class AppRoutingModule {
 

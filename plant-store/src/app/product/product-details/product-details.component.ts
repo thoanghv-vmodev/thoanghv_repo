@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/service/auth-service.service';
 
 @Component({
   selector: 'app-product-details',
@@ -8,9 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private authService: AuthService) { }
 
-  productList = [
+/*   productList = [
     {
       id: 0,
       prdName: 'ÁDASD',
@@ -38,29 +39,37 @@ export class ProductDetailsComponent implements OnInit {
     },
 
   ]
-
+ */
   itemProduct: any = {}
 
   ngOnInit(): void {
-
   const id = this.route.snapshot.paramMap.get('id');
   console.log('id', id)
 
-  /*
-  this.productList.forEach((element) => {
-    if(element.id.toString() == id) {
-      this.itemProduct = element;
-    }
-  }) */
+  this.itemProduct = this.authService.getProductById(id)
 
-  /* for(let data = 0; data < this.productList.length; data++) {
-    console.log(data)
-    if(this.productList[data].id.toString() == id) {
-      this.itemProduct = this.productList[data];
-      break; // ngăn không cho lặp hết value
-    }
-  } */
+  // this.route.paramMap.subscribe(params => {
+  //   const id = params.get('id')
+  //   this.authService.getIndexProduct(id).subscribe(data =>
+  //     this.itemProduct = data)
+  // })
 
-  this.itemProduct = this.productList.find(el => el.id.toString() == id)
+
+  // this.productList.forEach((element) => {
+  //   if(element.id.toString() == id) {
+  //     this.itemProduct = element;
+  //   }
+  // })
+
+  // for(let data = 0; data < this.productList.length; data++) {
+  //   console.log(data)
+  //   if(this.productList[data].id.toString() == id) {
+  //     this.itemProduct = this.productList[data];
+  //     break; // ngăn không cho mỗi lần so sánh thì loop qua tất cả
+  //   }
+  // }
+
+  // this.itemProduct = this.productList.find(el => el.id.toString() == id)
+
   }
 }

@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
 import { PreloadAllModules } from '@angular/router';
+import { CanLoadPageGuard } from './Guard/can-load-page.guard';
+import { MyGuardGuard } from './Guard/my-guard.guard';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { CactiComponent } from './product/cacti/cacti.component';
 import { PlantsComponent } from './product/plants/plants.component';
-import { ShopAllComponent } from './product/shop-all/shop-all.component';
 import { SucculentsComponent } from './product/succulents/succulents.component';
 
 const routes: Routes = [
   {
-    path: 'home-page', component: HomePageComponent
+    path: 'home-page', component: HomePageComponent,
+    children: [
+
+    ]
   },
 
   {
     path:'', redirectTo:'/home-page', pathMatch:'full'
   },
-/*
-  {
-    path: 'shop-all', component: ShopAllComponent
-  }, */
+
   {
     path: 'cacti', component: CactiComponent,
-    canActivate: ['canActivateTeam']
   },
 
   {
@@ -35,19 +35,20 @@ const routes: Routes = [
 
   {
     path: 'product-list',
-    loadChildren: () => import('./product/product-list/product-list.module').then(m => m.ProductListModule)
+    loadChildren: () => import('./product/product-list/product-list.module').then(m => m.ProductListModule),
+    canLoad: [CanLoadPageGuard],
   }
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,
- /*  {
-    preloadingStrategy: PreloadAllModules
-  } */
+  {
+    preloadingStrategy: PreloadAllModules // load truoc module can sd
+  }
   )],
   exports: [RouterModule],
-   providers: [
+   providers: [ // case khác để guard
     {
       provide: 'canActivateTeam',
       useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => false

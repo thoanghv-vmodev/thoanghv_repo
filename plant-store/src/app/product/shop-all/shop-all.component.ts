@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthServiceService } from '../../service/auth-service.service';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../service/auth-service.service';
 @Component({
   selector: 'app-shop-all',
   templateUrl: './shop-all.component.html',
@@ -7,39 +8,55 @@ import { AuthServiceService } from '../../service/auth-service.service';
 })
 export class ShopAllComponent implements OnInit {
 
-  constructor(private authService: AuthServiceService) { }
+  constructor(private authService: AuthService = new AuthService(), private route: ActivatedRoute) { }
 
-  productList = [
-    {
-      id: 0,
-      prdName: 'ÁDASD',
-    },
-     {
-      id: 1,
-      prdName: 'aKAKDS',
-    }, {
-      id: 2,
-      prdName: 'SFSDAF',
-    }, {
-      id: 3,
-      prdName: 'ƯEWDSD',
-    }, {
-      id: 4,
-      prdName: 'SDFSDFD',
-    },
-  ]
+  productList:any = []
+
+  ngOnInit(): void {
+    this.productList = this.authService.getListProduct()
+  }
 
   sub() {
     this.authService.subscribe();
   }
 
-  unsub() {
+  unSub() {
     this.authService.unSubscribe()
   }
-
-  ngOnInit(): void {
-
-  }
-
-
 }
+
+
+// Test Dependency
+// class Animals {
+//   constructor(){}
+//   run() {
+//     console.warn('Animal running')
+//   }
+// }
+
+
+// class Human {
+//   // speak() {
+//   //   console.log('We can speaking')
+//   // }
+//   run() {
+//     console.warn('Animal running')
+//   }
+// }
+// class Cat {
+//   public animals: Animals;
+//   constructor(animals: Animals) {
+//     this.animals = animals;
+//   }
+// }
+
+
+// function context() {
+//     // const cat = new Cat( new Animals());
+//     // cat.animals.run()
+
+//     const A = new Cat (new Human())
+//     A.animals.run()
+// };
+
+// context();

@@ -1,6 +1,6 @@
 <div class="product-details size-page">
   <div *ngIf="itemProduct && itemProduct.prdName">
-    <img src="" alt="image">
+    <img class="details-img" src="{{itemProduct.image}}" alt="image">
     <p>{{itemProduct.prdName}}</p>
     <p>Description</p>
     <p class="price">{{itemProduct.price | currency}}</p>

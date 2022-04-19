@@ -9,7 +9,7 @@
              <p class="title-desc pd-tb-18 ">BRING NATURE INDOORS</p>
            </div>
            <div class="pd-tb-18">
-             <button type="button" class="btn-shop" routerLink="/shop-all">
+             <button type="button" class="btn-shop" routerLink="/product-list">
                Shop Now
              </button>
            </div>
@@ -19,6 +19,7 @@
    </section>
    <section>
     <div class="product-demo">
+      <!-- Truyen data tu parent vao child -->
       <ng-container *ngFor="let item of listCategory">
         <app-category [data]="item"></app-category>
       </ng-container>
@@ -67,7 +68,7 @@
                         BUY ONLINE NOW & GET 10% OFF !
                       </span>
                     </h1>
-                    <button class="btn-about">Shop Now</button>
+                    <button class="btn-about" routerLink="/product-list">Shop Now</button>
                   </div>
                 </div>
               </div>

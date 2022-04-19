@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MyGuardGuard } from 'src/app/my-guard.guard';
+import { CanDeactivateGuard } from '../../Guard/can-deactivate.guard';
+import { MyGuardGuard } from '../../Guard/my-guard.guard';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { ShopAllComponent } from '../shop-all/shop-all.component';
 
@@ -8,17 +9,18 @@ const routes: Routes = [
 
   {
     path: '', component: ShopAllComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'details/:id', component: ProductDetailsComponent,
     pathMatch: 'full',
-    canActivate: [MyGuardGuard]
+    canActivate: [MyGuardGuard], // true => navigation, false => no navigation
+    canDeactivate: [CanDeactivateGuard]
   }
 ]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ProductListRoutingModule { }

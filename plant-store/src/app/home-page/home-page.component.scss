@@ -18,6 +18,11 @@
     transition: all ease-in-out 0.3s;
     color: #444;
   }
+
+  &:active {
+    background-color: #a05841;
+    box-shadow: 0 2px #666;
+  }
 }
 
 .btn-shop {

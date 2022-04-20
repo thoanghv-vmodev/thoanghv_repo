@@ -7,13 +7,13 @@
   <div class="product-list">
     <div class="product-list-content" *ngFor="let data of productList">
       <div class="product-list-item">
-        <p>{{data.prdName}}</p>
+        <p>{{data.productName}}</p>
       </div>
       <div class="product-list-item">
-        <img src="{{data.image}}" alt="image">
+        <img src="{{data.imageUrl}}" alt="image">
       </div>
       <div class="product-list-item">
-        <p>Description</p>
+        <p>{{data.desc}}</p>
       </div>
       <div class="product-list-item">
         <button class="btn-list" [routerLink]="['details', data.id]" [queryParams]="{page: data.id}" fragment="plant">

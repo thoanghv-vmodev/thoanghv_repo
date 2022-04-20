@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { CategoryJsonService } from 'src/app/service/category-json.service';
 import { AuthService } from '../../service/auth-service.service';
 @Component({
   selector: 'app-shop-all',
@@ -8,12 +8,19 @@ import { AuthService } from '../../service/auth-service.service';
 })
 export class ShopAllComponent implements OnInit {
 
-  constructor(private authService: AuthService = new AuthService(), private route: ActivatedRoute) { }
+  constructor(
+    private authService: AuthService = new AuthService(),
+    private categories: CategoryJsonService
+    ) { }
 
   productList:any = []
 
   ngOnInit(): void {
-    this.productList = this.authService.getListProduct()
+    // this.productList = this.authService.getListProduct()
+   this.categories.getCategory().subscribe((data) => {
+      this.productList = data
+      // console.log(this.productList)
+    })
   }
 
   sub() {

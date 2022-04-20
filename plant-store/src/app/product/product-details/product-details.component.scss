@@ -1,9 +1,47 @@
+@use '../../../styles.scss';
+
+
+/* Btn reuse */
+@mixin btn ($btn: styles.$color-text-brown) {
+  background-color: $btn;
+  border-style: none;
+  color: #fff;
+  padding: 12px 60px;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+  font-size: 15px;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #d0b0a6;
+    transition: all ease-in-out 0.3s;
+    color: #444;
+  }
+
+  &:active {
+    background-color: #a05841;
+    box-shadow: 0 2px #666;
+  }
+}
+
+.btn-buy {
+  @include btn;
+  margin: 12px 0;
+}
+
 .product-details {
   position: relative;
   top: 112px;
   padding: 28px;
 }
 
-.details-img {
-  width: 200px;
+.product-details-box {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
+
+.details-img {
+  width: 320px;
+}
+

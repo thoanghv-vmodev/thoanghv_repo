@@ -55,15 +55,19 @@
 }
 
 .product-list {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: auto auto auto;
   text-align: center;
+  margin: 0 -12px;
 }
-
 .product-list-content {
   padding: 12px;
 }
+.product-box {
+  flex: 0 0 33%;
+  max-width: 33%;
+}
+
 
 .product-list-item {
   padding: 8px 0;

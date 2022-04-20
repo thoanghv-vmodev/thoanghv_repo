@@ -1,8 +1,11 @@
 <div class="product-details size-page">
-  <div *ngIf="itemProduct && itemProduct.prdName">
-    <img class="details-img" src="{{itemProduct.image}}" alt="image">
-    <p>{{itemProduct.prdName}}</p>
-    <p>Description</p>
-    <p class="price">{{itemProduct.price | currency}}</p>
+  <div class="product-details-box">
+    <div *ngIf="listItem && listItem.id">
+      <img class="details-img" src="{{listItem.imageUrl}}" alt="image">
+      <p>{{listItem.productName}}</p>
+      <p>{{listItem.desc}}</p>
+      <p class="price">{{listItem.price | currency}}</p>
+      <button class="btn-buy">Buy</button>
+    </div>
   </div>
 </div>

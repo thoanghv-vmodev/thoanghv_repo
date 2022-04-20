@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: 'product-list',
     loadChildren: () => import('./product/product-list/product-list.module').then(m => m.ProductListModule),
-    canLoad: [CanLoadPageGuard],
+    canLoad: [CanLoadPageGuard]
   }
 
 ];

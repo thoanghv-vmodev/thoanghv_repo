@@ -1,6 +1,8 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
 import { PreloadAllModules } from '@angular/router';
+import { CategoryInterceptor } from './common/intercepter-category.interceptor';
 import { CanLoadPageGuard } from './Guard/can-load-page.guard';
 import { MyGuardGuard } from './Guard/my-guard.guard';
 
@@ -48,10 +50,17 @@ const routes: Routes = [
   }
   )],
   exports: [RouterModule],
-   providers: [ // case khác để guard
+   providers: [
     {
       provide: 'canActivateTeam',
-      useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => false
+      useValue: ( // case khác để guard
+      route: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot) => false
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CategoryInterceptor,
+      multi: true
     }
   ]
 })

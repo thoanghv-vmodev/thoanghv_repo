@@ -45,7 +45,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ]
  */
-  listProduct: any = [];
+  listData: any = [];
   listItem: any = [];
 
   ngOnInit(): void {
@@ -55,8 +55,9 @@ export class ProductDetailsComponent implements OnInit {
   // this.itemProduct = this.authService.getProductById(id)
 
   this.categoryService.getCategory().subscribe(data => {
-    this.listProduct = data;
-    this.listItem = this.listProduct.find((el:any) => el.id == id);
+    this.listData = data;
+    this.listItem = this.listData.find((el:any) => el.id == id);
+    console.log(this.listItem)
   }
   )
 

@@ -9,7 +9,7 @@
 .header{
   position: fixed;
   width: calc(100% - 50px - 50px);
-  z-index: 100;
+  z-index: 10;
   .header-content,
   .login {
     display: flex;

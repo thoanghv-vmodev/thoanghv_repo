@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductListRoutingModule } from './product-list-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 import { ShopAllComponent } from '../shop-all/shop-all.component';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
@@ -12,7 +15,9 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
   ],
   imports: [
     CommonModule,
-    ProductListRoutingModule
+    ProductListRoutingModule,
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class ProductListModule { }

@@ -40,6 +40,10 @@ export class HeaderComponent implements OnInit {
     this.item?.nativeElement.classList.remove('border-box')
   }
 
+  goTop() {
+    this.scroller.scrollToAnchor("top");
+  }
+
   goAbout() {
     this.scroller.scrollToAnchor("about");
   }

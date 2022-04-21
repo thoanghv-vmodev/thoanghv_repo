@@ -6,11 +6,12 @@
   background-color: $btn;
   border-style: none;
   color: #fff;
-  padding: 12px 60px;
+  padding: 12px 30px;
   transition: all ease-in-out 0.3s;
   cursor: pointer;
   font-size: 15px;
   white-space: nowrap;
+  margin: 0 12px;
 
   &:hover {
     background-color: #d0b0a6;
@@ -31,7 +32,6 @@
   border: 2px solid #444;
   padding: 12px 32px;
 }
-
 .btn-sub:nth-child(3) {
   background-color: #888;
   &:hover {
@@ -44,35 +44,105 @@
     box-shadow: 0 2px #666;
   }
 }
+
 .shop-all {
   position: relative;
   top: 112px;
   padding: 28px 0;
+
+  .shop-all-product {
+    padding: 12px 0;
+  }
+  .product-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+    margin: 0 -12px;
+    .product-list-content {
+      padding: 12px;
+    }
+
+  }
+  .product-list-item {
+    padding: 8px 0;
+  }
+
+  .product-list-item img {
+    width: 100%;
+  }
 }
 
-.shop-all-product {
-  padding: 12px 0;
-}
-
-.product-list {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  text-align: center;
-  margin: 0 -12px;
-}
-.product-list-content {
-  padding: 12px;
-}
-.product-box {
-  flex: 0 0 33%;
-  max-width: 33%;
-}
-
-
-.product-list-item {
-  padding: 8px 0;
-}
-
-.product-list-item img {
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  font: 0;
+  background-color: rgba(0, 0, 0 ,0.2);
   width: 100%;
+  z-index: 20;
+  animation: show ease-in-out 0.3s;
 }
+
+.modal {
+  position: fixed;
+  background-color: #fff;
+  display: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+
+  .card {
+    padding: 28px 54px;
+  }
+
+  .card-header {
+    padding: 12px 0;
+    font-size: 32px;
+    color: #a05841;
+  }
+
+  .card-title {
+    display: inherit;
+    padding: 6px 0;
+    font-size: 15px;
+  }
+
+  .form-group {
+    padding: 8px 0;
+    .card-input {
+     width: 100%;
+     padding: 6px;
+     border-style: none;
+     border: 1px solid #444;
+    }
+  }
+
+}
+
+.btn-card {
+  margin: 16px 0;
+  text-align: center;
+  .btn-list {
+    padding-top: 12px;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+
+@keyframes show {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dis-block {
+  display: block;
+}
+

@@ -4,20 +4,59 @@
   </div>
     <button class="btn-list btn-sub" (click)="sub()">Subscribe</button>
     <button class="btn-list btn-sub" (click)="unSub()">Unsubscribe</button>
+    <button class="btn-list btn-sub" (click)="openModal()">Add New</button>
+
+    <div class="overlay" #overlay (click)="closeModal()"></div>
+    <div class="modal" #modal>
+        <form action="">
+          <div class="card">
+            <p class="card-header">
+              Add New Category
+            </p>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="card-title" for="categoryId">Id:</label>
+                <input type="number" [(ngModel)]="category.id" class="form-control card-input" name="categoryId" id="categoryId" aria-describedby="categoryIdHid" placeholder="Category ID">
+              </div>
+              <div class="form-group">
+                <label class="card-title" for="categoryName">Name:</label>
+                <input type="text" [(ngModel)]="category.productName" class="form-control card-input" name="categoryName" id="categoryName"
+                  aria-describedby="categoryIdHname" placeholder="Category Name">
+              </div>
+              <div class="form-group">
+                <label class="card-title" for="categoryDesc">Description:</label>
+                <input type="text" [(ngModel)]="category.desc" class="form-control card-input" name="categoryDesc" id="categoryDesc"
+                  aria-describedby="categoryIdHdesc" placeholder="Category Description">
+              </div>
+              <div class="form-group">
+                <label class="card-title" for="categoryPrice"> Price:</label>
+                <input type="number" [(ngModel)]="category.price" class="form-control card-input" name="categoryPrince" id="categoryPrice"
+                  aria-describedby="categoryIdHid" placeholder="Category Price">
+              </div>
+            </div>
+            <div class="btn-card">
+              <button class="btn-list" (click)="Save()">Save</button>
+            </div>
+          </div>
+        </form>
+    </div>
   <div class="product-list">
     <div class="product-list-content" *ngFor="let data of productList">
       <div class="product-list-item">
         <p>{{data.productName}}</p>
       </div>
-      <div class="product-list-item">
-        <img src="{{data.imageUrl}}" alt="image">
+      <div class="product-list-item" >
+        <img src="{{data.imageUrl}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
       </div>
       <div class="product-list-item">
         <p>{{data.desc}}</p>
       </div>
       <div class="product-list-item">
-        <button class="btn-list" [routerLink]="['details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
+        <button class="btn-list " [routerLink]="['details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
           Details
+        </button>
+        <button class="btn-list" (click)="Delete(data)">
+            Delete
         </button>
       </div>
     </div>

@@ -4,17 +4,22 @@
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
             <div class="form-content">
               <label for="user-name"> User Name: </label>
-              <input class="form-control" id="user-name" type="text" formControlName="userName" placeholder="Ex: Hoàng Văn Thoáng" required="">
+              <input class="form-control"
+                     id="user-name"
+                     type="text"
+                     formControlName="userName"
+                     placeholder="Name"
+                     >
               <div class="col alert alert-danger" role="alert"
                *ngIf="userName?.invalid && (userName?.touched || userName?.dirty)">
                 <div *ngIf="userName?.hasError('required')">
-                  User name is required!
+                  Please input your UerName
                 </div>
                 <div *ngIf="userName?.hasError('minlength')">
                   Name must be at least 4 characters long.
                 </div>
                 <div *ngIf="userName?.hasError('maxlength')">
-                  Name must be shorter than 18 characters..
+                  Name must be shorter than 18 characters.
                 </div>
                 <div *ngIf="registerForm.hasError('invalidusername', ['userName'])">
                   Invalid Username!
@@ -23,62 +28,84 @@
             </div>
             <div class="form-content">
               <label for="e-mail">E-mail: </label>
-              <input class="form-control" id="e-mail" type="email" formControlName="email" placeholder="Ex: thoang0309@gmail.com" autocomplete="on">
+              <input class="form-control"
+                     id="e-mail" type="email"
+                     formControlName="email"
+                     placeholder="your email"
+                     autocomplete="on"
+                     >
               <div class="col alert alert-danger" role="alert"
                    *ngIf="email?.invalid && (email?.touched || email?.dirty)">
                 <div *ngIf="email?.hasError('required')">
-                  Email is required!
+                  Please input your E-mail
                 </div>
                 <div *ngIf="email?.hasError('email')">
-                  Email is required!
+                  The input is not valid E-mail!
                 </div>
               </div>
             </div>
             <div class="form-content">
               <label for="phone-number"> Phone number: </label>
-              <input class="form-control" id="phone-number" type="number" formControlName="phoneNumber" placeholder="Ex: 0123456789">
+              <input class="form-control"
+                     id="phone-number"
+                     type="number"
+                     formControlName="phoneNumber"
+                     placeholder="your phone number"
+                     >
               <div class="col alert alert-danger" role="alert"
                    *ngIf="phoneNumber?.invalid && (phoneNumber?.touched || phoneNumber?.dirty)">
                 <div *ngIf="phoneNumber?.hasError('required')">
-                  Phone number is required!
+                  Please input your phone number!
+                </div>
+                <div *ngIf="phoneNumber?.hasError('maxlength')">
+                  Phone number must be shorter than 10 number.
                 </div>
               </div>
             </div>
             <div class="form-content">
               <label for="password"> Password: </label>
-              <input class="form-control" id="password" type="password" formControlName="password">
+              <input class="form-control"
+                     id="password"
+                     type="password"
+                     formControlName="password"
+                     placeholder="Password"
+                     >
               <div class="col alert alert-danger" role="alert"
                    *ngIf="password?.invalid && (password?.touched || password?.dirty)">
                 <div *ngIf="password?.hasError('required')">
-                  Password is required!
+                    Please input your password!
+                </div>
+                <div *ngIf="password?.hasError('minlength')">
+                    Password must be at least 6 characters long.
+                </div>
+                <div *ngIf="password?.hasError('maxlength')">
+                    Password must be shorter than 50 characters.
+                </div>
+                <div *ngIf="registerForm.hasError('noWhiteSpaces',['password'])">
+                    No White Spaces
                 </div>
               </div>
             </div>
             <div class="form-content">
               <label for="confirm-password"> Confirm password: </label>
-              <input class="form-control" id="confirm-password" type="password" formControlName="confirmPassword">
+              <input class="form-control"
+                     id="confirm-password"
+                     type="password"
+                     formControlName="confirmPassword"
+                     placeholder="confirm your password"
+                     >
               <div class="col alert alert-danger" role="alert"
                   *ngIf="confirmPassword?.invalid && (confirmPassword?.touched || confirmPassword?.dirty)">
                 <div *ngIf="confirmPassword?.hasError('required')">
-                     Password is required!
+                    Please confirm your password!
                 </div>
                 <div *ngIf="confirmPassword?.hasError('confirm')">
-                     Password does not match!
+                    Password does not match!
                 </div>
               </div>
             </div>
-            <div class="form-content">
-              <label for="address"> Address: </label>
-              <input class="form-control" id="address" type="text" formControlName="address">
-              <div class="col alert alert-danger" role="alert"
-                  *ngIf="address?.invalid && (address?.touched || address?.dirty)">
-                <div *ngIf="address?.hasError('required')">
-                  Address is required!
-                </div>
-              </div>
-            </div>
-            <div class="btn-register" >
-              <button type="submit"  [disabled]="!registerForm.valid">Submit</button>
+            <div class="btn-register">
+              <button type="submit">Submit</button>
             </div>
         </form>
       </div>

@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, FormArray, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray, AbstractControl, ValidationErrors } from '@angular/forms';
 
 export function forbiddenUsername(users:any = []) {
-  return (c: AbstractControl) => {
-    return (users.includes(c.value)) ? {
+  return (control: AbstractControl) => {
+    return (users.includes(control.value)) ? {
       invalidusername: true
     } : null;
   };
 }
 
-export function comparePassword(c: AbstractControl) {
-  const v = c.value;
-  return (v.password === v.confirmPassword) ? null: {
-    passwordnotmatch: true
-  }
-}
+// export function comparePassword(c: AbstractControl) {
+//   const v = c.value;
+//   return (v.password === v.confirmPassword) ? null: {
+//     passwordnotmatch: true
+//   }
+// }
 
 @Component({
   selector: 'app-register',
@@ -46,14 +46,12 @@ export class RegisterComponent implements OnInit {
   }); */
 
   // Sử dụng FormBuilder
-
     this.registerForm = this.fb.group ({
     userName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(18), forbiddenUsername(['admin', 'manager'])]],
     email: ['', [Validators.required, Validators.email]],
-    phoneNumber: ['', [Validators.required]],
-    password: ['', [Validators.required]],
-    confirmPassword: ['', [Validators.required, this.confirmationValidator]],
-    address: ['', [Validators.required]],
+    phoneNumber: ['', [Validators.required, Validators.maxLength(10)]],
+    password: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(6), this.noWhiteSpace]],
+    confirmPassword: ['', [Validators.required, this.confirmationValidator]]
     })
 
   }
@@ -67,16 +65,19 @@ export class RegisterComponent implements OnInit {
     return {};
   };
 
+  noWhiteSpace(control: AbstractControl): ValidationErrors | null {
+    if ((control.value as string).indexOf(' ') >= 0) {
+      return { noWhiteSpace: true };
+    }
+    return null;
+  };
+
   get userName() {
     return this.registerForm.get('userName')
   }
 
   get confirmPassword() {
     return this.registerForm.get('confirmPassword')
-  }
-
-  get address() {
-    return this.registerForm.get('address')
   }
 
   get password() {
@@ -91,9 +92,17 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('email')
   }
 
-  onSubmit() {
-  console.warn(this.registerForm.value);
-  this.registerForm.reset();
+  onSubmit(): void {
+    if(this.registerForm.valid) {
+      console.warn('submit', this.registerForm.value)
+    }else {
+      Object.values(this.registerForm.controls).forEach(control => { // set invalid if one value null
+        if(control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({onlySelf: true})
+        }
+      })
+    }
   }
 
 }

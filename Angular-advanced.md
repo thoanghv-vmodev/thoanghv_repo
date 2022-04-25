@@ -114,7 +114,7 @@ loadChildren: () => import('./product/product-list/product-list.module').then(m 
 
 # Angular Form:
 
-- Template Driven Forms Features:
+- Template Driven Forms Features: Template-driven Forms
 
 * Easy to use
 * Suitable for simple scenarios and fails for complex scenarios - Sử dụng các trg hợp đơn giản, ko thích hợp vs trường hợp phức tạp
@@ -124,7 +124,7 @@ loadChildren: () => import('./product/product-list/product-list.module').then(m 
 * Automatic track of the form and its data(handled by Angular) - Tự động theo dõi dữ liệu
 * Unit testing is another challenge
 
-- Reactive Forms Features:
+- Reactive Forms Features: Model-driven Forms
 
 * More flexible, but needs a lot of practice: Linh hoạt hơn, nhưng cần luyện tập nhiều
 

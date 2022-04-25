@@ -49,7 +49,9 @@ export class ShopAllComponent implements OnInit {
     this.overlay?.nativeElement.classList.remove('dis-block');
   }
 
-  Save() {
+
+  Save(event: any) {
+    event.preventDefault();
     this.closeModal();
     this.categories.postCategory(this.category).subscribe(data => {
       console.log(data)
@@ -57,7 +59,7 @@ export class ShopAllComponent implements OnInit {
   }
 
   Delete(data: Category) { // data param
-    if(confirm('Bạn chắc chắn muốn xóa?') == true) {
+    if(confirm('Bạn chắc chắn muốn xóa') == true) {
       this.productList = this.productList.filter((el:any) => el !== data)
       this.categories.deleteCategory(data.id).subscribe();
     }

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductListRoutingModule } from './product-list-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 
 import { ShopAllComponent } from '../shop-all/shop-all.component';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
+import { CategoryJsonService } from 'src/app/service/category-json.service';
+import { CategoryInterceptor } from '../../common/intercepter-category.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,14 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
     ProductListRoutingModule,
     HttpClientModule,
     FormsModule
+  ],
+  providers: [
+    CategoryJsonService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CategoryInterceptor,
+      multi: true
+    }
   ]
 })
 export class ProductListModule { }

@@ -8,7 +8,7 @@
 
     <div class="overlay" #overlay (click)="closeModal()"></div>
     <div class="modal" #modal>
-        <form action="">
+        <form>
           <div class="card">
             <p class="card-header">
               Add New Category
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="btn-card">
-              <button class="btn-list" (click)="Save()">Save</button>
+              <button class="btn-list" (click)="Save($event)">Save</button>
             </div>
           </div>
         </form>

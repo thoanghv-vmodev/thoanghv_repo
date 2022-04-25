@@ -4,9 +4,10 @@ import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } fro
 import { PreloadAllModules } from '@angular/router';
 import { CategoryInterceptor } from './common/intercepter-category.interceptor';
 import { CanLoadPageGuard } from './Guard/can-load-page.guard';
-import { MyGuardGuard } from './Guard/my-guard.guard';
 
 import { HomePageComponent } from './home-page/home-page.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { CactiComponent } from './product/cacti/cacti.component';
 import { PlantsComponent } from './product/plants/plants.component';
 import { SucculentsComponent } from './product/succulents/succulents.component';
@@ -18,9 +19,15 @@ const routes: Routes = [
 
     ]
   },
-
   {
     path:'', redirectTo:'/home-page', pathMatch:'full'
+  },
+
+  {
+    path:'login', component: LoginComponent,
+  },
+  {
+    path:'register', component: RegisterComponent,
   },
 
   {

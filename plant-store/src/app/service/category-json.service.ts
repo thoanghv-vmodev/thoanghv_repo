@@ -3,9 +3,7 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Category } from '../common/category';
 import { Observable, of } from 'rxjs';
 import { catchError, delay, map, tap } from 'rxjs/operators';
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CategoryJsonService {
 
   constructor(private http: HttpClient) {
@@ -31,11 +29,11 @@ export class CategoryJsonService {
    )
   }
 
-  postCategory(obj: unknown): Observable<Category> { // obj truyền vào data mới
+  postCategory(obj: Object): Observable<Category> { // obj truyền vào data mới
     return this.http.post<Category>(this.apiUrl, obj, this.httpOptions)
     .pipe(
      tap(() => console.log('create hero')), // thông báo success
-     catchError(this.handleError<Category>('postCategory')) // bắt lỗi
+    //  catchError(this.handleError<Category>('postCategory')) // bắt lỗi
    )
   }
 
@@ -44,7 +42,7 @@ export class CategoryJsonService {
 
     return this.http.delete<Category>(url, this.httpOptions).pipe( // xóa data id được truyền vào
       tap(()=>console.log(`delete category id=${id}`)),
-      catchError(this.handleError<Category>('deleteCategory'))
+      catchError(this.handleError<Category>('delete Category'))
     )
   }
 

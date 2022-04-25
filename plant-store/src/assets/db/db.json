@@ -8,20 +8,6 @@
       "price": 2000
     },
     {
-      "id": 2,
-      "productName": "Sen Đá S",
-      "imageUrl": "https://static.wixstatic.com/media/697bc8_16153bef664f47f88e4f88a59adb3b7d~mv2_d_1920_1920_s_2.jpg/v1/fill/w_531,h_531,al_c,q_80,usm_0.66_1.00_0.01/697bc8_16153bef664f47f88e4f88a59adb3b7d~mv2_d_1920_1920_s_2.webp",
-      "desc": "Mua về trồng đi, nghiện đấy!",
-      "price": 23390
-    },
-    {
-      "id": 3,
-      "productName": "Sen Đá SS",
-      "imageUrl": "https://static.wixstatic.com/media/697bc8_7a3ce0ec1f944ad2ae9baab2aa56cdf6~mv2_d_1920_1920_s_2.jpg/v1/fill/w_531,h_531,al_c,q_80,usm_0.66_1.00_0.01/697bc8_7a3ce0ec1f944ad2ae9baab2aa56cdf6~mv2_d_1920_1920_s_2.webp",
-      "desc": "Mua về trồng đi, nghiện đấy!",
-      "price": 3000
-    },
-    {
       "id": 4,
       "productName": "Sen Đá SSR",
       "imageUrl": "https://static.wixstatic.com/media/697bc8_efd712ec74e34e95bd769f4c874c8d3b~mv2_d_1920_1920_s_2.jpg/v1/fill/w_531,h_531,al_c,q_80,usm_0.66_1.00_0.01/697bc8_efd712ec74e34e95bd769f4c874c8d3b~mv2_d_1920_1920_s_2.webp",
@@ -34,13 +20,6 @@
       "imageUrl": "https://static.wixstatic.com/media/697bc8_94bdec944c1442fda4cc38cd8fa59ba2~mv2_d_1920_1920_s_2.jpg/v1/fill/w_531,h_531,al_c,q_80,usm_0.66_1.00_0.01/697bc8_94bdec944c1442fda4cc38cd8fa59ba2~mv2_d_1920_1920_s_2.webp",
       "desc": "Mua về trồng đi, nghiện đấy!",
       "price": 2500
-    },
-    {
-      "id": 6,
-      "productName": "Xương Rồng SS",
-      "imageUrl": "https://static.wixstatic.com/media/697bc8_471814af954e42df8d88ee8d8d63e557~mv2_d_1920_1920_s_2.jpg/v1/fill/w_531,h_531,al_c,q_80,usm_0.66_1.00_0.01/697bc8_471814af954e42df8d88ee8d8d63e557~mv2_d_1920_1920_s_2.webp",
-      "desc": "Mua về trồng đi, nghiện đấy!",
-      "price": 1200
     },
     {
       "id": 7,
@@ -62,20 +41,6 @@
       "imageUrl": "https://static.wixstatic.com/media/697bc8_45d1ee01ec914a16a746e4a4d9a4b5d3~mv2_d_1920_1920_s_2.jpg/v1/fill/w_531,h_531,al_c,q_80,usm_0.66_1.00_0.01/697bc8_45d1ee01ec914a16a746e4a4d9a4b5d3~mv2_d_1920_1920_s_2.webp",
       "desc": "Mua về trồng đi, nghiện đấy!",
       "price": 2220
-    },
-    {
-      "id": 10,
-      "productName": "Cây Hoa SS",
-      "imageUrl": "https://static.wixstatic.com/media/697bc8_71c164891c634fb7862f60a22a2a90f9~mv2_d_1920_1920_s_2.jpg/v1/fill/w_531,h_531,al_c,q_80,usm_0.66_1.00_0.01/697bc8_71c164891c634fb7862f60a22a2a90f9~mv2_d_1920_1920_s_2.webp",
-      "desc": "Mua về trồng đi, nghiện đấy!",
-      "price": 2800
-    },
-    {
-      "id": 11,
-      "productName": "Cây Hoa SSR",
-      "imageUrl": "https://static.wixstatic.com/media/697bc8_2ef1d2306d8f4b8baa17d719b201a217~mv2_d_1920_1920_s_2.jpg/v1/fill/w_531,h_531,al_c,q_80,usm_0.66_1.00_0.01/697bc8_2ef1d2306d8f4b8baa17d719b201a217~mv2_d_1920_1920_s_2.webp",
-      "desc": "Mua về trồng đi, nghiện đấy!",
-      "price": 2400
     }
   ]
 }

@@ -1,0 +1,76 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+.register {
+  position: relative;
+  top: 112px;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.register-container {
+  background-color: #fff;
+  width: 400px;
+  padding: 32px 18px;
+  box-shadow: 0px 5px 20px 0px rgb(201, 201, 201);
+}
+
+.register-form-title {
+  font-size: 26px;
+  color: rgb(160, 88, 65);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.form-content {
+  padding: 16px 0;
+  text-align: left;
+}
+
+.btn-register {
+  text-align: center;
+  padding: 10px 0;
+
+  button {
+      background-color: #a05841;
+      border-style: none;
+      padding: 12px 40px;
+      color: #fff;
+
+      &:hover {
+        background-color: #a05841;
+        opacity: 0.8;
+      }
+  }
+}
+
+input {
+  border: 1px solid #444;
+  border-radius: 0;
+}
+
+input:hover {
+  border: 2px solid #000;
+}
+
+input:focus {
+  border: 2px solid #000 !important;
+  outline: none;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+}
+
+.alert {
+  background-color: #fed3d3;
+  color: #820000;
+  padding: 6px;
+  margin: 0;
+}

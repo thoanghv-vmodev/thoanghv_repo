@@ -114,7 +114,11 @@ loadChildren: () => import('./product/product-list/product-list.module').then(m 
 
 # Angular Form:
 
-- Template Driven Forms Features: Template-driven Forms
+# Template Driven Forms Features: Template-driven Forms
+
+- Template-driven Forms: Cơ chế hoạt động của dạng forms này sẽ chủ yếu dựa vào các directives trên template như NgForm, NgModel, required,
+  etc; để làm việc. Form dạng này sử dụng Two-way binding để update data model giữa template và component.
+  - Sử dụng Template variables :#itemForm="ngForm"
 
 * Easy to use
 * Suitable for simple scenarios and fails for complex scenarios - Sử dụng các trg hợp đơn giản, ko thích hợp vs trường hợp phức tạp
@@ -124,22 +128,27 @@ loadChildren: () => import('./product/product-list/product-list.module').then(m 
 * Automatic track of the form and its data(handled by Angular) - Tự động theo dõi dữ liệu
 * Unit testing is another challenge
 
-- Reactive Forms Features: Model-driven Forms
+# Reactive Forms Features: Model-driven Forms
 
-* More flexible, but needs a lot of practice: Linh hoạt hơn, nhưng cần luyện tập nhiều
+- Reactive Forms: Chúng ta sẽ xây dựng form từ các model, là các object có một số chức năng đặc biệt để quản lý được các form input.
+  Nó cũng sử dụng một số (nhưng rất ít) các directives.
 
-* Handles any complex scenarios - Xử lý mọi tình huống phức tạp
+  - Sử dụng Property binding: [formGroup]="registerForm".
 
-* No data binding is done (immutable data model preferred by most developers)
-  -Không có ràng buộc dữ liệu nào được thực hiện (mô hình dữ liệu bất biến được hầu hết các nhà phát triển ưa thích)
+- More flexible, but needs a lot of practice: Linh hoạt hơn, nhưng cần luyện tập nhiều
 
-* More component code and less HTML markup - ít viết trên html, dùng component để xử lý
+- Handles any complex scenarios - Xử lý mọi tình huống phức tạp
 
-* Reactive transformations can be made possible such as - Có thể tùy biến như:
+- No data binding is done (immutable data model preferred by most developers)
+  Không có ràng buộc dữ liệu nào được thực hiện (mô hình dữ liệu bất biến được hầu hết các nhà phát triển ưa thích)
 
-* Handling a event based on a debounce time - Xử lý một sự kiện dựa trên thời gian gỡ lỗi
+- More component code and less HTML markup - ít viết trên html, dùng component để xử lý
 
-* Handling events when the components are distinct until changed -
+- Reactive transformations can be made possible such as - Có thể tùy biến như:
+
+- Handling a event based on a debounce time - Xử lý một sự kiện dựa trên thời gian gỡ lỗi
+
+- Handling events when the components are distinct until changed -
   Xử lý các event khi các component khác biệt cho đến khi thay đổi
 
 * Adding elements dynamically - Thêm các yếu tố động

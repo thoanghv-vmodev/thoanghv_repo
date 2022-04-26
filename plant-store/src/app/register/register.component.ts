@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray, AbstractControl, ValidationErrors } from '@angular/forms';
 
+// required bidden username
 export function forbiddenUsername(users:any = []) {
   return (control: AbstractControl) => {
     return (users.includes(control.value)) ? {
@@ -47,15 +48,22 @@ export class RegisterComponent implements OnInit {
 
   // Sử dụng FormBuilder
     this.registerForm = this.fb.group ({
-    userName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(18), forbiddenUsername(['admin', 'manager'])]],
+    userName: ['', [Validators.required,
+                   Validators.minLength(4),
+                   Validators.maxLength(18),
+                   forbiddenUsername(['admin', 'manager', ' '])]],
     email: ['', [Validators.required, Validators.email]],
-    phoneNumber: ['', [Validators.required, Validators.maxLength(10)]],
-    password: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(6), this.noWhiteSpace]],
+    phoneNumber: ['', [Validators.required, Validators.maxLength(10), this.noLetters]],
+    password: ['', [Validators.required,
+                   Validators.maxLength(50),
+                   Validators.minLength(6),
+                   this.noWhiteSpace]],
     confirmPassword: ['', [Validators.required, this.confirmationValidator]]
     })
 
   }
 
+  // required
   confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
     if (!control.value) {
       return { required: true };
@@ -72,6 +80,14 @@ export class RegisterComponent implements OnInit {
     return null;
   };
 
+  noLetters(control: AbstractControl): ValidationErrors | null {
+    if(!/^[0-9]+$/.test(control.value)) {
+      return { noLetter: true}
+    }
+    return null
+  };
+
+  // get input value
   get userName() {
     return this.registerForm.get('userName')
   }

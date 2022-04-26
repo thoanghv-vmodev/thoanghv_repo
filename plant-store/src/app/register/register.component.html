@@ -9,6 +9,7 @@
                      type="text"
                      formControlName="userName"
                      placeholder="Name"
+                     required
                      >
               <div class="col alert alert-danger" role="alert"
                *ngIf="userName?.invalid && (userName?.touched || userName?.dirty)">
@@ -33,6 +34,7 @@
                      formControlName="email"
                      placeholder="your email"
                      autocomplete="on"
+                     required
                      >
               <div class="col alert alert-danger" role="alert"
                    *ngIf="email?.invalid && (email?.touched || email?.dirty)">
@@ -48,9 +50,10 @@
               <label for="phone-number"> Phone number: </label>
               <input class="form-control"
                      id="phone-number"
-                     type="number"
+                     type="tel"
                      formControlName="phoneNumber"
                      placeholder="your phone number"
+                     required
                      >
               <div class="col alert alert-danger" role="alert"
                    *ngIf="phoneNumber?.invalid && (phoneNumber?.touched || phoneNumber?.dirty)">
@@ -59,6 +62,9 @@
                 </div>
                 <div *ngIf="phoneNumber?.hasError('maxlength')">
                   Phone number must be shorter than 10 number.
+                </div>
+                <div *ngIf="registerForm?.hasError('noLetter', ['phoneNumber'])">
+                  Phone number without letter!
                 </div>
               </div>
             </div>
@@ -69,6 +75,7 @@
                      type="password"
                      formControlName="password"
                      placeholder="Password"
+                     required
                      >
               <div class="col alert alert-danger" role="alert"
                    *ngIf="password?.invalid && (password?.touched || password?.dirty)">
@@ -81,8 +88,8 @@
                 <div *ngIf="password?.hasError('maxlength')">
                     Password must be shorter than 50 characters.
                 </div>
-                <div *ngIf="registerForm.hasError('noWhiteSpaces',['password'])">
-                    No White Spaces
+                <div *ngIf="registerForm.hasError('noWhiteSpace',['password'])">
+                    No white spaces!
                 </div>
               </div>
             </div>
@@ -93,6 +100,7 @@
                      type="password"
                      formControlName="confirmPassword"
                      placeholder="confirm your password"
+                     required
                      >
               <div class="col alert alert-danger" role="alert"
                   *ngIf="confirmPassword?.invalid && (confirmPassword?.touched || confirmPassword?.dirty)">

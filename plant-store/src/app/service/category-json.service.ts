@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Category } from '../common/category';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, delay, map, tap } from 'rxjs/operators';
 @Injectable()
 export class CategoryJsonService {
@@ -25,7 +25,9 @@ export class CategoryJsonService {
    return this.http.get<Category>(this.apiUrl).pipe(
      delay(300),
      tap(() => console.log('fetched heroes')), // thông báo success
-     catchError(this.handleError<Category>('getCategory')) // bắt lỗi
+     catchError(
+       this.handleError<Category>('getCategory')
+       ) // bắt lỗi
    )
   }
 

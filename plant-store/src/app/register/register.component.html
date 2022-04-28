@@ -20,9 +20,9 @@
                   Name must be at least 4 characters long.
                 </div>
                 <div *ngIf="userName?.hasError('maxlength')">
-                  Name must be shorter than 18 characters.
+                  Name must be shorter than 32 characters.
                 </div>
-                <div *ngIf="registerForm.hasError('invalidusername', ['userName'])">
+                <div *ngIf="userName?.hasError('invalidUsername')">
                   Invalid Username!
                 </div>
               </div>
@@ -63,7 +63,7 @@
                 <div *ngIf="phoneNumber?.hasError('maxlength')">
                   Phone number must be shorter than 10 number.
                 </div>
-                <div *ngIf="registerForm?.hasError('noLetter', ['phoneNumber'])">
+                <div *ngIf="phoneNumber?.hasError('noLetter')">
                   Phone number without letter!
                 </div>
               </div>
@@ -86,9 +86,9 @@
                     Password must be at least 6 characters long.
                 </div>
                 <div *ngIf="password?.hasError('maxlength')">
-                    Password must be shorter than 50 characters.
+                    Password must be shorter than 32 characters.
                 </div>
-                <div *ngIf="registerForm.hasError('noWhiteSpace',['password'])">
+                <div *ngIf="password?.hasError('noWhiteSpace')">
                     No white spaces!
                 </div>
               </div>
@@ -112,10 +112,9 @@
                 </div>
               </div>
             </div>
-            <div class="btn-register">
-              <button type="submit">Submit</button>
-            </div>
-        </form>
+          </form>
+          <div class="btn-register">
+            <button type="submit" (click)="onSubmit()">Submit</button>
+          </div>
       </div>
 </div>
-<p>Form Status: {{ registerForm.status }}</p>

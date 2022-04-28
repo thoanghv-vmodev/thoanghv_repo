@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { ShopAllComponent } from '../shop-all/shop-all.component';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { CategoryJsonService } from 'src/app/service/category-json.service';
-import { CategoryInterceptor } from '../../common/intercepter-category.interceptor';
+import { CategoryInterceptor } from 'src/app/common/intercepter-category.interceptor';
 
 @NgModule({
   declarations: [

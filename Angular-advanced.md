@@ -95,23 +95,6 @@ loadChildren: () => import('./product/product-list/product-list.module').then(m 
 
 * responseError : Khi gặp lỗi trong quá trình nhận response , ResponseError interceptor sẽ bắt và hiển thị các lỗi cho developer.
 
-# Introduct RxJS:
-
-- Là một thư viện xử lý bất đồng bộ dựa trên event-based, nó cung cấp 1 kiểu lõi, Observable, kiểu satellite (Observer, Schedulers, Subjects)
-  và các phương thưc làm việc với mảng(map, filter, reduce, every,..).
-
-1. Observable là gì:
-
-- Observable: đại diện cho ý tưởng về một tập hợp các giá trị hoặc các sự kiện trong tương lai. Khi các giá trị hoặc sự kiện phát sinh  
-  trong tương lai, Observable sẽ điều phối nó đến Observer.
-
-- Là một function (class) mà nó có một số yêu cầu đặc biệt. Nó nhận đầu vào là 1 Func, mà Func này nhận input là một Observer và trả về một
-  function để có thể thực hiện việc cancel quá trình xử lý. Thông thường (Rxjs 5) đặt tên function đó là unsubscribe.
-
-2. Observer:
-
-- một object chứa các phương thức next, error và complete để xử lý dữ liệu tương ứng với các signals được gửi từ Observeble.
-
 # Angular Form:
 
 # Template Driven Forms Features: Template-driven Forms
@@ -133,7 +116,7 @@ loadChildren: () => import('./product/product-list/product-list.module').then(m 
 - Reactive Forms: Chúng ta sẽ xây dựng form từ các model, là các object có một số chức năng đặc biệt để quản lý được các form input.
   Nó cũng sử dụng một số (nhưng rất ít) các directives.
 
-  - Sử dụng Property binding: [formGroup]="registerForm".
+  - Để binding giữa form model và template lại với nhau, chúng ta sẽ dùng directive : [formGroup]="registerForm".
 
 - More flexible, but needs a lot of practice: Linh hoạt hơn, nhưng cần luyện tập nhiều
 
@@ -154,3 +137,67 @@ loadChildren: () => import('./product/product-list/product-list.module').then(m 
 * Adding elements dynamically - Thêm các yếu tố động
 
 * Easier unit testing - dễ test
+
+# AbstractControl: đây là base class của 3 thành ở dưới - chúng là các thành phần cơ bản của form.
+
+- FormControl là đơn vị nhỏ nhất của một form, dùng để track thông tin về value, validation của một form control như là thông tin
+  của một input, một checkbox, etc.
+- FormGroup là một tập hợp của các control/group/array (AbstractControl) khác. Dạng như một Object, nó có thể chứa các value đơn lẻ,
+  hoặc các Object khác.
+- FormArray cấu trúc dạng mảng, để quản lý các AbstractControl theo dạng mảng, dùng cho trường hợp cấu trúc có thể thêm bớt phần tử
+  một cách linh hoạt.
+
+# Angular Forms Validation:
+
+Validation status cho một control sẽ bao gồm các status sau:
+
+- touched: true nếu người dùng đã focus vào control (như là input, textarea, etc) rồi sau đó blur khỏi control đó. Hoặc khi gọi markAsTouched.
+- untouched: true nếu người dùng chưa đụng chạm gì đến control hoặc lần đầu tiên focus và chưa bị mất focus (ngược lại với touched)
+- dirty: true nếu người dùng đã thay đổi value của control – nhập một ký tự vào input text chẳng hạn, kể cả việc nhập vào rồi xóa đi
+  thì cũng tính là đã thay đổi.
+- pristine: true nếu người dùng chưa thay đổi value của control, mặc dù có thể đã touched, nhưng chưa sửa đổi gì.
+
+- Với mỗi validation status như trên chúng ta sẽ có các CSS class tương ứng cho control/form. Bạn hoàn toàn có thể style cho component
+  dựa vàocác class này:
+
+- .ng-valid
+- .ng-invalid
+- .ng-pending
+- .ng-pristine
+- .ng-dirty
+- .ng-untouched
+- .ng-touched
+
+# Introduct RxJS:
+
+- Là một thư viện xử lý bất đồng bộ dựa trên event-based, nó cung cấp 1 kiểu lõi, Observable, kiểu satellite (Observer, Schedulers, Subjects)
+  và các phương thưc làm việc với mảng(map, filter, reduce, every,..).
+
+1. Observable là gì:
+
+- Observable: đại diện cho ý tưởng về một tập hợp các giá trị hoặc các sự kiện trong tương lai. Khi các giá trị hoặc sự kiện phát sinh  
+  trong tương lai, Observable sẽ điều phối nó đến Observer.
+
+- Là một function (class) mà nó có một số yêu cầu đặc biệt. Nó nhận đầu vào là 1 Func, mà Func này nhận input là một Observer và trả về một
+  function để có thể thực hiện việc cancel quá trình xử lý. Thông thường (Rxjs 5) đặt tên function đó là unsubscribe.
+
+2. Observer:
+
+- một object chứa các phương thức next, error và complete để xử lý dữ liệu tương ứng với các signals được gửi từ Observeble.
+- là một tập hợp các callbacks tương ứng cho việc lắng nghe các giá trị (next, error, hay complete) được gửi đến bởi Observable
+
+3. Subscription:
+
+- là kết quả có được sau khi thực hiện một Observable, nó thường dùng cho việc hủy việc tiếp tục xử lý.(unsubscribe)
+
+4. Operators:
+
+- là các pure(nguyên mẫu) functions cho phép lập trình functional với Observable.
+
+4. Subject:
+
+- để thực hiện việc gửi dữ liệu đến nhiều Observers (multicasting).
+
+5. Schedulers:
+
+- Một scheduler sẽ điều khiển khi nào một subscription bắt đầu thực thi, và khi nào sẽ gửi tín hiệu đi.

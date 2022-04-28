@@ -64,6 +64,8 @@ export class ShopAllComponent implements OnInit {
       this.categories.deleteCategory(data.id).subscribe();
     }
   }
+
+
 }
 
 

@@ -5,7 +5,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, FormArray, AbstractCon
 export function forbiddenUsername(users:any = []) {
   return (control: AbstractControl) => {
     return (users.includes(control.value)) ? {
-      invalidusername: true
+      invalidUsername: true
     } : null;
   };
 }
@@ -50,12 +50,12 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group ({
     userName: ['', [Validators.required,
                    Validators.minLength(4),
-                   Validators.maxLength(18),
+                   Validators.maxLength(32),
                    forbiddenUsername(['admin', 'manager', ' '])]],
     email: ['', [Validators.required, Validators.email]],
     phoneNumber: ['', [Validators.required, Validators.maxLength(10), this.noLetters]],
     password: ['', [Validators.required,
-                   Validators.maxLength(50),
+                   Validators.maxLength(32),
                    Validators.minLength(6),
                    this.noWhiteSpace]],
     confirmPassword: ['', [Validators.required, this.confirmationValidator]]

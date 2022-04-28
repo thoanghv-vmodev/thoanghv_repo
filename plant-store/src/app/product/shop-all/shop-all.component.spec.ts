@@ -22,4 +22,6 @@ describe('ShopAllComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });

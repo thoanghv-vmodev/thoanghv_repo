@@ -207,3 +207,23 @@ Validation status cho một control sẽ bao gồm các status sau:
 - Karma: là một Javascript tool được sử dụng để load ứng dụng và thực thi test của bạn. Karma sẽ được thực thi bằng dòng lệnh và sẽ
   hiển thị kết quả cho bạn biết mỗi khi bạn chạy trình duyệt.
 - Jasmine: là một framework dùng để viết test, nó có các function có sẵn hỗ trợ viết các loại test khác nhau
+
+- Một số hàm:
+- Hàm describe được sử dụng để nhóm các đặc tả hoặc kiểm thử có liên quan. Đầu vào là 2 tham số:
+
+* một chuỗi mô tả mục đích của nhóm kiểm thử
+* một hàm callback chứa các đặc tả, hoặc các bộ kiểm thử
+
+- Hàm it : it Đây là hàm chứa các đặc tả hoặc kiểm thử cụ thể.
+
+- Hàm expect: được sử dụng để đánh giá kết quả một đợi và kết quả thực tế của một kiểm thử.
+
+# TestBed :
+
+- là một tiện ích được Angular cung cấp để tạo môi trường kiểm thử phù hợp cho các thành phần của Angular như:
+  Component, Service, Pipe, Directive,…
+
+- Component Fixtures
+- Fixture là đối tượng đại diện component root trong Angular. Với fixture, chúng ta có thể sử dụng debugElement để truy cập các
+  thuộc tính bên trong component.
+- Component fixture được tạo bằng phương thức createComponent của TestBed.

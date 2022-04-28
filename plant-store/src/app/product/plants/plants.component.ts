@@ -9,7 +9,8 @@ import {  defer, from, fromEvent, fromEventPattern, interval, of, throwError, ti
 export class PlantsComponent implements OnInit {
 
   constructor() { }
-    isOn = false;
+  isOn = false;
+
   clicked() { this.isOn = !this.isOn; }
   get message() { return `The light is ${this.isOn ? 'On' : 'Off'}`; }
   ngOnInit(): void {

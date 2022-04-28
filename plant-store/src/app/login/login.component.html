@@ -1,7 +1,7 @@
 <div class="login size-page">
   <div class="login-container">
       <p class="login-form-title">Login</p>
-      <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm" autocomplete="off">
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm" name="loginForm" action="" autocomplete="off">
         <div class="form-group">
           <label for="name"> User Name</label>
           <input type="text" id="name" class="form-control"
@@ -27,6 +27,7 @@
           <label for="password">Password</label>
           <input type="password" id="password" class="form-control"
                  required
+                 password
                  name="password" [(ngModel)]="model.password"
                  #password="ngModel">
           <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
@@ -36,7 +37,7 @@
           </div>
         </div>
         <div class="btn-login">
-          <button type="submit" class="btn btn-success">Login</button>
+          <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Login</button>
           <button type="button" class="btn-register" routerLink="/register">Register</button>
         </div>
         <p class="title-form">Plant trees to help you relax!</p>

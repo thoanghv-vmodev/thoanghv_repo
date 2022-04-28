@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { User } from '../common/user';
 
 @Component({
@@ -9,22 +9,20 @@ import { User } from '../common/user';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   model = new User();
+  @ViewChild('loginForm', { static: true }) loginForm!: NgForm;
+
   constructor(
     private route: Router
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
-
-
-
-  onSubmit(form: any) {
-    console.log(form.value)
+  onSubmit() {
     if(this.model.name != '' || this.model.name != null && this.model.password != ''){
+      console.log(this.model)
       this.route.navigateByUrl('/home-page')
+      this.loginForm.reset();
     }
   }
 }

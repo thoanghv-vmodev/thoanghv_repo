@@ -201,3 +201,9 @@ Validation status cho một control sẽ bao gồm các status sau:
 5. Schedulers:
 
 - Một scheduler sẽ điều khiển khi nào một subscription bắt đầu thực thi, và khi nào sẽ gửi tín hiệu đi.
+
+# use/ Karrma for write unit test:
+
+- Karma: là một Javascript tool được sử dụng để load ứng dụng và thực thi test của bạn. Karma sẽ được thực thi bằng dòng lệnh và sẽ
+  hiển thị kết quả cho bạn biết mỗi khi bạn chạy trình duyệt.
+- Jasmine: là một framework dùng để viết test, nó có các function có sẵn hỗ trợ viết các loại test khác nhau

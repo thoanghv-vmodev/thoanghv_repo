@@ -2,8 +2,8 @@
 // global scope
 // biến thuộc phạm vi toàn cầu nên truy cập xuyên suốt được.
 // biến global có thể khai báo không cần var let const;
-  firstName = 'Thoang',
-  console.log(firstName)
+  // firstName = 'Thoang',
+  // console.log(firstName)
 /* var name = 'Thoang'
 const fullName = 'Hoang Van Thoang'
 function a() {
@@ -170,6 +170,7 @@ log2();
 // var a = [];
 // var b = []; // a và b có vùng nhớ riêng biệt
 // var c = a; // đều trỏ về 1 vùng nhớ
+// // var a = b;
  
 // console.log(a == b); // false
 // console.log(a === b); // false

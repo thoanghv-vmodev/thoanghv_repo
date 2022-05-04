@@ -101,6 +101,16 @@ CSR:
 
 - This trong JavaScript đề cập đến đối tượng mà nó thuộc về
 
+# Closures: giống như 1 bao đóng.
+
+- Là 1 hàm có thể ghi nhớ nơi nó đc tạo và truy cập được ở biến bên ngoài phạm vi của nó.
+- Một closure là một hàm bên trong mà có thể truy cập biến của hàm bên ngoài (chứa nó).
+- Closure có 3 scope chain, đó là:
+
+* Có thể truy cập đến biến của chính nó (biến được định nghĩa trong dấu ngoặc nhọn của nó);
+* Có thể truy cập biến của hàm bên ngoài;
+* Có thể truy cập biến toàn cục (global).
+
 # Primitive Types & Reference Types (Tham trị, tham chiếu)
 
 - Primitive Types ( tham trị) là biến được gán kiểu dữ liệu nguyên thủy, khi gán giá trị sẽ tạo ra ô nhớ mới.

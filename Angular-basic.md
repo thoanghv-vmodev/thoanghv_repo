@@ -62,9 +62,10 @@ Class, template metadata:
   chẳng hạn khi ta click vào button để cập nhật giá trị trong component. Nó sẽ ngược so với property binding - từ component sang view.
   vd: <button (click)="updateName()">Update button</button>
 
-- Two-way data binding: Dạng này thì luồng dữ liệu sẽ đi 2 chiều từ component sang view và ngược lại.
+- Two-way data binding: Dạng này thì luồng dữ liệu sẽ đi 2 chiều từ component sang view và ngược lại [()].
   Dạng này thường dùng trong form để cập nhật giá trị khi người dùng nhập vào.
-  vd: [(ngModel)]
+  là sự kết hợp giữa property binding với event binding.
+  vd: [(ngModel)], [(Size)]
 
 # Directive:
 

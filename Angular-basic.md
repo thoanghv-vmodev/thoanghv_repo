@@ -2,7 +2,7 @@ Angular overview & structure
 
 # Install & Project structure
 
-- Constructor là hàm tạo của một class, nó là một function đặc biệt mà khi bạn khởi tạo một instance của class thì nó sẽ được tự động chạy, và chỉ chạy duy nhất một lần
+- Constructor là hàm tạo của một class, nó là một function đặc biệt mà khi bạn khởi tạo một instance(lời khẩn c) của class thì nó sẽ được tự động chạy, và chỉ chạy duy nhất một lần
 
 # Life cycle hooks :
 
@@ -71,8 +71,9 @@ Class, template metadata:
 
 1. Components directives: selector component <component-name></component-name>.
 
-2. Structural directives: structural directive thường có dấu '*' ở trước của directive: *ngFor, *ngIf, *ngSwitchCase...
+2. Structural(cấu trúc) directives: dùng để vẽ lên html, thay đổi cấu trúc của DOM bằng việc thêm bớt các phần tử trong DOM
+   structural directive thường có dấu '*' ở trước của directive: *ngFor, *ngIf, *ngSwitchCase...
 
-3. Attribute directives: thuộc tính của đối tượng: \*ngStyle vd [directive]
+3. Attribute directives: Thay đổi giao diện, thuộc tính của đối tượng, emlement html, directive: \*ngStyle vd [directive]
 
 - Built-in attribute directives: NgClass, NgStyle, NgModule.

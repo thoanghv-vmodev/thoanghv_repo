@@ -9,11 +9,6 @@ export class HomePageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    //  document.onscroll = () =>{
-    //   // console.log(window.scrollY)
-    //   console.log(document.documentElement.scrollTop)
-
-    //    }
   }
 
   listCategory = [

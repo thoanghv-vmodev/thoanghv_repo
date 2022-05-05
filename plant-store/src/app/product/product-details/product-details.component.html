@@ -1,7 +1,7 @@
 <div class="product-details size-page">
   <div class="product-details-box">
     <div *ngIf="listItem && listItem.id">
-      <img class="details-img" src="{{listItem.imageUrl}}" alt="image">
+      <img class="details-img" src="{{listItem.imageUrl}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
       <p>{{listItem.productName}}</p>
       <p>{{listItem.desc}}</p>
       <p class="price">{{listItem.price | currency: '$'}}</p>

@@ -14,9 +14,10 @@ const routes: Routes = [
   {
     path: 'details/:id', component: ProductDetailsComponent,
     pathMatch: 'full',
-    canActivate: [MyGuardGuard], // true => navigation, false => no navigation
-    canDeactivate: [CanDeactivateGuard]
+    // canActivate: [MyGuardGuard], // true => navigation, false => no navigation
+    // canDeactivate: [CanDeactivateGuard]
   }
+
 ]
 
 @NgModule({

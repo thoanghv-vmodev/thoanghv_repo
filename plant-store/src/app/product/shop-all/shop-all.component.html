@@ -1,12 +1,58 @@
 <div class="shop-all size-page">
-  <div class="shop-all-product">
-    <h1>Shop all</h1>
+    <div class="banner-bg">
+        <div class="banner-box">
+          <div>
+            <div class="banner-box--title">
+              <h1 class="title-name pd-tb-18 ">EVERYTHING THAT GROWS IN OUR GARDEN</h1>
+              <p class="title-desc pd-tb-18 ">I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to
+              add your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a
+              little more about you.</p>
+            </div>
+            <div class="pd-tb-18">
+              <div class="down-icon">
+                <i class="fa-solid fa-circle-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  <div id="shop-all-container">
+    <div class="shop-all--title">
+      <h1>Shop all</h1>
+    </div>
+        <div class="product-list">
+          <div class="product-list-content" *ngFor="let data of productList">
+            <div class="product-list-item">
+              <a [routerLink]="['details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
+                <img src="{{data.imageUrl}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
+              </a>
+            </div>
+            <div class="product-list-item">
+              <p>{{data.productName}}</p>
+            </div>
+            <div class="product-list-item">
+              <p>{{data.price | currency:'USD':'symbol'}}</p>
+            </div>
+            <div class="product-list-item product-list-item--flex">
+              <button class="btn-list" (click)="openAddToCart()">
+                Add to cart
+              </button>
+              <button class="btn-list " [routerLink]="['details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
+                Detail
+              </button>
+              <!--  <button class="btn-list" (click)="Delete(data)">
+                    Delete
+                </button> -->
+            </div>
+          </div>
+        </div>
   </div>
-    <button class="btn-list btn-sub" (click)="sub()">Subscribe</button>
+
+   <!--  <button class="btn-list btn-sub" (click)="sub()">Subscribe</button>
     <button class="btn-list btn-sub" (click)="unSub()">Unsubscribe</button>
     <button class="btn-list btn-sub" (click)="openModal()">Add New</button>
-
-    <div class="overlay" #overlay (click)="closeModal()"></div>
+ -->
+  <div class="overlay" #overlay (click)="closeModal()"></div>
     <div class="modal" #modal>
         <form>
           <div class="card">
@@ -40,25 +86,7 @@
           </div>
         </form>
     </div>
-  <div class="product-list">
-    <div class="product-list-content" *ngFor="let data of productList">
-      <div class="product-list-item">
-        <p>{{data.productName}}</p>
-      </div>
-      <div class="product-list-item" >
-        <img src="{{data.imageUrl}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
-      </div>
-      <div class="product-list-item">
-        <p>{{data.desc}}</p>
-      </div>
-      <div class="product-list-item">
-        <button class="btn-list " [routerLink]="['details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
-          Details
-        </button>
-        <button class="btn-list" (click)="Delete(data)">
-            Delete
-        </button>
-      </div>
-    </div>
   </div>
-</div>
+<ng-container >
+    <app-add-to-cart #openCart></app-add-to-cart>
+</ng-container>

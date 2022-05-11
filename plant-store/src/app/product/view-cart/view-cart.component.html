@@ -1,0 +1,81 @@
+<div class="view-cart size-page">
+  <div class="view-cart-container row gx-5">
+      <section class="view-cart-content col-8">
+        <p class="view-cart-content--title border-bd">My Cart</p>
+        <div class="cart-list border-bd">
+          <div class="row gx-4">
+            <div class="cart-list-item col-10">
+              <div class="cart-list-details">
+                <div class="cart-list-details--img">
+                  <img src="/" alt="cart-img">
+                </div>
+                <div class="cart-list-details--info">
+                  <p>Name product</p>
+                  <span>$231324</span>
+                </div>
+              </div>
+              <div class="list-detail-input">
+                <span>-</span>
+                <input type="number" value="1">
+                <span>+</span>
+              </div>
+            </div>
+            <div class="cart-list-item col-2">
+                  <p class="subtatol-item">
+                    $300
+                  </p>
+                <button class="btn-subtatol-item">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+          </div>
+        </div>
+        <div class="cart-option">
+          <details class="cart-option-box">
+            <summary>
+              <i class="fa-solid fa-receipt"></i><span class="cart-option--title">Enter a promo code</span>
+            </summary>
+            <p class="cart-option-item">
+              <input type="text" placeholder="Enter a promo code" appFocusInput>
+              <button class="cart-option-apply">Apply</button>
+            </p>
+          </details>
+          <details class="cart-option-box">
+            <summary>
+              <i class="fa-solid fa-note-sticky"></i><span class="cart-option--title">Add a note</span>
+            </summary>
+            <p class="cart-option-item">
+              <textarea class="input-code" name="input-code" id="" cols="40" rows="3" placeholder="Instructions? Special requests? Add them here."></textarea>
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="view-cart-content col-4">
+        <p class="view-cart-content--title border-bd">
+          Oder summary
+        </p>
+        <div class="cart-order">
+          <div class="cart-order-box border-bd">
+            <div class="cart-order-item">
+              <p class="py-2">Subtotal</p>
+              <div class="cart-oder-shipping">
+                <p class="py-2">Shipping</p>
+                <select  class="form-select" aria-label="Default select example">
+                    <option *ngFor="let province of listProvincesVn" value="{{province.id}}">{{province.provin}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="cart-order-item">
+              <p class="py-2">$55.0</p>
+              <p class="py-2">FREE</p>
+            </div>
+          </div>
+        <div class="cart-order-box">
+            <p class="py-4 fs-5">Total</p>
+            <p class="py-4 fs-5">$550</p>
+        </div>
+        <button class="btn-checkout">Check out</button>
+        <div class="cart-oder-secure"><i class="fa-solid fa-lock"></i>Secure Checkout</div>
+      </div>
+  </section>
+</div>

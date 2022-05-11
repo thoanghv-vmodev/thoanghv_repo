@@ -1,11 +1,126 @@
 <div class="product-details size-page">
-  <div class="product-details-box">
-    <div *ngIf="listItem && listItem.id">
-      <img class="details-img" src="{{listItem.imageUrl}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
-      <p>{{listItem.productName}}</p>
-      <p>{{listItem.desc}}</p>
-      <p class="price">{{listItem.price | currency: '$'}}</p>
-      <button class="btn-buy">Buy</button>
+  <div class="product-details--container">
+    <div class="product-details--content">
+      <div class="content-item">
+        <a  routerLink="/home-page">Home</a> <span class="path-url">/</span> <a  routerLink="/product-list">Shop</a> <span class="path-url">/</span> <p class="path-url-title" href="">{{listItem.productName}}</p>
+      </div>
+      <div class="content-item">
+        <div class="prev"><i class="fa-solid fa-chevron-left"></i>Prev</div> |
+        <div class="next">Next <i class="fa-solid fa-chevron-right"></i></div>
+      </div>
+    </div>
+    <div class="product-details--content">
+      <ng-container *ngIf="listItem && listItem.id">
+        <div class="product-box">
+          <div class="slider-one">
+            <img class="details-img" src="{{listItem.imageUrl}}"
+                 onerror="this.src='../../assets/images/senda2.webp'"
+                 alt="image-product {{listItem.productName}}">
+          </div>
+          <div class="slider-one--click">
+            <div class="img-click " >
+              <img src="{{listItem.imageUrl}}" alt="image-product {{listItem.productName}}">
+            </div>
+          </div>
+          <div class="product-share">
+            <p>Share:</p>
+            <div>
+              <a href="fb-messenger://share/" target="_blank">
+                <i class="fa-brands fa-facebook-messenger"></i>
+              </a>
+              <a href="//www.facebook.com/sharer/sharer.php?u=https://www.inithtml.com/" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a href="//www.pinterest.com/pin/create/button/?url=&media=&description=" target="_blank">
+                <i class="fa-brands fa-pinterest"></i>
+              </a>
+              <a href="//twitter.com/share?text=&url=" target="_blank">
+                <i class="fa-brands fa-twitter-square"></i>
+              </a>
+            </div>
+          </div>
+          <p class="product-desc">{{listItem.desc}}</p>
+        </div>
+        <div class="product-box">
+          <p class="product-box--name">{{listItem.productName}}</p>
+          <div class="product-index">
+            <p class="product-item">SKU: {{listItem.id}}</p> <span>|</span> <p class="product-item">1,0k Sold</p>
+          </div>
+          <p class="product-item">{{listItem.price | currency: '$'}}</p>
+          <div class="product-item">
+            <label>Quantity</label>
+            <br>
+            <input class="product-item--input" type="number" value="1">
+          </div>
+          <div class="product-item">
+            <button class="btn-buy" (click)="openAddToCart()">Add to cart</button>
+            <button class="btn-buy" routerLink="/view-cart">Buy Now</button>
+          </div>
+          <ul class="product-info">
+            <li class="product-item">
+              <button class="btn-info">
+                <p>PRODUCT INFO</p>
+                <i class="fa-solid fa-plus"></i>
+                <!-- <i class="fa-solid fa-minus"></i> -->
+              </button>
+              <div class="product-info--details open">
+                <p>I'm a product detail. I'm a great place to add more information about your product such as sizing, material, care and
+                cleaning instructions. This is also a great space to write what makes this product special and how your customers can
+                benefit from this item.
+                </p>
+              </div>
+            </li>
+            <li class="product-item">
+              <button class="btn-info">
+                <p>RETURN & REFUND POLICY</p>
+                <i class="fa-solid fa-plus"></i>
+              </button>
+              <div class="product-info--details">
+                <p>I’m a Return and Refund policy. I’m a great place to let your customers know what to do in case they are dissatisfied
+                with their purchase. Having a straightforward refund or exchange policy is a great way to build trust and reassure your
+                customers that they can buy with confidence.
+                </p>
+              </div>
+            </li>
+            <li class="product-item">
+              <button class="btn-info">
+                <p>SHIPPING INFO</p>
+                <i class="fa-solid fa-plus"></i>
+              </button>
+              <div class="product-info--details">
+                <p>I'm a shipping policy. I'm a great place to add more information about your shipping methods, packaging and cost.
+                Providing straightforward information about your shipping policy is a great way to build trust and reassure your
+                customers that they can buy from you with confidence.
+              </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+    </div>
+    <div class="product-slider">
+        <p class="product-slider--title mb-5">RELATED PRODUCT</p>
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" responsive="responsive">
+          <div ngxSlickItem *ngFor="let data of listProduct">
+              <div class="list-product">
+              <div class="product-slide-item">
+                <a [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
+                  <img class="product-slide-img" src="{{data.imageUrl}}" alt="Image{{data.productName}}">
+                </a>
+                <div class="product-slide-details">
+                  <p>{{data.productName}}</p>
+                  <div class="slider-line">
+                    <p></p>
+                  </div>
+                  <p>{{data.price | currency}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
     </div>
   </div>
 </div>
+<ng-container>
+  <app-add-to-cart #openCart></app-add-to-cart>
+</ng-container>

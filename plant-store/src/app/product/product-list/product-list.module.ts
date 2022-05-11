@@ -9,6 +9,8 @@ import { ShopAllComponent } from '../shop-all/shop-all.component';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { CategoryJsonService } from 'src/app/service/category-json.service';
 import { CategoryInterceptor } from 'src/app/common/intercepter-category.interceptor';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { ShareComModule } from 'src/app/share/share-com/share-com.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { CategoryInterceptor } from 'src/app/common/intercepter-category.interce
     CommonModule,
     ProductListRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SlickCarouselModule,
+    ShareComModule
+
   ],
   providers: [
     CategoryJsonService,

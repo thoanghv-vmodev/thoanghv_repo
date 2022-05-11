@@ -6,7 +6,7 @@
   background-color: $btn;
   border-style: none;
   color: #fff;
-  padding: 12px 30px;
+  padding: 10px 30px;
   transition: all ease-in-out 0.3s;
   cursor: pointer;
   font-size: 15px;
@@ -25,6 +25,7 @@
 }
 .btn-list {
   @include btn;
+  width: 100%;
 }
 
 .btn-sub {
@@ -48,29 +49,89 @@
 .shop-all {
   position: relative;
   top: 112px;
-  padding: 28px 0;
 
-  .shop-all-product {
-    padding: 12px 0;
+  .shop-all--title {
+    padding-top: 48px;
+    text-align: center;
+    text-transform: uppercase;
+    color: styles.$color-dark-blue;
+    font-size: 20px;
   }
+
   .product-list {
     display: grid;
     grid-template-columns: auto auto auto;
     text-align: center;
     margin: 0 -12px;
+
     .product-list-content {
-      padding: 12px;
+      padding: 24px;
     }
 
   }
   .product-list-item {
-    padding: 8px 0;
+    padding: 4px 0;
+    color: styles.$color-text-brown;
+  }
+
+  .product-list-item--flex {
+    display: flex;
+    margin: 0 -12px;
   }
 
   .product-list-item img {
     width: 100%;
   }
 }
+
+.banner-bg {
+  background-image: url('../../../assets/images/banner-shop-all.webp');
+  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-color: styles.$bg-overlay;
+  -webkit-background-size: 100%;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+  background-blend-mode: overlay;
+}
+
+.banner-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.banner-box--title {
+  margin-top: 24px;
+
+  .title-name {
+    font-size: 80px;
+    font-weight: bold;
+  }
+
+  .title-desc {
+    font-size: 16px;
+    vertical-align: baseline;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 0 218px;
+  }
+}
+.down-icon {
+  i {
+    font-size: 40px;
+  }
+}
+
+
+/* Add new  */
 
 .overlay {
   display: none;
@@ -143,6 +204,5 @@
 }
 
 .dis-block {
-  display: block;
+  display: block !important;
 }
-

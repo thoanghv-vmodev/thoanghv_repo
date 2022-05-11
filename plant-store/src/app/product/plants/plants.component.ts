@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {  map } from 'rxjs/operators';
 import {  defer, from, fromEvent, fromEventPattern, interval, of, throwError, timer } from 'rxjs';
+import { CategoryJsonService } from 'src/app/service/category-json.service';
+import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 @Component({
   selector: 'app-plants',
   templateUrl: './plants.component.html',
@@ -8,12 +10,29 @@ import {  defer, from, fromEvent, fromEventPattern, interval, of, throwError, ti
 })
 export class PlantsComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
+  constructor(
+     private categories: CategoryJsonService
+  ) { }
   isOn = false;
+  productList:any = []
+  currentList:any = []
+
+  openAddToCart() {
+    this.openCart.addToCart.nativeElement.classList.add('active');
+    this.openCart.overlay.nativeElement.style.display = 'block';
+  }
 
   clicked() { this.isOn = !this.isOn; }
   get message() { return `The light is ${this.isOn ? 'On' : 'Off'}`; }
+
   ngOnInit(): void {
+    this.categories.getCategory().subscribe(data => {
+      this.currentList = data;
+      this.productList = this.currentList.filter((el:any) => el.type === 'plants')
+        console.log(this.productList)
+      }
+    )
 
 
     // Creation Operator

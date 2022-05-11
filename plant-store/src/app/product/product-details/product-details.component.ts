@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service.service';
 import { CategoryJsonService } from 'src/app/service/category-json.service';
+import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 
 @Component({
   selector: 'app-product-details',
@@ -10,6 +11,7 @@ import { CategoryJsonService } from 'src/app/service/category-json.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
+  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
@@ -47,10 +49,11 @@ export class ProductDetailsComponent implements OnInit {
  */
   listData: any = [];
   listItem: any = [];
+  listProduct: any = [];
 
   ngOnInit(): void {
   const id = this.route.snapshot.paramMap.get('id');
-  console.log('id', id);
+  // console.log('id', id);
 
   // this.itemProduct = this.authService.getProductById(id)
 
@@ -61,27 +64,74 @@ export class ProductDetailsComponent implements OnInit {
   }
   )
 
-  // this.route.paramMap.subscribe(params => {
-  //   const id = params.get('id')
-  //   this.authService.getIndexProduct(id).subscribe(data =>
-  //     this.itemProduct = data)
-  // })
+  this.categoryService.getCategory().subscribe(data => {
+    this.listProduct = data;
+  })
+
+ /*  this.route.paramMap.subscribe(params => {
+    const id = params.get('id')
+    this.authService.getIndexProduct(id).subscribe(data =>
+      this.itemProduct = data)
+  })
 
 
-  // this.productList.forEach((element) => {
-  //   if(element.id.toString() == id) {
-  //     this.itemProduct = element;
-  //   }
-  // })
+  this.productList.forEach((element) => {
+    if(element.id.toString() == id) {
+      this.itemProduct = element;
+    }
+  })
 
-  // for(let data = 0; data < this.productList.length; data++) {
-  //   console.log(data)
-  //   if(this.productList[data].id.toString() == id) {
-  //     this.itemProduct = this.productList[data];
-  //     break; // ngăn không cho mỗi lần so sánh thì loop qua tất cả
-  //   }
-  // }
-
-  // this.itemProduct = this.productList.find(el => el.id.toString() == id)
+  for(let data = 0; data < this.productList.length; data++) {
+    console.log(data)
+    if(this.productList[data].id.toString() == id) {
+      this.itemProduct = this.productList[data];
+      break; // ngăn không cho mỗi lần so sánh thì loop qua tất cả
+    }
   }
+
+  this.itemProduct = this.productList.find(el => el.id.toString() == id)
+ */
+
+  }
+
+  openAddToCart() {
+    this.openCart.addToCart.nativeElement.classList.add('active');
+    this.openCart.overlay.nativeElement.style.display = 'block';
+  }
+
+  slideConfig = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: false,
+    arrows: true,
+    responsive: [{
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        dots: true,
+      }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        dots: true,
+        autoplaySpeed: 3000,
+      }
+    }, {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        dots: true,
+        autoplaySpeed: 3000,
+      }
+    }, {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        dots: true,
+        autoplaySpeed: 3000,
+      }
+    }]
+  };
 }

@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
         this.onActive1 = false
         this.onActive2 = true
     }, 6000);
-
   }
 
   onFocus() {

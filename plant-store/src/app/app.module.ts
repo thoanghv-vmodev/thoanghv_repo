@@ -17,6 +17,10 @@ import { PlantsComponent } from './product/plants/plants.component';
 import { SucculentsComponent } from './product/succulents/succulents.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CategoryJsonService } from './service/category-json.service';
+import { ViewCartComponent } from './product/view-cart/view-cart.component';
+import { ShareComModule } from './share/share-com/share-com.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -31,15 +35,18 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     RegisterComponent,
     FocusInputDirective,
+    ViewCartComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ShareComModule,
+    AdminModule,
   ],
-  providers: [],
+  providers: [CategoryJsonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

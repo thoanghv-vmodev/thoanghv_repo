@@ -1,5 +1,148 @@
+
+@use '../../../styles.scss';
+
+/* Btn reuse */
+@mixin btn ($btn: styles.$color-text-brown) {
+  background-color: $btn;
+  border-style: none;
+  color: #fff;
+  padding: 10px 30px;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+  font-size: 15px;
+  white-space: nowrap;
+  margin: 0 12px;
+
+  &:hover {
+    background-color: #d0b0a6;
+    transition: all ease-in-out 0.3s;
+    color: #444;
+  }
+
+  &:active {
+    background-color: #a05841;
+    box-shadow: 0 2px #666;
+  }
+}
+
+.btn-list {
+  @include btn;
+  width: 100%;
+}
+
+.btn-sub {
+  margin: 0 12px;
+  border: 2px solid #444;
+  padding: 12px 32px;
+}
+
+.btn-sub:nth-child(3) {
+  background-color: #888;
+
+  &:hover {
+    background-color: #fff;
+    transition: all ease-in-out 0.3s;
+    color: #444;
+  }
+
+  &:active {
+    background-color: #888;
+    box-shadow: 0 2px #666;
+  }
+}
+
 .plants {
   position: relative;
   top: 112px;
-  padding: 28px 0;
+  .back-shop-all {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: all ease-in-out 0.3s;
+    &:hover {
+      color: #b88878;
+      transition: all ease-in-out 0.3s;
+    }
+  }
+
+  .category-title {
+    padding-top: 48px;
+    text-align: center;
+    text-transform: uppercase;
+    color: styles.$color-dark-blue;
+    font-size: 20px;
+  }
+
+  .product-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+    margin: 0 -12px;
+
+    .product-list-content {
+      padding: 24px;
+    }
+
+  }
+
+  .product-list-item {
+    padding: 8px 0;
+    color: styles.$color-text-brown;
+  }
+
+  .product-list-item--flex {
+    display: flex;
+    margin: 0 -12px;
+  }
+
+  .product-list-item img {
+    width: 100%;
+  }
+}
+
+.banner-bg {
+  background-image: url('../../../assets/images/banner-plants.webp');
+  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-color: styles.$bg-overlay;
+  -webkit-background-size: 100%;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+  background-blend-mode: overlay;
+}
+
+.banner-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.banner-box--title {
+  margin-top: 24px;
+
+  .title-name {
+    font-size: 80px;
+    font-weight: bold;
+  }
+
+  .title-desc {
+    font-size: 16px;
+    vertical-align: baseline;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 0 218px;
+  }
+}
+
+.down-icon {
+  i {
+    font-size: 40px;
+  }
 }

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Category } from 'src/app/common/category';
 import { CategoryJsonService } from 'src/app/service/category-json.service';
 import { AuthService } from '../../service/auth-service.service';
+import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 @Component({
   selector: 'app-shop-all',
   templateUrl: './shop-all.component.html',
@@ -18,6 +19,8 @@ export class ShopAllComponent implements OnInit {
      }
   @ViewChild ("modal") modal: ElementRef<HTMLElement> | undefined;
   @ViewChild ("overlay") overlay: ElementRef<HTMLElement> | undefined;
+
+  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
 
   productList:any = []
 
@@ -49,7 +52,6 @@ export class ShopAllComponent implements OnInit {
     this.overlay?.nativeElement.classList.remove('dis-block');
   }
 
-
   Save(event: any) {
     event.preventDefault();
     this.closeModal();
@@ -63,6 +65,12 @@ export class ShopAllComponent implements OnInit {
       this.productList = this.productList.filter((el:any) => el !== data)
       this.categories.deleteCategory(data.id).subscribe();
     }
+  }
+
+
+  openAddToCart() {
+    this.openCart.addToCart.nativeElement.classList.add('active');
+    this.openCart.overlay.nativeElement.style.display = 'block';
   }
 
 

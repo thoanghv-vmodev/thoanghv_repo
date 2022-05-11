@@ -1,3 +1,54 @@
 <div class="cacti size-page">
-  <h1>Cacti</h1>
+  <div class="banner-bg">
+    <div class="banner-box">
+      <div>
+        <a class="back-shop-all" routerLink="/product-list"> <i class="fa-solid fa-angles-left"></i> Shop all</a>
+        <div class="banner-box--title">
+          <h1 class="title-name pd-tb-18 ">HAVE YOURSELF A CACTUS</h1>
+          <p class="title-desc pd-tb-18 ">I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just
+            click “Edit Text” or double click me to
+            add your own content and make changes to the font. I’m a great place for you to tell a story and let your
+            users know a
+            little more about you.</p>
+        </div>
+        <div class="pd-tb-18">
+          <div class="down-icon">
+            <i class="fa-solid fa-circle-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="category-title">
+      <h1>Cacti</h1>
+     <!--  <div class="form-group col-12">
+        <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
+      </div> -->
+    </div>
+    <div class="product-list">
+      <div class="product-list-content" *ngFor="let data of productList">
+          <div class="product-list-item">
+            <a [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
+              <img src="{{data.imageUrl}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
+            </a>
+          </div>
+          <div class="product-list-item">
+            <p>{{data.productName}}</p>
+          </div>
+          <div class="product-list-item">
+            <p>{{data.price | currency:'USD':'symbol'}}</p>
+          </div>
+          <div class="product-list-item product-list-item--flex">
+            <button class="btn-list " (click)="openAddToCart()">
+              Add to cart
+            </button>
+            <button class="btn-list " [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
+              Detail
+            </button>
+          </div>
+      </div>
+    </div>
 </div>
+<ng-container>
+  <app-add-to-cart #openCart></app-add-to-cart>
+</ng-container>

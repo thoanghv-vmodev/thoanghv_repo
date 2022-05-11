@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, merge, of } from 'rxjs';
 import { delay, map, mapTo, pluck, reduce, scan, toArray } from 'rxjs/operators';
+import { CategoryJsonService } from 'src/app/service/category-json.service';
+import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 
 @Component({
   selector: 'app-succulents',
@@ -9,9 +11,26 @@ import { delay, map, mapTo, pluck, reduce, scan, toArray } from 'rxjs/operators'
 })
 export class SucculentsComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
+  constructor(
+    private categories: CategoryJsonService
+  ) { }
+
+  productList:any = []
+  currentList:any = []
+
+  openAddToCart() {
+    this.openCart.addToCart.nativeElement.classList.add('active');
+    this.openCart.overlay.nativeElement.style.display = 'block';
+  }
 
   ngOnInit(): void {
+    this.categories.getCategory().subscribe(data => {
+        this.currentList = data;
+        this.productList = this.currentList.filter((el:any) => el.type === 'succulent')
+        console.log(this.productList)
+        }
+      )
     // console.log(this.usersVm)
 
     // map

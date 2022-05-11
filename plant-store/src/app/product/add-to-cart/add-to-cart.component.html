@@ -1,0 +1,46 @@
+
+<div class="overlay" #overlay (click)="closeCart()"></div>
+<div class="add-to-card" #addToCart >
+    <div class="add-to-cart__container">
+      <div class="container--title">
+        <div class="close-cart" (click)="closeCart()">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+          <p class="container--name">CART</p>
+      </div>
+      <div class="add-to-cart__container--box">
+        <ul class="add-to-cart__container--list">
+          <li class="container--list-item">
+              <div class="container--list-img">
+                <img src="../../../assets/images/cayhoa.webp" alt="image-product">
+              </div>
+              <div class="container--list-detail">
+                <p>
+                  Product name
+                </p>
+                <p >
+                  giá tiền
+                </p >
+                <div class="list-detail-input">
+                  <span>-</span>
+                    <input type="number" value="1">
+                  <span>+</span>
+                </div>
+              </div>
+            <button class="btn-delete-item">
+              <p>x</p>
+            </button>
+          </li>
+        </ul>
+        <div class="subtotal-cart">
+          <p>Subtotal</p>
+          <span>12121</span>
+        </div>
+      </div>
+      <div class="btn-view">
+        <a routerLink="/view-cart">
+          <button class="btn-view-cart" type="button">View Cart</button>
+        </a>
+      </div>
+    </div>
+</div>

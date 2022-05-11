@@ -36,13 +36,13 @@
 }
 /* Intro */
 .intro-bg {
-  background-image: url('../../assets/images/bg-top.jpg_');
-  // background-image: url('../../assets/images/hinh-anh-hoa-sen-da-10.jpg');
+  // background-image: url('../../assets/images/bg-top.jpg_');
+  background-image: url('../../assets/images/hinh-anh-hoa-sen-da-10.jpg');
   background-attachment: fixed;
   background-size: 100%;
   background-repeat: no-repeat;
   height: 100vh;
-  background-color: rgb(107, 107, 107);
+  background-color: styles.$bg-overlay;
   -webkit-background-size: 100%;
   -moz-background-size: cover;
   -o-background-size: cover;

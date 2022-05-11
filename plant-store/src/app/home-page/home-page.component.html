@@ -21,6 +21,7 @@
     <div class="product-demo">
       <!-- Truyen data tu parent vao child -->
       <ng-container *ngFor="let item of listCategory">
+       <!--  dùng ng-container để gộp lại -->
         <app-category [data]="item"></app-category>
       </ng-container>
     </div>

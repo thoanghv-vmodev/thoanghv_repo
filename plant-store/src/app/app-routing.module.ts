@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { CactiComponent } from './product/cacti/cacti.component';
 import { PlantsComponent } from './product/plants/plants.component';
 import { SucculentsComponent } from './product/succulents/succulents.component';
+import { ViewCartComponent } from './product/view-cart/view-cart.component';
 
 const routes: Routes = [
   {
@@ -20,14 +21,14 @@ const routes: Routes = [
     ]
   },
   {
-    path:'', redirectTo:'/home-page', pathMatch:'full'
+    path: '', redirectTo:'/home-page', pathMatch:'full'
   },
 
   {
-    path:'login', component: LoginComponent,
+    path: 'login', component: LoginComponent,
   },
   {
-    path:'register', component: RegisterComponent,
+    path: 'register', component: RegisterComponent,
   },
 
   {
@@ -45,7 +46,11 @@ const routes: Routes = [
   {
     path: 'product-list',
     loadChildren: () => import('./product/product-list/product-list.module').then(m => m.ProductListModule),
-    canLoad: [CanLoadPageGuard]
+    // canLoad: [CanLoadPageGuard]
+  },
+
+  {
+    path: 'view-cart', component: ViewCartComponent
   }
 
 ];

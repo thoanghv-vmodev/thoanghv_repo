@@ -1,0 +1,66 @@
+<div class="admin-shop">
+  <div class="admin-shop-option">
+    <p>
+      Category
+    </p>
+  </div>
+  <button class="btn-add-new" (click)="openModalCreateCategory()">Add New</button>
+  <div class="table-list">
+    <table class="table table-hover table-bordered ">
+      <thead>
+        <tr class="table-tr">
+          <th>ID</th>
+          <th>Category</th>
+          <th>Image</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable">
+          <td>{{ data.id }}</td>
+          <td>{{ data.categoryName }}</td>
+          <td class="text-wrap">
+            <a href="{{data.imgCategory}}" target="_blank">
+              <img src="{{data.imgCategory}}" alt="image{{data.categoryName}}">
+            </a>
+            </td>
+          <td><i class="table-icon fa-solid fa-pen" (click)="openModalEditCategory(data)"></i></td>
+          <td><i class="table-icon fa-solid fa-trash" (click)="Delete()"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal-Add -->
+<div class="modal-container" #modalCreateAndEdit>
+  <div class="overlay" #overlay (click)="closeModal()"></div>
+  <div class="modal-box">
+    <div class="modal-content">
+      <div class="icon-close" >
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <p class="modal-content-header">
+        Add New Category
+      </p>
+      <form [formGroup]="categoryForm" (ngSubmit)="createCategory()">
+          <div class="form-content">
+            <label for="id-category"> Category ID: </label>
+            <input class="form-control" id="id-category" type="number" formControlName="idCategory" placeholder="Id:">
+          </div>
+          <div class="form-content">
+            <label for="category-name"> Category Name: </label>
+            <input class="form-control" id="category-name" type="text" formControlName="categoryName" placeholder="Name:">
+          </div>
+          <div class="form-content">
+            <label for="cateegory-img"> Category Image: </label>
+            <input class="form-control" id="cateegory-img" type="file" formControlName="categoryImg" placeholder="Image">
+          </div>
+      </form>
+      <div class="btn-card">
+        <button class="btn-list" type="submit">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

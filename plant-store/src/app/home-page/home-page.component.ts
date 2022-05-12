@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -28,5 +28,8 @@ export class HomePageComponent implements OnInit {
       image: 'https://static.wixstatic.com/media/697bc8_b067d0a4b500479b8a3930782976779e~mv2_d_1920_1920_s_2.jpg/v1/fill/w_533,h_848,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/697bc8_b067d0a4b500479b8a3930782976779e~mv2_d_1920_1920_s_2.jpg'
     }
   ]
+
+
+
 
 }

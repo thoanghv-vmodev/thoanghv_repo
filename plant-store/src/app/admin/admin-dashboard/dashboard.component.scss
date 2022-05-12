@@ -1,0 +1,50 @@
+// @use './header.component.scss';
+@use '../../header/header.component.scss';
+@use '../../../styles.scss';
+
+.size-page {
+  width: 100%;
+}
+.dashboard{
+
+  .dashboard-menu-left {
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 260px;
+    color: styles.$color-text-brown;
+
+    .menu-left--title {
+      font-size: 24px;
+      border-top: 1px solid styles.$color-text-brown;
+      padding: 4px 24px;
+    }
+    .menu-left--list {
+      color: styles.$color-text-brown;
+      list-style: none;
+
+      .menu-left--list-item{
+        padding: 4px 24px;
+        transition: all ease-in-out 0.4s;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba($color: #999, $alpha: 0.2);
+        }
+      }
+      .menu-left--list-item.active {
+        background-color: rgba($color: #999, $alpha: 0.2);
+      }
+    }
+  }
+}
+
+.dashboard-content-box {
+  padding-left: 58px;
+  .dashboard-handle {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+  }
+}

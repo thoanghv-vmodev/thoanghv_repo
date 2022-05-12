@@ -74,19 +74,16 @@
   }
 
   .product-list {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    padding: 24px 0;
     text-align: center;
-    margin: 0 -12px;
 
     .product-list-content {
-      padding: 24px;
     }
 
   }
 
   .product-list-item {
-    padding: 8px 0;
+    padding: 4px 0;
     color: styles.$color-text-brown;
   }
 

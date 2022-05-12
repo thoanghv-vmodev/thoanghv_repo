@@ -1,0 +1,192 @@
+@use '../../../styles.scss';
+
+@mixin btn ($btn: styles.$color-text-brown) {
+  background-color: $btn;
+  border-style: none;
+  color: #fff;
+  padding: 12px 60px;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+  font-size: 15px;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #d0b0a6;
+    transition: all ease-in-out 0.3s;
+    color: #444;
+  }
+
+  &:active {
+    background-color: #a05841;
+    box-shadow: 0 2px #666;
+  }
+}
+
+.icon-close {
+  text-align: right;
+  font-size: 24px;
+  i {
+    cursor: pointer;
+  }
+}
+
+.admin-shop{
+  background-color: #fff;
+  // position: relative;
+  // top: 64px;
+
+  .admin-shop-option {
+    color: styles.$color-text-brown;
+    padding: 18px;
+    font-size: 26px;
+  }
+
+  .btn-add-new {
+    @include btn;
+    margin: 0 18px;
+    padding: 12px;
+  }
+
+  .table-list {
+    padding: 18px;
+  }
+
+  .table {
+    color: styles.$color-text-brown;
+  }
+
+  .table-tr {
+    background-color: #fafafa;
+  }
+
+  .table-icon {
+    cursor: pointer;
+  }
+}
+
+.text-wrap {
+
+  a {
+    text-decoration: none;
+    background-color: transparent;
+    display: inline-block;
+  }
+
+  img {
+    width: 70px;
+    height: 70px;
+    border: 1px solid styles.$color-text-brown;
+    object-fit: cover;
+  }
+}
+
+
+/* Add new  */
+
+.modal-container,
+.modal-edit {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  animation: show ease-in-out 0.3s;
+}
+
+.modal-box {
+  position: relative;
+  margin: auto;
+  top: 70px;
+  background-color: #fff;
+  width: 400px;
+  color: styles.$color-text-brown;
+
+  .modal-content {
+    padding: 10px 18px;
+    border: none;
+  }
+
+  .modal-content-header {
+    font-size: 26px;
+    color: styles.$color-text-brown;
+    text-align: center;
+  }
+
+  .card-input {
+      width: 100%;
+      padding: 6px;
+      border-style: none;
+      border: 1px solid #444;
+  }
+
+  .form-content {
+    padding: 16px 0;
+    text-align: left;
+
+    label {
+      padding: 6px 0;
+    }
+  }
+
+}
+
+
+@keyframes show {
+  from {
+    opacity: 0.3;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.dis-block {
+  display: block !important;
+}
+
+.btn-card {
+  margin: 16px 0;
+  text-align: center;
+
+  .btn-list {
+    margin: 0;
+    width: 100%;
+    @include btn;
+  }
+}
+
+input {
+  border: 1px solid #444;
+  border-radius: 0;
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+}
+
+.alert {
+  background-color: #fed3d3;
+  color: #820000;
+  padding: 6px;
+  margin: 0;
+}

@@ -1,0 +1,20 @@
+<div class="dashboard size-page">
+  <div class="dashboard-content row gx-0">
+    <div class="col-2">
+      <div class="dashboard-menu-left">
+        <p class="fs-4 py-1 px-4">PRICKLES & CO.</p>
+        <div class="menu-left--title">
+          <p>Menu</p>
+        </div>
+          <ul class="menu-left--list">
+              <li [routerLink]="['admin-category']" routerLinkActive="active" class="menu-left--list-item">Category</li>
+              <li routerLink="/admin-product" routerLinkActive="active" class="menu-left--list-item">Product</li>
+              <li routerLink="/admin-history"  routerLinkActive="active" class="menu-left--list-item">History</li>
+          </ul>
+      </div>
+    </div>
+    <div class="dashboard-content-box col-10 ">
+      <app-header-admin></app-header-admin>
+    </div>
+  </div>
+</div>

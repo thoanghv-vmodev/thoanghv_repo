@@ -1,6 +1,7 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Category } from 'src/app/common/category';
-import { CategoryJsonService } from 'src/app/service/category-json.service';
+import { Products } from 'src/app/common/product';
+import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AuthService } from '../../service/auth-service.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 @Component({
@@ -10,15 +11,16 @@ import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 })
 export class ShopAllComponent implements OnInit {
 
-  category!:  Category;
+  product!:  Products;
+
   constructor(
     private authService: AuthService = new AuthService(),
-    private categories: CategoryJsonService
+    private products: ProductJsonService,
+    private scroller: ViewportScroller,
     ) {
-      this.category = new Category();
+      this.product = new Products();
      }
-  @ViewChild ("modal") modal: ElementRef<HTMLElement> | undefined;
-  @ViewChild ("overlay") overlay: ElementRef<HTMLElement> | undefined;
+
 
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
 
@@ -26,7 +28,7 @@ export class ShopAllComponent implements OnInit {
 
   ngOnInit(): void {
     // this.productList = this.authService.getListProduct()
-   this.categories.getCategory().subscribe(
+   this.products.getProduct().subscribe(
       data => {
       this.productList = data
       console.log(this.productList)
@@ -42,37 +44,15 @@ export class ShopAllComponent implements OnInit {
     this.authService.unSubscribe()
   }
 
-  openModal() {
-    this.modal?.nativeElement.classList.add('dis-block');
-    this.overlay?.nativeElement.classList.add('dis-block');
-  }
-
-  closeModal() {
-    this.modal?.nativeElement.classList.remove('dis-block');
-    this.overlay?.nativeElement.classList.remove('dis-block');
-  }
-
-  Save(event: any) {
-    event.preventDefault();
-    this.closeModal();
-    this.categories.postCategory(this.category).subscribe(data => {
-      console.log(data)
-    })
-  }
-
-  Delete(data: Category) { // data param
-    if(confirm('Bạn chắc chắn muốn xóa') == true) {
-      this.productList = this.productList.filter((el:any) => el !== data)
-      this.categories.deleteCategory(data.id).subscribe();
-    }
-  }
-
 
   openAddToCart() {
     this.openCart.addToCart.nativeElement.classList.add('active');
     this.openCart.overlay.nativeElement.style.display = 'block';
   }
 
+  goList() {
+    this.scroller.scrollToAnchor("product");
+  }
 
 }
 

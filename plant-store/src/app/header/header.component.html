@@ -15,7 +15,7 @@
                     <p class="login-item login-item-title">Log In</p>
                   </div>
                   <div class="cart">
-                    <i class="font-22 fa-solid fa-bag-shopping"></i>
+                    <i class="font-22 fa-solid fa-bag-shopping" (click)="openAddToCart()"><span>1</span></i>
                   </div>
             </div>
         </div>
@@ -60,4 +60,7 @@
             </div>
         </div>
     </div>
-  </header>
+</header>
+<ng-container>
+  <app-add-to-cart #openCart></app-add-to-cart>
+</ng-container>

@@ -2,12 +2,25 @@
   <div class="product-details--container">
     <div class="product-details--content">
       <div class="content-item">
-        <a  routerLink="/home-page">Home</a> <span class="path-url">/</span> <a  routerLink="/product-list">Shop</a> <span class="path-url">/</span> <p class="path-url-title" href="">{{listItem.productName}}</p>
+        <a  routerLink="/home-page">Home</a> <span class="path-url">/</span>
+        <ng-container *ngIf="url">
+          <a routerLink="/product-list">Shop all</a> <span class="path-url">/</span>
+        </ng-container>
+        <ng-container *ngIf="listItem.type == 'cacti'">
+          <a  routerLink="/cacti">Cacti</a> <span class="path-url">/</span>
+        </ng-container>
+        <ng-container *ngIf="listItem.type == 'plant'">
+          <a routerLink="/plant">Plant</a> <span class="path-url">/</span>
+        </ng-container>
+        <ng-container *ngIf="listItem.type == 'succulent'">
+          <a routerLink="/succulents">Succulent</a> <span class="path-url">/</span>
+        </ng-container>
+      <p class="path-url-title" href="">{{listItem.productName}}</p>
       </div>
-      <div class="content-item">
+     <!--  <div class="content-item">
         <div class="prev"><i class="fa-solid fa-chevron-left"></i>Prev</div> |
         <div class="next">Next <i class="fa-solid fa-chevron-right"></i></div>
-      </div>
+      </div> -->
     </div>
     <div class="product-details--content">
       <ng-container *ngIf="listItem && listItem.id">
@@ -25,17 +38,11 @@
           <div class="product-share">
             <p>Share:</p>
             <div>
-              <a href="fb-messenger://share/" target="_blank">
-                <i class="fa-brands fa-facebook-messenger"></i>
-              </a>
               <a href="//www.facebook.com/sharer/sharer.php?u=https://www.inithtml.com/" target="_blank">
                 <i class="fa-brands fa-facebook"></i>
               </a>
               <a href="//www.pinterest.com/pin/create/button/?url=&media=&description=" target="_blank">
-                <i class="fa-brands fa-pinterest"></i>
-              </a>
-              <a href="//twitter.com/share?text=&url=" target="_blank">
-                <i class="fa-brands fa-twitter-square"></i>
+                <i class="fa-brands fa-google"></i>
               </a>
             </div>
           </div>
@@ -44,7 +51,7 @@
         <div class="product-box">
           <p class="product-box--name">{{listItem.productName}}</p>
           <div class="product-index">
-            <p class="product-item">SKU: {{listItem.id}}</p> <span>|</span> <p class="product-item">1,0k Sold</p>
+            <p class="product-item">SKU: {{listItem.id}}</p>
           </div>
           <p class="product-item">{{listItem.price | currency: '$'}}</p>
           <div class="product-item">
@@ -56,45 +63,53 @@
             <button class="btn-buy" (click)="openAddToCart()">Add to cart</button>
             <button class="btn-buy" routerLink="/view-cart">Buy Now</button>
           </div>
-          <ul class="product-info">
-            <li class="product-item">
-              <button class="btn-info">
-                <p>PRODUCT INFO</p>
-                <i class="fa-solid fa-plus"></i>
-                <!-- <i class="fa-solid fa-minus"></i> -->
-              </button>
-              <div class="product-info--details open">
-                <p>I'm a product detail. I'm a great place to add more information about your product such as sizing, material, care and
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item product-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  PRODUCT INFO
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body"><p>I'm a product detail. I'm a great place to add more information about your product such as sizing, material, care and
                 cleaning instructions. This is also a great space to write what makes this product special and how your customers can
                 benefit from this item.
-                </p>
+                </p></div>
               </div>
-            </li>
-            <li class="product-item">
-              <button class="btn-info">
-                <p>RETURN & REFUND POLICY</p>
-                <i class="fa-solid fa-plus"></i>
-              </button>
-              <div class="product-info--details">
-                <p>I’m a Return and Refund policy. I’m a great place to let your customers know what to do in case they are dissatisfied
+            </div>
+            <div class="accordion-item product-item">
+              <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  RETURN & REFUND POLICY
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body"><p>I’m a Return and Refund policy. I’m a great place to let your customers know what to do in case they are dissatisfied
                 with their purchase. Having a straightforward refund or exchange policy is a great way to build trust and reassure your
                 customers that they can buy with confidence.
-                </p>
+                </p></div>
               </div>
-            </li>
-            <li class="product-item">
-              <button class="btn-info">
-                <p>SHIPPING INFO</p>
-                <i class="fa-solid fa-plus"></i>
-              </button>
-              <div class="product-info--details">
-                <p>I'm a shipping policy. I'm a great place to add more information about your shipping methods, packaging and cost.
+            </div>
+            <div class="accordion-item product-item">
+              <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  SHIPPING INFO
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body"><p>I'm a shipping policy. I'm a great place to add more information about your shipping methods, packaging and cost.
                 Providing straightforward information about your shipping policy is a great way to build trust and reassure your
                 customers that they can buy from you with confidence.
-              </p>
+              </p></div>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </ng-container>
     </div>

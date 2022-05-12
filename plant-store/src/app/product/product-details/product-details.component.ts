@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service.service';
-import { CategoryJsonService } from 'src/app/service/category-json.service';
+import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 
 @Component({
@@ -15,7 +15,8 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
-    private categoryService: CategoryJsonService
+    private productService: ProductJsonService,
+    private router: Router
     ) {}
 
 /*   productList = [
@@ -51,20 +52,23 @@ export class ProductDetailsComponent implements OnInit {
   listItem: any = [];
   listProduct: any = [];
 
+  url: any = this.router.url;
+
   ngOnInit(): void {
   const id = this.route.snapshot.paramMap.get('id');
+  console.log(this.url)
   // console.log('id', id);
 
   // this.itemProduct = this.authService.getProductById(id)
 
-  this.categoryService.getCategory().subscribe(data => {
+  this.productService.getProduct().subscribe(data => {
     this.listData = data;
     this.listItem = this.listData.find((el:any) => el.id == id);
     console.log(this.listItem)
   }
   )
 
-  this.categoryService.getCategory().subscribe(data => {
+  this.productService.getProduct().subscribe(data => {
     this.listProduct = data;
   })
 

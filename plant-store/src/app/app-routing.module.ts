@@ -5,53 +5,35 @@ import { PreloadAllModules } from '@angular/router';
 import { CategoryInterceptor } from './common/intercepter-category.interceptor';
 import { CanLoadPageGuard } from './Guard/can-load-page.guard';
 
-import { HomePageComponent } from './home-page/home-page.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { CactiComponent } from './product/cacti/cacti.component';
-import { PlantsComponent } from './product/plants/plants.component';
-import { SucculentsComponent } from './product/succulents/succulents.component';
-import { ViewCartComponent } from './product/view-cart/view-cart.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { ConnectLayoutComponent } from './layouts/connect-layout/connect-layout.component';
 
 const routes: Routes = [
-  {
-    path: 'home-page', component: HomePageComponent,
-    children: [
-
-    ]
-  },
   {
     path: '', redirectTo:'/home-page', pathMatch:'full'
   },
 
   {
-    path: 'login', component: LoginComponent,
-  },
-  {
-    path: 'register', component: RegisterComponent,
-  },
-
-  {
-    path: 'cacti', component: CactiComponent,
-  },
-
-  {
-    path: 'plants', component: PlantsComponent
+    path:'',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule),
+      }
+    ]
   },
 
   {
-    path: 'succulents', component: SucculentsComponent
+    path:'',
+    component: ConnectLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./layouts/connect-layout/connect-layout.module').then(m => m.ConnectLayoutModule),
+      }
+    ]
   },
-
-  {
-    path: 'product-list',
-    loadChildren: () => import('./product/product-list/product-list.module').then(m => m.ProductListModule),
-    // canLoad: [CanLoadPageGuard]
-  },
-
-  {
-    path: 'view-cart', component: ViewCartComponent
-  }
 
 ];
 
@@ -76,7 +58,4 @@ const routes: Routes = [
     }
   ]
 })
-export class AppRoutingModule {
-
-
- }
+export class AppRoutingModule {}

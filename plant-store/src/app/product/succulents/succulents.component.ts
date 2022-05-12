@@ -1,7 +1,8 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, merge, of } from 'rxjs';
 import { delay, map, mapTo, pluck, reduce, scan, toArray } from 'rxjs/operators';
-import { CategoryJsonService } from 'src/app/service/category-json.service';
+import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 
 @Component({
@@ -13,7 +14,8 @@ export class SucculentsComponent implements OnInit {
 
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
   constructor(
-    private categories: CategoryJsonService
+    private products: ProductJsonService,
+     private scroller: ViewportScroller,
   ) { }
 
   productList:any = []
@@ -24,8 +26,12 @@ export class SucculentsComponent implements OnInit {
     this.openCart.overlay.nativeElement.style.display = 'block';
   }
 
+  goList() {
+    this.scroller.scrollToAnchor("product");
+  }
+
   ngOnInit(): void {
-    this.categories.getCategory().subscribe(data => {
+    this.products.getProduct().subscribe(data => {
         this.currentList = data;
         this.productList = this.currentList.filter((el:any) => el.type === 'succulent')
         console.log(this.productList)

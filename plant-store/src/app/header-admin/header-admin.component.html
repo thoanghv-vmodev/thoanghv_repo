@@ -1,0 +1,20 @@
+<header>
+  <div class="header">
+    <div class="header-content bg-white">
+      <div class="header-content--box">
+        <div class="content--box-hover" #item>
+          <i class="box-hover-item fa-solid fa-magnifying-glass"></i>
+          <input class="box-hover-item" type="text" placeholder="Search..." (focus)="onFocus()" (blur)="onBlur()" appFocusInput>
+        </div>
+      </div>
+      <div class="header-content--box">
+        <div class="login" routerLink="/home-page">
+          <a>
+            <i class="login-item font-22 fa-solid fa-circle-user"></i>
+          </a>
+          <p class="login-item login-item-title">Log Out</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

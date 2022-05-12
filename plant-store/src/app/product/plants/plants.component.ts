@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {  map } from 'rxjs/operators';
 import {  defer, from, fromEvent, fromEventPattern, interval, of, throwError, timer } from 'rxjs';
-import { CategoryJsonService } from 'src/app/service/category-json.service';
+import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
+import { ViewportScroller } from '@angular/common';
 @Component({
   selector: 'app-plants',
   templateUrl: './plants.component.html',
@@ -12,7 +13,8 @@ export class PlantsComponent implements OnInit {
 
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
   constructor(
-     private categories: CategoryJsonService
+     private categories: ProductJsonService,
+     private scroller: ViewportScroller,
   ) { }
   isOn = false;
   productList:any = []
@@ -23,11 +25,15 @@ export class PlantsComponent implements OnInit {
     this.openCart.overlay.nativeElement.style.display = 'block';
   }
 
+  goList() {
+    this.scroller.scrollToAnchor("product");
+  }
+
   clicked() { this.isOn = !this.isOn; }
   get message() { return `The light is ${this.isOn ? 'On' : 'Off'}`; }
 
   ngOnInit(): void {
-    this.categories.getCategory().subscribe(data => {
+    this.categories.getProduct().subscribe(data => {
       this.currentList = data;
       this.productList = this.currentList.filter((el:any) => el.type === 'plants')
         console.log(this.productList)

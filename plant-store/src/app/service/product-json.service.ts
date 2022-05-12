@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
-import { Category } from '../common/category';
+import { Products } from '../common/product';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, delay, map, tap } from 'rxjs/operators';
 @Injectable()
-export class CategoryJsonService {
+export class ProductJsonService {
 
   constructor(private http: HttpClient) {
   }
@@ -21,30 +21,30 @@ export class CategoryJsonService {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  getCategory(): Observable<Category> {
-   return this.http.get<Category>(this.apiUrl).pipe(
+  getProduct(): Observable<Products> {
+   return this.http.get<Products>(this.apiUrl).pipe(
      delay(300),
      tap(() => console.log('fetched heroes')), // thông báo success
      catchError(
-       this.handleError<Category>('getCategory')
+       this.handleError<Products>('getProduct')
        ) // bắt lỗi
    )
   }
 
-  postCategory(obj: Object): Observable<Category> { // obj truyền vào data mới
-    return this.http.post<Category>(this.apiUrl, obj, this.httpOptions)
+  postProduct(obj: Object): Observable<Products> { // obj truyền vào data mới
+    return this.http.post<Products>(this.apiUrl, obj, this.httpOptions)
     .pipe(
      tap(() => console.log('create hero')), // thông báo success
-     catchError(this.handleError<Category>('postCategory')) // bắt lỗi
+     catchError(this.handleError<Products>('postProduct')) // bắt lỗi
    )
   }
 
-  deleteCategory(id: number) { // xóa theo id
+  deleteProduct(id: number) { // xóa theo id
     const url = `${this.apiUrl}/${id}`; // tìm id
 
-    return this.http.delete<Category>(url, this.httpOptions).pipe( // xóa data id được truyền vào
-      tap(()=>console.log(`delete category id=${id}`)),
-      catchError(this.handleError<Category>('deleteCategory'))
+    return this.http.delete<Products>(url, this.httpOptions).pipe( // xóa data id được truyền vào
+      tap(()=>console.log(`delete Product id=${id}`)),
+      catchError(this.handleError<Products>('deleteProduct'))
     )
   }
 

@@ -18,12 +18,14 @@
     </div>
    </section>
    <section>
-    <div class="product-demo">
+    <div class="product-demo row gx-5">
       <!-- Truyen data tu parent vao child -->
-      <ng-container *ngFor="let item of listCategory">
-       <!--  dùng ng-container để gộp lại -->
-        <app-category [data]="item"></app-category>
-      </ng-container>
+      <div class="col-4" *ngFor="let item of listCategory" >
+        <ng-container >
+         <!--  dùng ng-container để gộp lại -->
+          <app-category [data]="item"></app-category>
+        </ng-container>
+      </div>
     </div>
    </section>
    <section>

@@ -1,6 +1,5 @@
 @use '../../../styles.scss';
 
-
 /* Btn reuse */
 @mixin btn ($btn: styles.$color-text-brown) {
   background-color: $btn;
@@ -150,31 +149,6 @@
   margin-top: 6px;
 }
 
-.product-info {
-  list-style: none;
-
-  .btn-info {
-    width: 100%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 18px;
-    display: flex;
-    justify-content: space-between;
-    color: styles.$color-text-brown;
-  }
-  .product-info--details {
-    display: none;
-    padding: 12px 0;
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  .product-info--details.open {
-    display: block;
-  }
-}
-
 .product-slider {
   margin: 0 -12px;
 
@@ -237,6 +211,28 @@
     i {
      font-size: 22px;
     }
+}
+
+.accordion-button {
+  color: styles.$color-text-brown;
+}
+
+.accordion-button::after {
+  color: styles.$color-text-brown !important;
+}
+
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: rgb(160, 88, 65);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(160 88 65 / 25%);
+}
+
+.accordion-button:not(.collapsed) {
+  color: styles.$color-text-brown;
+  background-color: #fff;
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
 }
 
 :host ::ng-deep .slick-prev:before,

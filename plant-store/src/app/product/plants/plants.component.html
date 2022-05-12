@@ -16,17 +16,17 @@
           </div>
           <div class="pd-tb-18">
             <div class="down-icon">
-              <i class="fa-solid fa-circle-chevron-down"></i>
+              <i (click)="goList()" class="fa-solid fa-circle-chevron-down"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="category-title">
+    <div class="category-title" id="product">
       <h1>plants</h1>
     </div>
-    <div class="product-list">
-      <div class="product-list-content" *ngFor="let data of productList">
+    <div class="product-list row gx-5 gy-5">
+      <div class="product-list-content col-4" *ngFor="let data of productList">
         <div class="product-list-item">
           <a [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
             <img src="{{data.imageUrl}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">

@@ -1,6 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AddToCartComponent } from '../product/add-to-cart/add-to-cart.component';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   onActive2 = false
 
   @ViewChild ('item') item: ElementRef<HTMLElement> | undefined;
-
+  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
   constructor(
     private scroller: ViewportScroller,
     private router: Router,
@@ -29,6 +30,11 @@ export class HeaderComponent implements OnInit {
         this.onActive1 = false
         this.onActive2 = true
     }, 6000);
+  }
+
+  openAddToCart() {
+    this.openCart.addToCart.nativeElement.classList.add('active');
+    this.openCart.overlay.nativeElement.style.display = 'block';
   }
 
   onFocus() {
@@ -53,7 +59,7 @@ export class HeaderComponent implements OnInit {
 
 
   //Specifying a relative route (đường dẫn tương đối)
-  goToItems() {
+  /* goToItems() {
   this.router.navigate(['succulents'], { relativeTo: this.route });
-  }
+  } */
 }

@@ -1,5 +1,13 @@
 export interface Category {
-  id: number;
+  id?: string;
+  categoryId: number;
   categoryName: string;
-  imgCategory: string;
+  categoryImg: string;
 }
+
+/* export class Categorys implements Category {
+  id!: number;
+  categoryName!: string;
+  imgCategory!: string;
+}
+ */

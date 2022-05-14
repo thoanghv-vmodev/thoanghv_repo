@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/common/category';
-
+import { CategoryJsonService } from 'src/app/service/category-json.service';
 @Component({
   selector: 'app-admin-category',
   templateUrl: './admin-category.component.html',
@@ -14,44 +14,33 @@ export class AdminCategoryComponent implements OnInit {
 
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private categoryService: CategoryJsonService
   ) { }
 
   categoryForm!: FormGroup;
+  isCreate = true;
+  listCategory: Category[] = [];
+  putId?: string;
 
 
   ngOnInit(): void {
     this.categoryForm = this.fb.group({
-      idCategory: [''],
-      categoryName: [''],
-      categoryImg: ['']
+      categoryId: ['', Validators.required],
+      categoryName: ['',Validators.required],
+      categoryImg: ['', Validators.required]
     })
-  }
 
-  createCategory() {
-    console.log(this.categoryForm.value)
+    this.categoryService.getCategory().subscribe(
+      data => {
+        this.listCategory = data;
+        console.log(data)
+      }
+    )
   }
-
-  basicTable: Category[] = [
-  {
-    id: 0,
-    categoryName: 'cacti',
-    imgCategory: 'https://static.wixstatic.com/media/697bc8_8bf7131cfd3547e9bd54d9f4f57f3e74~mv2_d_1920_1920_s_2.jpg/v1/fill/w_533,h_848,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/697bc8_8bf7131cfd3547e9bd54d9f4f57f3e74~mv2_d_1920_1920_s_2.jpg'
-  },
-  {
-    id: 1,
-    categoryName: 'plants',
-    imgCategory: 'https://static.wixstatic.com/media/697bc8_8267510d9e19448297fc161a522881f1~mv2_d_1920_1920_s_2.jpg/v1/fill/w_533,h_848,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/697bc8_8267510d9e19448297fc161a522881f1~mv2_d_1920_1920_s_2.jpg'
-  },
-  {
-    id: 2,
-    categoryName: 'succulents',
-    imgCategory: 'https://static.wixstatic.com/media/697bc8_b067d0a4b500479b8a3930782976779e~mv2_d_1920_1920_s_2.jpg/v1/fill/w_533,h_848,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/697bc8_b067d0a4b500479b8a3930782976779e~mv2_d_1920_1920_s_2.jpg'
-  }
-  ]
-
 
   openModalCreateCategory() {
+    this.isCreate = true;
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
     this.categoryForm.reset();
@@ -60,36 +49,51 @@ export class AdminCategoryComponent implements OnInit {
   closeModal() {
     this.overlay?.nativeElement.classList.remove('dis-block');
     this.modalCreateAndEdit?.nativeElement.classList.remove('dis-block');
-    this.categoryForm.reset();
   }
-
   // @TODO: add type
   openModalEditCategory(data: Category) {
-   this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
-   this.overlay?.nativeElement.classList.add('dis-block');
+    this.isCreate = false;
 
-   this.categoryForm
+    this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
+    this.overlay?.nativeElement.classList.add('dis-block');
+
+    this.putId = data.id + '';
+    this.categoryForm.patchValue({
+      categoryId: data.categoryId,
+      categoryName: data.categoryName,
+      categoryImg: data.categoryImg
+    })
+    console.log('data importEdit:' ,data)
+
   }
 
-  /* Save(event: any) {
-    event.preventDefault();
+  Save() {
     this.closeModal();
-    this.categories.postCategory(this.category).subscribe(data => {
-      console.log(data)
-    })
-  } */
+    // console.log(this.categoryForm.value);
 
- /*  Delete(data: Category) { // data param
-    if(confirm('Bạn chắc chắn muốn xóa') == true) {
-      this.productList = this.productList.filter((el:any) => el !== data)
-      this.categories.deleteCategory(data.id).subscribe();
+    let putCategory = { // lay id de put theo id
+      ...this.categoryForm.value,
+      id: this.putId
     }
-  } */
 
-  Delete() { // data param
-    if(confirm('Bạn chắc chắn muốn xóa') == true) {
-     /*  this.productList = this.productList.filter((el:any) => el !== data)
-      this.categories.deleteCategory(data.id).subscribe(); */
+    if(this.isCreate == true) {
+      this.categoryService.postCategory(this.categoryForm.value).subscribe((dataCreate: Category) => {
+        // console.log('data Create',dataCreate)
+      })
+    }
+    else {
+      this.categoryService.putCategory(this.putId, putCategory).subscribe(dataPut => { // truyen id vao lam key name
+        // console.log('data Put', dataPut)
+    })
+    }
+  }
+
+  onDeleteCategory(data: Category) { // data param
+    if(confirm('Are you sure delete?') == true) {
+      this.categoryService.deleteCategory(data).subscribe( dataDelete => {
+        // console.log(dataDelete)
+         }
+      )
     }
   }
 }

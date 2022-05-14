@@ -3,17 +3,17 @@
   <div class="product-demo--box-item">
     <div class="box-item-content">
       <p class="box-item-type">
-        {{data.category}}
+        {{data.categoryName}}
       </p>
       <div class="box-item-line">
         <p></p>
       </div>
-      <button type="button" class="btn-product" routerLink="{{'/' + data.category}}">
+      <button type="button" class="btn-product" routerLink="{{'/' + data.categoryName}}">
         Shop Collection
       </button>
     </div>
     <div class="box-item-image">
-      <img [src]="data.image" alt="image">
+      <img [src]="data.categoryImg" alt="image">
     </div>
   </div>
 </div>

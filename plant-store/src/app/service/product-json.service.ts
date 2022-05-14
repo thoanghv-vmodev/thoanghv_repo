@@ -22,7 +22,8 @@ export class ProductJsonService {
   };
 
   getProduct(): Observable<Products> {
-   return this.http.get<Products>(this.apiUrl).pipe(
+   return this.http.get<Products>(this.apiUrl)
+   .pipe(
      delay(300),
      tap(() => console.log('fetched heroes')), // thông báo success
      catchError(
@@ -42,7 +43,8 @@ export class ProductJsonService {
   deleteProduct(id: number) { // xóa theo id
     const url = `${this.apiUrl}/${id}`; // tìm id
 
-    return this.http.delete<Products>(url, this.httpOptions).pipe( // xóa data id được truyền vào
+    return this.http.delete<Products>(url, this.httpOptions)
+    .pipe( // xóa data id được truyền vào
       tap(()=>console.log(`delete Product id=${id}`)),
       catchError(this.handleError<Products>('deleteProduct'))
     )

@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { Category } from 'src/app/common/category';
 import { CategoryJsonService } from 'src/app/service/category-json.service';
 @Component({
@@ -15,7 +18,8 @@ export class AdminCategoryComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private categoryService: CategoryJsonService
+    private categoryService: CategoryJsonService,
+    private storage: AngularFireStorage,
   ) { }
 
   categoryForm!: FormGroup;
@@ -23,18 +27,20 @@ export class AdminCategoryComponent implements OnInit {
   listCategory: Category[] = [];
   putId?: string;
 
+  selectedFile: any;
+  arrayPicture: any;
+  downloadURL: Observable<string> | undefined;
 
   ngOnInit(): void {
     this.categoryForm = this.fb.group({
       categoryId: ['', Validators.required],
       categoryName: ['',Validators.required],
-      categoryImg: ['', Validators.required]
+      categoryImg: ['']
     })
 
     this.categoryService.getCategory().subscribe(
       data => {
         this.listCategory = data;
-        console.log(data)
       }
     )
   }
@@ -49,6 +55,7 @@ export class AdminCategoryComponent implements OnInit {
   closeModal() {
     this.overlay?.nativeElement.classList.remove('dis-block');
     this.modalCreateAndEdit?.nativeElement.classList.remove('dis-block');
+    this.categoryForm.reset();
   }
   // @TODO: add type
   openModalEditCategory(data: Category) {
@@ -58,6 +65,7 @@ export class AdminCategoryComponent implements OnInit {
     this.overlay?.nativeElement.classList.add('dis-block');
 
     this.putId = data.id + '';
+
     this.categoryForm.patchValue({
       categoryId: data.categoryId,
       categoryName: data.categoryName,
@@ -71,20 +79,21 @@ export class AdminCategoryComponent implements OnInit {
     this.closeModal();
     // console.log(this.categoryForm.value);
 
-    let putCategory = { // lay id de put theo id
-      ...this.categoryForm.value,
-      id: this.putId
-    }
-
     if(this.isCreate == true) {
       this.categoryService.postCategory(this.categoryForm.value).subscribe((dataCreate: Category) => {
-        // console.log('data Create',dataCreate)
+        console.log('data Create',dataCreate)
       })
     }
     else {
+      this.categoryForm.get('categoryImg')?.setValue(this.arrayPicture)
+      let putCategory = { // lay id de put theo id
+      ...this.categoryForm.value,
+      id: this.putId
+      }
       this.categoryService.putCategory(this.putId, putCategory).subscribe(dataPut => { // truyen id vao lam key name
-        // console.log('data Put', dataPut)
-    })
+          // console.log('data Put', dataPut)
+      })
+
     }
   }
 
@@ -96,4 +105,33 @@ export class AdminCategoryComponent implements OnInit {
       )
     }
   }
+
+ onFileSelected(event:any) {
+    var n = Date.now();
+    const file = event.target.files[0];
+    const filePath = `CategoryImages/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`CategoryImages/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.arrayPicture = url;
+              this.categoryForm.get('categoryImg')?.setValue(url)
+            }
+            console.log('đây là url',this.arrayPicture);
+          });
+        })
+      )
+      .subscribe(data => {
+        if (data) {
+          console.log(data);
+        }
+      });
+  }
+
+
 }

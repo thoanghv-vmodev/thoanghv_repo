@@ -51,6 +51,7 @@ export class HeaderComponent implements OnInit {
 
   goAbout() {
     this.scroller.scrollToAnchor("about");
+    this.router.navigateByUrl('/home-page')
   }
 
   goContact() {

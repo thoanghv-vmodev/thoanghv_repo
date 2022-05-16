@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Products } from 'src/app/common/product';
 import { AuthService } from 'src/app/service/auth-service.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
@@ -48,9 +49,9 @@ export class ProductDetailsComponent implements OnInit {
 
   ]
  */
-  listData: any = [];
-  listItem: any = [];
-  listProduct: any = [];
+  listCurrent: Products[] = [];
+  listProduct: Products[] = [];
+  listItem: any;
 
   url: any = this.router.url;
 
@@ -62,8 +63,8 @@ export class ProductDetailsComponent implements OnInit {
   // this.itemProduct = this.authService.getProductById(id)
 
   this.productService.getProduct().subscribe(data => {
-    this.listData = data;
-    this.listItem = this.listData.find((el:any) => el.id == id);
+    this.listCurrent = data;
+    this.listItem = this.listCurrent.find((el:any) => el.id == id);
     console.log(this.listItem)
   }
   )

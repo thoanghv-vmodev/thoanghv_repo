@@ -26,14 +26,14 @@
       <div class="product-list-content col-4" *ngFor="let data of productList">
         <div class="product-list-item">
           <a [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
-            <img src="{{data.imageUrl}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
+            <img src="{{data.productImg}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
           </a>
         </div>
         <div class="product-list-item">
           <p>{{data.productName}}</p>
         </div>
         <div class="product-list-item">
-          <p>{{data.price | currency:'USD':'symbol'}}</p>
+          <p>{{data.productPrice | currency:'USD':'symbol'}}</p>
         </div>
         <div class="product-list-item product-list-item--flex">
           <button class="btn-list " (click)="openAddToCart()">

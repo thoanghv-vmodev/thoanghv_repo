@@ -1,16 +1,20 @@
 interface Product {
-   id: number;
+   id?: string;
+   productId: number;
+   productType: string
    productName: string;
-   imageUrl: string;
-   desc: string;
-   price: number;
+   productImg: string;
+   productDesc: string;
+   productPrice: number;
  }
 
 
 export class Products implements Product{
-   id!: number;
+   id!: string;
+   productId!: number;
+   productType!: string
    productName!: string;
-   imageUrl!: string;
-   desc!: string;
-   price!: number;
+   productImg!: string;
+   productDesc!: string;
+   productPrice!: number;
  }

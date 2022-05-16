@@ -6,13 +6,13 @@
         <ng-container *ngIf="url">
           <a routerLink="/product-list">Shop all</a> <span class="path-url">/</span>
         </ng-container>
-        <ng-container *ngIf="listItem.type == 'cacti'">
+        <ng-container *ngIf="listItem.productType == 'cacti'">
           <a  routerLink="/cacti">Cacti</a> <span class="path-url">/</span>
         </ng-container>
-        <ng-container *ngIf="listItem.type == 'plant'">
+        <ng-container *ngIf="listItem.productType == 'plant'">
           <a routerLink="/plant">Plant</a> <span class="path-url">/</span>
         </ng-container>
-        <ng-container *ngIf="listItem.type == 'succulent'">
+        <ng-container *ngIf="listItem.productType == 'succulent'">
           <a routerLink="/succulents">Succulent</a> <span class="path-url">/</span>
         </ng-container>
       <p class="path-url-title" href="">{{listItem.productName}}</p>
@@ -26,13 +26,13 @@
       <ng-container *ngIf="listItem && listItem.id">
         <div class="product-box">
           <div class="slider-one">
-            <img class="details-img" src="{{listItem.imageUrl}}"
+            <img class="details-img" src="{{listItem.productImg}}"
                  onerror="this.src='../../assets/images/senda2.webp'"
                  alt="image-product {{listItem.productName}}">
           </div>
           <div class="slider-one--click">
             <div class="img-click " >
-              <img src="{{listItem.imageUrl}}" alt="image-product {{listItem.productName}}">
+              <img src="{{listItem.productImg}}" alt="image-product {{listItem.productName}}">
             </div>
           </div>
           <div class="product-share">
@@ -46,14 +46,14 @@
               </a>
             </div>
           </div>
-          <p class="product-desc">{{listItem.desc}}</p>
+          <p class="product-desc">{{listItem.productDesc}}</p>
         </div>
         <div class="product-box">
           <p class="product-box--name">{{listItem.productName}}</p>
           <div class="product-index">
-            <p class="product-item">SKU: {{listItem.id}}</p>
+            <p class="product-item">SKU: {{listItem.productId}}</p>
           </div>
-          <p class="product-item">{{listItem.price | currency: '$'}}</p>
+          <p class="product-item">{{listItem.productPrice | currency: '$'}}</p>
           <div class="product-item">
             <label>Quantity</label>
             <br>
@@ -120,14 +120,14 @@
               <div class="list-product">
               <div class="product-slide-item">
                 <a [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
-                  <img class="product-slide-img" src="{{data.imageUrl}}" alt="Image{{data.productName}}">
+                  <img class="product-slide-img" src="{{data.productImg}}" alt="Image{{data.productName}}">
                 </a>
                 <div class="product-slide-details">
                   <p>{{data.productName}}</p>
                   <div class="slider-line">
                     <p></p>
                   </div>
-                  <p>{{data.price | currency}}</p>
+                  <p>{{data.productPrice | currency}}</p>
                 </div>
               </div>
             </div>

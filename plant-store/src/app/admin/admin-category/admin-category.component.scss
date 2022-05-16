@@ -48,7 +48,34 @@
   }
 
   .table-list {
-    padding: 18px;
+    margin: 18px;
+    overflow-y: scroll;
+    height: 400px;
+    .table-tr {
+      border: none;
+    }
+
+    .table-img {
+
+      a {
+        text-decoration: none;
+        background-color: transparent;
+        display: inline-block;
+      }
+
+      img {
+        width: 70px;
+        height: 70px;
+        // border: 1px solid styles.$color-text-brown;
+        object-fit: cover;
+      }
+    }
+
+    thead, th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
   }
 
   .table {
@@ -64,23 +91,6 @@
   }
 }
 
-.text-wrap {
-
-  a {
-    text-decoration: none;
-    background-color: transparent;
-    display: inline-block;
-  }
-
-  img {
-    width: 70px;
-    height: 70px;
-    border: 1px solid styles.$color-text-brown;
-    object-fit: cover;
-  }
-}
-
-
 /* Add new  */
 
 .modal-container,
@@ -91,6 +101,7 @@
   left: 0;
   bottom: 0;
   right: 0;
+  z-index: 10;
 }
 
 .overlay {
@@ -116,9 +127,11 @@
   }
 
   .modal-content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 26px;
     color: styles.$color-text-brown;
-    text-align: center;
   }
 
   .card-input {
@@ -163,6 +176,25 @@
     width: 100%;
     @include btn;
   }
+}
+
+.overlayUpload {
+  display: none;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  animation: show ease-in-out 0.3s;
+}
+
+.spin-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+    height: 100%;
 }
 
 input {

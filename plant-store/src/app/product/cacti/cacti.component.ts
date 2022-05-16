@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { fromEvent, observable, Observable, Subscription } from 'rxjs';
 import { throttleTime, scan, finalize } from 'rxjs/operators';
+import { Products } from 'src/app/common/product';
 import { ProductJsonService } from '../../service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 @Component({
@@ -14,7 +15,7 @@ export class CactiComponent implements OnInit {
 
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
   constructor(
-    private products: ProductJsonService,
+    private productService: ProductJsonService,
     private scroller: ViewportScroller,
   ) { }
 
@@ -28,13 +29,13 @@ export class CactiComponent implements OnInit {
     this.scroller.scrollToAnchor("product");
   }
 
-  productList:any = []
-  currentList:any = []
+  productList: Products[] = [];
+  currentList: Products[] = [];
 
   ngOnInit(): void {
-  this.products.getProduct().subscribe(data => {
+  this.productService.getProduct().subscribe(data => {
     this.currentList = data;
-    this.productList = this.currentList.filter((el:any) => el.type === 'cacti')
+    this.productList = this.currentList.filter((el:any) => el.productType === 'cacti')
     console.log(this.productList)
    })
   }

@@ -4,6 +4,7 @@ import {  defer, from, fromEvent, fromEventPattern, interval, of, throwError, ti
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 import { ViewportScroller } from '@angular/common';
+import { Products } from 'src/app/common/product';
 @Component({
   selector: 'app-plants',
   templateUrl: './plants.component.html',
@@ -13,12 +14,12 @@ export class PlantsComponent implements OnInit {
 
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
   constructor(
-     private categories: ProductJsonService,
+     private productService: ProductJsonService,
      private scroller: ViewportScroller,
   ) { }
   isOn = false;
-  productList:any = []
-  currentList:any = []
+  productList: Products[] = [];
+  currentList: Products[] = [];
 
   openAddToCart() {
     this.openCart.addToCart.nativeElement.classList.add('active');
@@ -33,9 +34,9 @@ export class PlantsComponent implements OnInit {
   get message() { return `The light is ${this.isOn ? 'On' : 'Off'}`; }
 
   ngOnInit(): void {
-    this.categories.getProduct().subscribe(data => {
+    this.productService.getProduct().subscribe(data => {
       this.currentList = data;
-      this.productList = this.currentList.filter((el:any) => el.type === 'plants')
+      this.productList = this.currentList.filter((el:any) => el.productType === 'plant')
         console.log(this.productList)
       }
     )
@@ -107,7 +108,6 @@ export class PlantsComponent implements OnInit {
     // // output: 0.9626312890837065
     // now$.subscribe(this.observer);
   }
-
 
   observer = {
   next: (val:any) => console.log(val),

@@ -2,6 +2,7 @@ import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, merge, of } from 'rxjs';
 import { delay, map, mapTo, pluck, reduce, scan, toArray } from 'rxjs/operators';
+import { Products } from 'src/app/common/product';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 
@@ -18,8 +19,8 @@ export class SucculentsComponent implements OnInit {
      private scroller: ViewportScroller,
   ) { }
 
-  productList:any = []
-  currentList:any = []
+  productList: Products[] = [];
+  currentList: Products[] = [];
 
   openAddToCart() {
     this.openCart.addToCart.nativeElement.classList.add('active');
@@ -33,7 +34,7 @@ export class SucculentsComponent implements OnInit {
   ngOnInit(): void {
     this.products.getProduct().subscribe(data => {
         this.currentList = data;
-        this.productList = this.currentList.filter((el:any) => el.type === 'succulent')
+        this.productList = this.currentList.filter((el:any) => el.productType === 'succulent')
         console.log(this.productList)
         }
       )
@@ -60,10 +61,10 @@ export class SucculentsComponent implements OnInit {
 
     //reduce - giống reduce array
 
-    const  totalCount = merge(
-      of(this.users[0]).pipe(delay(1000)),
-      of(this.users[1]).pipe(delay(3000))
-    )
+    // const  totalCount = merge(
+    //   of(this.users[0]).pipe(delay(1000)),
+    //   of(this.users[1]).pipe(delay(3000))
+    // )
     // .pipe(reduce((acc, curr) => acc + curr.postCount,0)).subscribe(this.observer)
 
     //toArray -  muốn lưu dưới dạng array
@@ -81,15 +82,15 @@ export class SucculentsComponent implements OnInit {
 
     // scan - khác với reduce phải chờ parent complete thì mới chạy, scan lấy luôn giá trị vừa thưc hiện xong parent mà
     // không cần đợi parent complete hết func
-      totalCount.pipe(scan((acc, curr) => acc + curr.postCount,0)).subscribe(this.observer)
+      // totalCount.pipe(scan((acc, curr) => acc + curr.postCount,0)).subscribe(this.observer)
   }
 
   // Transformation Operator
 
-  users = [
-    {id: 'ddfe3653-1569-4f2f-b57f-bf9bae542662', username: 'thanhtung', firstname: 'phan', lastname: 'tung', postCount: 5},
-    {id: '34784716-019b-4868-86cd-02287e49c2d3', username: 'vanthoang', firstname: 'hoang', lastname: 'thoang', postCount: 22},
-  ];
+  // users = [
+  //   {id: 'ddfe3653-1569-4f2f-b57f-bf9bae542662', username: 'thanhtung', firstname: 'phan', lastname: 'tung', postCount: 5},
+  //   {id: '34784716-019b-4868-86cd-02287e49c2d3', username: 'vanthoang', firstname: 'hoang', lastname: 'thoang', postCount: 22},
+  // ];
 
   // usersVm = this.users.map(user => { // map cua array
   // return {
@@ -99,9 +100,9 @@ export class SucculentsComponent implements OnInit {
   // });
 
 
-  observer = {
-  next: (value: any) => console.log(value),
-  error: (err: any) => console.error(err),
-  complete: () => console.log('completed'),
-};
+  // observer = {
+  // next: (value: any) => console.log(value),
+  // error: (err: any) => console.error(err),
+  // complete: () => console.log('completed'),
+  // };
 }

@@ -2,12 +2,6 @@ export interface Category {
   id?: string;
   categoryId: number;
   categoryName: string;
-  categoryImg: any;
+  categoryImg: string;
 }
 
-/* export class Categorys implements Category {
-  id!: number;
-  categoryName!: string;
-  imgCategory!: string;
-}
- */

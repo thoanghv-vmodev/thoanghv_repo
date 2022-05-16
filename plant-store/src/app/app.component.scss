@@ -1,0 +1,25 @@
+.btn-back-top {
+  position: fixed;
+  bottom: 77px;
+  right: 26px;
+  z-index: 99;
+  font-size: 28px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 6px 16px;
+  border-radius: 4px;
+  animation: show ease-in-out 0.6s;
+}
+
+@keyframes show {
+  from {
+    opacity: 0.3;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

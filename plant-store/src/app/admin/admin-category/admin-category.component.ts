@@ -14,7 +14,7 @@ export class AdminCategoryComponent implements OnInit {
 
   @ViewChild ("modalCreateAndEdit") modalCreateAndEdit: ElementRef<HTMLElement> | undefined;
   @ViewChild ("overlay") overlay: ElementRef<HTMLElement> | undefined;
-
+  @ViewChild("loading") loading: ElementRef<HTMLElement> | undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -28,7 +28,7 @@ export class AdminCategoryComponent implements OnInit {
   putId?: string;
 
   selectedFile: any;
-  arrayPicture: any;
+  categoryPicture: string | undefined;
   downloadURL: Observable<string> | undefined;
 
   ngOnInit(): void {
@@ -55,45 +55,37 @@ export class AdminCategoryComponent implements OnInit {
   closeModal() {
     this.overlay?.nativeElement.classList.remove('dis-block');
     this.modalCreateAndEdit?.nativeElement.classList.remove('dis-block');
-    this.categoryForm.reset();
   }
   // @TODO: add type
   openModalEditCategory(data: Category) {
     this.isCreate = false;
-
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
-
     this.putId = data.id + '';
-
     this.categoryForm.patchValue({
       categoryId: data.categoryId,
       categoryName: data.categoryName,
       categoryImg: data.categoryImg
     })
     console.log('data importEdit:' ,data)
-
   }
 
   Save() {
     this.closeModal();
-    // console.log(this.categoryForm.value);
-
     if(this.isCreate == true) {
       this.categoryService.postCategory(this.categoryForm.value).subscribe((dataCreate: Category) => {
         console.log('data Create',dataCreate)
       })
     }
     else {
-      this.categoryForm.get('categoryImg')?.setValue(this.arrayPicture)
       let putCategory = { // lay id de put theo id
       ...this.categoryForm.value,
       id: this.putId
       }
+      this.categoryForm.get('categoryImg')?.setValue(this.categoryPicture)
       this.categoryService.putCategory(this.putId, putCategory).subscribe(dataPut => { // truyen id vao lam key name
           // console.log('data Put', dataPut)
       })
-
     }
   }
 
@@ -102,36 +94,36 @@ export class AdminCategoryComponent implements OnInit {
       this.categoryService.deleteCategory(data).subscribe( dataDelete => {
         // console.log(dataDelete)
          }
-      )
-    }
-  }
+  )}}
 
- onFileSelected(event:any) {
-    var n = Date.now();
+  onFileSelected(event:any) {
+    this.loading?.nativeElement.classList.add('dis-block')
+
+    var   time = Date.now();
     const file = event.target.files[0];
-    const filePath = `CategoryImages/${n}`;
+    const filePath = `CategoryImages/${time}`;
     const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`CategoryImages/${n}`, file);
-    task
+    const upTask = this.storage.upload(`${filePath}`, file);
+    upTask
       .snapshotChanges()
       .pipe(
         finalize(() => {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
-              this.arrayPicture = url;
+              this.categoryPicture = url;
               this.categoryForm.get('categoryImg')?.setValue(url)
+              this.loading?.nativeElement.classList.remove('dis-block')
             }
-            console.log('đây là url',this.arrayPicture);
+            console.log('đây là url',this.categoryPicture);
           });
         })
       )
-      .subscribe(data => {
-        if (data) {
-          console.log(data);
+      .subscribe(active => {
+        if (active) {
+          console.log(active);
         }
       });
   }
-
 
 }

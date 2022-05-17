@@ -10,6 +10,7 @@ import { PlantsComponent } from 'src/app/product/plants/plants.component';
 import { SucculentsComponent } from 'src/app/product/succulents/succulents.component';
 import { ShareComModule } from 'src/app/share/share-com/share-com.module';
 import { ViewCartComponent } from 'src/app/product/view-cart/view-cart.component';
+import { SearchResultComponent } from 'src/app/search-result/search-result.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ViewCartComponent } from 'src/app/product/view-cart/view-cart.component
     CactiComponent,
     PlantsComponent,
     SucculentsComponent,
-    ViewCartComponent
+    ViewCartComponent,
+    SearchResultComponent
   ],
   imports: [
     CommonModule,

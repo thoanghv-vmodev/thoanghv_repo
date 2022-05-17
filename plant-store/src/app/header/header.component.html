@@ -4,7 +4,7 @@
             <div class="header-content--box">
                 <div class="content--box-hover" #item >
                   <i class="box-hover-item fa-solid fa-magnifying-glass"></i>
-                  <input class="box-hover-item"  type="text" placeholder="Search..." (focus)="onFocus()" (blur)="onBlur()" appFocusInput>
+                  <input class="box-hover-item" (keyup.enter)="Enter()"  type="text" placeholder="Search..." (focus)="onFocus()" (blur)="onBlur()" appFocusInput>
                 </div>
             </div>
             <div class="header-content--box">

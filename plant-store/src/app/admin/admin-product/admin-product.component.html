@@ -4,7 +4,17 @@
       Product
     </p>
   </div>
-  <button class="btn-add-new" (click)="openModalCreateCategory()">Create New</button>
+  <div class="admin-navbar">
+    <button class="btn-add-new" (click)="openModalCreateCategory()">Create New</button>
+    <div class="search-product">
+      <i class="box-hover-item fa-solid fa-magnifying-glass"></i>
+      <input class="form-control" id="search" type="text"
+             name="searchValue"
+             placeholder="Search..."
+             [(ngModel)]="searchValue"
+             (ngModelChange)="Search()">
+    </div>
+  </div>
   <div class="table-list">
     <table class="table table-hover table-bordered">
       <thead>
@@ -27,7 +37,7 @@
               <img src="{{data.productImg}}" alt="image{{data.productName}}">
             </a>
           </td>
-          <td>{{ data.productDesc }}</td>
+          <td class="table-des">{{ data.productDesc }}</td>
           <td>{{ data.productPrice | currency : 'USD'}}</td>
           <td><i class="table-icon fa-solid fa-pen" (click)="openModalEditCategory(data)"></i></td>
           <td><i class="table-icon fa-solid fa-trash" (click)="onDeleteCategory(data)"></i></td>

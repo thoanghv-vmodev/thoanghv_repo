@@ -1,0 +1,61 @@
+@use '../../styles.scss';
+
+
+/* Btn reuse */
+@mixin btn ($btn: styles.$color-text-brown) {
+  background-color: $btn;
+  border-style: none;
+  color: #fff;
+  padding: 10px 30px;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+  font-size: 15px;
+  white-space: nowrap;
+  margin: 0 12px;
+
+  &:hover {
+    background-color: #d0b0a6;
+    transition: all ease-in-out 0.3s;
+    color: #444;
+  }
+
+  &:active {
+    background-color: #a05841;
+    box-shadow: 0 2px #666;
+  }
+}
+.search-result {
+  position: relative;
+  top: 112px;
+  padding-bottom: 50px;
+}
+
+.search-result--title{
+  text-align: center;
+  color: styles.$color-text-brown;
+  font-size: 24px;
+  letter-spacing: 6px;
+  padding: 36px;
+}
+
+.search-result--input {
+  display: flex;
+  align-items: center ;
+  border: 1px solid #123132;
+  width: 100%;
+  background: #fff;
+  padding: 0 12px;
+
+  .input-search{
+    outline: none;
+    border: none;
+    border-style: none;
+    padding: 10px;
+    width: 100%;
+  }
+
+  i ,::placeholder{
+    font-size: 20px;
+    color: rgba(18, 49, 50, 0.8);
+  }
+}

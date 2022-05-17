@@ -19,8 +19,64 @@
     <div class="shop-all--title" id="product">
       <h1>Shop all</h1>
     </div>
-    <div class="product-list row gx-5 gy-5" >
-      <div class="product-list-content col-4" *ngFor="let data of productList">
+    <div class="search-product">
+      <div class="search-product--content">
+        <div class="search-product--input">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="input-search" [(ngModel)]="searchValue" (ngModelChange)="searchProduct()" placeholder="Search...">
+        </div>
+        <div class="search-product--content-filter">
+          <div class="form-check" *ngFor="let data of categoryList">
+              <input class="form-check-input" type="checkbox" value="{{data.categoryName}}"
+                      (change)="filterProductItem($event)">
+              <label class="form-check-label" for="flexCheckDefault">
+                {{data.categoryName}}
+              </label>
+          </div>
+          <!-- <div class="form-check">
+            <input class="form-check-input" type="checkbox"
+                   [(ngModel)]="filter.plant"
+                   (ngModelChange)="filterProductItem()">
+            <label class="form-check-label" for="flexCheckDefault">
+              Plants
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox"
+                   [(ngModel)]="filter.succulent"
+                   (ngModelChange)="filterProductItem()">
+            <label class="form-check-label" for="flexCheckDefault">
+              Succulents
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox"
+                   [(ngModel)]="filter.cacti"
+                   (ngModelChange)="filterProductItem()">
+            <label class="form-check-label" for="flexCheckDefault">
+              Cacti
+            </label>
+          </div> -->
+        </div>
+       <!--  <p>Select Category: </p>
+        <select class="form-select" aria-label="Default select example">
+          <option class="select-item" selected>All</option>
+          <ng-container *ngFor="let category of categoryList">
+            <option class="select-item" [(ngModel)]="filter" (ngModelChange)="filterProductItem()" value="{{category.categoryId}}">{{category.categoryName}}</option>
+          </ng-container>
+        </select> -->
+      </div>
+      <div class="search-product--content">
+
+      </div>
+    </div>
+    <div class="product-list row gx-4 gy-5" >
+      <ng-container *ngIf="isNull">
+        <p class="search-not-found">
+          No results found!
+        </p>
+      </ng-container>
+      <div class="product-list-content col-3" *ngFor="let data of productList">
         <div class="product-list-item">
           <a [routerLink]="['details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
             <img src="{{data.productImg}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
@@ -36,9 +92,9 @@
           <button class="btn-list" (click)="openAddToCart()">
             Add to cart
           </button>
-          <button class="btn-list " [routerLink]="['details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
+          <!-- <button class="btn-list " [routerLink]="['details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
             Detail
-          </button>
+          </button> -->
         </div>
       </div>
     </div>

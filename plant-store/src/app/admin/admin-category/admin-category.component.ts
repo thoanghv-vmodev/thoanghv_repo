@@ -38,6 +38,10 @@ export class AdminCategoryComponent implements OnInit {
       categoryImg: ['']
     })
 
+    this.getCategory()
+  }
+
+  getCategory() {
     this.categoryService.getCategory().subscribe(
       data => {
         this.listCategory = data;
@@ -73,8 +77,10 @@ export class AdminCategoryComponent implements OnInit {
   Save() {
     this.closeModal();
     if(this.isCreate == true) {
-      this.categoryService.postCategory(this.categoryForm.value).subscribe((dataCreate: Category) => {
+      this.categoryService.postCategory(this.categoryForm.value).subscribe((dataCreate) => {
         console.log('data Create',dataCreate)
+        // this.listCategory.push(this.categoryForm.value)
+        this.getCategory()
       })
     }
     else {
@@ -84,7 +90,7 @@ export class AdminCategoryComponent implements OnInit {
       }
       this.categoryForm.get('categoryImg')?.setValue(this.categoryPicture)
       this.categoryService.putCategory(this.putId, putCategory).subscribe(dataPut => { // truyen id vao lam key name
-          // console.log('data Put', dataPut)
+        this.getCategory()
       })
     }
   }
@@ -92,8 +98,8 @@ export class AdminCategoryComponent implements OnInit {
   onDeleteCategory(data: Category) { // data param
     if(confirm('Are you sure delete?') == true) {
       this.categoryService.deleteCategory(data).subscribe( dataDelete => {
-        // console.log(dataDelete)
-         }
+        this.getCategory()
+      }
   )}}
 
   onFileSelected(event:any) {

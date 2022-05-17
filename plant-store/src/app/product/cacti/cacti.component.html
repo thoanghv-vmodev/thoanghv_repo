@@ -23,8 +23,8 @@
       <h1>Cacti</h1>
 
     </div>
-    <div class="product-list row gx-5 gy-5">
-      <div class="product-list-content col-4" *ngFor="let data of productList">
+    <div class="product-list row gx-4 gy-5">
+      <div class="product-list-content col-3" *ngFor="let data of productList">
           <div class="product-list-item">
             <a [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
               <img src="{{data.productImg}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
@@ -40,9 +40,9 @@
             <button class="btn-list " (click)="openAddToCart()">
               Add to cart
             </button>
-            <button class="btn-list " [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
+            <!-- <button class="btn-list " [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
               Detail
-            </button>
+            </button> -->
           </div>
       </div>
     </div>

@@ -88,6 +88,10 @@
     color: styles.$color-text-brown;
   }
 
+  .table-des {
+    max-width: 300px;
+  }
+
   .table-tr {
     background-color: #fafafa;
   }
@@ -180,6 +184,23 @@
   }
 }
 
+.admin-navbar {
+  display: flex;
+  align-items: center;
+  .search-product {
+    display: flex;
+    align-items: center;
+    color: styles.$color-text-brown;
+    i{
+      font-size: 20px;
+      padding-right: 6px;
+    }
+    input {
+      border: 1px solid styles.$color-text-brown;
+    }
+  }
+}
+
 .overlayUpload {
   display: none;
   position: fixed;
@@ -224,3 +245,4 @@ input:focus {
   padding: 6px;
   margin: 0;
 }
+

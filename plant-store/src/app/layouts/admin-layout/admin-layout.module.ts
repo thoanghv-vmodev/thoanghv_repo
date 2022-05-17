@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ShareComModule } from 'src/app/share/share-com/share-com.module';
 
+
 @NgModule({
   declarations: [
     AdminCategoryComponent,

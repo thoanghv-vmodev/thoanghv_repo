@@ -129,3 +129,57 @@
 }
 
 
+/* search */
+.search-product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #123132;
+
+  .search-product--input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #123132;
+    background: #fff;
+    padding: 0 12px;
+
+    .input-search {
+      outline: none;
+      border: none;
+      border-style: none;
+      padding: 10px;
+      width: 100%;
+    }
+
+    i,
+    ::placeholder {
+      font-size: 18px;
+      color: rgba(18, 49, 50, 0.8);
+    }
+  }
+
+  .search-product--content {
+    display: flex;
+
+    .search-product--content-filter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .form-check {
+        margin: 0 24px;
+      }
+    }
+  }
+
+}
+
+.search-not-found {
+  padding: 46px 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+.select-item {
+  text-transform: capitalize;
+}

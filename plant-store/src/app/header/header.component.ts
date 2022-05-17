@@ -58,6 +58,9 @@ export class HeaderComponent implements OnInit {
     this.scroller.scrollToAnchor("contact");
   }
 
+  Enter() {
+    this.router.navigateByUrl('/search-result')
+  }
 
   //Specifying a relative route (đường dẫn tương đối)
   /* goToItems() {

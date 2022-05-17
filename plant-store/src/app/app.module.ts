@@ -39,6 +39,7 @@ import { DashboardComponent } from './admin/admin-dashboard/dashboard.component'
     ReactiveFormsModule,
     HttpClientModule,
     ShareComModule,
+
   ],
   providers: [ProductJsonService],
   bootstrap: [AppComponent]

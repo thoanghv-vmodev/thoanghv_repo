@@ -7,6 +7,7 @@ import { PlantsComponent } from 'src/app/product/plants/plants.component';
 import { SucculentsComponent } from 'src/app/product/succulents/succulents.component';
 import { ViewCartComponent } from 'src/app/product/view-cart/view-cart.component';
 import { RegisterComponent } from 'src/app/register/register.component';
+import { SearchResultComponent } from 'src/app/search-result/search-result.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,11 @@ const routes: Routes = [
 
   {
     path: 'view-cart', component: ViewCartComponent
+  },
+
+  {
+    path:'search-result',
+     component: SearchResultComponent,
   },
 
   {

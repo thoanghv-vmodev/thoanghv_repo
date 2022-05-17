@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -27,6 +27,7 @@ export class AdminProductComponent implements OnInit {
   isCreate = true;
   listProduct: Products[] = [];
   putId?: string;
+  searchValue!: string;
 
   selectedFile: any;
   productPicture: string | undefined;
@@ -34,31 +35,34 @@ export class AdminProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      productId: [''],
+      productId: ['', Validators.required],
       productName: [''],
       productType: [''],
       productImg: [''],
       productDesc: [''],
       productPrice: [''],
-    })
+    });
+    this.getListProduct();
+  }
 
+  getListProduct() {
     this.productService.getProduct().subscribe(
       data => {
         this.listProduct = data;
-        // console.log(this.listProduct)
+        console.log(this.listProduct)
       }
     )
   }
 
   openModalCreateCategory() {
-    this.productForm.reset();
     this.isCreate = true;
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
+    // this.productForm.reset();
   }
 
   closeModal() {
-    this.productForm.reset();
+    // this.productForm.reset();
     this.overlay?.nativeElement.classList.remove('dis-block');
     this.modalCreateAndEdit?.nativeElement.classList.remove('dis-block');
   }
@@ -79,19 +83,14 @@ export class AdminProductComponent implements OnInit {
     console.log('data importEdit:' ,data)
   }
 
-  onDeleteCategory(data: Products) { // data param
-    if(confirm('Are you sure delete?') == true) {
-      this.productService.deleteProduct(data).subscribe( dataDelete => {
-        // console.log(dataDelete)
-      }
-  )}}
-
-
   Save():void {
     this.closeModal();
+    console.log(this.productForm.value)
     if(this.isCreate == true) {
-      this.productService.postProduct(this.productForm.value).subscribe((dataCreate: Products) => {
+      this.productService.postProduct(this.productForm.value).subscribe((dataCreate) => {
         console.log('data Create',dataCreate)
+        // this.listProduct.push(this.productForm.value)
+        this.getListProduct();
       })
     }
     else {
@@ -102,9 +101,19 @@ export class AdminProductComponent implements OnInit {
       this.productForm.get('productImg')?.setValue(this.productPicture)
       this.productService.putProduct(this.putId, putCategory).subscribe(dataPut => { // truyen id vao lam key name
           // console.log('data Put', dataPut)
+          this.getListProduct();
       })
     }
   }
+
+   onDeleteCategory(data: Products) { // data param
+    if(confirm('Are you sure delete?') == true) {
+      this.productService.deleteProduct(data).subscribe( dataDelete => {
+        // console.log(dataDelete)
+        this.getListProduct();
+      }
+  )}}
+
 
   onFileSelected(event:any) {
     this.loading?.nativeElement.classList.add('dis-block')
@@ -136,5 +145,15 @@ export class AdminProductComponent implements OnInit {
       });
   }
 
+  Search() {
+    if(!this.listProduct || !this.searchValue){
+      return this.ngOnInit();
+    }
+    return this.listProduct = this.listProduct.filter(product =>
+      product.productName.toLocaleLowerCase().match(this.searchValue.toLocaleLowerCase()) ||
+      product.productPrice.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase()) ||
+      product.productId.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase()),
+      )
+  }
 
 }

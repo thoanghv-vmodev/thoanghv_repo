@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { fromEvent, observable, Observable, Subscription } from 'rxjs';
 import { throttleTime, scan, finalize } from 'rxjs/operators';
 import { Products } from 'src/app/common/product';
+import { MessengerService } from 'src/app/service/messenger.service';
 import { ProductJsonService } from '../../service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 @Component({
@@ -17,10 +18,15 @@ export class CactiComponent implements OnInit {
   constructor(
     private productService: ProductJsonService,
     private scroller: ViewportScroller,
+    private msg: MessengerService
   ) { }
 
+  productList: Products[] = [];
+  currentList: Products[] = [];
 
-  openAddToCart() {
+  openAddToCart(data: Products) {
+    this.msg.sendMsg(data);
+
     this.openCart.addToCart.nativeElement.classList.add('active');
     this.openCart.overlay.nativeElement.style.display = 'block';
   }
@@ -29,8 +35,6 @@ export class CactiComponent implements OnInit {
     this.scroller.scrollToAnchor("product");
   }
 
-  productList: Products[] = [];
-  currentList: Products[] = [];
 
   ngOnInit(): void {
   this.productService.getProduct().subscribe(data => {

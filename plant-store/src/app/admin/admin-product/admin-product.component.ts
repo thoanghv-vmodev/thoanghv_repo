@@ -3,7 +3,9 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { Category } from 'src/app/common/category';
 import { Products } from 'src/app/common/product';
+import { CategoryJsonService } from 'src/app/service/category-json.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 
 @Component({
@@ -20,12 +22,14 @@ export class AdminProductComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private productService: ProductJsonService,
+    private categoryService: CategoryJsonService,
     private storage: AngularFireStorage,
   ) { }
 
   productForm!: FormGroup;
   isCreate = true;
   listProduct: Products[] = [];
+  listCategory: Category[] = [];
   putId?: string;
   searchValue!: string;
 
@@ -43,6 +47,14 @@ export class AdminProductComponent implements OnInit {
       productPrice: [''],
     });
     this.getListProduct();
+    this.getListCategory();
+  }
+
+  getListCategory() {
+    this.categoryService.getCategory().subscribe(data => {
+      this.listCategory = data;
+      console.log(this.listCategory)
+    })
   }
 
   getListProduct() {
@@ -58,11 +70,13 @@ export class AdminProductComponent implements OnInit {
     this.isCreate = true;
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
-    // this.productForm.reset();
+    this.productForm.reset();
+    this.productPicture = '';
   }
 
   closeModal() {
-    // this.productForm.reset();
+    this.productForm.reset();
+    this.productPicture = '';
     this.overlay?.nativeElement.classList.remove('dis-block');
     this.modalCreateAndEdit?.nativeElement.classList.remove('dis-block');
   }
@@ -72,6 +86,8 @@ export class AdminProductComponent implements OnInit {
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
     this.putId = data.id + '';
+    this.productPicture = data.productImg;
+
     this.productForm.patchValue({
       productId: data.productId,
       productName: data.productName,
@@ -86,7 +102,7 @@ export class AdminProductComponent implements OnInit {
   Save():void {
     this.closeModal();
     console.log(this.productForm.value)
-    if(this.isCreate == true) {
+    if(this.isCreate == true ) {
       this.productService.postProduct(this.productForm.value).subscribe((dataCreate) => {
         console.log('data Create',dataCreate)
         // this.listProduct.push(this.productForm.value)

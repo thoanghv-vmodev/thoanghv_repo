@@ -27,24 +27,11 @@
 
 .overlay {
   display: none;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  position: absolute;
   background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
-  z-index: 20;
+  height: 100%;
   animation: show ease-in-out 0.4s;
-}
-
-@keyframes show {
-  from {
-    opacity: 0.3;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 .dis-block {
@@ -52,25 +39,39 @@
 }
 
 .active {
-  transform: translateX(0) !important;
+  // transform: translateY(0) !important;
+  display: block !important;
+}
+
+@keyframes show {
+  from{
+    opacity: 0.8;
+  }
+  to{
+    opacity: 1;
+  }
 }
 
 .add-to-card {
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
+  left: 0;
   bottom: 0;
-  width: 350px;
-  height: 100%;
-  background-color: #ffffff;
-  z-index: 99;
-  transition: all ease 0.6s;
-  transform: translateX(100%);
+  z-index: 110;
+  // transform: translateY(100%);
 
   .add-to-cart__container {
-
+    margin: auto;
+    position: relative;
+    top: 70px;
+    width: 350px;
+    background-color: #ffffff;
+    animation: show ease-in-out 0.4s;
+    ;
     .container--title {
-      padding: 34px 34px 10px 34px;
+      padding: 14px 28px;
       color: styles.$color-text-brown;
       font-size: 26px;
       .container--name{
@@ -79,7 +80,7 @@
     }
 
     .add-to-cart__container--box {
-      padding: 34px;
+      padding: 8px 28px;
       border-bottom: 1px solid styles.$color-text-brown;
     }
   }
@@ -88,15 +89,12 @@
 .add-to-cart__container--list {
   list-style: none;
   color: styles.$color-text-brown;
-  height: 220px;
-  overflow-y: scroll;
 
   .container--list-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-bottom: 28px;
-    margin-bottom: 28px;
     border-bottom: 1px solid;
 
     .container--list-detail {
@@ -112,26 +110,9 @@
         padding: 4px;
         color: styles.$color-text-brown;
         border: 1px solid styles.$color-text-brown;
-
-          input {
-            width: 100%;
-            color: styles.$color-text-brown;
-            outline: none;
-            border: none;
-            text-align: center;
-          }
-
-          /* Chrome, Safari, Edge, Opera */
-          input::-webkit-outer-spin-button,
-          input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-          }
-
-          /* Firefox */
-          input[type=number] {
-            -moz-appearance: textfield;
-          }
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
 
           span {
             opacity: 0.6;
@@ -175,6 +156,7 @@
  }
 
 .close-cart {
+  text-align: right;
   cursor: pointer;
   transition: all ease-in-out 0.3s;
   &:hover {
@@ -188,12 +170,17 @@
   font-size: 24px;
 
     p {
-      margin-bottom: 12px;
+      margin: 10px 0;
     }
 }
-
+.cart-empty {
+  padding-top: 60px;
+  font-size: 20px;
+  text-align: center;
+  color: styles.$color-text-brown;
+}
 .btn-view {
-  padding: 34px;
+  padding: 28px;
   .btn-view-cart {
       @include btn;
       width: 100%;

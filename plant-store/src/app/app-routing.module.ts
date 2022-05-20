@@ -41,6 +41,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes,
   {
+    scrollPositionRestoration: 'enabled',
     preloadingStrategy: PreloadAllModules // load truoc module can sd
   }
   )],

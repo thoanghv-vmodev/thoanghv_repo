@@ -32,6 +32,8 @@
     border-style: none;
     padding: 0px 6px;
   }
+
+
 }
 
 ::placeholder{
@@ -81,6 +83,16 @@
 .cart {
   padding-left: 22px;
   cursor: pointer;
+  i {
+  font-size: 26px;
+  }
+  .count-item {
+    position: absolute;
+    font-size: 10px;
+    color: #fff;
+    top: 27px;
+    right: 20px;
+  }
 }
 
 .nav-header-content {

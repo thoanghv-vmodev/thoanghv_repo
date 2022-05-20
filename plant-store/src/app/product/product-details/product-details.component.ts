@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } fro
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from 'src/app/common/product';
 import { AuthService } from 'src/app/service/auth-service.service';
+import { MessengerService } from 'src/app/service/messenger.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 
@@ -12,96 +13,52 @@ import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
     private productService: ProductJsonService,
-    private router: Router
+    private router: Router,
+    private msg: MessengerService
     ) {}
-
-/*   productList = [
-    {
-      id: 0,
-      prdName: 'ÁDASD',
-      price: 1222
-    },
-     {
-      id: 1,
-      prdName: 'aKAKDS',
-      price: 99999
-    },
-    {
-      id: 2,
-      prdName: 'SFSDAF',
-      price: 5349503
-    },
-    {
-      id: 3,
-      prdName: 'ƯEWDSD',
-      price: 34434522222
-    },
-    {
-      id: 4,
-      prdName: 'SDFSDFD',
-      price: 332323232
-    },
-
-  ]
- */
-  listCurrent: Products[] = [];
   listProduct: Products[] = [];
-  listItem: any;
+  detailsItem: Products[] = [];
 
   url: any = this.router.url;
 
+  listProductAddToCart: Products[] = [];
+  qty = 1;
+
   ngOnInit(): void {
   const id = this.route.snapshot.paramMap.get('id');
-  console.log(this.url)
-  // console.log('id', id);
 
-  // this.itemProduct = this.authService.getProductById(id)
-
-  this.productService.getProduct().subscribe(data => {
-    this.listCurrent = data;
-    this.listItem = this.listCurrent.find((el:any) => el.id == id);
-    console.log(this.listItem)
-  }
-  )
+  this.getDataLocalStorage();
 
   this.productService.getProduct().subscribe(data => {
     this.listProduct = data;
+    let item: any = this.listProduct.filter((el:any) => el.id == id);
+    this.detailsItem = item
   })
+}
 
- /*  this.route.paramMap.subscribe(params => {
-    const id = params.get('id')
-    this.authService.getIndexProduct(id).subscribe(data =>
-      this.itemProduct = data)
-  })
-
-
-  this.productList.forEach((element) => {
-    if(element.id.toString() == id) {
-      this.itemProduct = element;
+  getDataLocalStorage() {
+    let storage = localStorage.getItem('products');
+    if(storage) {
+      this.listProductAddToCart = JSON.parse(storage)
     }
-  })
-
-  for(let data = 0; data < this.productList.length; data++) {
-    console.log(data)
-    if(this.productList[data].id.toString() == id) {
-      this.itemProduct = this.productList[data];
-      break; // ngăn không cho mỗi lần so sánh thì loop qua tất cả
-    }
+    this.msg.sendItemInCart(this.listProductAddToCart)
   }
 
-  this.itemProduct = this.productList.find(el => el.id.toString() == id)
- */
-
-  }
-
-  openAddToCart() {
-    this.openCart.addToCart.nativeElement.classList.add('active');
-    this.openCart.overlay.nativeElement.style.display = 'block';
+  addProductToCart(product: Products) {
+    console.log(this.listProductAddToCart)
+    this.getDataLocalStorage();
+    let item = this.listProductAddToCart.find(value => value.id === product.id)
+    if(item) {
+      item.qty++
+    } else {
+      this.listProductAddToCart.push({...product, qty:this.qty});
+    }
+    localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
+    this.msg.sendItemInCart(this.listProductAddToCart)
   }
 
   slideConfig = {

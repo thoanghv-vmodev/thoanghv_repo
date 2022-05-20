@@ -8,11 +8,8 @@ const routes: Routes = [
 
   {
     path: 'admin',
+    redirectTo:'/admin-category',
     pathMatch: 'full',
-  },
-
-  {
-    path:'', redirectTo:'/admin-category', pathMatch:'full'
   },
 
   {

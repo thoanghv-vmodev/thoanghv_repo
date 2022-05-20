@@ -4,7 +4,8 @@
             <div class="header-content--box">
                 <div class="content--box-hover" #item >
                   <i class="box-hover-item fa-solid fa-magnifying-glass"></i>
-                  <input class="box-hover-item" (keyup.enter)="Enter()"  type="text" placeholder="Search..." (focus)="onFocus()" (blur)="onBlur()" appFocusInput>
+                  <input class="box-hover-item" (keyup.enter)="Enter()"
+                         type="text" placeholder="Search..." (focus)="onFocus()" (blur)="onBlur()" appFocusInput>
                 </div>
             </div>
             <div class="header-content--box">
@@ -15,7 +16,8 @@
                     <p class="login-item login-item-title">Log In</p>
                   </div>
                   <div class="cart">
-                    <i class="font-22 fa-solid fa-bag-shopping" (click)="openAddToCart()"><span>1</span></i>
+                    <i class="font-22 fa-solid fa-bag-shopping" routerLink="/view-cart">
+                      <p class="count-item">{{itemInCart.length}}</p></i>
                   </div>
             </div>
         </div>
@@ -61,6 +63,3 @@
         </div>
     </div>
 </header>
-<ng-container>
-  <app-add-to-cart #openCart></app-add-to-cart>
-</ng-container>

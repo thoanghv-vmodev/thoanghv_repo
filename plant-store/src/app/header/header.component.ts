@@ -1,7 +1,9 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Products } from '../common/product';
 import { AddToCartComponent } from '../product/add-to-cart/add-to-cart.component';
+import { MessengerService } from '../service/messenger.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   onActive1 = true
   onActive2 = false
+  itemInCart: any;
 
   @ViewChild ('item') item: ElementRef<HTMLElement> | undefined;
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
@@ -19,6 +22,7 @@ export class HeaderComponent implements OnInit {
     private scroller: ViewportScroller,
     private router: Router,
     private route: ActivatedRoute,
+    private msg: MessengerService
     ) { }
 
   ngOnInit(): void {
@@ -30,6 +34,16 @@ export class HeaderComponent implements OnInit {
         this.onActive1 = false
         this.onActive2 = true
     }, 6000);
+    this.getNumOfProduct()
+    let a: any = localStorage.getItem('products')
+    this.itemInCart = JSON.parse(a)
+  }
+
+   getNumOfProduct() {
+    this.msg.getItemInCart().subscribe(data => {
+      this.itemInCart = data;
+      // console.log(this.itemInCart)
+    })
   }
 
   openAddToCart() {
@@ -62,8 +76,4 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/search-result')
   }
 
-  //Specifying a relative route (đường dẫn tương đối)
-  /* goToItems() {
-  this.router.navigate(['succulents'], { relativeTo: this.route });
-  } */
 }

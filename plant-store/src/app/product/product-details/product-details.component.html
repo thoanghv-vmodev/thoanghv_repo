@@ -1,21 +1,21 @@
 <div class="product-details size-page">
   <div class="product-details--container">
     <div class="product-details--content">
-      <div class="content-item">
+      <div class="content-item" *ngFor="let data of detailsItem">
         <a  routerLink="/home-page">Home</a> <span class="path-url">/</span>
         <ng-container *ngIf="url">
           <a routerLink="/product-list">Shop all</a> <span class="path-url">/</span>
         </ng-container>
-        <ng-container *ngIf="listItem.productType == 'cacti'">
+        <ng-container *ngIf="data.productType == 'cacti'">
           <a  routerLink="/cacti">Cacti</a> <span class="path-url">/</span>
         </ng-container>
-        <ng-container *ngIf="listItem.productType == 'plant'">
+        <ng-container *ngIf="data.productType == 'plants'">
           <a routerLink="/plant">Plant</a> <span class="path-url">/</span>
         </ng-container>
-        <ng-container *ngIf="listItem.productType == 'succulent'">
+        <ng-container *ngIf="data.productType == 'succulents'">
           <a routerLink="/succulents">Succulent</a> <span class="path-url">/</span>
         </ng-container>
-      <p class="path-url-title" href="">{{listItem.productName}}</p>
+      <p class="path-url-title">{{data.productName}}</p>
       </div>
      <!--  <div class="content-item">
         <div class="prev"><i class="fa-solid fa-chevron-left"></i>Prev</div> |
@@ -23,16 +23,18 @@
       </div> -->
     </div>
     <div class="product-details--content">
-      <ng-container *ngIf="listItem && listItem.id">
+      <ng-container *ngFor="let data of detailsItem">
         <div class="product-box">
           <div class="slider-one">
-            <img class="details-img" src="{{listItem.productImg}}"
+            <a href="{{data.productImg}}" target="_blank">
+            <img class="details-img" src="{{data.productImg}}"
                  onerror="this.src='../../assets/images/senda2.webp'"
-                 alt="image-product {{listItem.productName}}">
+                 alt="image-product {{data.productName}}">
+            </a>
           </div>
           <div class="slider-one--click">
-            <div class="img-click " >
-              <img src="{{listItem.productImg}}" alt="image-product {{listItem.productName}}">
+            <div class="img-click ">
+                <img src="{{data.productImg}}" alt="image-product {{data.productName}}">
             </div>
           </div>
           <div class="product-share">
@@ -46,21 +48,21 @@
               </a>
             </div>
           </div>
-          <p class="product-desc">{{listItem.productDesc}}</p>
+          <p class="product-desc">{{data.productDesc}}</p>
         </div>
         <div class="product-box">
-          <p class="product-box--name">{{listItem.productName}}</p>
+          <p class="product-box--name">{{data.productName}}</p>
           <div class="product-index">
-            <p class="product-item">SKU: {{listItem.productId}}</p>
+            <p class="product-item">SKU: {{data.productId}}</p>
           </div>
-          <p class="product-item">{{listItem.productPrice | currency: '$'}}</p>
+          <p class="product-item">{{data.productPrice | currency: '$'}}</p>
           <div class="product-item">
             <label>Quantity</label>
             <br>
-            <input class="product-item--input" type="number" value="1">
+            <input class="product-item--input" type="number" value="{{qty}}">
           </div>
           <div class="product-item">
-            <button class="btn-buy" (click)="openAddToCart()">Add to cart</button>
+            <button class="btn-buy" (click)="addProductToCart(data)">Add to cart</button>
             <button class="btn-buy" routerLink="/view-cart">Buy Now</button>
           </div>
           <div class="accordion accordion-flush" id="accordionFlushExample">

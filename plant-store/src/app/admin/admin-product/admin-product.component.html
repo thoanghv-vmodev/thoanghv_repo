@@ -75,15 +75,26 @@
         </div>
         <div class="form-content">
           <label for="product-type"> Product Type: </label>
-          <input class="form-control" id="product-type" type="text" formControlName="productType" placeholder="Type:">
+          <select class="form-select" aria-label="Default select example" formControlName="productType">
+            <option selected disabled>Select type</option>
+            <option *ngFor="let data of listCategory" class="form-control"  value="{{data.categoryName}}">
+              {{data.categoryName}}</option>
+          </select>
         </div>
         <div class="form-content">
           <label for="product-name"> Product Name: </label>
           <input class="form-control" id="product-name" type="text" formControlName="productName" placeholder="Name:">
         </div>
         <div class="form-content">
-          <label for="product-img"> Product Image: </label>
-          <input class="form-control" id="product-img" type="file" (change)="onFileSelected($event)">
+          <div class="product-img">
+            <label for="product-img"> Product Image: </label>
+              <input class="form-control" id="product-img" type="file" (change)="onFileSelected($event)">
+            <ng-container *ngIf="productPicture != ''">
+              <a href="{{productPicture}}" target="_blank">
+                <img src="{{productPicture}}">
+              </a>
+            </ng-container>
+          </div>
           <div class="overlayUpload" #loading>
             <div class="spin-upload">
               <div class="spinner-border" role="status">
@@ -94,7 +105,7 @@
         </div>
         <div class="form-content">
           <label for="product-desc"> Product Description: </label>
-          <input class="form-control" id="product-desc" type="text" formControlName="productDesc" placeholder="Description:">
+          <textarea row="1" class="form-control" id="product-desc" type="text" formControlName="productDesc" placeholder="Description:"></textarea>
         </div>
         <div class="form-content">
           <label for="product-price"> Product Price: </label>

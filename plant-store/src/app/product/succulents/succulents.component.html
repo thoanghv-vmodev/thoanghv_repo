@@ -36,7 +36,7 @@
           <p>{{data.productPrice | currency:'USD':'symbol'}}</p>
         </div>
         <div class="product-list-item product-list-item--flex">
-          <button class="btn-list " (click)="openAddToCart()">
+          <button class="btn-list " (click)="openAddToCart(data)">
             Add to cart
           </button>
           <!-- <button class="btn-list " [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">

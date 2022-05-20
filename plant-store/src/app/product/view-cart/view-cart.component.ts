@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Products } from 'src/app/common/product';
+import { MessengerService } from 'src/app/service/messenger.service';
 
 @Component({
   selector: 'app-view-cart',
@@ -6,11 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-cart.component.scss']
 })
 export class ViewCartComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   listProvincesVn = [
     {
@@ -266,5 +264,57 @@ export class ViewCartComponent implements OnInit {
     provin:"Yên Bái",
     }
   ]
+  constructor(
+    private msg: MessengerService,
+    private route: ActivatedRoute
+  ) {}
+  listDataInCart: Products[]= [];
+  cartTotal = 0;
+  ngOnInit(): void {
+    // this.getDataProductMsg();
+    this.getDataLocalStorage();
+  }
+
+  getDataLocalStorage() {
+    let storage = localStorage.getItem('products');
+    if(storage) {
+      this.listDataInCart = JSON.parse(storage)
+    };
+    this.subTotal();
+    this.msg.sendItemInCart(this.listDataInCart);
+  }
+
+  subTotal() {
+    this.cartTotal = 0;
+    this.listDataInCart.forEach(item => {
+      this.cartTotal += (item.productPrice * item.qty)
+    });
+  }
+
+  removeItem(data: Products) {
+    this.getDataLocalStorage();
+    this.listDataInCart = this.listDataInCart.filter(item => item.id != data.id);
+    localStorage.setItem('products', JSON.stringify(this.listDataInCart));
+    this.msg.sendItemInCart(this.listDataInCart);
+  }
+
+  incrementItem(data: Products){
+    let item: any = this.listDataInCart.find(value => value.id === data.id);
+    item.qty++;
+    this.subTotal();
+  }
+
+  decrementItem(data: Products){
+    let item: any = this.listDataInCart.find(value => value.id === data.id);
+    item.qty--;
+    if(item.qty <= 0) {
+      this.removeItem(item)
+    }
+    this.subTotal();
+  }
+
+  checkOut(){
+    console.log(this.listDataInCart);
+  }
 
 }

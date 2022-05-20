@@ -43,6 +43,9 @@
   .cart-list {
     padding: 16px 0;
 
+    .cart-list-box {
+      padding: 12px 0;
+    }
 
     .cart-list-item {
       display: flex;
@@ -170,33 +173,17 @@
 }
 
 .list-detail-input {
-   display: flex;
-   justify-content: space-between;
-   width: 90px;
-   height: 30px;
-   align-items: center;
-   padding: 4px;
-   color: styles.$color-text-brown;
-   border: 1px solid styles.$color-text-brown;
-   input {
-     width: 100%;
-     color: styles.$color-text-brown;
-     outline: none;
-     border: none;
-     text-align: center;
-   }
-
-   /* Chrome, Safari, Edge, Opera */
-   input::-webkit-outer-spin-button,
-   input::-webkit-inner-spin-button {
-     -webkit-appearance: none;
-     margin: 0;
-   }
-
-   /* Firefox */
-   input[type=number] {
-     -moz-appearance: textfield;
-   }
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+  height: 30px;
+  align-items: center;
+  padding: 4px;
+  color: styles.$color-text-brown;
+  border: 1px solid styles.$color-text-brown;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 
    span {
      opacity: 0.6;

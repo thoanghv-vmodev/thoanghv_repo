@@ -107,14 +107,24 @@
       color: styles.$color-text-brown;
     }
 
-    .product-item--input {
-      margin: 6px 0;
-      width: 80px;
-      border: 1px solid #999;
-      color: #666;
-      padding: 8px;
-      outline: none;
-    }
+
+    .product-item-input {
+       display: flex;
+       justify-content: space-between;
+       width: 80px;
+       margin-top: 8px;
+       padding: 4px;
+       color: styles.$color-text-brown;
+       border: 1px solid styles.$color-text-brown;
+       user-select: none;
+       -moz-user-select: none;
+       -webkit-user-select: none;
+
+       span {
+         opacity: 0.6;
+         cursor: pointer;
+       }
+     }
   }
 
   .content-item {

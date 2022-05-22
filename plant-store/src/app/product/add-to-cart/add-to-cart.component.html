@@ -22,10 +22,10 @@
                     {{data.productPrice | currency: 'USD'}}
                   </p >
                   <div class="list-detail-input">
-                    <span (click)="decrementItem(data)">-</span>
-                      <p>{{data.qty}}</p>
-                      <!-- <input type="number" value=""> -->
-                    <span (click)="incrementItem(data)">+</span>
+                    <span (click)="decrementItem()">-</span>
+                      <p>{{qty}}</p>
+                      <!-- <input type="number" ngModel min="1" value="{{qty}}"> -->
+                    <span (click)="incrementItem()">+</span>
                   </div>
                 </div>
               <div>

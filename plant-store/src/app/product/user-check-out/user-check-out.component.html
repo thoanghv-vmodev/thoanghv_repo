@@ -1,0 +1,83 @@
+<div class="check-out size-page">
+  <ng-container *ngIf="listItemCheckOut.length <= 0">
+    <p class="view-cart-content--title border-bd">My Cart</p>
+    <div class="cart-empty border-bd">
+      <p>Cart is empty</p>
+      <a routerLink="/product-list">Continue Shopping</a>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="listItemCheckOut.length >= 1">
+    <div class="check-out-container row gx-5">
+        <section class="check-out-content col-7">
+          <p class="check-out-content--title border-bd">My Cart</p>
+          <div class="cart-list border-bd">
+            <ng-container *ngFor="let data of listItemCheckOut">
+              <div class="row gx-4 cart-list-box">
+                <div class="cart-list-item col-8">
+                  <div class="cart-list-details">
+                    <div class="cart-list-details--img">
+                      <a href="{{data.productImg}}" target="_blank">
+                        <img src="{{data.productImg}}" alt="cart-img">
+                      </a>
+                    </div>
+                    <div class="cart-list-details--info">
+                      <p>{{data.productName}}</p>
+                      <span>{{data.productPrice | currency: 'USD'}}</span>
+                    </div>
+                  </div>
+                  <div class="list-detail-input">
+                    x{{data.qty}}
+                  </div>
+                </div>
+                <div class="cart-list-item col-4">
+                  <div></div>
+                  <p class="subtatol-item">
+                    {{data.productPrice | currency: 'USD'}}
+                  </p>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <div class="cart-option">
+              <details class="cart-option-box">
+                <summary>
+                  <i class="fa-solid fa-note-sticky"></i><span class="cart-option--title">Add a note</span>
+                </summary>
+                <p class="cart-option-item">
+                  <textarea class="input-code" name="input-code" id="input-code" [(ngModel)]="textNode" cols="40" rows="3" placeholder="Instructions? Special requests? Add them here."></textarea>
+                </p>
+              </details>
+            </div>
+        </section>
+        <section class="check-out-content col-5">
+          <p class="check-out-content--title border-bd">
+            Subtotal
+          </p>
+          <div class="cart-order">
+            <div class="cart-order-box border-bd">
+              <div class="cart-order-item">
+                <p class="py-2">Subtotal</p>
+                <div class="cart-oder-shipping">
+                  <p class="py-2">Shipping</p>
+                  <select class="form-select" aria-label="Default select example" (change)="selectCountry($event)">
+                    <option selected disabled>Select your destination</option>
+                    <option *ngFor="let data of listCountry" class="form-control" [value]="data.name">
+                      {{data.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="cart-order-item">
+                <p class="py-2">{{cartTotal | currency: 'USD'}}</p>
+                <p class="py-2">FREE</p>
+              </div>
+            </div>
+            <div class="cart-order-box">
+              <p class="py-4 fs-5">Total</p>
+              <p class="py-4 fs-5">{{cartTotal | currency: 'USD'}}</p>
+            </div>
+            <button class="btn-checkout" (click)="onOrder()">Order</button>
+          </div>
+        </section>
+    </div>
+  </ng-container>
+</div>

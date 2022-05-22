@@ -28,7 +28,6 @@
           <div class="slider-one">
             <a href="{{data.productImg}}" target="_blank">
             <img class="details-img" src="{{data.productImg}}"
-                 onerror="this.src='../../assets/images/senda2.webp'"
                  alt="image-product {{data.productName}}">
             </a>
           </div>
@@ -59,11 +58,16 @@
           <div class="product-item">
             <label>Quantity</label>
             <br>
-            <input class="product-item--input" type="number" value="{{qty}}">
+            <div class="product-item-input">
+              <span (click)="decrementItem()">-</span>
+              <p>{{qty}}</p>
+              <!-- <input type="number" value=""> -->
+              <span (click)="incrementItem()">+</span>
+            </div>
           </div>
           <div class="product-item">
             <button class="btn-buy" (click)="addProductToCart(data)">Add to cart</button>
-            <button class="btn-buy" routerLink="/view-cart">Buy Now</button>
+            <button class="btn-buy" (click)="buyProductToCart(data)">Buy Now</button>
           </div>
           <div class="accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item product-item">

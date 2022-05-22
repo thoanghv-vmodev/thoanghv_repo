@@ -1,0 +1,71 @@
+@use '../../../styles.scss';
+
+@mixin btn ($btn: styles.$color-text-brown) {
+  background-color: $btn;
+  border-style: none;
+  color: #fff;
+  padding: 12px 60px;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+  font-size: 15px;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #d0b0a6;
+    transition: all ease-in-out 0.3s;
+    color: #444;
+  }
+
+  &:active {
+    background-color: #a05841;
+    box-shadow: 0 2px #666;
+  }
+}
+
+.admin-shop {
+  background-color: #fff;
+  color: styles.$color-text-brown;
+  padding-bottom: 100px;
+
+  .admin-shop-title {
+    color: styles.$color-text-brown;
+    padding: 18px;
+    font-size: 26px;
+  }
+  .history-container {
+    padding: 0 18px;
+    .border-line {
+      border-bottom: 1px solid styles.$color-text-brown;
+      padding: 8px 0;
+    }
+    .user-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+}
+
+
+.alert {
+  background-color: #fed3d3;
+  color: #820000;
+  padding: 6px;
+  margin: 0;
+}
+
+
+.product-order {
+  display: flex;
+  color: styles.$color-text-brown;
+  padding: 4px 0;
+  .product-order-item {
+    img{
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      margin-right: 6px;
+      border: 1px solid styles.$color-text-brown;
+    }
+  }
+}

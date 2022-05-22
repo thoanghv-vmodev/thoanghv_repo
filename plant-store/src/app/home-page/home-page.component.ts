@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.getCategory().subscribe(data => {
       this.listCategory = data
-      console.log(data)
+      // console.log(data)
     })
   }
 }

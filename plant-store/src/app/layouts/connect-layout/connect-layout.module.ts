@@ -11,6 +11,8 @@ import { SucculentsComponent } from 'src/app/product/succulents/succulents.compo
 import { ShareComModule } from 'src/app/share/share-com/share-com.module';
 import { ViewCartComponent } from 'src/app/product/view-cart/view-cart.component';
 import { SearchResultComponent } from 'src/app/search-result/search-result.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserCheckOutComponent } from 'src/app/product/user-check-out/user-check-out.component';
 
 
 @NgModule({
@@ -21,12 +23,15 @@ import { SearchResultComponent } from 'src/app/search-result/search-result.compo
     PlantsComponent,
     SucculentsComponent,
     ViewCartComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    UserCheckOutComponent
   ],
   imports: [
     CommonModule,
     ConnectLayoutRoutingModule,
-    ShareComModule
+    ShareComModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers:[ProductJsonService]
 })

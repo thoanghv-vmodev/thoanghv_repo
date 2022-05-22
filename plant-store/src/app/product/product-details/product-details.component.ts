@@ -35,10 +35,12 @@ export class ProductDetailsComponent implements OnInit {
 
   this.productService.getProduct().subscribe(data => {
     this.listProduct = data;
-    let item: any = this.listProduct.filter((el:any) => el.id == id);
-    this.detailsItem = item
+    let item:any = this.listProduct.find((el:any) => el.id == id);
+    this.detailsItem.push(item)
+    // this.detailsItem.push({...item, qty: this.qty})
+    console.log('data',this.detailsItem)
   })
-}
+  }
 
   getDataLocalStorage() {
     let storage = localStorage.getItem('products');
@@ -49,16 +51,38 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addProductToCart(product: Products) {
-    console.log(this.listProductAddToCart)
+    // console.log(this.listProductAddToCart)
+    alert('Add to cart success!')
     this.getDataLocalStorage();
     let item = this.listProductAddToCart.find(value => value.id === product.id)
     if(item) {
-      item.qty++
+      item.qty += this.qty
     } else {
-      this.listProductAddToCart.push({...product, qty:this.qty});
+      this.listProductAddToCart.push({...product, qty: this.qty});
     }
     localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
     this.msg.sendItemInCart(this.listProductAddToCart)
+  }
+
+  buyProductToCart(product: Products) {
+    this.getDataLocalStorage();
+    let item = this.listProductAddToCart.find(value => value.id === product.id)
+    if(item) {
+      item.qty += this.qty
+    } else {
+      this.listProductAddToCart.push({...product, qty: this.qty});
+    }
+    localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
+    this.msg.sendItemInCart(this.listProductAddToCart);
+    this.router.navigateByUrl('/view-cart')
+  }
+
+  incrementItem(){
+    this.qty++;
+  }
+
+  decrementItem(){
+    this.qty--;
   }
 
   slideConfig = {

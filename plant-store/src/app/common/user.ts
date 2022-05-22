@@ -1,5 +1,12 @@
 export class User {
-    public id = '';
-    public name: string = '';
-    public password: string = '';
+  id?: string;
+  email!: string;
+  password!: string;
+}
+
+export interface UserRegister {
+   name: string;
+   email: string;
+   phoneNumber: number;
+   password: string;
 }

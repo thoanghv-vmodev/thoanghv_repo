@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   onActive1 = true
   onActive2 = false
-  itemInCart: any;
+  itemInCart = 0;
 
   @ViewChild ('item') item: ElementRef<HTMLElement> | undefined;
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
@@ -35,13 +35,14 @@ export class HeaderComponent implements OnInit {
         this.onActive2 = true
     }, 6000);
     this.getNumOfProduct()
-    let a: any = localStorage.getItem('products')
-    this.itemInCart = JSON.parse(a)
+
+    let item: any = localStorage.getItem('products');
+    this.itemInCart = JSON.parse(item).length;
   }
 
    getNumOfProduct() {
     this.msg.getItemInCart().subscribe(data => {
-      this.itemInCart = data;
+      this.itemInCart = data.length;
       // console.log(this.itemInCart)
     })
   }

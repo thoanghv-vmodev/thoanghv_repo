@@ -6,8 +6,7 @@ interface Product {
    productImg: string;
    productDesc: string;
    productPrice: number;
-   qty: number;
-  }
+}
 
 
 export class Products implements Product{
@@ -19,4 +18,13 @@ export class Products implements Product{
   productDesc!: string;
   productPrice!: number;
   qty!: number;
+}
+
+export class ProductsOrder{
+  id?: string
+  itemsOrder!: Products[];
+  subTotal!: number;
+  textNote!: string;
+  destination!: string;
+  date!: string;
 }

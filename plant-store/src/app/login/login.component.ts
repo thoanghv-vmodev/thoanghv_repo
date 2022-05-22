@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    if(this.model.name != '' || this.model.name != null && this.model.password != ''){
+    if(this.model.email != '' || this.model.email != null && this.model.password != ''){
       console.log(this.model)
       this.route.navigateByUrl('/home-page')
       this.loginForm.reset();

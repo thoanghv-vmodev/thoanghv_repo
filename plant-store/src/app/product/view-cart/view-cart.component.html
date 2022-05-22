@@ -1,74 +1,72 @@
 <div class="view-cart size-page">
   <div class="view-cart-container row gx-5">
-      <section class="view-cart-content col-7">
-        <p class="view-cart-content--title border-bd">My Cart</p>
-        <div class="cart-list border-bd">
-          <ng-container *ngFor="let data of listDataInCart">
-          <div class="row gx-4 cart-list-box">
-              <div class="cart-list-item col-10" >
-                <div class="cart-list-details">
-                  <div class="cart-list-details--img">
-                    <img src="{{data.productImg}}" alt="cart-img">
-                  </div>
-                  <div class="cart-list-details--info">
-                    <p>{{data.productName}}</p>
-                    <span>{{data.productPrice | currency: 'USD'}}</span>
-                  </div>
-                </div>
-                <div class="list-detail-input">
-                  <span (click)="decrementItem(data)">-</span>
-                       {{data.qty}}
-                  <span (click)="incrementItem(data)">+</span>
-                </div>
-              </div>
-              <div class="cart-list-item col-2">
-                    <p class="subtatol-item">
-                      {{data.productPrice | currency: 'USD'}}
-                    </p>
-                  <button class="btn-subtatol-item">
-                    <i class="fa-solid fa-xmark" (click)="removeItem(data)"></i>
-                  </button>
-                </div>
-              </div>
-            </ng-container>
-        </div>
-        <div class="cart-option">
-          <details class="cart-option-box">
-            <summary>
-              <i class="fa-solid fa-note-sticky"></i><span class="cart-option--title">Add a note</span>
-            </summary>
-            <p class="cart-option-item">
-              <textarea class="input-code" name="input-code" id="" cols="40" rows="3" placeholder="Instructions? Special requests? Add them here."></textarea>
-            </p>
-          </details>
-        </div>
-      </section>
-      <section class="view-cart-content col-5">
-        <p class="view-cart-content--title border-bd">
-          Oder summary
-        </p>
-        <div class="cart-order">
-          <div class="cart-order-box border-bd">
-            <div class="cart-order-item">
-              <p class="py-2">Subtotal</p>
-              <div class="cart-oder-shipping">
-                <p class="py-2">Shipping</p>
-                <select  class="form-select" aria-label="Default select example">
-                    <option *ngFor="let province of listProvincesVn" value="{{province.id}}">{{province.provin}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="cart-order-item">
-              <p class="py-2">{{cartTotal | currency: 'USD'}}</p>
-              <p class="py-2">FREE</p>
-            </div>
-          </div>
-        <div class="cart-order-box">
-            <p class="py-4 fs-5">Total</p>
-            <p class="py-4 fs-5">{{cartTotal | currency: 'USD'}}</p>
-        </div>
-        <button class="btn-checkout" (click)="checkOut()">Check out</button>
-        <div class="cart-oder-secure"><i class="fa-solid fa-lock"></i>Secure Checkout</div>
+    <ng-container *ngIf="listDataInCart.length <= 0">
+      <p class="view-cart-content--title border-bd">My Cart</p>
+      <div class="cart-empty border-bd">
+        <p>Cart is empty</p>
+        <a routerLink="/product-list">Continue Shopping</a>
       </div>
-  </section>
+    </ng-container>
+      <ng-container *ngIf="listDataInCart.length > 0">
+        <section class="view-cart-content col-7">
+          <p class="view-cart-content--title border-bd">My Cart</p>
+          <div class="cart-list border-bd">
+            <ng-container *ngFor="let data of listDataInCart">
+            <div class="row gx-4 cart-list-box">
+                <div class="cart-list-item col-10" >
+                  <div class="cart-list-details">
+                    <div class="cart-list-details--img">
+                      <a href="{{data.productImg}}" target="_blank">
+                        <img src="{{data.productImg}}" alt="cart-img">
+                      </a>
+                    </div>
+                    <div class="cart-list-details--info">
+                      <p>{{data.productName}}</p>
+                      <span>{{data.productPrice | currency: 'USD'}}</span>
+                    </div>
+                  </div>
+                  <div class="list-detail-input">
+                    <span (click)="decrementItem(data)">-</span>
+                         {{data.qty}}
+                    <span (click)="incrementItem(data)">+</span>
+                  </div>
+                </div>
+                <div class="cart-list-item col-2">
+                     <div></div>
+                    <button class="btn-subtatol-item">
+                      <i class="fa-solid fa-xmark" (click)="removeItem(data)"></i>
+                    </button>
+                  </div>
+                </div>
+              </ng-container>
+          </div>
+        </section>
+        <section class="view-cart-content col-5">
+          <p class="view-cart-content--title border-bd">
+            Subtotal
+          </p>
+          <div class="cart-order">
+            <div class="cart-order-box border-bd">
+              <div class="cart-order-item">
+                <p class="py-2">Subtotal</p>
+                <div class="cart-oder-shipping">
+                  <p class="py-2">Shipping</p>
+                </div>
+              </div>
+              <div class="cart-order-item">
+                <p class="py-2">{{cartTotal | currency: 'USD'}}</p>
+                <p class="py-2">FREE</p>
+              </div>
+            </div>
+          <div class="cart-order-box">
+              <p class="py-4 fs-5">Total</p>
+              <p class="py-4 fs-5">{{cartTotal | currency: 'USD'}}</p>
+          </div>
+          <button class="btn-checkout" (click)="checkOut()">Check out</button>
+          <div class="cart-oder-secure"><i class="fa-solid fa-lock"></i>Secure Checkout</div>
+        </div>
+    </section>
+  </ng-container>
+    </div>
 </div>
+

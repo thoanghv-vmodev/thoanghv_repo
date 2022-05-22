@@ -1,1 +1,64 @@
-<p>admin-history works!</p>
+<div class="admin-shop">
+  <div class="admin-shop-title">
+    <p>
+      History User Buy
+    </p>
+  </div>
+  <div class="history-container">
+    <div class="row border-line">
+      <div class="col-4">
+        <p class="user-title">User info</p>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="history-item col-6">
+            <p class="user-title">Product</p>
+          </div>
+          <div class="history-item col-4">
+            <p class="user-title">Order summary</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="history-container ">
+    <div class="row border-line" *ngFor="let dataOrder of listDataOrder">
+      <div class="col-4">
+        <div class="user-info">
+          <p>User Name: Hoàng Văn Thoáng</p>
+          <p>Phone number: 0565523445</p>
+          <p>Email: hoangthoang0309@gmail.com</p>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="history-item col-6">
+            <ng-container *ngFor="let item of dataOrder.itemsOrder">
+              <div class="product-order">
+                <div class="product-order-item">
+                  <img src="{{item.productImg}}" alt="{{item.productName}}">
+                </div>
+                <div class="product-order-item">
+                  <div class="order-item--type">
+                    <p>Product name: {{item.productName}} </p>
+                    <p>Product type: {{item.productType}} </p>
+                  </div>
+                  <p>{{item.productPrice | currency:'USD'}} <span>x {{item.qty}}</span></p>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <div class="history-item col-6">
+            <div class="history-order-summary">
+              <p>Subtotal: {{dataOrder.subTotal | currency: 'USD'}}</p>
+              <p>Destination: {{dataOrder.destination}}</p>
+              <p>Date: {{dataOrder.date | date: 'dd MMM yyyy hh:mm a'}}</p>
+              <p>Note: {{dataOrder.textNote}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -13,7 +13,7 @@ export class AddToCartComponent implements OnInit {
 
   listProductAddToCart: Products[] = [];
   cartTotal = 0;
-  qty = 1;
+  qty: number = 1;
   constructor(
     private msg: MessengerService,
   ) {}
@@ -23,7 +23,17 @@ export class AddToCartComponent implements OnInit {
     this.getDataLocalStorage();
   }
 
-  getDataLocalStorage() {
+
+  getDataMsg() {
+    this.msg.getMsg().subscribe((item: Products) => { // get item đc truyền vào
+      let data = [];
+      data.push({...item})
+      this.listProductAddToCart = data;
+      this.subTotal();
+    })
+  }
+
+  getDataLocalStorage() { // get data để so sánh
     let storage = localStorage.getItem('products');
     if(storage) {
       this.listProductAddToCart = JSON.parse(storage)
@@ -31,22 +41,13 @@ export class AddToCartComponent implements OnInit {
     this.msg.sendItemInCart(this.listProductAddToCart)
   }
 
-  getDataMsg() {
-    this.msg.getMsg().subscribe((item: Products) => {
-      let data = [];
-      data.push({...item, qty: this.qty})
-      this.listProductAddToCart = data;
-      this.subTotal();
-    })
-  }
-
   addProductToCart(product: Products) {
     this.getDataLocalStorage();
     let item = this.listProductAddToCart.find(value => value.id === product.id)
     if(item) {
-      item.qty++
+      item.qty += this.qty
     } else {
-      this.listProductAddToCart.push(product);
+      this.listProductAddToCart.push({...product, qty: this.qty});
     }
     localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
 
@@ -57,31 +58,29 @@ export class AddToCartComponent implements OnInit {
   subTotal() {
     this.cartTotal = 0;
     this.listProductAddToCart.forEach((item: Products) => {
-      this.cartTotal += (item.productPrice * item.qty)
+      this.cartTotal += (item.productPrice * this.qty)
     })
   }
 
-  incrementItem(data: Products){
-    let item: any = this.listProductAddToCart.find((value: Products) => value.id === data.id)
-    item.qty++;
+  incrementItem(){
+    this.qty++;
     this.subTotal();
   }
 
-  decrementItem(data: Products){
-    let item: any = this.listProductAddToCart.find((value: Products) => value.id === data.id)
-    item.qty--;
-    if(item.qty <= 0) {
-      this.removeItem(item);
+  decrementItem(){
+    this.qty--;
+    if(this.qty == 0) {
+      this.closeCart()
     }
     this.subTotal();
   }
 
-  removeItem(data: Products) {
-    this.getDataLocalStorage();
-    this.listProductAddToCart = this.listProductAddToCart.filter(item => item.id != data.id)
-    localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
-    this.closeCart();
-  }
+  // removeItem(data: Products) {
+  //   this.getDataLocalStorage();
+  //   this.listProductAddToCart = this.listProductAddToCart.filter(item => item.id != data.id)
+  //   localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
+  //   this.closeCart();
+  // }
 
 
   closeCart() {

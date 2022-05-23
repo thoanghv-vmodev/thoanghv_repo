@@ -38,7 +38,7 @@
 
 .check-out-container {
   display: flex;
-  padding: 80px;
+  padding: 40px 80px;
 
   .cart-list {
     padding: 16px 0;
@@ -242,4 +242,15 @@ details>summary::-webkit-details-marker {
 
 .border-bd {
   border-bottom: 1px solid rgba(160, 88, 65, 0.6);
+}
+
+.user-infor {
+  padding-left: 40px;
+  color: styles.$color-text-brown;
+  h1 {
+    font-size: 22px;
+  }
+  p {
+    color: #000;
+  }
 }

@@ -1,21 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray, AbstractControl, ValidationErrors } from '@angular/forms';
-
-// required bidden username
-export function forbiddenUsername(users:any = []) {
-  return (control: AbstractControl) => {
-    return (users.includes(control.value)) ? {
-      invalidUsername: true
-    } : null;
-  };
-}
-
-// export function comparePassword(c: AbstractControl) {
-//   const v = c.value;
-//   return (v.password === v.confirmPassword) ? null: {
-//     passwordnotmatch: true
-//   }
-// }
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { AccountService } from '../service/account.service';
 
 @Component({
   selector: 'app-register',
@@ -26,34 +15,28 @@ export function forbiddenUsername(users:any = []) {
 
 
 export class RegisterComponent implements OnInit {
-
+   @ViewChild("loading") loading: ElementRef<HTMLElement> | undefined;
   constructor(
     private fb: FormBuilder,
+    private accountService: AccountService,
+    private router: Router,
+    private storage: AngularFireStorage,
   ) { }
 
   registerForm!: FormGroup;
+  selectedFile: any;
+  avatarImg: string | undefined = '';
+  downloadURL: Observable<string> | undefined;
 
   ngOnInit(): void {
-
-  // Tạo thông thường.
-
-  /* this.registerForm = new FormGroup({
-    userName: new FormControl('',[Validators.required, Validators.minLength(6)]),
-    email: new FormControl(''),
-    phoneNumber: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
-    address: new FormControl(''),
-  }); */
-
-  // Sử dụng FormBuilder
     this.registerForm = this.fb.group ({
     userName: ['', [Validators.required,
                    Validators.minLength(4),
                    Validators.maxLength(32),
-                   forbiddenUsername(['admin', 'manager', ' '])]],
+                   this.forbiddenUsername(['admin', 'manager', ' '])]],
     email: ['', [Validators.required, Validators.email]],
     phoneNumber: ['', [Validators.required, Validators.maxLength(10), this.noLetters]],
+    // avatar:[''],
     password: ['', [Validators.required,
                    Validators.maxLength(32),
                    Validators.minLength(6),
@@ -87,6 +70,15 @@ export class RegisterComponent implements OnInit {
     return null
   };
 
+  // required bidden username
+ forbiddenUsername(users:any = []) {
+  return (control: AbstractControl) => {
+    return (users.includes(control.value)) ? {
+      invalidUsername: true
+    } : null;
+    };
+  }
+
   // get input value
   get userName() {
     return this.registerForm.get('userName')
@@ -108,9 +100,47 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('email')
   }
 
-  onSubmit(): void {
+  /* onFileSelected(event:any) {
+    this.loading?.nativeElement.classList.add('dis-block')
+    var   time = Date.now();
+    const file = event.target.files[0];
+    const filePath = `AvatarImages/${time}`;
+    const fileRef = this.storage.ref(filePath);
+    const upTask = this.storage.upload(`${filePath}`, file);
+    upTask
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.avatarImg = url;
+              this.registerForm.get('avatar')?.setValue(url)
+              this.loading?.nativeElement.classList.remove('dis-block')
+            }
+            console.log('đây là url',this.avatarImg);
+          });
+        })
+      )
+      .subscribe(active => {
+        if (active) {
+          console.log(active);
+        }
+      });
+  } */
+
+  signup(): void {
     if(this.registerForm.valid) {
-      console.warn('submit', this.registerForm.value)
+      this.accountService.creatAccount(this.registerForm.value).subscribe(
+        data => {
+          console.warn('submit', data, this.registerForm.value);
+          this.registerForm.value.reset();
+          alert('Signup Successfull!');
+          this.router.navigateByUrl('/login')
+        }, err => {
+          alert('Something went wrong!')
+        }
+      )
     }else {
       Object.values(this.registerForm.controls).forEach(control => { // set invalid if one value null
         if(control.invalid) {

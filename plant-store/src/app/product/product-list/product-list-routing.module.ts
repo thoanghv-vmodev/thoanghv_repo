@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CanDeactivateGuard } from '../../Guard/can-deactivate.guard';
-import { MyGuardGuard } from '../../Guard/my-guard.guard';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { ShopAllComponent } from '../shop-all/shop-all.component';
 
@@ -14,7 +13,6 @@ const routes: Routes = [
   {
     path: 'details/:id', component: ProductDetailsComponent,
     pathMatch: 'full',
-    // canActivate: [MyGuardGuard], // true => navigation, false => no navigation
     // canDeactivate: [CanDeactivateGuard]
   }
 

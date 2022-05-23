@@ -8,7 +8,6 @@ interface Product {
    productPrice: number;
 }
 
-
 export class Products implements Product{
   id!: string;
   productId!: number;
@@ -27,4 +26,6 @@ export class ProductsOrder{
   textNote!: string;
   destination!: string;
   date!: string;
+  userName!: string;
+  phoneNumber!: string;
 }

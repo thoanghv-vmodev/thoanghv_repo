@@ -150,7 +150,7 @@ export class AdminProductComponent implements OnInit {
               this.productForm.get('productImg')?.setValue(url)
               this.loading?.nativeElement.classList.remove('dis-block')
             }
-            console.log('đây là url',this.productPicture);
+            console.log(this.productPicture);
           });
         })
       )

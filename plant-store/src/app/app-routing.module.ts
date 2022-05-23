@@ -2,11 +2,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
 import { PreloadAllModules } from '@angular/router';
-import { CategoryInterceptor } from './common/intercepter-category.interceptor';
+import { AuthInterceptor } from './common/auth.interceptor';
 import { CanLoadPageGuard } from './Guard/can-load-page.guard';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ConnectLayoutComponent } from './layouts/connect-layout/connect-layout.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,9 @@ const routes: Routes = [
     ]
   },
 
+  {
+    path: '**', component: PageNotFoundComponent
+  }
 
 ];
 
@@ -55,7 +59,7 @@ const routes: Routes = [
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: CategoryInterceptor,
+      useClass: AuthInterceptor,
       multi: true
     }
   ]

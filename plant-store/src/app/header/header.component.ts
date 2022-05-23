@@ -2,7 +2,8 @@ import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from '../common/product';
-import { AddToCartComponent } from '../product/add-to-cart/add-to-cart.component';
+import { User} from '../common/user';
+import { AccountService } from '../service/account.service';
 import { MessengerService } from '../service/messenger.service';
 
 @Component({
@@ -15,14 +16,17 @@ export class HeaderComponent implements OnInit {
   onActive1 = true
   onActive2 = false
   itemInCart = 0;
+  userInfo: any = [];
+  Account: any = [];
+  isAccount = false
 
   @ViewChild ('item') item: ElementRef<HTMLElement> | undefined;
-  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
   constructor(
     private scroller: ViewportScroller,
     private router: Router,
     private route: ActivatedRoute,
-    private msg: MessengerService
+    private msg: MessengerService,
+    private accountService: AccountService
     ) { }
 
   ngOnInit(): void {
@@ -34,22 +38,48 @@ export class HeaderComponent implements OnInit {
         this.onActive1 = false
         this.onActive2 = true
     }, 6000);
-    this.getNumOfProduct()
 
-    let item: any = localStorage.getItem('products');
-    this.itemInCart = JSON.parse(item).length;
+    this.getNumOfProduct();
+    this.getDataLocalStorage();
+    this.getListAccount();
   }
 
-   getNumOfProduct() {
+  getListAccount() {
+    this.accountService.getAccount().subscribe(
+      (data: any) => {
+        if(data) {
+          this.Account = data.find((el: any) => el.id === this.userInfo.id);
+          console.log(this.Account);
+        }
+      }, err => {
+        alert('Something went wrong!! ');
+      })
+  }
+
+  getDataLocalStorage() {
+    let item: any = localStorage.getItem('products');
+    if(item) {
+      this.itemInCart = JSON.parse(item).length;
+    }
+
+    let info: any = localStorage.getItem('user');
+    if(info) {
+      this.userInfo = JSON.parse(info);
+      this.isAccount = true;
+    }
+  }
+
+  getNumOfProduct() {
     this.msg.getItemInCart().subscribe(data => {
-      this.itemInCart = data.length;
-      // console.log(this.itemInCart)
+      if(data) {
+        this.itemInCart = data.length;
+      }
     })
   }
 
-  openAddToCart() {
-    this.openCart.addToCart.nativeElement.classList.add('active');
-    this.openCart.overlay.nativeElement.style.display = 'block';
+  logout() {
+    localStorage.removeItem('user');
+    this.isAccount = false;
   }
 
   onFocus() {

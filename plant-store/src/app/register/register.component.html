@@ -1,9 +1,9 @@
 <div class="register size-page">
       <div class="register-container">
-          <p class="register-form-title">Register</p>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
+          <p class="register-form-title">Sign Up</p>
+        <form [formGroup]="registerForm" (ngSubmit)="signup()" autocomplete="off">
             <div class="form-content">
-              <label for="user-name"> User Name: </label>
+              <label for="user-name"> Name: </label>
               <input class="form-control"
                      id="user-name"
                      type="text"
@@ -68,6 +68,24 @@
                 </div>
               </div>
             </div>
+            <!-- <div class="form-content">
+                <div class="avatar-img">
+                  <label for="avatar"> Avatar: </label>
+                  <input class="form-control" id="avatar" type="file" (change)="onFileSelected($event)">
+                  <ng-container *ngIf="avatarImg !== ''">
+                    <a href="{{avatarImg}}" target="_blank">
+                      <img src="{{avatarImg}}">
+                    </a>
+                  </ng-container>
+                </div>
+                <div class="overlayUpload" #loading>
+                  <div class="spin-upload">
+                    <div class="spinner-border" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+                </div>
+            </div> -->
             <div class="form-content">
               <label for="password"> Password: </label>
               <input class="form-control"
@@ -114,8 +132,9 @@
             </div>
           </form>
           <div class="btn-register">
-            <button type="submit" (click)="onSubmit()">Sign up</button>
+            <button type="submit" (click)="signup()">Sign up</button>
           </div>
           <p class="title-form">Plant trees to help you relax!</p>
+          <p class="title-login">Already register? <a routerLink="/login">Click to Login!</a></p>
       </div>
 </div>

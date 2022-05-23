@@ -1,5 +1,19 @@
+@use "../../styles.scss";
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
-
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+button {
+  padding: 0;
+  margin: 0;
+}
 .login {
   position: relative;
   top: 112px;
@@ -24,45 +38,39 @@
 }
 
 .btn-login {
-  display: flex;
-  justify-content: center;
-
-  button {
-    margin: 10px;
-  }
-}
-
-.btn-success {
-  background-color: #a05841;
-  border-style: none;
-  border-radius: 0px;
-  padding: 8px 18px;
-  &:hover {
+  margin-top: 18px;
+  .btn-success {
     background-color: #a05841;
-    opacity: 0.8;
-  }
-}
+    border-style: none;
+    border-radius: 0px;
+    width: 100%;
+    padding: 8px 18px;
+    font-size: 16px;
 
-.btn-register {
-  cursor: pointer;
-  background-color: #1890ff;
-  color: #fff;
-  padding: 6px 10px;
-  border-style: none;
-  padding: 8px 18px;
-}
-
-.btn-register:hover {
-  background-color: #1890ff;
-  opacity: 0.8;
+    &:hover {
+      background-color: #a05841;
+      opacity: 0.8;
+    }
+    &:focus {
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+    }
+    a{
+      text-decoration: none;
+      color: #fff;
+    }
+    }
 }
 
 .title-form {
   color: #a05841;
   text-align: center;
   font-size: 16px;
-  padding-top: 6px;
-  letter-spacing: 2px;
+  padding-top: 24px;
+}
+.form-content {
+  padding: 10px 0;
 }
 .form-control {
   border-radius: 0;

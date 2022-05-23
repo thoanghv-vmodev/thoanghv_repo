@@ -25,7 +25,7 @@ export class CategoryJsonService {
       map(category => {
         let listCategory: Category[] = [];
         for(let id in category) { // lap qua object gan key name = id
-          listCategory.push({...category[id], id});
+          listCategory.push({...category[id], id}); // convert id
         }
         return listCategory
       })

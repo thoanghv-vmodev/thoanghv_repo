@@ -67,11 +67,36 @@
     text-decoration: none;
     color: styles.$color-text-brown;
   }
-}
-.login:hover {
-  p{
-    opacity: 0.8;
+  &:hover {
+    p {
+      opacity: 0.8;
+    }
   }
+}
+
+.logout{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  a {
+      text-decoration: none;
+      color: styles.$color-text-brown;
+      cursor: pointer;
+    }
+}
+
+.logout-btn {
+  display: none;
+  top: 23px;
+  left: 23px;
+  width: 100%;
+  padding: 20px;
+  position: absolute;
+  background-color: #fff;
+}
+
+.logout:hover>.logout-btn {
+  display: block;
 }
 
 

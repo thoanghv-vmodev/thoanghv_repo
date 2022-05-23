@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { ShopAllComponent } from '../shop-all/shop-all.component';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { ProductJsonService } from 'src/app/service/product-json.service';
-import { CategoryInterceptor } from 'src/app/common/intercepter-category.interceptor';
+import { AuthInterceptor } from 'src/app/common/auth.interceptor';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ShareComModule } from 'src/app/share/share-com/share-com.module';
 
@@ -30,7 +30,7 @@ import { ShareComModule } from 'src/app/share/share-com/share-com.module';
     ProductJsonService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: CategoryInterceptor,
+      useClass: AuthInterceptor,
       multi: true
     }
   ]

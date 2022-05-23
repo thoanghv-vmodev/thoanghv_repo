@@ -18,6 +18,7 @@ import { HeaderAdminComponent } from './header-admin/header-admin.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ConnectLayoutComponent } from './layouts/connect-layout/connect-layout.component';
 import { DashboardComponent } from './admin/admin-dashboard/dashboard.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DashboardComponent } from './admin/admin-dashboard/dashboard.component'
     AdminLayoutComponent,
     ConnectLayoutComponent,
     DashboardComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

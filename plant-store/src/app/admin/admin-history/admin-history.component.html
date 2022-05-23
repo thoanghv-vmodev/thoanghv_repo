@@ -25,9 +25,8 @@
     <div class="row border-line" *ngFor="let dataOrder of listDataOrder">
       <div class="col-4">
         <div class="user-info">
-          <p>User Name: Hoàng Văn Thoáng</p>
-          <p>Phone number: 0565523445</p>
-          <p>Email: hoangthoang0309@gmail.com</p>
+          <p>User Name: {{dataOrder.userName}}</p>
+          <p>Phone: {{dataOrder.phoneNumber}}</p>
         </div>
       </div>
       <div class="col-8">

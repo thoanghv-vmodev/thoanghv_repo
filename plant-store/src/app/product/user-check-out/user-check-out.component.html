@@ -7,6 +7,11 @@
     </div>
   </ng-container>
   <ng-container *ngIf="listItemCheckOut.length >= 1">
+    <div class="user-infor" *ngIf="userCheckOut">
+      <h1>Delivery information</h1>
+      <p>{{userCheckOut.userName}}</p>
+      <p>Phone: {{userCheckOut.phoneNumber}}</p>
+    </div>
     <div class="check-out-container row gx-5">
         <section class="check-out-content col-7">
           <p class="check-out-content--title border-bd">My Cart</p>

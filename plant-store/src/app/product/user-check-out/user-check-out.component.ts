@@ -4,6 +4,7 @@ import { Products, ProductsOrder } from 'src/app/common/product';
 import { ListCountriesService } from 'src/app/service/list-countries.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { OrderListService } from 'src/app/service/order-list.service';
+import { User} from '../../common/user';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class UserCheckOutComponent implements OnInit {
     private countriesService: ListCountriesService,
     private orderService: OrderListService,
     private router: Router,
-    private msg: MessengerService
+    private msg: MessengerService,
   ) { }
   cartTotal: number = 0;
   textNode: string = '';
@@ -25,6 +26,7 @@ export class UserCheckOutComponent implements OnInit {
   listItemCheckOut: Products[] = [];
   listCountry: any;
   listDataOrder: ProductsOrder[] = [];
+  userCheckOut: any = [];
   putId?: string;
 
 
@@ -42,6 +44,11 @@ export class UserCheckOutComponent implements OnInit {
     let storage = localStorage.getItem('productCheckOut')
     if(storage) {
       this.listItemCheckOut = JSON.parse(storage)
+    }
+    let user = localStorage.getItem('user');
+    if(user) {
+      this.userCheckOut = JSON.parse(user);
+      console.log(this.userCheckOut.name)
     }
   }
 
@@ -61,6 +68,8 @@ export class UserCheckOutComponent implements OnInit {
     if(this.destination !== '') {
       let date = Date.now()
       let objOrder= {
+        userName: this.userCheckOut.userName,
+        phoneNumber: this.userCheckOut.phoneNumber,
         itemsOrder: this.listItemCheckOut,
         subTotal: this.cartTotal,
         textNote: this.textNode,

@@ -8,8 +8,7 @@ import { Products } from '../common/product';
 export class MessengerService {
 
   private sendMsgSubject = new Subject<Products>();
-  private dataCheckOut = new Subject<Products>();
-  numOfItem = new BehaviorSubject([])
+  private numOfItem = new BehaviorSubject([])
 
   constructor(
   ) {}

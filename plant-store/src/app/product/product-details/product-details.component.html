@@ -1,7 +1,7 @@
 <div class="product-details size-page">
   <div class="product-details--container">
     <div class="product-details--content">
-      <div class="content-item" *ngFor="let data of detailsItem">
+      <div class="content-item" *ngFor="let data of itemDetail">
         <a  routerLink="/home-page">Home</a> <span class="path-url">/</span>
         <ng-container *ngIf="url">
           <a routerLink="/product-list">Shop all</a> <span class="path-url">/</span>
@@ -23,7 +23,7 @@
       </div> -->
     </div>
     <div class="product-details--content">
-      <ng-container *ngFor="let data of detailsItem">
+      <ng-container *ngFor="let data of itemDetail">
         <div class="product-box">
           <div class="slider-one">
             <a href="{{data.productImg}}" target="_blank">

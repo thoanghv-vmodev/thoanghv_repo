@@ -12,11 +12,10 @@ export class CanLoadPageGuard implements CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    // throw new Error('Method not implemented.');
-    // return true;
+
     let url: any = route.path;
     if (url == 'product-list') {
-      let text = 'Có chứa nội dung 18+, bạn có chắc muốn vào?';
+      let text = 'Bạn chưa đăng nhập';
       if(confirm(text) == true){
         return true
        }

@@ -21,24 +21,25 @@ export class ProductDetailsComponent implements OnInit {
     private msg: MessengerService
     ) {}
   listProduct: Products[] = [];
-  detailsItem: Products[] = [];
-
+  itemDetail: Products[] = [];
   url: any = this.router.url;
-
   listProductAddToCart: Products[] = [];
   qty = 1;
 
   ngOnInit(): void {
-  const id = this.route.snapshot.paramMap.get('id');
+    this.getItemDetail();
+    this.getDataLocalStorage();
+  }
 
-  this.getDataLocalStorage();
-
-  this.productService.getProduct().subscribe(data => {
+  getItemDetail() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.productService.getProduct().subscribe(data => {
     this.listProduct = data;
+
     let item:any = this.listProduct.find((el:any) => el.id == id);
-    this.detailsItem.push(item)
-    // this.detailsItem.push({...item, qty: this.qty})
-    console.log('data',this.detailsItem)
+    this.itemDetail.push(item)
+
+    console.log('data',this.itemDetail)
   })
   }
 
@@ -54,7 +55,7 @@ export class ProductDetailsComponent implements OnInit {
     // console.log(this.listProductAddToCart)
     alert('Add to cart success!')
     this.getDataLocalStorage();
-    let item = this.listProductAddToCart.find(value => value.id === product.id)
+    let item = this.listProductAddToCart.find(element => element.id === product.id)
     if(item) {
       item.qty += this.qty
     } else {
@@ -66,7 +67,7 @@ export class ProductDetailsComponent implements OnInit {
 
   buyProductToCart(product: Products) {
     this.getDataLocalStorage();
-    let item = this.listProductAddToCart.find(value => value.id === product.id)
+    let item = this.listProductAddToCart.find(element => element.id === product.id)
     if(item) {
       item.qty += this.qty
     } else {

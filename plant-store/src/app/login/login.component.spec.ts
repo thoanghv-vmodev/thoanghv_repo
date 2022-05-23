@@ -40,10 +40,10 @@ describe('LoginComponent', () => {
 
   it(`should call  the onSubmit method`, async () => {
     fixture.detectChanges();
-    spyOn(component, 'onSubmit');
+    spyOn(component, 'login');
     el = fixture.debugElement.query(By.css('button')).nativeElement;
     el.click();
-    expect(component.onSubmit).toHaveBeenCalledTimes(0);
+    expect(component.login).toHaveBeenCalledTimes(0);
   });
 
   it(`form should be invalid`, async (() => {

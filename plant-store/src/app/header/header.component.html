@@ -9,22 +9,29 @@
                 </div>
             </div>
             <div class="header-content--box">
-                  <div class="login" routerLink="/login">
-                    <a >
-                    <i class="login-item font-22 fa-solid fa-circle-user"></i>
-                    </a>
-                    <p class="login-item login-item-title">Log In</p>
-                  </div>
-                  <!-- <div class="login" routerLink="/home-page">
+              <ng-container *ngIf="!isAccount">
+                <div class="login" routerLink="/login">
+                  <a >
+                  <i class="login-item font-22 fa-solid fa-circle-user"></i>
+                  </a>
+                  <p class="login-item login-item-title">Log In</p>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="isAccount">
+                  <div class="logout">
                     <a>
                       <i class="login-item font-22 fa-solid fa-circle-user"></i>
                     </a>
-                    <p class="login-item login-item-title">Log Out</p>
-                  </div> -->
+                    <p class="login-item login-item-title" >{{Account.userName}}</p>
+                    <div class="logout-btn">
+                      <a (click)="logout()" href="/">Log out</a>
+                    </div>
+                  </div>
                   <div class="cart">
                     <i class="font-22 fa-solid fa-bag-shopping" routerLink="/view-cart">
                       <p class="count-item">{{itemInCart}}</p></i>
                   </div>
+              </ng-container>
             </div>
         </div>
         <div class="header-content bg-page">

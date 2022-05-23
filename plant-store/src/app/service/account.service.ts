@@ -34,4 +34,16 @@ export class AccountService {
     )
   }
 
+  accAdmin = [
+    {
+      name: 'Admin',
+      email: 'admin1@gmail.com',
+      password:'plant01'
+    }
+  ]
+
+  accountAdmin() {
+    return this.accAdmin
+  }
+
 }

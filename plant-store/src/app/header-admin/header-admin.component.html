@@ -2,17 +2,13 @@
   <div class="header">
     <div class="header-content bg-white">
       <div class="header-content--box">
-        <!-- <div class="content--box-hover" #item>
-          <i class="box-hover-item fa-solid fa-magnifying-glass"></i>
-          <input class="box-hover-item" type="text" placeholder="Search..." (focus)="onFocus()" (blur)="onBlur()" appFocusInput>
-        </div> -->
       </div>
       <div class="header-content--box">
-        <div class="login" routerLink="/home-page">
+        <div class="login" routerLink="/home-page" (click)="adminLogout()">
+          <p class="login-item login-item-title" >Log Out</p>
           <a>
-            <i class="login-item font-22 fa-solid fa-circle-user"></i>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
           </a>
-          <p class="login-item login-item-title">Log Out</p>
         </div>
       </div>
     </div>

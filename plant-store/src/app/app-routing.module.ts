@@ -4,6 +4,7 @@ import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } fro
 import { PreloadAllModules } from '@angular/router';
 import { AuthInterceptor } from './common/auth.interceptor';
 import { CanLoadPageGuard } from './Guard/can-load-page.guard';
+import { RoleGuard } from './Guard/role.guard';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ConnectLayoutComponent } from './layouts/connect-layout/connect-layout.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {
     path:'',
     component: AdminLayoutComponent,
+    canActivate:[RoleGuard],
     children: [
       {
         path: '',

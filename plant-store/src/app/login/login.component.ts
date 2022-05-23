@@ -13,6 +13,7 @@ import { MessengerService } from '../service/messenger.service';
 export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
   listAccount: User[] = [];
+  accAmin: any = [];
   constructor(
     private route: Router,
     private accountService: AccountService,
@@ -26,6 +27,8 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['',Validators.required]
     })
+
+    this.accAmin = this.accountService.accountAdmin()
   }
 
   getListAccount() {
@@ -44,11 +47,20 @@ export class LoginComponent implements OnInit {
         return el.email === this.loginForm.value.email && el.password === this.loginForm.value.password
       });
 
+      const admin: any = this.accAmin.find((el: User) => {
+        return el.email === this.loginForm.value.email && el.password === this.loginForm.value.password
+      });
+
       if(user) {
         alert('Login Success!');
         this.loginForm.reset();
-        // this.route.navigate(['home-page']);
+        this.route.navigate(['home-page']);
         localStorage.setItem('user', JSON.stringify(user))
+      } else if(admin) {
+        alert('Welcome to dashboard!');
+        this.loginForm.reset();
+        this.route.navigate(['admin']);
+        localStorage.setItem('admin', JSON.stringify(admin))
       } else {
         alert('User not found!');
       }

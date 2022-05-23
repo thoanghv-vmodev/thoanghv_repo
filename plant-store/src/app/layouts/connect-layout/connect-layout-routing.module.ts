@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/Guard/auth-guard.guard';
 import { HomePageComponent } from 'src/app/home-page/home-page.component';
 import { LoginComponent } from 'src/app/login/login.component';
 import { CactiComponent } from 'src/app/product/cacti/cacti.component';
@@ -36,11 +37,13 @@ const routes: Routes = [
   },
 
   {
-    path: 'view-cart', component: ViewCartComponent
+    path: 'view-cart', component: ViewCartComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'check-out', component: UserCheckOutComponent,
+    canActivate: [AuthGuard]
   },
 
   {
@@ -51,7 +54,6 @@ const routes: Routes = [
   {
     path: 'product-list',
     loadChildren: () => import('../../product/product-list/product-list.module').then(m => m.ProductListModule),
-    // canLoad: [CanLoadPageGuard]
   },
 ];
 

@@ -18,4 +18,8 @@ export class HeaderAdminComponent implements OnInit {
   onBlur() {
     this.item?.nativeElement.classList.remove('border-box')
   }
+
+  adminLogout() {
+    localStorage.removeItem('admin');
+  }
 }

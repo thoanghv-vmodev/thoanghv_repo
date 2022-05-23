@@ -9,13 +9,7 @@ export class AuthService {
   constructor() { }
 
   isLoggedIn() {
-    return !!localStorage.getItem('user')
-  }
-  canExit() {
-    if(confirm('Bạn muốn thoát?')) {
-      return true
-    }
-    return false
+    return !!localStorage.getItem('user') // return true of false
   }
 
 }

@@ -75,15 +75,8 @@ export class AddToCartComponent implements OnInit {
     this.subTotal();
   }
 
-  // removeItem(data: Products) {
-  //   this.getDataLocalStorage();
-  //   this.listProductAddToCart = this.listProductAddToCart.filter(item => item.id != data.id)
-  //   localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
-  //   this.closeCart();
-  // }
-
-
   closeCart() {
+    this.qty = 1;
     this.addToCart.nativeElement.classList.remove('active')
     this.overlay.nativeElement.style.display = 'none';
   }

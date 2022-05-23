@@ -1,6 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Router } from '@angular/router';
 import { fromEvent, observable, Observable, Subscription } from 'rxjs';
 import { throttleTime, scan, finalize } from 'rxjs/operators';
 import { Products } from 'src/app/common/product';
@@ -18,17 +19,22 @@ export class CactiComponent implements OnInit {
   constructor(
     private productService: ProductJsonService,
     private scroller: ViewportScroller,
-    private msg: MessengerService
+    private msg: MessengerService,
+    private router: Router
   ) { }
 
   productList: Products[] = [];
   currentList: Products[] = [];
 
   openAddToCart(data: Products) {
-    this.msg.sendMsg(data);
-
-    this.openCart.addToCart.nativeElement.classList.add('active');
-    this.openCart.overlay.nativeElement.style.display = 'block';
+    let userLoggedIn = localStorage.getItem('user')
+    if(userLoggedIn) {
+      this.msg.sendMsg(data)
+      this.openCart.addToCart.nativeElement.classList.add('active');
+      this.openCart.overlay.nativeElement.style.display = 'block';
+    } else {
+      this.router.navigate(['login'])
+    }
   }
 
   goList() {

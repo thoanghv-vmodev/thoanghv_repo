@@ -6,6 +6,7 @@ import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 import { ViewportScroller } from '@angular/common';
 import { Products } from 'src/app/common/product';
 import { MessengerService } from 'src/app/service/messenger.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-plants',
   templateUrl: './plants.component.html',
@@ -17,16 +18,22 @@ export class PlantsComponent implements OnInit {
   constructor(
      private productService: ProductJsonService,
      private scroller: ViewportScroller,
-     private msg: MessengerService
+     private msg: MessengerService,
+     private router: Router
   ) { }
   isOn = false;
   productList: Products[] = [];
   currentList: Products[] = [];
 
   openAddToCart(data: Products) {
-    this.msg.sendMsg(data)
-    this.openCart.addToCart.nativeElement.classList.add('active');
-    this.openCart.overlay.nativeElement.style.display = 'block';
+    let userLoggedIn = localStorage.getItem('user')
+    if(userLoggedIn) {
+      this.msg.sendMsg(data)
+      this.openCart.addToCart.nativeElement.classList.add('active');
+      this.openCart.overlay.nativeElement.style.display = 'block';
+    } else {
+      this.router.navigate(['login'])
+    }
   }
 
   goList() {

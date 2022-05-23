@@ -1,7 +1,9 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/common/category';
 import { Products } from 'src/app/common/product';
+import { AccountService } from 'src/app/service/account.service';
 import { CategoryJsonService } from 'src/app/service/category-json.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
@@ -23,11 +25,11 @@ export class ShopAllComponent implements OnInit {
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
 
   constructor(
-    private authService: AuthService = new AuthService(),
     private productService: ProductJsonService,
     private categoryService: CategoryJsonService,
     private scroller: ViewportScroller,
-    private msg: MessengerService
+    private msg: MessengerService,
+    private router: Router
     ) {}
 
   listSortValue = [
@@ -114,9 +116,14 @@ export class ShopAllComponent implements OnInit {
   }
 
   openAddToCart(data: Products) {
-    this.msg.sendMsg(data)
-    this.openCart.addToCart.nativeElement.classList.add('active');
-    this.openCart.overlay.nativeElement.style.display = 'block';
+    let userLoggedIn = localStorage.getItem('user')
+    if(userLoggedIn) {
+      this.msg.sendMsg(data)
+      this.openCart.addToCart.nativeElement.classList.add('active');
+      this.openCart.overlay.nativeElement.style.display = 'block';
+    } else {
+      this.router.navigate(['login'])
+    }
   }
 
   goList() {

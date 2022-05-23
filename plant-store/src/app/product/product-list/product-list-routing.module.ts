@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CanDeactivateGuard } from '../../Guard/can-deactivate.guard';
+import { AuthGuard } from 'src/app/Guard/auth-guard.guard';
+import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { ShopAllComponent } from '../shop-all/shop-all.component';
 
@@ -13,7 +14,11 @@ const routes: Routes = [
   {
     path: 'details/:id', component: ProductDetailsComponent,
     pathMatch: 'full',
-    // canDeactivate: [CanDeactivateGuard]
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'app-add-to-cart', component: AddToCartComponent,
+    canActivate: [AuthGuard]
   }
 
 ]

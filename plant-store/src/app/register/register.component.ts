@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private accountService: AccountService,
     private router: Router,
-    private storage: AngularFireStorage,
+    private storageFb: AngularFireStorage,
   ) { }
 
   registerForm!: FormGroup;
@@ -105,8 +105,8 @@ export class RegisterComponent implements OnInit {
     var   time = Date.now();
     const file = event.target.files[0];
     const filePath = `AvatarImages/${time}`;
-    const fileRef = this.storage.ref(filePath);
-    const upTask = this.storage.upload(`${filePath}`, file);
+    const fileRef = this.storageFb.ref(filePath);
+    const upTask = this.storageFb.upload(`${filePath}`, file);
     upTask
       .snapshotChanges()
       .pipe(
@@ -135,7 +135,7 @@ export class RegisterComponent implements OnInit {
         data => {
           console.warn('submit', data, this.registerForm.value);
           this.registerForm.value.reset();
-          alert('Signup Successfull!');
+          alert('Signup Successfully!');
           this.router.navigateByUrl('/login')
         }, err => {
           alert('Something went wrong!')

@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         return el.email === this.loginForm.value.email && el.password === this.loginForm.value.password
       });
 
-      const admin: any = this.accAmin.find((el: User) => {
+      const admin: any = this.accAmin.find((el: any) => {
         return el.email === this.loginForm.value.email && el.password === this.loginForm.value.password
       });
 

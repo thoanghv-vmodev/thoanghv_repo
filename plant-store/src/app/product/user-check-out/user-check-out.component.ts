@@ -48,7 +48,7 @@ export class UserCheckOutComponent implements OnInit {
     let user = localStorage.getItem('user');
     if(user) {
       this.userCheckOut = JSON.parse(user);
-      console.log(this.userCheckOut.name)
+      // console.log(this.userCheckOut.name)
     }
   }
 
@@ -83,6 +83,7 @@ export class UserCheckOutComponent implements OnInit {
         localStorage.removeItem('products');
         localStorage.removeItem('productCheckOut');
         this.router.navigateByUrl('/home-page');
+        this.msg.sendItemInCart([]);
       })
 
       } else {

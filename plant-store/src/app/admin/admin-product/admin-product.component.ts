@@ -23,7 +23,7 @@ export class AdminProductComponent implements OnInit {
     private fb: FormBuilder,
     private productService: ProductJsonService,
     private categoryService: CategoryJsonService,
-    private storage: AngularFireStorage,
+    private storageFb: AngularFireStorage,
   ) { }
 
   productForm!: FormGroup;
@@ -137,8 +137,8 @@ export class AdminProductComponent implements OnInit {
     var   time = Date.now();
     const file = event.target.files[0];
     const filePath = `ProductImages/${time}`;
-    const fileRef = this.storage.ref(filePath);
-    const upTask = this.storage.upload(`${filePath}`, file);
+    const fileRef = this.storageFb.ref(filePath);
+    const upTask = this.storageFb.upload(`${filePath}`, file);
     upTask
       .snapshotChanges()
       .pipe(

@@ -39,12 +39,14 @@ button {
 
 .btn-login {
   margin-top: 18px;
+  display: flex;
+  justify-content: center;
+
   .btn-success {
     background-color: #a05841;
     border-style: none;
     border-radius: 0px;
-    width: 100%;
-    padding: 8px 18px;
+    padding: 8px 40px;
     font-size: 16px;
 
     &:hover {
@@ -56,7 +58,7 @@ button {
       border: none;
       border-radius: 0;
     }
-    a{
+    a {
       width: 100%;
       padding: 8px 18px;
       text-decoration: none;
@@ -75,6 +77,7 @@ button {
   padding: 10px 0;
 }
 .form-control {
+
   border-radius: 0;
 }
 input:hover {

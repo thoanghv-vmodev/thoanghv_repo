@@ -19,7 +19,7 @@ export class AdminCategoryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryJsonService,
-    private storage: AngularFireStorage,
+    private storageFb: AngularFireStorage,
   ) { }
 
   categoryForm!: FormGroup;
@@ -108,8 +108,8 @@ export class AdminCategoryComponent implements OnInit {
     var   time = Date.now();
     const file = event.target.files[0];
     const filePath = `CategoryImages/${time}`;
-    const fileRef = this.storage.ref(filePath);
-    const upTask = this.storage.upload(`${filePath}`, file);
+    const fileRef = this.storageFb.ref(filePath);
+    const upTask = this.storageFb.upload(`${filePath}`, file);
     upTask
       .snapshotChanges()
       .pipe(

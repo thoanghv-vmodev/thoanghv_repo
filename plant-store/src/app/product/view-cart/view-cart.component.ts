@@ -22,7 +22,6 @@ export class ViewCartComponent implements OnInit {
   textNode!: string;
 
   ngOnInit(): void {
-    // this.getDataProductMsg();
     this.getDataLocalStorage();
   }
 

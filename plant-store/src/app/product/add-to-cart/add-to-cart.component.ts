@@ -50,9 +50,10 @@ export class AddToCartComponent implements OnInit {
       this.listProductAddToCart.push({...product, qty: this.qty});
     }
     localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
-
+    console.log(this.listProductAddToCart)
     this.subTotal();
-    this.msg.sendItemInCart(this.listProductAddToCart)
+    this.msg.sendItemInCart(this.listProductAddToCart);
+    this.closeCart();
   }
 
   subTotal() {
@@ -63,16 +64,17 @@ export class AddToCartComponent implements OnInit {
   }
 
   incrementItem(){
-    this.qty++;
-    this.subTotal();
+    if(this.qty != 10) {
+      this.qty++;
+      this.subTotal();
+    }
   }
 
   decrementItem(){
-    this.qty--;
-    if(this.qty == 0) {
-      this.closeCart()
+    if(this.qty != 1) {
+      this.qty--;
+      this.subTotal();
     }
-    this.subTotal();
   }
 
   closeCart() {

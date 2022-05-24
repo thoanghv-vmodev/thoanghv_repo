@@ -49,10 +49,15 @@
           </div>
           <div class="history-item col-6">
             <div class="history-order-summary">
-              <p>Subtotal: {{dataOrder.subTotal | currency: 'USD'}}</p>
-              <p>Destination: {{dataOrder.destination}}</p>
-              <p>Date: {{dataOrder.date | date: 'dd MMM yyyy hh:mm a'}}</p>
-              <p>Note: {{dataOrder.textNote}}</p>
+              <div>
+                <p>Subtotal: {{dataOrder.subTotal | currency: 'USD'}}</p>
+                <p>Destination: {{dataOrder.destination}}</p>
+                <p>Date: {{dataOrder.date | date: 'dd MMM yyyy hh:mm a'}}</p>
+                <p>Note: {{dataOrder.textNote}}</p>
+              </div>
+              <div>
+                <i (click)="deleteHistoryOrder(dataOrder)" class="fa-solid fa-xmark"></i>
+              </div>
             </div>
           </div>
         </div>

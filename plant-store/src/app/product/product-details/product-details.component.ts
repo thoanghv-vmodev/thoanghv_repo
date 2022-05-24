@@ -79,11 +79,15 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   incrementItem(){
-    this.qty++;
+    if(this.qty != 10) {
+      this.qty++;
+    }
   }
 
   decrementItem(){
-    this.qty--;
+    if(this.qty != 1) {
+      this.qty--;
+    }
   }
 
   slideConfig = {

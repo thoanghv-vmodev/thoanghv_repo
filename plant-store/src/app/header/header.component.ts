@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
       (data: any) => {
         if(data) {
           this.Account = data.find((el: any) => el.id === this.userInfo.id);
-          console.log(this.Account);
+          // console.log(this.Account);
         }
       }, err => {
         alert('Something went wrong!! ');

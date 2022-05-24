@@ -35,8 +35,9 @@
 
 .box-item-content {
   position: absolute;
-  top: 20px;
-  left: 90px;
+  top: 16%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 
   .box-item-type {

@@ -14,11 +14,23 @@ export class AdminHistoryComponent implements OnInit {
   ) { }
   listDataOrder: ProductsOrder[] = [];
   ngOnInit(): void {
+    this.getListHistoryOrder();
+  }
 
-    this.orderService.getProductOrder().subscribe(
+  getListHistoryOrder() {
+     this.orderService.getProductOrder().subscribe(
       data => {
         this.listDataOrder = data
         console.log(this.listDataOrder)
       })
+  }
+
+  deleteHistoryOrder(data: any) {
+    console.log(data)
+    this.orderService.deleteProductOrder(data).subscribe(
+      itemDelete => {
+        this.getListHistoryOrder();
+      }
+    )
   }
 }

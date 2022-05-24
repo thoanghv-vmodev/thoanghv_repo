@@ -22,10 +22,10 @@
                     {{data.productPrice | currency: 'USD'}}
                   </p >
                   <div class="list-detail-input">
-                    <span (click)="decrementItem()">-</span>
+                    <span (click)="decrementItem()"><i class="fa-solid fa-minus"></i></span>
                       <p>{{qty}}</p>
                       <!-- <input type="number" ngModel min="1" value="{{qty}}"> -->
-                    <span (click)="incrementItem()">+</span>
+                    <span (click)="incrementItem()"><i class="fa-solid fa-plus"></i></span>
                   </div>
                 </div>
               <div>
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="btn-view">
-            <button class="btn-view-cart" type="button" (click)="closeCart()" (click)="addProductToCart(data)">Add to cart</button>
+            <button class="btn-view-cart" type="button" (click)="addProductToCart(data)">Add to cart</button>
         </div>
     </div>
 </div>

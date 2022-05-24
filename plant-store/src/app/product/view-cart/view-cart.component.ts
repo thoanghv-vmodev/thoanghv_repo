@@ -52,8 +52,10 @@ export class ViewCartComponent implements OnInit {
 
   incrementItem(data: Products){
     let item: any = this.listDataInCart.find(value => value.id === data.id);
-    item.qty++;
-    this.subTotal();
+    if(item.qty != 10) {
+      item.qty++;
+      this.subTotal();
+    }
   }
 
   decrementItem(data: Products){

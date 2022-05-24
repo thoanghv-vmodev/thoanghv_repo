@@ -36,7 +36,7 @@ export class AccountService {
 
   accAdmin = [
     {
-      name: 'Admin',
+      name: 'admin',
       email: 'admin1@gmail.com',
       password:'plant01'
     }

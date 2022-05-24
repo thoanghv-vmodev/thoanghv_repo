@@ -34,4 +34,8 @@ export class OrderListService {
       })
     )
   }
+
+  deleteProductOrder(data: ProductsOrder) {
+    return this.http.delete<ProductsOrder>(`${this.apiUrl}/orders/${data.id}.json`)
+  }
 }

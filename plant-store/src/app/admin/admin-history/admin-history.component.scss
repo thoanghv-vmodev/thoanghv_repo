@@ -69,3 +69,13 @@
     }
   }
 }
+
+.history-order-summary{
+  display: flex;
+  justify-content: space-between;
+
+  i {
+    font-size: 26px;
+    cursor: pointer;
+  }
+}

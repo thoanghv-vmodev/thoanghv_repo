@@ -20,7 +20,7 @@
    <section>
     <div class="product-demo row gx-5">
       <!-- Truyen data tu parent vao child -->
-      <div class="col-4" *ngFor="let item of listCategory" >
+      <div class="col-lg-4 col-md-4 col-sm-12" *ngFor="let item of listCategory" >
         <ng-container >
          <!--  dùng ng-container để gộp lại -->
           <app-category [data]="item"></app-category>

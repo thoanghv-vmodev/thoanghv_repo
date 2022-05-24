@@ -15,6 +15,6 @@ export class CanDeactivateGuard implements CanDeactivate<ProductDetailsComponent
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authService.canExit();
+    return true
   }
 }

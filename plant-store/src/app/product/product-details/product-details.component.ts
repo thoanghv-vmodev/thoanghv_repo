@@ -1,9 +1,10 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from 'src/app/common/product';
-import { AuthService } from 'src/app/service/auth-service.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
+import { ToastService } from 'src/app/service/toast.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 
 @Component({
@@ -12,19 +13,20 @@ import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-
-  constructor(
-    private route: ActivatedRoute,
-    private authService: AuthService,
-    private productService: ProductJsonService,
-    private router: Router,
-    private msg: MessengerService
-    ) {}
+  currentURL = ''
   listProduct: Products[] = [];
   itemDetail: Products[] = [];
   url: any = this.router.url;
   listProductAddToCart: Products[] = [];
   qty = 1;
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private productService: ProductJsonService,
+    private router: Router,
+    private msg: MessengerService,
+    private toastService: ToastService
+    ) {}
 
   ngOnInit(): void {
     this.getItemDetail();
@@ -53,7 +55,7 @@ export class ProductDetailsComponent implements OnInit {
 
   addProductToCart(product: Products) {
     // console.log(this.listProductAddToCart)
-    alert('Add to cart success!')
+    this.toastService.showAddToCartSuccess()
     this.getDataLocalStorage();
     let item = this.listProductAddToCart.find(element => element.id === product.id)
     if(item) {
@@ -79,7 +81,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   incrementItem(){
-    if(this.qty != 10) {
+    if(this.qty != 50) {
       this.qty++;
     }
   }

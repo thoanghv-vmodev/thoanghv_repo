@@ -1,9 +1,10 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Products } from '../common/product';
 import { User} from '../common/user';
-import { AccountService } from '../service/account.service';
+import { AuthService } from '../service/auth.service';
 import { MessengerService } from '../service/messenger.service';
 
 @Component({
@@ -15,10 +16,10 @@ export class HeaderComponent implements OnInit {
 
   onActive1 = true
   onActive2 = false
-  itemInCart = 0;
+  itemInCart: any = [];
   userInfo: any = [];
-  Account: any = [];
-  isAccount = false
+
+  user$ = new Observable<any>();
 
   @ViewChild ('item') item: ElementRef<HTMLElement> | undefined;
   constructor(
@@ -26,8 +27,10 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private msg: MessengerService,
-    private accountService: AccountService
-    ) { }
+    private authService: AuthService
+    ) {
+      this.user$ = this.authService.getUser() as Observable<User>;
+    }
 
   ngOnInit(): void {
     setInterval(() => {
@@ -41,45 +44,32 @@ export class HeaderComponent implements OnInit {
 
     this.getNumOfProduct();
     this.getDataLocalStorage();
-    this.getListAccount();
-  }
-
-  getListAccount() {
-    this.accountService.getAccount().subscribe(
-      (data: any) => {
-        if(data) {
-          this.Account = data.find((el: any) => el.id === this.userInfo.id);
-          // console.log(this.Account);
-        }
-      }, err => {
-        alert('Something went wrong!! ');
-      })
+    // console.log(this.user$)
   }
 
   getDataLocalStorage() {
-    let item: any = localStorage.getItem('products');
-    if(item) {
-      this.itemInCart = JSON.parse(item).length;
-    }
-
     let info: any = localStorage.getItem('user');
     if(info) {
       this.userInfo = JSON.parse(info);
-      this.isAccount = true;
+
+      let item: any = localStorage.getItem('products');
+      if(item) {
+        this.itemInCart = JSON.parse(item);
+      }
     }
   }
 
   getNumOfProduct() {
     this.msg.getItemInCart().subscribe(data => {
       if(data) {
-        this.itemInCart = data.length;
+        this.itemInCart = data;
       }
     })
   }
 
   logout() {
-    localStorage.removeItem('user');
-    this.isAccount = false;
+    this.authService.logout()
+    this.itemInCart = ['']
   }
 
   onFocus() {

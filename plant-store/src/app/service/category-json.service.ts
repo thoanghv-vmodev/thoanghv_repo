@@ -2,29 +2,34 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Category } from '../common/category';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryJsonService {
 
-  constructor(private http: HttpClient) { }
-  private apiUrl = 'https://plant-store-b3138-default-rtdb.firebaseio.com/'
+  constructor(
+    private http: HttpClient,
+    private toastService: ToastService
+    ) { }
+
 
   postCategory(obj: Object):Observable<Category> {
-    return this.http.post<Category>(`${this.apiUrl}/category.json`,obj)
+    return this.http.post<Category>(`${environment.apiUrl}/category.json`,obj)
     .pipe (
-      tap(() => alert('Creat success!'))
+      tap(() => this.toastService.showCreateSuccess())
     )
   }
 
   getCategory() {
-    return this.http.get<{ [id: string]: Category}>(`${this.apiUrl}/category.json`)
+    return this.http.get<{ [id: string]: Category}>(`${environment.apiUrl}/category.json`)
     .pipe(
       map(category => {
         let listCategory: Category[] = [];
-        for(let id in category) { // lap qua object gan key name = id
+        for(let id in category) { // loop to get id default
           listCategory.push({...category[id], id}); // convert id
         }
         return listCategory
@@ -32,17 +37,17 @@ export class CategoryJsonService {
     )
   }
 
-  putCategory(id: any, data: Category):Observable<Category> { // nhan key name
-    return this.http.put<Category>(`${this.apiUrl}/category/${id}.json`, data)
+  putCategory(id: any, data: Category):Observable<Category> { // key name
+    return this.http.put<Category>(`${environment.apiUrl}/category/${id}.json`, data)
     .pipe(
-      tap(() => alert('Edit success!'))
+      tap(() => this.toastService.showEditSuccess())
     )
   }
 
-  deleteCategory(data: Category) { // nhan key name
-    return this.http.delete<Category>(`${this.apiUrl}/category/${data.id}.json`)
+  deleteCategory(data: Category) { //  key name
+    return this.http.delete<Category>(`${environment.apiUrl}/category/${data.id}.json`)
     .pipe(
-      tap(() => alert('Delete success!'))
+      tap(() => this.toastService.showDeleteSuccess())
     )
   }
 }

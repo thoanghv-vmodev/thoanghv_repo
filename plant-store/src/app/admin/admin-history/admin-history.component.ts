@@ -9,10 +9,10 @@ import { OrderListService } from 'src/app/service/order-list.service';
 })
 export class AdminHistoryComponent implements OnInit {
 
+  listDataOrder: ProductsOrder[] = [];
   constructor(
     private orderService: OrderListService
   ) { }
-  listDataOrder: ProductsOrder[] = [];
   ngOnInit(): void {
     this.getListHistoryOrder();
   }

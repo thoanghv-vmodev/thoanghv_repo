@@ -3,11 +3,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/common/category';
 import { Products } from 'src/app/common/product';
-import { AccountService } from 'src/app/service/account.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { CategoryJsonService } from 'src/app/service/category-json.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
-import { AuthService } from '../../service/auth-service.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 
 @Component({
@@ -22,6 +21,8 @@ export class ShopAllComponent implements OnInit {
   p: number = 1;
   productList: Products[] = [];
   categoryList: Category[] = [];
+  currentURL = window.location.href;
+
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
 
   constructor(
@@ -29,8 +30,10 @@ export class ShopAllComponent implements OnInit {
     private categoryService: CategoryJsonService,
     private scroller: ViewportScroller,
     private msg: MessengerService,
-    private router: Router
-    ) {}
+    private router: Router,
+    private authService: AuthService
+    ) {
+    }
 
   listSortValue = [
   {
@@ -122,9 +125,12 @@ export class ShopAllComponent implements OnInit {
       this.openCart.addToCart.nativeElement.classList.add('active');
       this.openCart.overlay.nativeElement.style.display = 'block';
     } else {
-      this.router.navigate(['login'])
+      this.router.navigate(['login']);
+      this.authService.setCurrentURL(this.currentURL)
     }
   }
+
+
 
   goList() {
     this.scroller.scrollToAnchor("product");

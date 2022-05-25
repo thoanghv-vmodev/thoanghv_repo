@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { fromEvent, observable, Observable, Subscription } from 'rxjs';
 import { throttleTime, scan, finalize } from 'rxjs/operators';
 import { Products } from 'src/app/common/product';
+import { AuthService } from 'src/app/service/auth.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { ProductJsonService } from '../../service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
@@ -15,32 +16,17 @@ import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 })
 export class CactiComponent implements OnInit {
 
+  productList: Products[] = [];
+  currentList: Products[] = [];
+  currentURL = window.location.href;
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
   constructor(
     private productService: ProductJsonService,
     private scroller: ViewportScroller,
     private msg: MessengerService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
-
-  productList: Products[] = [];
-  currentList: Products[] = [];
-
-  openAddToCart(data: Products) {
-    let userLoggedIn = localStorage.getItem('user')
-    if(userLoggedIn) {
-      this.msg.sendMsg(data)
-      this.openCart.addToCart.nativeElement.classList.add('active');
-      this.openCart.overlay.nativeElement.style.display = 'block';
-    } else {
-      this.router.navigate(['login'])
-    }
-  }
-
-  goList() {
-    this.scroller.scrollToAnchor("product");
-  }
-
 
   ngOnInit(): void {
   this.productService.getProduct().subscribe(data => {
@@ -49,4 +35,22 @@ export class CactiComponent implements OnInit {
     console.log(this.productList)
    })
   }
+
+  openAddToCart(data: Products) {
+    let userLoggedIn = localStorage.getItem('user')
+    if(userLoggedIn) {
+      this.msg.sendMsg(data)
+      this.openCart.addToCart.nativeElement.classList.add('active');
+      this.openCart.overlay.nativeElement.style.display = 'block';
+    } else {
+      this.router.navigate(['login']);
+      this.authService.setCurrentURL(this.currentURL)
+    }
+  }
+
+  goList() {
+    this.scroller.scrollToAnchor("product");
+  }
+
+
 }

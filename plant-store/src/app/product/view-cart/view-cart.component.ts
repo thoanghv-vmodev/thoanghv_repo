@@ -20,7 +20,6 @@ export class ViewCartComponent implements OnInit {
   listDataInCart: Products[]= [];
   cartTotal: number = 0;
   textNode!: string;
-
   ngOnInit(): void {
     this.getDataLocalStorage();
   }
@@ -67,7 +66,7 @@ export class ViewCartComponent implements OnInit {
     this.subTotal();
   }
 
-  checkOut() {
+  onOrder() {
     localStorage.setItem('productCheckOut', JSON.stringify(this.listDataInCart));
     this.router.navigateByUrl('/check-out')
   }

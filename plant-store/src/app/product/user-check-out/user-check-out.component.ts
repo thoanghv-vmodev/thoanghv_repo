@@ -6,6 +6,7 @@ import { MessengerService } from 'src/app/service/messenger.service';
 import { OrderListService } from 'src/app/service/order-list.service';
 import { User} from '../../common/user';
 import { ProductJsonService } from 'src/app/service/product-json.service';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-user-check-out',
@@ -19,6 +20,7 @@ export class UserCheckOutComponent implements OnInit {
     private orderService: OrderListService,
     private router: Router,
     private msg: MessengerService,
+    private toastService: ToastService
   ) { }
   cartTotal: number = 0;
   textNode: string = '';
@@ -34,6 +36,16 @@ export class UserCheckOutComponent implements OnInit {
     this.getProductCheckOut();
     this.subTotal();
     this.getListCountry();
+    this.getNumOfProduct();
+
+  }
+
+  getNumOfProduct() {
+      let storage:any = localStorage.getItem('products')
+      let storageItem = JSON.parse(storage).length
+      if(storageItem <= 0) {
+        localStorage.removeItem('productCheckOut');
+      }
   }
 
   getListCountry() {
@@ -64,10 +76,12 @@ export class UserCheckOutComponent implements OnInit {
     this.destination = event.target.value
   }
 
-  onOrder() {
+  // tao mot modal sua thong tin ship hang
+
+  checkOut() {
     if(this.destination !== '') {
       let date = Date.now()
-      let objOrder= {
+      let objCheckout= {
         userName: this.userCheckOut.userName,
         phoneNumber: this.userCheckOut.phoneNumber,
         itemsOrder: this.listItemCheckOut,
@@ -76,18 +90,18 @@ export class UserCheckOutComponent implements OnInit {
         destination: this.destination,
         date: date
       };
-
-      this.orderService.postProductOrder(objOrder).subscribe(data => {
-        console.log(objOrder)
-        alert('Order success!')
-        localStorage.removeItem('products');
-        localStorage.removeItem('productCheckOut');
-        this.router.navigateByUrl('/home-page');
-        this.msg.sendItemInCart([]);
-      })
-
+      this.toastService.showCheckoutSuccess();
+      setTimeout(() => {
+          this.orderService.postProductOrder(objCheckout).subscribe(data => {
+            console.log(objCheckout)
+            localStorage.removeItem('products');
+            localStorage.removeItem('productCheckOut');
+            this.router.navigateByUrl('/home-page');
+            this.msg.sendItemInCart([]);
+          })
+      }, 2000);
       } else {
-      alert('Please select your destination!')
+        this.toastService.showErrorDelivery()
     }
   }
 

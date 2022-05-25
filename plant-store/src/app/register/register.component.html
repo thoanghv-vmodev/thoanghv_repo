@@ -1,20 +1,20 @@
 <div class="register size-page">
       <div class="register-container">
           <p class="register-form-title">Sign Up</p>
-        <form [formGroup]="registerForm" (ngSubmit)="signup()" autocomplete="off">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
             <div class="form-content">
               <label for="user-name"> Name: </label>
               <input class="form-control"
                      id="user-name"
                      type="text"
                      formControlName="userName"
-                     placeholder="Name"
+                     placeholder="Your name"
                      required
                      >
               <div class="col alert alert-danger" role="alert"
                *ngIf="userName?.invalid && (userName?.touched || userName?.dirty)">
                 <div *ngIf="userName?.hasError('required')">
-                  Please input your UerName
+                  Please input your Name
                 </div>
                 <div *ngIf="userName?.hasError('minlength')">
                   Name must be at least 4 characters long.
@@ -32,7 +32,7 @@
               <input class="form-control"
                      id="e-mail" type="email"
                      formControlName="email"
-                     placeholder="your email"
+                     placeholder="Your email"
                      autocomplete="on"
                      required
                      >
@@ -52,7 +52,7 @@
                      id="phone-number"
                      type="tel"
                      formControlName="phoneNumber"
-                     placeholder="your phone number"
+                     placeholder="Your phone number"
                      required
                      >
               <div class="col alert alert-danger" role="alert"
@@ -117,7 +117,7 @@
                      id="confirm-password"
                      type="password"
                      formControlName="confirmPassword"
-                     placeholder="confirm your password"
+                     placeholder="Confirm your password"
                      required
                      >
               <div class="col alert alert-danger" role="alert"
@@ -132,9 +132,10 @@
             </div>
           </form>
           <div class="btn-register">
-            <button type="submit" (click)="signup()">Sign up</button>
+            <button type="submit">Sign up</button>
           </div>
           <p class="title-form">Plant trees to help you relax!</p>
           <p class="title-login">Already register? <a routerLink="/login">Click to Login!</a></p>
       </div>
 </div>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

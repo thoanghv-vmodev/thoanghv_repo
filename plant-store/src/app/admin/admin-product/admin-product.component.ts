@@ -53,7 +53,7 @@ export class AdminProductComponent implements OnInit {
   getListCategory() {
     this.categoryService.getCategory().subscribe(data => {
       this.listCategory = data;
-      console.log(this.listCategory)
+      // console.log(this.listCategory)
     })
   }
 
@@ -61,7 +61,7 @@ export class AdminProductComponent implements OnInit {
     this.productService.getProduct().subscribe(
       data => {
         this.listProduct = data;
-        console.log(this.listProduct)
+        // console.log(this.listProduct)
       }
     )
   }
@@ -75,10 +75,10 @@ export class AdminProductComponent implements OnInit {
   }
 
   closeModal() {
-    this.productForm.reset();
-    this.productPicture = '';
     this.overlay?.nativeElement.classList.remove('dis-block');
     this.modalCreateAndEdit?.nativeElement.classList.remove('dis-block');
+    this.productForm.reset();
+    this.productPicture = '';
   }
   // @TODO: add type
   openModalEditCategory(data: Products) {
@@ -100,12 +100,10 @@ export class AdminProductComponent implements OnInit {
   }
 
   Save():void {
-    this.closeModal();
-    console.log(this.productForm.value)
     if(this.isCreate == true ) {
       this.productService.postProduct(this.productForm.value).subscribe((dataCreate) => {
         console.log('data Create',dataCreate)
-        // this.listProduct.push(this.productForm.value)
+        this.listProduct.push(this.productForm.value)
         this.getListProduct();
       })
     }
@@ -120,6 +118,7 @@ export class AdminProductComponent implements OnInit {
           this.getListProduct();
       })
     }
+    this.closeModal();
   }
 
    onDeleteCategory(data: Products) { // data param
@@ -143,15 +142,17 @@ export class AdminProductComponent implements OnInit {
       .snapshotChanges()
       .pipe(
         finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe(url => {
-            if (url) {
-              this.productPicture = url;
-              this.productForm.get('productImg')?.setValue(url)
-              this.loading?.nativeElement.classList.remove('dis-block')
-            }
-            console.log(this.productPicture);
-          });
+          if(file !== '') {
+            this.downloadURL = fileRef.getDownloadURL();
+            this.downloadURL.subscribe(url => {
+              if (url !== '' && url !== null) {
+                this.productPicture = url;
+                this.productForm.get('productImg')?.setValue(url)
+                this.loading?.nativeElement.classList.remove('dis-block')
+              }
+              console.log(this.productPicture);
+            });
+          }
         })
       )
       .subscribe(active => {

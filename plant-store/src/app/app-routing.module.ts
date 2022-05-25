@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
 import { PreloadAllModules } from '@angular/router';
 import { AuthInterceptor } from './common/auth.interceptor';
-import { CanLoadPageGuard } from './Guard/can-load-page.guard';
 import { RoleGuard } from './Guard/role.guard';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';

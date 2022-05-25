@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
+  apiUrl: "https://plant-store-b3138-default-rtdb.firebaseio.com/",
+  firebase: {
   apiKey: "AIzaSyBUina7vNL14SLePy1Sw3-ouwu716kZBCk",
   authDomain: "plant-store-b3138.firebaseapp.com",
   databaseURL: "https://plant-store-b3138-default-rtdb.firebaseio.com",
@@ -15,6 +16,7 @@ export const environment = {
   measurementId: "G-0WKMR6LENW"
   },
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

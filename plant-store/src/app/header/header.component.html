@@ -9,30 +9,38 @@
                 </div>
             </div>
             <div class="header-content--box">
-              <ng-container *ngIf="!isAccount">
+              <ng-container *ngIf="!(user$ | async)?.userName && userInfo == ''">
                 <div class="login" routerLink="/login">
                   <a >
                   <i class="login-item font-22 fa-solid fa-circle-user"></i>
                   </a>
-                  <p class="login-item login-item-title">Log In</p>
+                  <p class="login-item login-item-title">Login</p>
+                </div>
+                <div class="cart">
+                  <i class="font-22 fa-solid fa-bag-shopping" routerLink="/view-cart">
+                    <p class="count-item">0</p>
+                  </i>
                 </div>
               </ng-container>
-              <ng-container *ngIf="isAccount">
+              <ng-container *ngIf="(user$ | async)?.userName || userInfo != ''">
                   <div class="logout">
                     <a>
                       <i class="login-item font-22 fa-solid fa-circle-user"></i>
                     </a>
-                    <p class="login-item login-item-title" >{{Account.userName}}</p>
+                    <p class="login-item login-item-title" >{{(user$ | async)?.userName}} {{userInfo.userName}}</p>
                     <div class="logout-btn">
-                      <a href="/" (click)="logout()">Log out</a>
+                      <a href="/" (click)="logout()">
+                        Logout
+                      <i class=" px-3 fa-solid fa-arrow-right-from-bracket"></i>
+                      </a>
                     </div>
                   </div>
+                  <div class="cart">
+                    <i class="font-22 fa-solid fa-bag-shopping" routerLink="/view-cart">
+                      <p class="count-item">{{itemInCart.length}}</p></i>
+                  </div>
                 </ng-container>
-                <div class="cart">
-                  <i class="font-22 fa-solid fa-bag-shopping" routerLink="/view-cart">
-                    <p class="count-item">{{itemInCart}}</p></i>
-                </div>
-            </div>
+              </div>
         </div>
         <div class="header-content bg-page">
             <nav class="nav-header-content">

@@ -13,8 +13,8 @@ export class RoleGuard implements CanActivate {
     if(Role) {
       return true
     } else {
-      alert("You don't have admin!")
-      this.router.navigate(['login'])
+      this.router.navigate(['login']);
+
       return false;
     }
   }

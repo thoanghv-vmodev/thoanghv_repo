@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { ProductsOrder } from '../common/product';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +12,19 @@ import { ProductsOrder } from '../common/product';
 export class OrderListService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private toastService: ToastService
   ) { }
 
-  private apiUrl = 'https://plant-store-b3138-default-rtdb.firebaseio.com/'
-
-   postProductOrder(obj: Object):Observable<ProductsOrder> {
-    return this.http.post<ProductsOrder>(`${this.apiUrl}/orders.json`,obj)
+  postProductOrder(obj: Object):Observable<ProductsOrder> {
+    return this.http.post<ProductsOrder>(`${environment.apiUrl}/orders.json`,obj)
     .pipe (
       tap(() => console.log('Order success!'))
     )
   }
 
   getProductOrder() {
-    return this.http.get<{ [id: string]: ProductsOrder}>(`${this.apiUrl}/orders.json`)
+    return this.http.get<{ [id: string]: ProductsOrder}>(`${environment.apiUrl}/orders.json`)
     .pipe(
       map(product => {
         let listProduct: ProductsOrder[] = [];
@@ -36,6 +37,9 @@ export class OrderListService {
   }
 
   deleteProductOrder(data: ProductsOrder) {
-    return this.http.delete<ProductsOrder>(`${this.apiUrl}/orders/${data.id}.json`)
+    return this.http.delete<ProductsOrder>(`${environment.apiUrl}/orders/${data.id}.json`)
+    .pipe(
+      tap(() => this.toastService.showDeleteSuccess())
+    )
   }
 }

@@ -41,7 +41,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ReactiveFormsModule,
     HttpClientModule,
     ShareComModule,
-
   ],
   providers: [ProductJsonService],
   bootstrap: [AppComponent]

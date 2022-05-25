@@ -13,7 +13,7 @@
           <div class="cart-list border-bd">
             <ng-container *ngFor="let data of listDataInCart">
             <div class="row gx-4 cart-list-box">
-                <div class="cart-list-item col-10" >
+                <div class="cart-list-item col-9" >
                   <div class="cart-list-details">
                     <div class="cart-list-details--img">
                       <a href="{{data.productImg}}" target="_blank">
@@ -31,8 +31,10 @@
                     <span (click)="incrementItem(data)"><i class="fa-solid fa-plus"></i></span>
                   </div>
                 </div>
-                <div class="cart-list-item col-2">
-                     <div></div>
+                <div class="cart-list-item col-3">
+                    <p class="subtatol-item">
+                      {{data.productPrice * data.qty | currency: 'USD'}}
+                    </p>
                     <button class="btn-subtatol-item">
                       <i class="fa-solid fa-xmark" (click)="removeItem(data)"></i>
                     </button>
@@ -62,8 +64,7 @@
               <p class="py-4 fs-5">Total</p>
               <p class="py-4 fs-5">{{cartTotal | currency: 'USD'}}</p>
           </div>
-          <button class="btn-checkout" (click)="checkOut()">Check out</button>
-          <div class="cart-oder-secure"><i class="fa-solid fa-lock"></i>Secure Checkout</div>
+          <button class="btn-checkout" (click)="onOrder()">Order now</button>
         </div>
     </section>
   </ng-container>

@@ -4,7 +4,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, FormArray, AbstractCon
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { AccountService } from '../service/account.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -18,9 +18,9 @@ export class RegisterComponent implements OnInit {
    @ViewChild("loading") loading: ElementRef<HTMLElement> | undefined;
   constructor(
     private fb: FormBuilder,
-    private accountService: AccountService,
     private router: Router,
     private storageFb: AngularFireStorage,
+    private authService: AuthService
   ) { }
 
   registerForm!: FormGroup;
@@ -129,18 +129,10 @@ export class RegisterComponent implements OnInit {
       });
   } */
 
-  signup(): void {
+  onSubmit(): void {
     if(this.registerForm.valid) {
-      this.accountService.creatAccount(this.registerForm.value).subscribe(
-        data => {
-          console.warn('submit', data, this.registerForm.value);
-          this.registerForm.value.reset();
-          alert('Signup Successfully!');
-          this.router.navigateByUrl('/login')
-        }, err => {
-          alert('Something went wrong!')
-        }
-      )
+      this.authService.signUp(this.registerForm.value);
+      this.registerForm.reset();
     }else {
       Object.values(this.registerForm.controls).forEach(control => { // set invalid if one value null
         if(control.invalid) {

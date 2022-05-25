@@ -1,5 +1,4 @@
 @use "../../styles.scss";
-@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 ul,
 li,
 p,
@@ -79,14 +78,6 @@ button {
 .form-control {
 
   border-radius: 0;
-}
-input:hover {
-  border: 2px solid #000;
-}
-
-input:focus {
-  border: 2px solid #000 !important;
-  outline: none;
 }
 
 .ng-valid[required],

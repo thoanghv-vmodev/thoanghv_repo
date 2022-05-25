@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Products } from 'src/app/common/product';
+import { ToastService } from 'src/app/service/toast.service';
 import { MessengerService } from '../../service/messenger.service';
 @Component({
   selector: 'app-add-to-cart',
@@ -16,6 +17,7 @@ export class AddToCartComponent implements OnInit {
   qty: number = 1;
   constructor(
     private msg: MessengerService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class AddToCartComponent implements OnInit {
   }
 
   addProductToCart(product: Products) {
+    this.toastService.showAddToCartSuccess()
     this.getDataLocalStorage();
     let item = this.listProductAddToCart.find(value => value.id === product.id)
     if(item) {
@@ -64,7 +67,7 @@ export class AddToCartComponent implements OnInit {
   }
 
   incrementItem(){
-    if(this.qty != 10) {
+    if(this.qty != 50) {
       this.qty++;
       this.subTotal();
     }

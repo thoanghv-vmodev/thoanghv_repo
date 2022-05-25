@@ -68,7 +68,7 @@
           </div>
         </div>
       </ng-container>
-      <form [formGroup]="productForm" (ngSubmit)="Save()">
+      <form [formGroup]="productForm" >
         <div class="form-content">
           <label for="id-product"> Product ID: </label>
           <input class="form-control" id="id-product" type="number" formControlName="productId" placeholder="Id:">
@@ -112,9 +112,10 @@
           <input class="form-control" id="product-price" type="number" formControlName="productPrice" placeholder="Price:">
         </div>
         <div class="btn-card">
-          <button class="btn-list" type="submit">Save</button>
+          <button class="btn-list" (click)="Save()" type="submit">Save</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

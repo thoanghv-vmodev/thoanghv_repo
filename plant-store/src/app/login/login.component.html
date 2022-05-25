@@ -1,7 +1,7 @@
 <div class="login size-page">
   <div class="login-container">
       <p class="login-form-title">Login in</p>
-      <form  [formGroup]="loginForm" name="loginForm">
+      <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" name="loginForm">
         <div class="form-content">
           <label for="e-mail"> Email: </label>
           <input type="text"
@@ -23,13 +23,12 @@
                  >
         </div>
         <div class="btn-login">
-          <button type="submit" class="btn btn-success" (click)="login()" [disabled]="!loginForm.valid">
-              <!-- <a (click)="login()" href="/home-page" style="display: inline-block;" >/ -->
+          <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">
                 Login
-              <!-- </a> -->
             </button>
         </div>
         <p class="title-form">New to PRICKLES & CO.<a routerLink="/register"> Sign up </a></p>
       </form>
     </div>
 </div>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

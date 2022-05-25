@@ -28,10 +28,10 @@ import { UserCheckOutComponent } from 'src/app/product/user-check-out/user-check
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ConnectLayoutRoutingModule,
     ShareComModule,
-    FormsModule,
-    ReactiveFormsModule
   ],
   providers:[ProductJsonService]
 })

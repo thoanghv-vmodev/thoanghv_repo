@@ -4,9 +4,9 @@ import { Products, ProductsOrder } from 'src/app/common/product';
 import { ListCountriesService } from 'src/app/service/list-countries.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { OrderListService } from 'src/app/service/order-list.service';
-import { User} from '../../common/user';
-import { ProductJsonService } from 'src/app/service/product-json.service';
 import { ToastService } from 'src/app/service/toast.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-check-out',
@@ -20,17 +20,17 @@ export class UserCheckOutComponent implements OnInit {
     private orderService: OrderListService,
     private router: Router,
     private msg: MessengerService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private modalService: NgbModal,
+    private fb: FormBuilder
   ) { }
+  formUpdateInfo!: FormGroup
   cartTotal: number = 0;
-  textNode: string = '';
   destination: string = '';
   listItemCheckOut: Products[] = [];
   listCountry: any;
   listDataOrder: ProductsOrder[] = [];
   userCheckOut: any = [];
-  putId?: string;
-
 
   ngOnInit(): void {
     this.getProductCheckOut();
@@ -38,6 +38,12 @@ export class UserCheckOutComponent implements OnInit {
     this.getListCountry();
     this.getNumOfProduct();
 
+    this.formUpdateInfo = this.fb.group({
+      userName: [''],
+      phoneNumber: [''],
+      destination: [''],
+      textNote: [''],
+    })
   }
 
   getNumOfProduct() {
@@ -71,25 +77,27 @@ export class UserCheckOutComponent implements OnInit {
     });
   }
 
-  selectCountry(event: any) {
-    // console.log(event.target.value)
-    this.destination = event.target.value
+  open(content: any) {
+    this.modalService.open(content, {})
+    this.formUpdateInfo.patchValue({
+      userName: this.userCheckOut.userName,
+      phoneNumber: this.userCheckOut.phoneNumber,
+      destination: 'Viet Nam'
+    })
   }
 
   // tao mot modal sua thong tin ship hang
 
   checkOut() {
-    if(this.destination !== '') {
+    if(this.formUpdateInfo.controls['destination'] !== null) {
       let date = Date.now()
       let objCheckout= {
-        userName: this.userCheckOut.userName,
-        phoneNumber: this.userCheckOut.phoneNumber,
+        ...this.formUpdateInfo.value,
         itemsOrder: this.listItemCheckOut,
         subTotal: this.cartTotal,
-        textNote: this.textNode,
-        destination: this.destination,
         date: date
       };
+      console.log(objCheckout)
       this.toastService.showCheckoutSuccess();
       setTimeout(() => {
           this.orderService.postProductOrder(objCheckout).subscribe(data => {

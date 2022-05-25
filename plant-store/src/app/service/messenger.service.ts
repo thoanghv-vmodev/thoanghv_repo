@@ -23,11 +23,11 @@ export class MessengerService {
   }
 
   sendItemInCart(number: any){
-    this.numOfItem.next(number)
+    this.numOfItem.next(number);
   }
 
   getItemInCart() {
-    return this.numOfItem.asObservable()
+    return this.numOfItem.asObservable();
   }
 
 }

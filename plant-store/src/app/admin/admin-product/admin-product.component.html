@@ -38,7 +38,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let data of listProduct">
-          <td>{{ data.productId }}</td>
+          <td>{{ data.id }}</td>
           <td class="text-nowrap">{{ data.productName }}</td>
           <td class="table-img">
             <a href="{{data.productImg}}" target="_blank">
@@ -47,8 +47,8 @@
           </td>
           <td class="table-des">{{ data.productDesc }}</td>
           <td>{{ data.productPrice | currency : 'USD'}}</td>
-          <td><i class="table-icon fa-solid fa-pen" (click)="openModalEditCategory(data)"></i></td>
-          <td><i class="table-icon fa-solid fa-trash" (click)="onDeleteCategory(data)"></i></td>
+          <td><i class="table-icon fa-solid fa-pen" (click)="openModalEditProduct(data)"></i></td>
+          <td><i class="table-icon fa-solid fa-trash" (click)="onDeleteProduct(data)"></i></td>
         </tr>
       </tbody>
     </table>
@@ -76,11 +76,7 @@
           </div>
         </div>
       </ng-container>
-      <form [formGroup]="productForm" >
-        <div class="form-content">
-          <label for="id-product"> Product ID: </label>
-          <input class="form-control" id="id-product" type="number" formControlName="productId" placeholder="Id:">
-        </div>
+      <form [formGroup]="productForm">
         <div class="form-content">
           <label for="product-type"> Product Type: </label>
           <select class="form-select" aria-label="Default select example" formControlName="productType">

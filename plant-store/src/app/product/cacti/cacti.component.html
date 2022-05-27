@@ -29,28 +29,28 @@
     </div>
   </div>
   <div class="product-list row gx-4 gy-5">
-      <div class="product-list-content col-3" *ngFor="let data of productList">
-          <div class="product-list-item">
-            <a [routerLink]="['','product-list','details', data.id]">
-              <img src="{{data.productImg}}"alt="image">
-            </a>
-          </div>
-          <div class="product-list-item">
-            <p>{{data.productName}}</p>
-          </div>
-          <div class="product-list-item">
-            <p>{{data.productPrice | currency:'USD':'symbol'}}</p>
-          </div>
-          <div class="product-list-item product-list-item--flex">
-            <button class="btn-list " (click)="openAddToCart(data)">
-              Add to cart
-            </button>
-            <!-- <button class="btn-list " [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
-              Detail
-            </button> -->
-          </div>
+      <div class="product-list-content col-3"
+           *ngFor="let data of productList | paginate: {itemsPerPage: 8, currentPage: pagination}"
+      >
+        <div class="product-list-item">
+          <a [routerLink]="['','product-list','details', data.id]">
+            <img src="{{data.productImg}}"alt="image">
+          </a>
+        </div>
+        <div class="product-list-item">
+          <p>{{data.productName}}</p>
+        </div>
+        <div class="product-list-item">
+          <p>{{data.productPrice | currency:'USD':'symbol'}}</p>
+        </div>
+        <div class="product-list-item product-list-item--flex">
+          <button class="btn-list " (click)="openAddToCart(data)">
+            Add to cart
+          </button>
+        </div>
       </div>
     </div>
+    <pagination-controls class="pagination" (pageChange)=" pagination = $event"></pagination-controls>
 </div>
 <ng-container>
   <app-add-to-cart #openCart ></app-add-to-cart>

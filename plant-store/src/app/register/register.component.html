@@ -44,6 +44,9 @@
                 <div *ngIf="email?.hasError('email')">
                   The input is not valid E-mail!
                 </div>
+                <div *ngIf="email?.hasError('emailUsed')">
+                  Email already in use!
+                </div>
               </div>
             </div>
             <div class="form-content">

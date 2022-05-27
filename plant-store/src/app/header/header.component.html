@@ -5,7 +5,11 @@
                 <div class="content--box-hover" #item >
                   <i class="box-hover-item fa-solid fa-magnifying-glass"></i>
                   <input class="box-hover-item"
-                         type="text" placeholder="Search..." (focus)="onFocus()" (blur)="onBlur()" appFocusInput>
+                         type="text" placeholder="Search..."
+                         (focus)="onFocus()"
+                         (blur)="onBlur()"
+                         (input)="onInput($event)"
+                  >
                 </div>
             </div>
             <div class="header-content--box">

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Category } from 'src/app/common/category';
 import { CategoryJsonService } from 'src/app/service/category-json.service';
+import { ModalConfirmService } from 'src/app/service/modal-confirm.service';
 @Component({
   selector: 'app-admin-category',
   templateUrl: './admin-category.component.html',
@@ -20,6 +21,7 @@ export class AdminCategoryComponent implements OnInit {
     private fb: FormBuilder,
     private categoryService: CategoryJsonService,
     private storageFb: AngularFireStorage,
+    private confirmModal: ModalConfirmService
   ) { }
 
   categoryForm!: FormGroup;
@@ -98,12 +100,17 @@ export class AdminCategoryComponent implements OnInit {
     }
   }
 
-  onDeleteCategory(data: Category) { // data param
-    if(confirm('Are you sure delete?') == true) {
-      this.categoryService.deleteCategory(data).subscribe( dataDelete => {
+  onDeleteCategory(itemDelete: any) {
+    this.confirmModal.confirm('Please confirm', 'Do you really want to delete?')
+    .then((confirmed) => {
+      if(confirmed == true) {
+        this.categoryService.deleteCategory(itemDelete).subscribe( dataDelete => {
         this.getCategory()
+      })
       }
-  )}}
+    })
+    .catch(() => console.log('User dismissed the dialog'));
+  }
 
   onFileSelected(event:any) {
     this.loading?.nativeElement.classList.add('dis-block')

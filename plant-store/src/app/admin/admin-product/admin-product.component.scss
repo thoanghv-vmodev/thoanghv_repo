@@ -56,11 +56,6 @@
     .table-tr {
       border: none;
     }
-
-    .text-nowrap {
-      white-space: nowrap;
-    }
-
     .table-img {
       a {
         text-decoration: none;
@@ -71,7 +66,6 @@
       img {
         width: 70px;
         height: 70px;
-        // border: 1px solid styles.$color-dark-blue;
         object-fit: cover;
       }
     }

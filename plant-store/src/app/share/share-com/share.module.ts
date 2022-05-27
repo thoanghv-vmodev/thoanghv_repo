@@ -14,11 +14,13 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastsComponent } from './toasts/toasts.component';
+import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 
 @NgModule({
   declarations: [
     AddToCartComponent,
     ToastsComponent,
+    ModalConfirmComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { ToastsComponent } from './toasts/toasts.component';
   exports: [
     AddToCartComponent,
     ToastsComponent,
+    ModalConfirmComponent,
     SlickCarouselModule,
     AngularFireModule,
     AngularFireStorageModule,

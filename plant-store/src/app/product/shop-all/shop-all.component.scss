@@ -66,6 +66,10 @@
   .product-list-item {
     padding: 4px 0;
     color: styles.$color-dark-blue;
+    a {
+        text-decoration: none;
+        display: inline-block;
+      }
   }
 
   .product-list-item--flex {

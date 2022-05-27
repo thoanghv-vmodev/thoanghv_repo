@@ -82,6 +82,10 @@
   .product-list-item {
     padding: 4px 0;
     color: styles.$color-dark-blue;
+    a {
+      text-decoration: none;
+      display: inline-block;
+    }
   }
 
   .product-list-item--flex {
@@ -173,4 +177,13 @@
       box-shadow: none;
     }
   }
+}
+.pagination {
+  text-align: center;
+  color: styles.$color-dark-blue;
+  justify-content: center;
+}
+
+:host ::ng-deep .ngx-pagination .current {
+  background-color: rgba(18, 49, 50);
 }

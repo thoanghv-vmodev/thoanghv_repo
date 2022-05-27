@@ -6,6 +6,7 @@ import { finalize } from 'rxjs/operators';
 import { Category } from 'src/app/common/category';
 import { Products } from 'src/app/common/product';
 import { CategoryJsonService } from 'src/app/service/category-json.service';
+import { ModalConfirmService } from 'src/app/service/modal-confirm.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class AdminProductComponent implements OnInit {
     private productService: ProductJsonService,
     private categoryService: CategoryJsonService,
     private storageFb: AngularFireStorage,
+    private confirmModal: ModalConfirmService
   ) { }
 
   productForm!: FormGroup;
@@ -32,6 +34,7 @@ export class AdminProductComponent implements OnInit {
   categoryList: Category[] = [];
   putId?: string;
   searchValue!: string;
+  currentDate: any;
 
   selectedFile: any;
   productPicture: string | undefined;
@@ -39,7 +42,6 @@ export class AdminProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      productId: [''],
       productName: [''],
       productType: [''],
       productImg: [''],
@@ -53,15 +55,13 @@ export class AdminProductComponent implements OnInit {
   getCategoryList() {
     this.categoryService.getCategory().subscribe(data => {
       this.categoryList = data;
-      // console.log(this.categoryList)
     })
   }
 
   getListProduct() {
     this.productService.getProduct().subscribe(
       data => {
-        this.listProduct = data;
-        // console.log(this.listProduct)
+         this.listProduct = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       }
     )
   }
@@ -70,26 +70,27 @@ export class AdminProductComponent implements OnInit {
     this.isCreate = true;
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
-    this.productForm.reset();
+    // this.productForm.reset();
     this.productPicture = '';
   }
 
   closeModal() {
     this.overlay?.nativeElement.classList.remove('dis-block');
     this.modalCreateAndEdit?.nativeElement.classList.remove('dis-block');
-    this.productForm.reset();
+    // this.productForm.reset();
     this.productPicture = '';
   }
-  // @TODO: add type
-  openModalEditCategory(data: Products) {
+
+  openModalEditProduct(data: Products) {
     this.isCreate = false;
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
     this.putId = data.id + '';
     this.productPicture = data.productImg;
+    this.currentDate = data.date;
+    console.log(this.currentDate)
 
     this.productForm.patchValue({
-      productId: data.productId,
       productName: data.productName,
       productType: data.productType,
       productImg: data.productImg,
@@ -101,33 +102,44 @@ export class AdminProductComponent implements OnInit {
 
   Save():void {
     if(this.isCreate == true ) {
-      this.productService.postProduct(this.productForm.value).subscribe((dataCreate) => {
+      let date = new Date()
+      let putProduct = {
+      ...this.productForm.value,
+      date: date,
+      }
+      this.productService.postProduct(putProduct).subscribe((dataCreate) => {
         console.log('data Create',dataCreate)
         this.listProduct.push(this.productForm.value)
         this.getListProduct();
       })
     }
     else {
-      let putCategory = { // lay id de put theo id
+      let putProduct = {
       ...this.productForm.value,
-      id: this.putId
+      id: this.putId,
+      date: this.currentDate
       }
       this.productForm.get('productImg')?.setValue(this.productPicture)
-      this.productService.putProduct(this.putId, putCategory).subscribe(dataPut => { // truyen id vao lam key name
-          // console.log('data Put', dataPut)
+      this.productService.putProduct(this.putId, putProduct).subscribe(dataPut => { // truyen id vao lam key name
+          console.log('data Put', dataPut)
           this.getListProduct();
       })
     }
     this.closeModal();
   }
 
-   onDeleteCategory(data: Products) { // data param
-    if(confirm('Are you sure delete?') == true) {
-      this.productService.deleteProduct(data).subscribe( dataDelete => {
-        // console.log(dataDelete)
+
+  onDeleteProduct(itemDelete: any) {
+    this.confirmModal.confirm('Please confirm', 'Do you really want to delete?')
+    .then((confirmed) => {
+      if(confirmed == true) {
+        this.productService.deleteProduct(itemDelete).subscribe( item => {
         this.getListProduct();
+        })
       }
-  )}}
+    })
+    .catch(() => console.log('User dismissed the dialog'));
+  }
 
 
   onFileSelected(event:any) {
@@ -168,8 +180,8 @@ export class AdminProductComponent implements OnInit {
     }
     return this.listProduct = this.listProduct.filter(product =>
       product.productName.toLocaleLowerCase().match(this.searchValue.toLocaleLowerCase()) ||
-      product.productPrice.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase()) ||
-      product.productId.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase()),
+      product.productPrice.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase())
+      // || product.productId.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase()),
       )
   }
 

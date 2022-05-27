@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Products } from '../common/product';
 import { User} from '../common/user';
 import { AuthService } from '../service/auth.service';
+import { GlobalSearchService } from '../service/list-countries.service';
 import { MessengerService } from '../service/messenger.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private msg: MessengerService,
-    private authService: AuthService
+    private authService: AuthService,
+    private globalSearch: GlobalSearchService
     ) {
       this.user$ = this.authService.getUser() as Observable<User>;
     }
@@ -56,6 +58,11 @@ export class HeaderComponent implements OnInit {
         this.itemInCart = JSON.parse(item);
       }
     }
+  }
+
+  onInput(event: any){
+     // this pushes the input value into the service's Observable.
+     this.globalSearch.searchTerm.next(event.target.value);
   }
 
   getNumOfProduct() {

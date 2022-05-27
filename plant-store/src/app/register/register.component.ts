@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, FormArray, AbstractCon
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { User } from '../common/user';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -23,18 +24,20 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService
   ) { }
 
-  registerForm!: FormGroup;
   // selectedFile: any;
   // avatarImg: string | undefined = '';
-  // downloadURL: Observable<string> | undefined;s
+  // downloadURL: Observable<string> | undefined;
+  registerForm!: FormGroup;
+  emailIsUsed: any = [];
 
   ngOnInit(): void {
+    this.getAccountUser();
     this.registerForm = this.fb.group ({
     userName: ['', [Validators.required,
                    Validators.minLength(4),
                    Validators.maxLength(32),
                    this.forbiddenUsername(['admin', 'manager', ' '])]],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.email, this.emailUsed(this.emailIsUsed)]],
     phoneNumber: ['', [Validators.required, Validators.maxLength(10), this.noLetters]],
     // avatar:[''],
     password: ['', [Validators.required,
@@ -44,6 +47,17 @@ export class RegisterComponent implements OnInit {
     confirmPassword: ['', [Validators.required, this.confirmationValidator]]
     })
 
+  }
+
+  getAccountUser() {
+    this.authService.getAccount().subscribe(
+      data => {
+        data.forEach(value => {
+          this.emailIsUsed.push(value.email)}
+        )
+      }
+    )
+    console.log(this.emailIsUsed)
   }
 
   // required
@@ -78,6 +92,16 @@ export class RegisterComponent implements OnInit {
     } : null;
     };
   }
+
+  // required duplicate email
+  emailUsed(users:any = []) {
+    return (control: AbstractControl) => {
+      return (users.includes(control.value)) ? {
+        emailUsed: true
+      } : null;
+      };
+  }
+
 
   // get input value
   get userName() {

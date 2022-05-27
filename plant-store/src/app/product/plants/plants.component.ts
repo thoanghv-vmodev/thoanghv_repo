@@ -8,6 +8,7 @@ import { Products } from 'src/app/common/product';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import { GlobalSearchService } from 'src/app/service/list-countries.service';
 @Component({
   selector: 'app-plants',
   templateUrl: './plants.component.html',
@@ -17,18 +18,48 @@ export class PlantsComponent implements OnInit {
 
   productList: Products[] = [];
   currentList: Products[] = [];
+  pagination: number = 1;
   currentURL = window.location.href;
+  listSortValue = [
+  {
+    sate: 'hight',
+    title: 'Price (hight to low)'
+  },
+  {
+    sate: 'low',
+    title: 'Price (low to high)'
+  },
+  {
+    sate: 'new',
+    title: 'Time (new to old)'
+  },
+  {
+    sate: 'old',
+    title: 'Price (old to new)'
+  }
+  ]
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
   constructor(
      private productService: ProductJsonService,
      private scroller: ViewportScroller,
      private msg: MessengerService,
      private router: Router,
-     private authService: AuthService
+     private authService: AuthService,
+    private globalSearch: GlobalSearchService
   ) { }
 
   ngOnInit(): void {
-    this.getListProduct()
+    this.getListProduct();
+
+    this.globalSearch.searchTerm.subscribe((valueSearch: string) => {
+      if(!this.productList || !valueSearch) {
+        return this.getListProduct();
+      } else{
+      return this.productList = this.productList.filter(item =>
+        item.productName.toLowerCase().match(valueSearch.toLowerCase()) ||
+        item.productPrice.toString().toLowerCase().match(valueSearch.toLowerCase())
+      )}
+     });
   }
 
   getListProduct() {
@@ -51,28 +82,22 @@ export class PlantsComponent implements OnInit {
     }
   }
 
-  listSortValue = [
-  {
-    sate: false,
-    title: 'Price (hight to low)'
-  },
-  {
-    sate: true,
-    title: 'Price (low to high)'
-  }
-  ]
-sortProductItem(event: any) {
-    // console.log(event.target.value)
-    if(event.target.value == 'true') { // so sanh string moi chiu!
-        this.productService.getProduct().subscribe((data :Products[]) => {
-          return this.productList = data.sort((a, b) => a.productPrice - b.productPrice)
-        })
-    } else if(event.target.value == 'false') {
-        this.productService.getProduct().subscribe((data :Products[]) => {
-          return this.productList = data.sort((a, b) => b.productPrice - a.productPrice)
-        })
-    } else {
-      return this.getListProduct();
+
+  sortProductItem(event: any) {
+    switch(event.target.value) {
+      case 'hight':
+         this.productList = this.productList.sort((a, b) => b.productPrice - a.productPrice)
+      break;
+      case 'low':
+           this.productList = this.productList.sort((a, b) => a.productPrice - b.productPrice)
+      break;
+      case 'new':
+           this.productList = this.productList.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      break;
+      case 'old':
+           this.productList = this.productList.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+      break;
+      default:  this.getListProduct();
     }
   }
 

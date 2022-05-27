@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from 'src/app/common/product';
 import { MessengerService } from 'src/app/service/messenger.service';
+import { ModalConfirmService } from 'src/app/service/modal-confirm.service';
 
 @Component({
   selector: 'app-view-cart',
@@ -14,6 +15,7 @@ export class ViewCartComponent implements OnInit {
     private msg: MessengerService,
     private route: ActivatedRoute,
     private router: Router,
+    private confirmModal: ModalConfirmService
   ) {}
   @ViewChild ("modalCheckOut") modalCheckOut: ElementRef<HTMLElement> | undefined;
   @ViewChild ("overlay") overlay: ElementRef<HTMLElement> | undefined;
@@ -60,10 +62,17 @@ export class ViewCartComponent implements OnInit {
   decrementItem(data: Products){
     let item: any = this.listDataInCart.find(value => value.id === data.id);
     item.qty--;
+
     if(item.qty <= 0) {
-      this.removeItem(item)
+      item.qty = 1;
+      this.confirmModal.confirm('Do you really want to delete product?', `${item.productName}`)
+      .then((confirmed) => {
+      if(confirmed == true) {
+        this.removeItem(item)
+      }
+      }).catch(() => console.log('User dismissed the dialog'));
     }
-    this.subTotal();
+   this.subTotal();
   }
 
   onOrder() {

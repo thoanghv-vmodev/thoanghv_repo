@@ -21,13 +21,17 @@
       <div class="search-product--content">
         <div class="search-product--input">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" class="input-search" [(ngModel)]="searchValue" (ngModelChange)="searchProduct()" placeholder="Search...">
+          <input type="text" class="input-search"
+                 [(ngModel)]="searchValue"
+                 (ngModelChange)="searchProduct()"
+                 placeholder="Search...">
         </div>
         <div class="search-product--content-filter">
           <p>Collection:</p>
           <select class="form-select" aria-label="Default select example"  (change)="filterProductItem($event)">
             <option class="select-item" value="">all category</option>
-            <option *ngFor="let category of categoryList" class="select-item"  [value]="category.categoryName">{{category.categoryName}}</option>
+            <option *ngFor="let category of categoryList" class="select-item"
+                    [value]="category.categoryName">{{category.categoryName}}</option>
           </select>
         </div>
       </div>
@@ -48,7 +52,9 @@
           No results found!
         </p>
       </ng-container>
-      <div class="product-list-content col-3" *ngFor="let data of productList | paginate: {itemsPerPage: 8, currentPage: p}">
+      <div class="product-list-content col-3"
+           *ngFor="let data of productList | paginate: {itemsPerPage: 8, currentPage: pagination}"
+      >
         <div class="product-list-item">
           <a [routerLink]="['details', data.id]">
             <img src="{{data.productImg}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
@@ -64,12 +70,9 @@
           <button class="btn-list" (click)="openAddToCart(data)" >
             Add to cart
           </button>
-          <!-- <button class="btn-list " [routerLink]="['details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
-            Detail
-          </button> -->
         </div>
       </div>
-      <pagination-controls class="pagination" (pageChange)=" p = $event"></pagination-controls>
+      <pagination-controls class="pagination" (pageChange)=" pagination = $event"></pagination-controls>
     </div>
 <ng-container>
     <app-add-to-cart #openCart ></app-add-to-cart>

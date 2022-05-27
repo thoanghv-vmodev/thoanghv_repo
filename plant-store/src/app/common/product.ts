@@ -1,6 +1,5 @@
 interface Product {
    id?: string;
-   productId: number;
    productType: string
    productName: string;
    productImg: string;
@@ -10,13 +9,13 @@ interface Product {
 
 export class Products implements Product{
   id!: string;
-  productId!: number;
   productType!: string
   productName!: string;
   productImg!: string;
   productDesc!: string;
   productPrice!: number;
   qty!: number;
+  date!: string;
 }
 
 export class ProductsOrder{

@@ -24,7 +24,8 @@ export class ProductsOrder{
   itemsOrder!: Products[];
   subTotal!: number;
   textNote!: string;
-  destination!: string;
+  province!: string;
+  specificAddress!: string;
   date!: string;
   userName!: string;
   phoneNumber!: string;

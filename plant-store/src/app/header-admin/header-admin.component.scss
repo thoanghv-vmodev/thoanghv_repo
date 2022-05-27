@@ -17,7 +17,7 @@
     display: flex;
     height: 56px;
     justify-content: space-between;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
     align-items: center;
   }
 }
@@ -36,7 +36,7 @@
 }
 
 ::placeholder {
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
 }
 
 
@@ -54,14 +54,14 @@
   }
 
   &:hover {
-    border: 1px solid styles.$color-text-brown;
+    border: 1px solid styles.$color-dark-blue;
   }
 }
 
 .login {
   a {
     text-decoration: none;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
   }
 }
 
@@ -138,7 +138,7 @@
 .nav-menu--item a {
   cursor: pointer;
   text-decoration: none;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
 
   &:hover {
     color: #000;

@@ -10,7 +10,7 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AuthInterceptor } from 'src/app/common/auth.interceptor';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { ShareComModule } from 'src/app/share/share-com/share-com.module';
+import { ShareModule } from 'src/app/share/share-com/share.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { ShareComModule } from 'src/app/share/share-com/share-com.module';
     HttpClientModule,
     FormsModule,
     SlickCarouselModule,
-    ShareComModule
+    ShareModule
 
   ],
   providers: [

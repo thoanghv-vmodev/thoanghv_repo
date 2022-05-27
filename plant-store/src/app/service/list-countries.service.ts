@@ -11,258 +11,262 @@ export class ListCountriesService {
     return this.listProvincesWord
   }
 
+  getProvincesList() {
+    return this.listProvincesVn
+  }
+
   listProvincesVn = [
     {
     id:1	,
-    provin: "An Giang",
+    province: "An Giang",
     },
     {
     id:2	,
-    provin: "Bà Rịa – Vũng Tàu",
+    province: "Bà Rịa – Vũng Tàu",
     },
     {
     id:3	,
-    provin: "Bắc Giang",
+    province: "Bắc Giang",
     },
     {
     id:4	,
-    provin: "Bắc Kạn",
+    province: "Bắc Kạn",
     },
     {
     id:5	,
-    provin: "Bạc Liêu",
+    province: "Bạc Liêu",
     },
     {
     id:6	,
-    provin: "Bắc Ninh",
+    province: "Bắc Ninh",
     },
     {
     id:7	,
-    provin: "Bến Tre",
+    province: "Bến Tre",
     },
     {
     id:8	,
-    provin: "Bình Định",
+    province: "Bình Định",
     },
     {
     id:9	,
-    provin: "Bình Dương",
+    province: "Bình Dương",
     },
     {
     id:10,
-    provin:"	Bình Phước",
+    province:"	Bình Phước",
     },
     {
     id:11,
-    provin:"	Bình Thuận",
+    province:"	Bình Thuận",
     },
     {
     id:12,
-    provin:"	Cà Mau",
+    province:"	Cà Mau",
     },
     {
     id:13,
-    provin:"	Cần Thơ",
+    province:"	Cần Thơ",
     },
     {
     id:14,
-    provin:"	Cao Bằng",
+    province:"	Cao Bằng",
     },
     {
     id:15,
-    provin:"	Đà Nẵng",
+    province:"	Đà Nẵng",
     },
     {
     id:16,
-    provin:"	Đắk Lắk",
+    province:"	Đắk Lắk",
     },
     {
     id:17,
-    provin:"	Đắk Nông",
+    province:"	Đắk Nông",
     },
     {
     id:18,
-    provin:"	Điện Biên",
+    province:"	Điện Biên",
     },
     {
     id:19,
-    provin:"	Đồng Nai",
+    province:"	Đồng Nai",
     },
     {
     id:20,
-    provin:"	Đồng Tháp",
+    province:"	Đồng Tháp",
     },
     {
     id:21,
-    provin:"	Gia Lai",
+    province:"	Gia Lai",
     },
     {
     id:22,
-    provin:"	Hà Giang",
+    province:"	Hà Giang",
     },
     {
     id:23,
-    provin:"	Hà Nam",
+    province:"	Hà Nam",
     },
     {
     id:24,
-    provin:"	Hà Nội",
+    province:"	Hà Nội",
     },
     {
     id:25,
-    provin:"	Hà Tĩnh",
+    province:"	Hà Tĩnh",
     },
     {
     id:26,
-    provin:"	Hải Dương",
+    province:"	Hải Dương",
     },
     {
     id:27,
-    provin:"	Hải Phòng",
+    province:"	Hải Phòng",
     },
     {
     id:28,
-    provin:"	Hậu Giang",
+    province:"	Hậu Giang",
     },
     {
     id:29,
-    provin:"	Hòa Bình",
+    province:"	Hòa Bình",
     },
     {
     id:30,
-    provin:"	Hưng Yên",
+    province:"	Hưng Yên",
     },
     {
     id:31,
-    provin:"	Khánh Hòa",
+    province:"	Khánh Hòa",
     },
     {
     id:32,
-    provin:"	Kiên Giang",
+    province:"	Kiên Giang",
     },
     {
     id:33,
-    provin:"Kon Tum",
+    province:"Kon Tum",
     },
     {
     id:34,
-    provin:"Lai Châu",
+    province:"Lai Châu",
     },
     {
     id:35,
-    provin:"Lâm Đồng",
+    province:"Lâm Đồng",
     },
     {
     id:36,
-    provin:"Lạng Sơn",
+    province:"Lạng Sơn",
     },
     {
     id:37,
-    provin:"Lào Cai",
+    province:"Lào Cai",
     },
     {
     id:38,
-    provin:"Long An",
+    province:"Long An",
     },
     {
     id:39,
-    provin:"Nam Định",
+    province:"Nam Định",
     },
     {
     id:40,
-    provin:"Nghệ An",
+    province:"Nghệ An",
     },
     {
     id:41,
-    provin:"Ninh Bình",
+    province:"Ninh Bình",
     },
     {
     id:42,
-    provin:"Ninh Thuận",
+    province:"Ninh Thuận",
     },
     {
     id:43,
-    provin:"Phú Thọ",
+    province:"Phú Thọ",
     },
     {
     id:44,
-    provin:"Phú Yên",
+    province:"Phú Yên",
     },
     {
     id:45,
-    provin:"Quảng Bình",
+    province:"Quảng Bình",
     },
     {
     id:46,
-    provin:"Quảng Nam",
+    province:"Quảng Nam",
     },
     {
     id:47,
-    provin:"Quảng Ngãi",
+    province:"Quảng Ngãi",
     },
     {
     id:48,
-    provin:"Quảng Ninh",
+    province:"Quảng Ninh",
     },
     {
     id:49,
-    provin:"Quảng Trị",
+    province:"Quảng Trị",
     },
     {
     id:50,
-    provin:"Sóc Trăng",
+    province:"Sóc Trăng",
     },
     {
     id:51,
-    provin:"Sơn La",
+    province:"Sơn La",
     },
     {
     id:52,
-    provin:"Tây Ninh",
+    province:"Tây Ninh",
     },
     {
     id:53,
-    provin:"Thái Bình",
+    province:"Thái Bình",
     },
     {
     id:54,
-    provin:"Thái Nguyên",
+    province:"Thái Nguyên",
     },
     {
     id:55,
-    provin:"Thanh Hóa",
+    province:"Thanh Hóa",
     },
     {
     id:56,
-    provin:"Thừa Thiên Huế",
+    province:"Thừa Thiên Huế",
     },
     {
     id:57,
-    provin:"Tiền Giang",
+    province:"Tiền Giang",
     },
     {
     id:58,
-    provin:"TP Hồ Chí Minh",
+    province:"TP Hồ Chí Minh",
     },
     {
     id:59,
-    provin:"Trà Vinh",
+    province:"Trà Vinh",
     },
     {
     id:60,
-    provin:"Tuyên Quang",
+    province:"Tuyên Quang",
     },
     {
     id:61,
-    provin:"Vĩnh Long",
+    province:"Vĩnh Long",
     },
     {
     id:62,
-    provin:"Vĩnh Phúc",
+    province:"Vĩnh Phúc",
     },
     {
     id:63,
-    provin:"Yên Bái",
+    province:"Yên Bái",
     }
   ]
   listProvincesWord = [

@@ -5,8 +5,8 @@ import { ListCountriesService } from 'src/app/service/list-countries.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { OrderListService } from 'src/app/service/order-list.service';
 import { ToastService } from 'src/app/service/toast.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-check-out',
@@ -25,12 +25,11 @@ export class UserCheckOutComponent implements OnInit {
     private fb: FormBuilder
   ) { }
   formUpdateInfo!: FormGroup
-  cartTotal: number = 0;
-  destination: string = '';
   listItemCheckOut: Products[] = [];
-  listCountry: any;
   listDataOrder: ProductsOrder[] = [];
   userCheckOut: any = [];
+  listProvinces: any;
+  cartTotal: number = 0;
 
   ngOnInit(): void {
     this.getProductCheckOut();
@@ -39,12 +38,17 @@ export class UserCheckOutComponent implements OnInit {
     this.getNumOfProduct();
 
     this.formUpdateInfo = this.fb.group({
-      userName: [''],
-      phoneNumber: [''],
-      destination: [''],
+      userName: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      province: ['', Validators.required],
+      specificAddress: ['', Validators.required],
       textNote: [''],
     })
   }
+
+  get province() { return this.formUpdateInfo.get('province'); }
+
+  get specificAddress() { return this.formUpdateInfo.get('specificAddress'); }
 
   getNumOfProduct() {
       let storage:any = localStorage.getItem('products')
@@ -55,7 +59,7 @@ export class UserCheckOutComponent implements OnInit {
   }
 
   getListCountry() {
-    this.listCountry = this.countriesService.getCountryWord()
+    this.listProvinces = this.countriesService.getProvincesList()
   }
 
   getProductCheckOut() {
@@ -82,14 +86,17 @@ export class UserCheckOutComponent implements OnInit {
     this.formUpdateInfo.patchValue({
       userName: this.userCheckOut.userName,
       phoneNumber: this.userCheckOut.phoneNumber,
-      destination: 'Viet Nam'
     })
   }
+
+  close(){
+    this.modalService.dismissAll()
+  };
 
   // tao mot modal sua thong tin ship hang
 
   checkOut() {
-    if(this.formUpdateInfo.controls['destination'] !== null) {
+    if(this.formUpdateInfo.valid) {
       let date = Date.now()
       let objCheckout= {
         ...this.formUpdateInfo.value,
@@ -97,7 +104,7 @@ export class UserCheckOutComponent implements OnInit {
         subTotal: this.cartTotal,
         date: date
       };
-      console.log(objCheckout)
+      console.log(objCheckout);
       this.toastService.showCheckoutSuccess();
       setTimeout(() => {
           this.orderService.postProductOrder(objCheckout).subscribe(data => {
@@ -107,9 +114,15 @@ export class UserCheckOutComponent implements OnInit {
             this.router.navigateByUrl('/home-page');
             this.msg.sendItemInCart([]);
           })
-      }, 2000);
-      } else {
-        this.toastService.showErrorDelivery()
+          this.close()
+      }, 500);
+      }else {
+        Object.values(this.formUpdateInfo.controls).forEach(control => { // set invalid if one value null
+          if(control.invalid) {
+            control.markAsDirty();
+            control.updateValueAndValidity({onlySelf: true})
+          }
+        })
     }
   }
 

@@ -24,9 +24,9 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   registerForm!: FormGroup;
-  selectedFile: any;
-  avatarImg: string | undefined = '';
-  downloadURL: Observable<string> | undefined;
+  // selectedFile: any;
+  // avatarImg: string | undefined = '';
+  // downloadURL: Observable<string> | undefined;s
 
   ngOnInit(): void {
     this.registerForm = this.fb.group ({

@@ -1,7 +1,6 @@
 <div class="check-out size-page">
   <ng-container *ngIf="listItemCheckOut.length <= 0">
-    <p class="view-cart-content--title border-bd">My Cart</p>
-    <div class="cart-empty border-bd">
+    <div class="cart-empty ">
       <p>Cart is empty</p>
       <a routerLink="/product-list">Continue Shopping</a>
     </div>
@@ -72,42 +71,57 @@
     </div>
   </ng-container>
   <ng-template #content let-modal>
-    <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Delivery information update</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="formUpdateInfo">
-          <div class="form-content">
+          <div class="form-content py-1">
             <label for="user-name"> Name: </label>
             <input type="text"  class="form-control" id="user-name"  formControlName="userName" >
           </div>
-          <div class="form-content">
+          <div class="form-content py-1">
             <label for="phone-number"> Phone number: </label>
             <input type="number" class="form-control" id="phone-number" formControlName="phoneNumber">
           </div>
-          <div class="form-content">
-            <label for="destination"> Destination: </label>
-            <select class="form-select" id="destination" aria-label="Default select example" formControlName="destination">
-              <option *ngFor="let data of listCountry" class="form-control" [value]="data.name">
-                {{data.name}}
+          <div class="form-content py-1">
+            <label for="province"> Provincial: </label>
+            <select class="form-select" id="province" aria-label="Default select example" formControlName="province" required>
+              <option *ngFor="let data of listProvinces" class="form-control" [value]="data.province">
+                {{data.province}}
               </option>
             </select>
+            <div *ngIf="province?.invalid && (province?.touched || province?.dirty)" role="alert" class="alert alert-danger">
+              <div *ngIf="province?.hasError('required')">
+                Select your province!
+              </div>
+            </div>
           </div>
-          <div class="form-content">
+          <div class="form-content py-1">
+            <label for="text-note"> Specific address: </label>
+            <div>
+              <textarea name="text-note" id="text-note" formControlName="specificAddress" cols="55" rows="2"
+                placeholder="Your specific address information."></textarea>
+            </div>
+            <div *ngIf="specificAddress?.invalid && (specificAddress?.touched || specificAddress?.dirty)" role="alert" class="alert alert-danger">
+              <div *ngIf="specificAddress?.hasError('required')">
+                Please enter your specific address!
+              </div>
+            </div>
+          </div>
+          <div class="form-content py-1">
             <label for="text-note"> Note: </label>
             <div>
-              <textarea name="text-note" id="text-note" formControlName="textNote" cols="60" rows="3"
+              <textarea name="text-note" id="text-note" formControlName="textNote" cols="55" rows="2"
                 placeholder="Instructions? Special requests? Add them here."></textarea>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-checkout" (click)="checkOut()" (click)="modal.close()">Save</button>
+        <button type="button" class="btn-checkout" (click)="checkOut()">Save</button>
       </div>
-    </div>
   </ng-template>
 </div>
 <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

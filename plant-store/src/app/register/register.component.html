@@ -1,7 +1,7 @@
 <div class="register size-page">
       <div class="register-container">
           <p class="register-form-title">Sign Up</p>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <form [formGroup]="registerForm"  autocomplete="off">
             <div class="form-content">
               <label for="user-name"> Name: </label>
               <input class="form-control"
@@ -132,7 +132,7 @@
             </div>
           </form>
           <div class="btn-register">
-            <button type="submit">Sign up</button>
+            <button type="submit" (click)="onSubmit()">Sign up</button>
           </div>
           <p class="title-form">Plant trees to help you relax!</p>
           <p class="title-login">Already register? <a routerLink="/login">Click to Login!</a></p>

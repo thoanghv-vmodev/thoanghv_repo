@@ -51,7 +51,8 @@
             <div class="history-order-summary">
               <div>
                 <p>Subtotal: {{dataOrder.subTotal | currency: 'USD'}}</p>
-                <p>Destination: {{dataOrder.destination}}</p>
+                <p>Provincial: {{dataOrder.province}}</p>
+                <p>Specific address: {{dataOrder.specificAddress}}</p>
                 <p>Date: {{dataOrder.date | date: 'dd MMM yyyy hh:mm a'}}</p>
                 <p>Note: {{dataOrder.textNote}}</p>
               </div>

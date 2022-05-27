@@ -12,10 +12,10 @@ export class HomePageComponent implements OnInit {
    private categoryService: CategoryJsonService
   ) { }
 
-  listCategory: Category[] = [];
+  categoryName: Category[] = [];
   ngOnInit(): void {
     this.categoryService.getCategory().subscribe(data => {
-      this.listCategory = data
+      this.categoryName = data
       // console.log(data)
     })
   }

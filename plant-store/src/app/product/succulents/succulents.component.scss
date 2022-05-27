@@ -2,7 +2,7 @@
 @use '../../../styles.scss';
 
 /* Btn reuse */
-@mixin btn ($btn: styles.$color-text-brown) {
+@mixin btn ($btn: styles.$color-dark-blue) {
   background-color: $btn;
   border-style: none;
   color: #fff;
@@ -68,7 +68,7 @@
   }
 
   .category-title {
-    padding-top: 48px;
+    padding-top: 100px;
     text-align: center;
     text-transform: uppercase;
     color: styles.$color-dark-blue;
@@ -86,7 +86,7 @@
 
   .product-list-item {
     padding: 4px 0;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
   }
 
   .product-list-item--flex {
@@ -96,6 +96,8 @@
 
   .product-list-item img {
     width: 100%;
+    max-height: 272px;
+    object-fit: cover;
   }
 }
 
@@ -144,5 +146,36 @@
   i {
     font-size: 40px;
     cursor: pointer;
+  }
+}
+
+.search-product--content {
+  display: flex;
+  justify-content: right;
+
+  .search-product--content-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+
+    .form-check {
+      margin: 0 24px;
+    }
+
+    p {
+      white-space: nowrap;
+    }
+
+    .form-select {
+      background-color: transparent;
+      border: none;
+    }
+
+    .form-select:focus {
+      outline: none;
+      border-style: none;
+      box-shadow: none;
+    }
   }
 }

@@ -73,14 +73,6 @@ export class ToastService {
     })
   }
 
-  showErrorDelivery() {
-    this.show({
-     header:"Please select your destination!",
-     body: 'bg-danger text-light',
-     delay: 3000
-    })
-  }
-
   showEditSuccess() {
     this.show({
      header:"Edit success!",

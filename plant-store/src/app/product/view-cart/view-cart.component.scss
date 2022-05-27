@@ -2,7 +2,7 @@
 
 
 /* Btn reuse */
-@mixin btn ($btn: styles.$color-text-brown) {
+@mixin btn ($btn: styles.$color-dark-blue) {
   background-color: $btn;
   border-style: none;
   color: #fff;
@@ -50,7 +50,7 @@
     .cart-list-item {
       display: flex;
       justify-content: space-between;
-      color: styles.$color-text-brown;
+      color: styles.$color-dark-blue;
       align-items: flex-start;
     }
 
@@ -60,7 +60,7 @@
       .cart-list-details--img {
         width: 100px;
         height: 100px;
-        border: 1px solid styles.$color-text-brown;
+        border: 1.5px solid styles.$color-dark-blue;
 
           img{
             width: 100%;
@@ -70,7 +70,7 @@
       }
       .cart-list-details--info {
         padding-left: 12px;
-        color: styles.$color-text-brown;
+        color: styles.$color-dark-blue;
         font-size: 16px;
         span {
           opacity: 0.6;
@@ -83,14 +83,14 @@
       border-style: none;
       outline: none;
       line-height: 0;
-      color: styles.$color-text-brown;
+      color: styles.$color-dark-blue;
       font-size: 20px;
     }
   }
 }
 
 .view-cart-content--title {
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   font-size: 20px;
   width: 100%;
   padding-bottom: 12px;
@@ -101,12 +101,12 @@
 
   .cart-option-box {
     padding: 12px 0;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
   }
 
   .cart-option--title {
     font-size: 16px;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
     margin-left: 8px;
   }
 
@@ -116,15 +116,15 @@
     .cart-option-apply,
     textarea,
     input {
-      border: 1px solid styles.$color-text-brown;
+      border: 1px solid styles.$color-dark-blue;
       outline: none;
-      color: styles.$color-text-brown;
+      color: styles.$color-dark-blue;
       font-size: 16px;
       padding: 6px 10px;
       background-color: transparent;
     }
     ::placeholder {
-      color: styles.$color-text-brown;
+      color: styles.$color-dark-blue;
       opacity: 0.6;
     }
     .cart-option-apply {
@@ -141,17 +141,17 @@
   .cart-order-box {
     display: flex;
     justify-content: space-between;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
 
     .cart-order-item {
       padding: 8px 0;
     }
 
     .form-select {
-      border: 1px solid styles.$color-text-brown;
+      border: 1px solid styles.$color-dark-blue;
       outline: none;
       border-radius: 0;
-      color: styles.$color-text-brown;
+      color: styles.$color-dark-blue;
     }
   }
 }
@@ -164,7 +164,7 @@
 
 .cart-oder-secure {
    text-align: center;
-   color: styles.$color-text-brown;
+   color: styles.$color-dark-blue;
    font-size: 14px;
    padding-top: 12px;
 
@@ -180,8 +180,8 @@
   height: 30px;
   align-items: center;
   padding: 4px;
-  color: styles.$color-text-brown;
-  border: 1px solid styles.$color-text-brown;
+  color: styles.$color-dark-blue;
+  border: 1px solid styles.$color-dark-blue;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -196,12 +196,12 @@
 .cart-empty {
   padding: 100px 0;
   text-align: center;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   p {
     font-size: 24px;
   }
   a {
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
   }
 }
 details>summary {
@@ -242,7 +242,7 @@ details>summary::-webkit-details-marker {
   top: 40px;
   background-color: #fff;
   width: 600px;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
 
   .modal-content {
     padding: 18px 36px;
@@ -269,7 +269,7 @@ details>summary::-webkit-details-marker {
 .modal-content-header {
   text-align: center;
   font-size: 26px;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
 }
 
 .icon-close {

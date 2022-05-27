@@ -37,12 +37,12 @@ const routes: Routes = [
   },
 
   {
-    path: 'view-cart', component: ViewCartComponent,
+    path: 'cart', component: ViewCartComponent,
     canActivate: [AuthGuard]
   },
 
   {
-    path: 'check-out', component: UserCheckOutComponent,
+    path: 'checkout', component: UserCheckOutComponent,
     canActivate: [AuthGuard]
   },
 

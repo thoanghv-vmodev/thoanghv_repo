@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of listCategory">
+        <tr *ngFor="let data of categoryList">
           <td>{{ data.categoryId }}</td>
           <td>{{ data.categoryName }}</td>
           <td class="table-img">
@@ -65,8 +65,15 @@
             <input class="form-control" id="category-name" type="text" formControlName="categoryName" placeholder="Name:">
           </div>
           <div class="form-content">
+          <div class="preview-img">
             <label for="category-img"> Category Image: </label>
             <input class="form-control" id="category-img" type="file" (change)="onFileSelected($event)">
+            <ng-container *ngIf="categoryPicture != ''">
+              <a href="{{categoryPicture}}" target="_blank">
+                <img src="{{categoryPicture}}">
+              </a>
+            </ng-container>
+          </div>
             <div class="overlayUpload" #loading>
               <div class="spin-upload">
                 <div class="spinner-border" role="status">

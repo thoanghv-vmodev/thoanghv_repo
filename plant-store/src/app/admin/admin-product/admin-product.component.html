@@ -14,6 +14,14 @@
              [(ngModel)]="searchValue"
              (ngModelChange)="Search()">
     </div>
+    <div class="search-product--content-filter">
+      <p>Collection:</p>
+      <select class="form-select" aria-label="Default select example" (change)="filterProductItem($event)">
+        <option class="select-item" value="">all category</option>
+        <option *ngFor="let category of categoryList" class="select-item" [value]="category.categoryName">
+          {{category.categoryName}}</option>
+      </select>
+    </div>
   </div>
   <div class="table-list">
     <table class="table table-hover table-bordered">
@@ -77,7 +85,7 @@
           <label for="product-type"> Product Type: </label>
           <select class="form-select" aria-label="Default select example" formControlName="productType">
             <option selected disabled>Select type</option>
-            <option *ngFor="let data of listCategory" class="form-control"  value="{{data.categoryName}}">
+            <option *ngFor="let data of categoryList" class="form-control"  value="{{data.categoryName}}">
               {{data.categoryName}}</option>
           </select>
         </div>
@@ -86,7 +94,7 @@
           <input class="form-control" id="product-name" type="text" formControlName="productName" placeholder="Name:">
         </div>
         <div class="form-content">
-          <div class="product-img">
+          <div class="preview-img">
             <label for="product-img"> Product Image: </label>
               <input class="form-control" id="product-img" type="file" (change)="onFileSelected($event)">
             <ng-container *ngIf="productPicture != ''">

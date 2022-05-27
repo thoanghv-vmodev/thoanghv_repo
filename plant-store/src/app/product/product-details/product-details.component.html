@@ -69,63 +69,40 @@
             <button class="btn-buy" (click)="addProductToCart(data)">Add to cart</button>
             <button class="btn-buy" (click)="buyProductToCart(data)">Buy Now</button>
           </div>
-          <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item product-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                  PRODUCT INFO
-                </button>
-              </h2>
-              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body"><p>I'm a product detail. I'm a great place to add more information about your product such as sizing, material, care and
-                cleaning instructions. This is also a great space to write what makes this product special and how your customers can
-                benefit from this item.
-                </p></div>
-              </div>
-            </div>
-            <div class="accordion-item product-item">
-              <h2 class="accordion-header" id="flush-headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                  RETURN & REFUND POLICY
-                </button>
-              </h2>
-              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body"><p>I’m a Return and Refund policy. I’m a great place to let your customers know what to do in case they are dissatisfied
-                with their purchase. Having a straightforward refund or exchange policy is a great way to build trust and reassure your
-                customers that they can buy with confidence.
-                </p></div>
-              </div>
-            </div>
-            <div class="accordion-item product-item">
-              <h2 class="accordion-header" id="flush-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                  SHIPPING INFO
-                </button>
-              </h2>
-              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
-                data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body"><p>I'm a shipping policy. I'm a great place to add more information about your shipping methods, packaging and cost.
-                Providing straightforward information about your shipping policy is a great way to build trust and reassure your
-                customers that they can buy from you with confidence.
-              </p></div>
-              </div>
-            </div>
+          <div>
+            <p>Each purchase you make is vital to the preservation of the gardens and furthering the horticultural and educational
+                  mission of The PRICKLES & CO. If you have enjoyed your visit to the gardens, our nursery or appreciate our
+                  mission, your support insures PRICKLES & CO Farm remains a place of inspiration, education, and reconnection for
+                  generations
+                  to come.
+            </p>
+            <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
+              <ngb-panel title="PICKUP & DELIVERY INFORMATION">
+                <ng-template ngbPanelContent>
+                  <p>All items on Prickles&co.com are for pickup or local delivery within 50 miles. Pickup is available at 18 Ton That
+                    Thuyet • Ha Noi. You can call 0565-523-445 to verify your order pickup date.
+                  </p>
+                </ng-template>
+              </ngb-panel>
+              <ngb-panel title="RETURN & REFUND POLICY">
+                <ng-template ngbPanelContent>
+                  <p>If the product is defective or does not match the order, please contact us directly via the hotline: 0565-523-445 for
+                    advice.
+                  </p>
+                </ng-template>
+              </ngb-panel>
+            </ngb-accordion>
           </div>
         </div>
       </ng-container>
     </div>
     <div class="product-slider">
-        <p class="product-slider--title mb-5">RELATED PRODUCT</p>
+        <p class="product-slider--title mb-5">YOU MAY ALSO LIKE</p>
         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" responsive="responsive">
           <div ngxSlickItem *ngFor="let data of listProduct">
               <div class="list-product">
               <div class="product-slide-item">
-                <a [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
+                <a (click)="details(data)">
                   <img class="product-slide-img" src="{{data.productImg}}" alt="Image{{data.productName}}">
                 </a>
                 <div class="product-slide-details">

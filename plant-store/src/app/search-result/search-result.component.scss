@@ -2,7 +2,7 @@
 
 
 /* Btn reuse */
-@mixin btn ($btn: styles.$color-text-brown) {
+@mixin btn ($btn: styles.$color-dark-blue) {
   background-color: $btn;
   border-style: none;
   color: #fff;
@@ -32,7 +32,7 @@
 
 .search-result--title{
   text-align: center;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   font-size: 24px;
   letter-spacing: 6px;
   padding: 36px;

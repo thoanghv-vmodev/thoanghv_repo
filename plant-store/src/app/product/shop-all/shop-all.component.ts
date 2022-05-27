@@ -48,7 +48,7 @@ export class ShopAllComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListProduct();
-    this.getListCategory();
+    this.getCategoryList();
   }
 
   getListProduct() {
@@ -60,7 +60,7 @@ export class ShopAllComponent implements OnInit {
     )
   }
 
-  getListCategory() {
+  getCategoryList() {
     this.categoryService.getCategory().subscribe(
       data => {
         this.categoryList = data
@@ -93,11 +93,9 @@ export class ShopAllComponent implements OnInit {
   filterProductItem(event: any) {
     // console.log(event.target.value)
     if(event.target.value != '') {
-      setTimeout(() => {
         this.productService.getProduct().subscribe((data :Products[]) => {
           return this.productList = data.filter((value: any) => value.productType == event.target.value)
         })
-      }, 400);
     } else {
       return this.getListProduct();
     }

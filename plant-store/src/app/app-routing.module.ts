@@ -46,9 +46,11 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes,
   {
+    onSameUrlNavigation: 'reload',
     scrollPositionRestoration: 'enabled',
     preloadingStrategy: PreloadAllModules // load truoc module can sd
-  }
+  },
+
   )],
   exports: [RouterModule],
    providers: [

@@ -1,7 +1,7 @@
 /* Product-demo */
 @use '../../../styles.scss';
 
-@mixin btn ($btn: styles.$color-text-brown) {
+@mixin btn ($btn: styles.$color-dark-blue) {
   background-color: $btn;
   border-style: none;
   color: #fff;
@@ -41,7 +41,7 @@
   text-align: center;
 
   .box-item-type {
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;

@@ -35,7 +35,7 @@ export class AddToCartComponent implements OnInit {
     })
   }
 
-  getDataLocalStorage() { // get data để so sánh
+  getDataLocalStorage() {
     let storage = localStorage.getItem('products');
     if(storage) {
       this.listProductAddToCart = JSON.parse(storage)
@@ -43,8 +43,12 @@ export class AddToCartComponent implements OnInit {
     this.msg.sendItemInCart(this.listProductAddToCart)
   }
 
+  /**
+   * - Chức năng hàm :
+   * @param product
+   */
   addProductToCart(product: Products) {
-    this.toastService.showAddToCartSuccess()
+    this.toastService.showAddToCartSuccess();
     this.getDataLocalStorage();
     let item = this.listProductAddToCart.find(value => value.id === product.id)
     if(item) {
@@ -53,7 +57,6 @@ export class AddToCartComponent implements OnInit {
       this.listProductAddToCart.push({...product, qty: this.qty});
     }
     localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
-    console.log(this.listProductAddToCart)
     this.subTotal();
     this.msg.sendItemInCart(this.listProductAddToCart);
     this.closeCart();

@@ -21,6 +21,13 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private msg: MessengerService,
   ) {
+    this.authService.getUser().subscribe(
+      user => {
+        if(user?.userName) {
+          this.route.navigate(['']);
+        }
+      }
+    )
   }
 
   ngOnInit(): void {

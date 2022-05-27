@@ -2,7 +2,7 @@
 
 
 /* Btn reuse */
-@mixin btn ($btn: styles.$color-text-brown) {
+@mixin btn ($btn: styles.$color-dark-blue) {
   background-color: $btn;
   border-style: none;
   color: #fff;
@@ -72,7 +72,7 @@
     ;
     .container--title {
       padding: 14px 28px;
-      color: styles.$color-text-brown;
+      color: styles.$color-dark-blue;
       font-size: 26px;
       .container--name{
         text-align: center;
@@ -81,14 +81,14 @@
 
     .add-to-cart__container--box {
       padding: 8px 28px;
-      border-bottom: 1px solid styles.$color-text-brown;
+      border-bottom: 1px solid styles.$color-dark-blue;
     }
   }
 }
 
 .add-to-cart__container--list {
   list-style: none;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
 
   .container--list-item {
     display: flex;
@@ -109,8 +109,8 @@
         width: 68px;
         margin-top: 8px;
         padding: 4px;
-        color: styles.$color-text-brown;
-        border: 1px solid styles.$color-text-brown;
+        color: styles.$color-dark-blue;
+        border: 1px solid styles.$color-dark-blue;
         user-select: none;
         -moz-user-select: none;
         -webkit-user-select: none;
@@ -133,7 +133,7 @@
     }
 
     .btn-delete-item{
-      border: 1px solid styles.$color-text-brown;
+      border: 1px solid styles.$color-dark-blue;
       width: 18px;
       height: 18px;
       cursor: pointer;
@@ -145,7 +145,7 @@
       outline: none;
       p {
         margin-top: -4px;
-        color: styles.$color-text-brown;
+        color: styles.$color-dark-blue;
       }
     }
   }
@@ -167,7 +167,7 @@
 }
 
 .subtotal-cart {
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   font-size: 24px;
 
     p {
@@ -178,7 +178,7 @@
   padding-top: 60px;
   font-size: 20px;
   text-align: center;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
 }
 .btn-view {
   padding: 28px;

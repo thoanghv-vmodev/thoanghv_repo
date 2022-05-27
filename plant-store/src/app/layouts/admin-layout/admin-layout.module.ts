@@ -6,7 +6,7 @@ import { AdminProductComponent } from 'src/app/admin/admin-product/admin-product
 import { AdminLayoutRoutingModule } from './admin-layout-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ShareComModule } from 'src/app/share/share-com/share-com.module';
+import { ShareModule } from 'src/app/share/share-com/share.module';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { ShareComModule } from 'src/app/share/share-com/share-com.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ShareComModule
+    ShareModule
   ]
 })
 export class AdminLayoutModule { }

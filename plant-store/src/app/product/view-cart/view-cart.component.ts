@@ -68,6 +68,6 @@ export class ViewCartComponent implements OnInit {
 
   onOrder() {
     localStorage.setItem('productCheckOut', JSON.stringify(this.listDataInCart));
-    this.router.navigateByUrl('/check-out')
+    this.router.navigateByUrl('/checkout')
   }
 }

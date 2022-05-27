@@ -2,7 +2,7 @@
 
 
 /* Btn reuse */
-@mixin btn ($btn: styles.$color-text-brown) {
+@mixin btn ($btn: styles.$color-dark-blue) {
   background-color: $btn;
   border-style: none;
   color: #fff;
@@ -51,7 +51,7 @@
   top: 112px;
 
   .shop-all--title {
-    padding-top: 48px;
+    padding-top: 100px;
     text-align: center;
     text-transform: uppercase;
     color: styles.$color-dark-blue;
@@ -61,14 +61,11 @@
   .product-list {
     padding: 24px 0;
     text-align: center;
-
-    .product-list-content {
-    }
-
   }
+
   .product-list-item {
     padding: 4px 0;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
   }
 
   .product-list-item--flex {
@@ -78,6 +75,8 @@
 
   .product-list-item img {
     width: 100%;
+    max-height: 272px;
+    object-fit: cover;
   }
 }
 
@@ -199,7 +198,7 @@
 
 .pagination {
   text-align: center;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   justify-content: center;
 }
 

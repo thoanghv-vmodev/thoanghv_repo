@@ -3,7 +3,7 @@
 
 
 /* Btn reuse */
-@mixin btn ($btn: styles.$color-text-brown) {
+@mixin btn ($btn: styles.$color-dark-blue) {
   background-color: $btn;
   border-style: none;
   color: #fff;
@@ -27,6 +27,12 @@
 
 .btn-shop {
   @include btn;
+  background-color: #fff;
+  color: styles.$color-dark-blue;
+  &:hover {
+    background-color: styles.$color-dark-blue;
+    color: #fff;
+  }
 }
 
 /* Home page */
@@ -110,7 +116,7 @@
   height: 100%;
   padding: 60px 54px;
   text-align: center;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
 
   .box-item-line p{
     width: 20px;
@@ -203,7 +209,7 @@
 
   .form-content--title {
     text-align: center;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
     font-size: 18px;
     letter-spacing: 5px;
 

@@ -44,7 +44,6 @@ export class HeaderComponent implements OnInit {
 
     this.getNumOfProduct();
     this.getDataLocalStorage();
-    // console.log(this.user$)
   }
 
   getDataLocalStorage() {
@@ -69,7 +68,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout()
-    this.itemInCart = ['']
   }
 
   onFocus() {
@@ -91,10 +89,6 @@ export class HeaderComponent implements OnInit {
 
   goContact() {
     this.scroller.scrollToAnchor("contact");
-  }
-
-  Enter() {
-    this.router.navigateByUrl('/search-result')
   }
 
 }

@@ -1,6 +1,6 @@
 @use '../../../styles.scss';
 
-@mixin btn ($btn: styles.$color-text-brown) {
+@mixin btn ($btn: styles.$color-dark-blue) {
   background-color: $btn;
   border-style: none;
   color: #fff;
@@ -37,7 +37,7 @@
   // top: 64px;
 
   .admin-shop-option {
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
     padding: 18px;
     font-size: 26px;
   }
@@ -71,7 +71,7 @@
       img {
         width: 70px;
         height: 70px;
-        // border: 1px solid styles.$color-text-brown;
+        // border: 1px solid styles.$color-dark-blue;
         object-fit: cover;
       }
     }
@@ -85,7 +85,7 @@
   }
 
   .table {
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
   }
 
   .table-des {
@@ -101,6 +101,33 @@
   }
 }
 
+ .search-product--content-filter {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 24px;
+   color: styles.$color-dark-blue;
+
+   .form-check {
+     margin: 0 24px;
+   }
+
+   p {
+     white-space: nowrap;
+   }
+
+   .form-select {
+     background-color: transparent;
+     border: none;
+   }
+
+   .form-select:focus {
+     outline: none;
+     border-style: none;
+     box-shadow: none;
+   }
+ }
+
 /* Add new  */
 
 .modal-container,
@@ -112,6 +139,7 @@
   bottom: 0;
   right: 0;
   z-index: 10;
+  overflow-y: scroll;
 }
 
 .overlay {
@@ -129,7 +157,7 @@
   top: 8px;
   background-color: #fff;
   width: 400px;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
 
   .modal-content {
     padding: 0 18px 8px 18px;
@@ -141,7 +169,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 26px;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
   }
 
   .card-input {
@@ -161,10 +189,10 @@
     border-radius: 0;
   }
 
-  .product-img {
+  .preview-img {
 
     img {
-      border: 1px solid styles.$color-text-brown;
+      border: 1px solid styles.$color-dark-blue;
       width: 48px;
       height: 48px;
       object-fit: cover;
@@ -206,13 +234,13 @@
   .search-product {
     display: flex;
     align-items: center;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
     i{
       font-size: 20px;
       padding-right: 6px;
     }
     input {
-      border: 1px solid styles.$color-text-brown;
+      border: 1px solid styles.$color-dark-blue;
     }
   }
 }

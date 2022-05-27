@@ -19,6 +19,16 @@ export class CactiComponent implements OnInit {
   productList: Products[] = [];
   currentList: Products[] = [];
   currentURL = window.location.href;
+  listSortValue = [
+  {
+    sate: false,
+    title: 'Price (hight to low)'
+  },
+  {
+    sate: true,
+    title: 'Price (low to high)'
+  }
+  ]
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
   constructor(
     private productService: ProductJsonService,
@@ -29,12 +39,17 @@ export class CactiComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  this.productService.getProduct().subscribe(data => {
-    this.currentList = data;
-    this.productList = this.currentList.filter((el:any) => el.productType === 'cacti')
-    console.log(this.productList)
+    this.getListProduct();
+  }
+
+  getListProduct() {
+    this.productService.getProduct().subscribe(data => {
+      this.currentList = data;
+      this.productList = this.currentList.filter((el:any) => el.productType === 'cacti')
+      console.log(this.productList)
    })
   }
+
 
   openAddToCart(data: Products) {
     let userLoggedIn = localStorage.getItem('user')
@@ -45,6 +60,21 @@ export class CactiComponent implements OnInit {
     } else {
       this.router.navigate(['login']);
       this.authService.setCurrentURL(this.currentURL)
+    }
+  }
+
+  sortProductItem(event: any) {
+    // console.log(event.target.value)
+    if(event.target.value == 'true') { // so sanh string moi chiu!
+        this.productService.getProduct().subscribe((data :Products[]) => {
+          return this.productList = data.sort((a, b) => a.productPrice - b.productPrice)
+        })
+    } else if(event.target.value == 'false') {
+        this.productService.getProduct().subscribe((data :Products[]) => {
+          return this.productList = data.sort((a, b) => b.productPrice - a.productPrice)
+        })
+    } else {
+      return this.getListProduct();
     }
   }
 

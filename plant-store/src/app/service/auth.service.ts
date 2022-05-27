@@ -113,14 +113,12 @@ export class AuthService {
         this.setUser(user);
 
         const currentURL:any = localStorage.getItem('currentURL');
-        setTimeout(() => {
           if(currentURL) {
             this.router.navigate([`${currentURL}`]);
             localStorage.removeItem('currentURL')
           } else {
             this.router.navigate(['home-page'])
           }
-        }, 3000);
       } else if(admin) {
         this.router.navigate(['admin']);
         localStorage.setItem('admin', JSON.stringify(this.accAdmin));

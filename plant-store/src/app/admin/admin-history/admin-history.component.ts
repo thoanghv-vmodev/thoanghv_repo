@@ -11,7 +11,7 @@ export class AdminHistoryComponent implements OnInit {
 
   listDataOrder: ProductsOrder[] = [];
   constructor(
-    private orderService: OrderListService
+    private orderService: OrderListService,
   ) { }
   ngOnInit(): void {
     this.getListHistoryOrder();
@@ -27,10 +27,12 @@ export class AdminHistoryComponent implements OnInit {
 
   deleteHistoryOrder(data: any) {
     console.log(data)
-    this.orderService.deleteProductOrder(data).subscribe(
-      itemDelete => {
-        this.getListHistoryOrder();
-      }
-    )
+     if(confirm('Are you sure delete?') == true) {
+       this.orderService.deleteProductOrder(data).subscribe(
+         itemDelete => {
+           this.getListHistoryOrder();
+         }
+       )
+     }
   }
 }

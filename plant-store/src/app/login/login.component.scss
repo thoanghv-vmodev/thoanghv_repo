@@ -30,7 +30,7 @@ button {
 
 .login-form-title {
   font-size: 26px;
-  color:rgb(160, 88, 65);
+  color:styles.$color-dark-blue;
   text-transform: uppercase;
   letter-spacing: 4px;
   text-align: center;
@@ -42,14 +42,14 @@ button {
   justify-content: center;
 
   .btn-success {
-    background-color: #a05841;
+    background-color: styles.$color-dark-blue;
     border-style: none;
     border-radius: 0px;
     padding: 8px 40px;
     font-size: 16px;
 
     &:hover {
-      background-color: #a05841;
+      background-color: styles.$color-dark-blue;
       opacity: 0.8;
     }
     &:focus {
@@ -67,7 +67,7 @@ button {
 }
 
 .title-form {
-  color: #a05841;
+  color: styles.$color-dark-blue;
   text-align: center;
   font-size: 16px;
   padding-top: 24px;

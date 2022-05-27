@@ -17,7 +17,7 @@
     display: flex;
     height: 56px;
     justify-content: space-between;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
     align-items: center;
   }
 }
@@ -37,7 +37,7 @@
 }
 
 ::placeholder{
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
 }
 
 
@@ -54,18 +54,18 @@
   }
 
   &:hover {
-    border: 1px solid styles.$color-text-brown;
+    border: 1px solid styles.$color-dark-blue;
   }
 }
 
 .border-box {
-  border: 1px solid styles.$color-text-brown;
+  border: 1px solid styles.$color-dark-blue;
 }
 
 .login {
   a{
     text-decoration: none;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
   }
   &:hover {
     p {
@@ -79,9 +79,10 @@
   justify-content: center;
   position: relative;
   a {
-      text-decoration: none;
-      color: styles.$color-text-brown;
-      cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: styles.$color-dark-blue;
+    cursor: pointer;
     }
 }
 
@@ -151,6 +152,7 @@
   .hover-list-item a {
     transition: all ease-in-out 0.3s;
     cursor: pointer;
+    display: inline-block;
 
     &:hover {
       color: #000;
@@ -173,7 +175,7 @@
 .nav-menu--item a{
   cursor: pointer;
   text-decoration: none;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   &:hover {
     color: #000;
     transition: all ease-in-out 0.3s;

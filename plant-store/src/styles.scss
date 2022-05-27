@@ -13,10 +13,10 @@ ul,li,p,h1,h2,h3,h4,h5,h6,ol,button {
 }
 
 $bg-white: rgb(255 255 255);
-$color-text-brown: rgb(160, 88, 65);
+// $color-text-brown: rgb(160, 88, 65);
 $bg-page: #ededee;
 $bg-color-green: rgb(18 49 50);
-$color-dark-blue: #123132;
+$color-dark-blue: rgb(18, 48, 49);
 $bg-overlay: rgba(18, 49, 50, 0.4);
 
 body {
@@ -40,7 +40,3 @@ input {
   padding: 18px 0;
 }
 
-
-
-/* Importing Bootstrap SCSS file. */
-// @import '~bootstrap/scss/bootstrap';

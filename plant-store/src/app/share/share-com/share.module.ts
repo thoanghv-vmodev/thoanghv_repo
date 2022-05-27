@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AddToCartComponent } from 'src/app/product/add-to-cart/add-to-cart.component';
-import { ToastsComponent } from 'src/app/toasts/toasts.component';
 
 import { ShareRoutingModule } from './share-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,11 +13,12 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ToastsComponent } from './toasts/toasts.component';
 
 @NgModule({
   declarations: [
     AddToCartComponent,
-    ToastsComponent
+    ToastsComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +31,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgxPaginationModule,
     NgbPaginationModule,
     NgbAlertModule,
-    NgbModule
+    NgbModule,
   ],
   exports: [
     AddToCartComponent,
@@ -47,4 +47,4 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgbModule
   ]
 })
-export class ShareComModule { }
+export class ShareModule { }

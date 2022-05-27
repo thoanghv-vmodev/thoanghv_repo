@@ -29,7 +29,7 @@ export class AdminProductComponent implements OnInit {
   productForm!: FormGroup;
   isCreate = true;
   listProduct: Products[] = [];
-  listCategory: Category[] = [];
+  categoryList: Category[] = [];
   putId?: string;
   searchValue!: string;
 
@@ -39,7 +39,7 @@ export class AdminProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      productId: ['', Validators.required],
+      productId: [''],
       productName: [''],
       productType: [''],
       productImg: [''],
@@ -47,13 +47,13 @@ export class AdminProductComponent implements OnInit {
       productPrice: [''],
     });
     this.getListProduct();
-    this.getListCategory();
+    this.getCategoryList();
   }
 
-  getListCategory() {
+  getCategoryList() {
     this.categoryService.getCategory().subscribe(data => {
-      this.listCategory = data;
-      // console.log(this.listCategory)
+      this.categoryList = data;
+      // console.log(this.categoryList)
     })
   }
 
@@ -171,6 +171,19 @@ export class AdminProductComponent implements OnInit {
       product.productPrice.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase()) ||
       product.productId.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase()),
       )
+  }
+
+  filterProductItem(event: any) {
+    // console.log(event.target.value)
+    if(event.target.value != '') {
+      setTimeout(() => {
+        this.productService.getProduct().subscribe((data :Products[]) => {
+          return this.listProduct = data.filter((value: any) => value.productType == event.target.value)
+        })
+      }, 400);
+    } else {
+      return this.getListProduct();
+    }
   }
 
 }

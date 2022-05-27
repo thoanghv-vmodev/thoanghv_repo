@@ -2,7 +2,7 @@
 
 
 /* Btn reuse */
-@mixin btn ($btn: styles.$color-text-brown) {
+@mixin btn ($btn: styles.$color-dark-blue) {
   background-color: $btn;
   border-style: none;
   color: #fff;
@@ -50,7 +50,7 @@
     .cart-list-item {
       display: flex;
       justify-content: space-between;
-      color: styles.$color-text-brown;
+      color: styles.$color-dark-blue;
       align-items: flex-start;
     }
 
@@ -60,7 +60,7 @@
       .cart-list-details--img {
         width: 100px;
         height: 100px;
-        border: 1px solid styles.$color-text-brown;
+        border: 1.5px solid styles.$color-dark-blue;
 
         img {
           width: 100%;
@@ -71,28 +71,27 @@
 
       .cart-list-details--info {
         padding-left: 12px;
-        color: styles.$color-text-brown;
+        color: styles.$color-dark-blue;
         font-size: 16px;
 
         span {
           opacity: 0.6;
         }
       }
-
     }
 
     .btn-subtatol-item {
       background: transparent;
       border-style: none;
       outline: none;
-      color: styles.$color-text-brown;
+      color: styles.$color-dark-blue;
       font-size: 20px;
     }
   }
 }
 
 .check-out-content--title {
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   font-size: 20px;
   width: 100%;
   padding-bottom: 12px;
@@ -103,17 +102,17 @@
   .cart-order-box {
     display: flex;
     justify-content: space-between;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
 
     .cart-order-item {
       padding: 8px 0;
     }
 
     .form-select {
-      border: 1px solid styles.$color-text-brown;
+      border: 1px solid styles.$color-dark-blue;
       outline: none;
       border-radius: 0;
-      color: styles.$color-text-brown;
+      color: styles.$color-dark-blue;
     }
   }
 }
@@ -126,7 +125,7 @@
 
 .cart-oder-secure {
   text-align: center;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   font-size: 14px;
   padding-top: 12px;
 
@@ -139,7 +138,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   span {
     opacity: 0.6;
     cursor: pointer;
@@ -148,7 +147,7 @@
 }
 
 .view-cart-content--title {
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   font-size: 20px;
   width: 100%;
   padding-bottom: 12px;
@@ -157,14 +156,14 @@
 .cart-empty {
   padding: 100px 0;
   text-align: center;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
 
   p {
     font-size: 24px;
   }
 
   a {
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
   }
 }
 
@@ -174,7 +173,7 @@
 
 .user-info {
   padding-left: 80px;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   h1 {
     font-size: 22px;
   }
@@ -182,15 +181,20 @@
     font-size: 16px;
   }
 }
-.modal-container {
-  .modal-header,.modal-body {
-    color: styles.$color-text-brown;
-  }
-  .modal-footer {
-    display: flex;
-    justify-content: center;
-  }
+
+::ng-deep.modal-content {
+  border-radius: 0;
+  width: 460px;
 }
+
+.modal-header,
+.modal-body {
+  color: styles.$color-dark-blue;
+}
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  }
 
 .form-select {
   border-radius: 0;
@@ -199,5 +203,15 @@ input {
   border-radius: 0;
 }
 
+textarea {
+  border: 1px solid #ced4da;
+}
+
+.alert {
+  background-color: #fed3d3;
+  color: #820000;
+  padding: 6px;
+  margin: 0;
+}
 
 

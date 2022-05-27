@@ -14,15 +14,15 @@
     top: 0;
     position: fixed;
     width: 260px;
-    color: styles.$color-text-brown;
+    color: styles.$color-dark-blue;
 
     .menu-left--title {
       font-size: 24px;
-      border-top: 1px solid styles.$color-text-brown;
+      border-top: 1px solid styles.$color-dark-blue;
       padding: 4px 24px;
     }
     .menu-left--list {
-      color: styles.$color-text-brown;
+      color: styles.$color-dark-blue;
       list-style: none;
 
       .menu-left--list-item{

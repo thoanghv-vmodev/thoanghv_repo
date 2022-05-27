@@ -77,7 +77,7 @@ export class ProductDetailsComponent implements OnInit {
     }
     localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
     this.msg.sendItemInCart(this.listProductAddToCart);
-    this.router.navigateByUrl('/view-cart')
+    this.router.navigateByUrl('/cart')
   }
 
   incrementItem(){
@@ -90,6 +90,10 @@ export class ProductDetailsComponent implements OnInit {
     if(this.qty != 1) {
       this.qty--;
     }
+  }
+
+  details(data:any) {
+    this.router.navigate(['','product-list','details', data.id]).then(()=>  {window.location.reload();});
   }
 
   slideConfig = {

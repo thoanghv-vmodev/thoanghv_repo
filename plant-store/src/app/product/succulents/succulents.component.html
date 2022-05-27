@@ -5,11 +5,7 @@
           <a class="back-shop-all" routerLink="/product-list"> <i class="fa-solid fa-angles-left"></i> Shop all</a>
           <div class="banner-box--title">
             <h1 class="title-name pd-tb-18 ">WE LOVE SUCCULENTS</h1>
-            <p class="title-desc pd-tb-18 ">I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just
-              click “Edit Text” or double click me to
-              add your own content and make changes to the font. I’m a great place for you to tell a story and let your
-              users know a
-              little more about you.</p>
+            <p class="title-desc pd-tb-18 "></p>
           </div>
           <div class="pd-tb-18">
             <div class="down-icon">
@@ -22,10 +18,20 @@
     <div class="category-title" id="product">
       <h1>succulents</h1>
     </div>
+    <div class="search-product--content">
+      <div class="search-product--content-filter">
+        <p>Sort By:</p>
+        <select class="form-select" aria-label="Default select example" (change)="sortProductItem($event)">
+          <option class="select-item" value="">Best Match</option>
+          <option *ngFor="let data of listSortValue" class="select-item" value="{{data.sate}}">
+            {{data.title}}</option>
+        </select>
+      </div>
+    </div>
     <div class="product-list row gy-5 gx-4">
       <div class="product-list-content col-3" *ngFor="let data of productList">
         <div class="product-list-item">
-          <a [routerLink]="['','product-list','details', data.id]" [queryParams]="{page: data.id}" fragment="plant">
+          <a [routerLink]="['','product-list','details', data.id]">
             <img src="{{data.productImg}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
           </a>
         </div>

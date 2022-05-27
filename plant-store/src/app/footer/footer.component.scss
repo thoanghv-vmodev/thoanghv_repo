@@ -6,8 +6,7 @@
 }
 
 .footer-top {
-  display: flex;
-  justify-content: space-around;
+  margin: 0;
   padding-top: 52px;
 
   .footer-top--contact {
@@ -27,6 +26,7 @@
       font-size: 15px;
     }
     .contact-item a {
+      display: inline-block;
       color: #fff;
     }
   }
@@ -136,7 +136,7 @@
   position: relative;
   top: 112px;
   padding: 28px;
-  color: styles.$color-text-brown;
+  color: styles.$color-dark-blue;
   text-align: center;
   font-size: 14px;
 }

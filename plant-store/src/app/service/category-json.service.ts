@@ -28,11 +28,11 @@ export class CategoryJsonService {
     return this.http.get<{ [id: string]: Category}>(`${environment.apiUrl}/category.json`)
     .pipe(
       map(category => {
-        let listCategory: Category[] = [];
+        let categoryList: Category[] = [];
         for(let id in category) { // loop to get id default
-          listCategory.push({...category[id], id}); // convert id
+          categoryList.push({...category[id], id}); // convert id
         }
-        return listCategory
+        return categoryList
       })
     )
   }

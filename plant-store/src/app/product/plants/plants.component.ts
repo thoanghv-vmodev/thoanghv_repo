@@ -28,14 +28,17 @@ export class PlantsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getListProduct()
+  }
+
+  getListProduct() {
     this.productService.getProduct().subscribe(data => {
       this.currentList = data;
       this.productList = this.currentList.filter((el:any) => el.productType === 'plants')
         console.log(this.productList)
-      }
-    )
+      })
+   }
 
-  }
   openAddToCart(data: Products) {
     let userLoggedIn = localStorage.getItem('user')
     if(userLoggedIn) {
@@ -45,6 +48,31 @@ export class PlantsComponent implements OnInit {
     } else {
       this.router.navigate(['login'])
       this.authService.setCurrentURL(this.currentURL)
+    }
+  }
+
+  listSortValue = [
+  {
+    sate: false,
+    title: 'Price (hight to low)'
+  },
+  {
+    sate: true,
+    title: 'Price (low to high)'
+  }
+  ]
+sortProductItem(event: any) {
+    // console.log(event.target.value)
+    if(event.target.value == 'true') { // so sanh string moi chiu!
+        this.productService.getProduct().subscribe((data :Products[]) => {
+          return this.productList = data.sort((a, b) => a.productPrice - b.productPrice)
+        })
+    } else if(event.target.value == 'false') {
+        this.productService.getProduct().subscribe((data :Products[]) => {
+          return this.productList = data.sort((a, b) => b.productPrice - a.productPrice)
+        })
+    } else {
+      return this.getListProduct();
     }
   }
 

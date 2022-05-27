@@ -24,7 +24,7 @@ export class AdminCategoryComponent implements OnInit {
 
   categoryForm!: FormGroup;
   isCreate = true;
-  listCategory: Category[] = [];
+  categoryList: Category[] = [];
   putId?: string;
 
   selectedFile: any;
@@ -44,13 +44,14 @@ export class AdminCategoryComponent implements OnInit {
   getCategory() {
     this.categoryService.getCategory().subscribe(
       data => {
-        this.listCategory = data;
+        this.categoryList = data;
       }
     )
   }
 
   openModalCreateCategory() {
     this.isCreate = true;
+    this.categoryPicture = '';
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
     this.categoryForm.reset();
@@ -60,12 +61,14 @@ export class AdminCategoryComponent implements OnInit {
     this.overlay?.nativeElement.classList.remove('dis-block');
     this.modalCreateAndEdit?.nativeElement.classList.remove('dis-block');
   }
-  // @TODO: add type
+
   openModalEditCategory(data: Category) {
     this.isCreate = false;
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
     this.putId = data.id + '';
+    this.categoryPicture = data.categoryImg;
+
     this.categoryForm.patchValue({
       categoryId: data.categoryId,
       categoryName: data.categoryName,
@@ -79,7 +82,7 @@ export class AdminCategoryComponent implements OnInit {
     if(this.isCreate == true) {
       this.categoryService.postCategory(this.categoryForm.value).subscribe((dataCreate) => {
         console.log('data Create',dataCreate)
-        // this.listCategory.push(this.categoryForm.value)
+        // this.categoryList.push(this.categoryForm.value)
         this.getCategory()
       })
     }

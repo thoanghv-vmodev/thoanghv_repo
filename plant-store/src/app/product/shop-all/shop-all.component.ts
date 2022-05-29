@@ -1,5 +1,5 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/common/category';
 import { Products } from 'src/app/common/product';
@@ -16,6 +16,7 @@ import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
   styleUrls: ['./shop-all.component.scss']
 })
 export class ShopAllComponent implements OnInit {
+  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
 
   searchValue!: string;
   searchTerm: string = "";
@@ -42,8 +43,6 @@ export class ShopAllComponent implements OnInit {
     title: 'Price (old to new)'
   }
   ]
-
-  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
 
   constructor(
     private productService: ProductJsonService,
@@ -108,7 +107,6 @@ export class ShopAllComponent implements OnInit {
   }
 
   filterProductItem(event: any) {
-    // console.log(event.target.value)
     if(event.target.value != '') {
         this.productService.getProduct().subscribe((data :Products[]) => {
           return this.productList = data.filter((value: any) => value.productType == event.target.value)
@@ -155,8 +153,6 @@ export class ShopAllComponent implements OnInit {
       this.authService.setCurrentURL(this.currentURL)
     }
   }
-
-
 
   goList() {
     this.scroller.scrollToAnchor("product");

@@ -22,6 +22,16 @@
           {{category.categoryName}}</option>
       </select>
     </div>
+    <div class="search-product--content">
+      <div class="search-product--content-filter">
+        <p>Sort By:</p>
+        <select class="form-select" aria-label="Default select example" (change)="sortProductItem($event)">
+          <option class="select-item" value="">Best Match</option>
+          <option *ngFor="let data of listSortValue" class="select-item" value="{{data.sate}}">
+            {{data.title}}</option>
+        </select>
+      </div>
+    </div>
   </div>
   <div class="table-list">
     <table class="table table-hover table-bordered">
@@ -87,7 +97,11 @@
         </div>
         <div class="form-content">
           <label for="product-name"> Product Name: </label>
-          <input class="form-control" id="product-name" type="text" formControlName="productName" placeholder="Name:">
+          <input class="form-control"
+                 id="product-name"
+                 type="text"
+                 formControlName="productName"
+                 placeholder="Name:">
         </div>
         <div class="form-content">
           <div class="preview-img">
@@ -109,11 +123,19 @@
         </div>
         <div class="form-content">
           <label for="product-desc"> Product Description: </label>
-          <textarea row="1" class="form-control" id="product-desc" type="text" formControlName="productDesc" placeholder="Description:"></textarea>
+          <textarea row="1" class="form-control"
+                    id="product-desc" type="text"
+                    formControlName="productDesc"
+                    placeholder="Description:">
+          </textarea>
         </div>
         <div class="form-content">
           <label for="product-price"> Product Price: </label>
-          <input class="form-control" id="product-price" type="number" formControlName="productPrice" placeholder="Price:">
+          <input class="form-control"
+                 id="product-price" type="number"
+                 formControlName="productPrice"
+                 placeholder="Price:"
+                 >
         </div>
         <div class="btn-card">
           <button class="btn-list" (click)="Save()" type="submit">Save</button>

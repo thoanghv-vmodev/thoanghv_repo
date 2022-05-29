@@ -17,10 +17,6 @@
         </ng-container>
       <p class="path-url-title">{{data.productName}}</p>
       </div>
-     <!--  <div class="content-item">
-        <div class="prev"><i class="fa-solid fa-chevron-left"></i>Prev</div> |
-        <div class="next">Next <i class="fa-solid fa-chevron-right"></i></div>
-      </div> -->
     </div>
     <div class="product-details--content">
       <ng-container *ngFor="let data of itemDetail">
@@ -61,7 +57,6 @@
             <div class="product-item-input">
               <span (click)="decrementItem()"><i class="fa-solid fa-minus"></i></span>
               <p>{{qty}}</p>
-              <!-- <input type="number" value=""> -->
               <span (click)="incrementItem()"><i class="fa-solid fa-plus"></i></span>
             </div>
           </div>
@@ -70,24 +65,28 @@
             <button class="btn-buy" (click)="buyProductToCart(data)">Buy Now</button>
           </div>
           <div>
-            <p>Each purchase you make is vital to the preservation of the gardens and furthering the horticultural and educational
-                  mission of The PRICKLES & CO. If you have enjoyed your visit to the gardens, our nursery or appreciate our
-                  mission, your support insures PRICKLES & CO Farm remains a place of inspiration, education, and reconnection for
-                  generations
-                  to come.
+            <p>
+              Each purchase you make is vital to the preservation of the gardens
+              and furthering the horticultural and educational mission of The PRICKLES & CO.
+              If you have enjoyed your visit to the gardens, our nursery or appreciate our
+              mission, your support insures PRICKLES & CO Farm remains a place of inspiration,
+              education, and reconnection for generations to come.
             </p>
             <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
               <ngb-panel title="PICKUP & DELIVERY INFORMATION">
                 <ng-template ngbPanelContent>
-                  <p>All items on Prickles&co.com are for pickup or local delivery within 50 miles. Pickup is available at 18 Ton That
-                    Thuyet • Ha Noi. You can call 0565-523-445 to verify your order pickup date.
+                  <p>
+                    All items on Prickles&co.com are for pickup or local delivery within 50 miles.
+                    Pickup is available at 18 Ton That Thuyet • Ha Noi.
+                    You can call 0565-523-445 to verify your order pickup date.
                   </p>
                 </ng-template>
               </ngb-panel>
               <ngb-panel title="RETURN & REFUND POLICY">
                 <ng-template ngbPanelContent>
-                  <p>If the product is defective or does not match the order, please contact us directly via the hotline: 0565-523-445 for
-                    advice.
+                  <p>
+                    If the product is defective or does not match the order,
+                    please contact us directly via the hotline: 0565-523-445 for advice.
                   </p>
                 </ng-template>
               </ngb-panel>
@@ -102,7 +101,7 @@
           <div ngxSlickItem *ngFor="let data of listProduct">
               <div class="list-product">
               <div class="product-slide-item">
-                <a (click)="details(data)">
+                <a (click)="detailSlider(data)">
                   <img class="product-slide-img" src="{{data.productImg}}" alt="Image{{data.productName}}">
                 </a>
                 <div class="product-slide-details">

@@ -9,12 +9,12 @@
           <p class="container--name">CART</p>
       </div>
         <div class="add-to-cart__container--box">
-          <ul class="add-to-cart__container--list" >
-            <li class="container--list-item" >
-                <div class="container--list-img">
+          <div class="add-to-cart__container--list" >
+            <div class="container--list-item row">
+                <div class="container--list-img col-6">
                   <img src="{{data.productImg}}" alt="image-product">
                 </div>
-                <div class="container--list-detail">
+                <div class="container--list-detail col-6">
                   <p>
                     {{data.productName}}
                   </p>
@@ -29,8 +29,8 @@
                 </div>
               <div>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
           <div class="subtotal-cart">
             <p>Subtotal</p>
             <span>{{cartTotal | currency: 'USD'}}</span>

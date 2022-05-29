@@ -28,6 +28,7 @@ export class AdminCategoryComponent implements OnInit {
   isCreate = true;
   categoryList: Category[] = [];
   putId?: string;
+  currentDate: any;
 
   selectedFile: any;
   categoryPicture: string | undefined;
@@ -35,8 +36,7 @@ export class AdminCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryForm = this.fb.group({
-      categoryId: ['', Validators.required],
-      categoryName: ['',Validators.required],
+      categoryName: [''],
       categoryImg: ['']
     })
 
@@ -46,7 +46,7 @@ export class AdminCategoryComponent implements OnInit {
   getCategory() {
     this.categoryService.getCategory().subscribe(
       data => {
-        this.categoryList = data;
+        this.categoryList = data.sort((a, b) => new Date(b.dateCategory).getTime() - new Date(a.dateCategory).getTime());
       }
     )
   }
@@ -70,31 +70,34 @@ export class AdminCategoryComponent implements OnInit {
     this.overlay?.nativeElement.classList.add('dis-block');
     this.putId = data.id + '';
     this.categoryPicture = data.categoryImg;
+    this.currentDate = data.dateCategory;
 
     this.categoryForm.patchValue({
-      categoryId: data.categoryId,
       categoryName: data.categoryName,
       categoryImg: data.categoryImg
     })
-    console.log('data importEdit:' ,data)
   }
 
   Save() {
     this.closeModal();
     if(this.isCreate == true) {
-      this.categoryService.postCategory(this.categoryForm.value).subscribe((dataCreate) => {
-        console.log('data Create',dataCreate)
-        // this.categoryList.push(this.categoryForm.value)
+      let date = new Date()
+      let createCategory = {
+      ...this.categoryForm.value,
+      dateCategory: date
+      }
+      this.categoryService.postCategory(createCategory).subscribe((dataCreate) => {
         this.getCategory()
       })
     }
     else {
-      let putCategory = { // lay id de put theo id
+      let putCategory = {
       ...this.categoryForm.value,
-      id: this.putId
+      id: this.putId,
+      dateCategory: this.currentDate
       }
       this.categoryForm.get('categoryImg')?.setValue(this.categoryPicture)
-      this.categoryService.putCategory(this.putId, putCategory).subscribe(dataPut => { // truyen id vao lam key name
+      this.categoryService.putCategory(this.putId, putCategory).subscribe(dataPut => {
         this.getCategory()
       })
     }
@@ -131,7 +134,6 @@ export class AdminCategoryComponent implements OnInit {
               this.categoryForm.get('categoryImg')?.setValue(url)
               this.loading?.nativeElement.classList.remove('dis-block')
             }
-            console.log('đây là url',this.categoryPicture);
           });
         })
       )

@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let data of categoryList">
-          <td>{{ data.categoryId }}</td>
+          <td>{{ data.id }}</td>
           <td>{{ data.categoryName }}</td>
           <td class="table-img">
             <a href="{{data.categoryImg}}" target="_blank">
@@ -56,10 +56,6 @@
         </div>
       </ng-container>
       <form [formGroup]="categoryForm" (ngSubmit)="Save()">
-          <div class="form-content">
-            <label for="id-category"> Category ID: </label>
-            <input class="form-control" id="id-category" type="number" formControlName="categoryId" placeholder="Id:">
-          </div>
           <div class="form-content">
             <label for="category-name"> Category Name: </label>
             <input class="form-control" id="category-name" type="text" formControlName="categoryName" placeholder="Name:">

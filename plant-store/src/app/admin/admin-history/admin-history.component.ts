@@ -23,7 +23,6 @@ export class AdminHistoryComponent implements OnInit {
      this.orderService.getProductOrder().subscribe(
       data => {
         this.listDataOrder = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        console.log(this.listDataOrder)
       })
   }
 

@@ -39,6 +39,24 @@ export class AdminProductComponent implements OnInit {
   selectedFile: any;
   productPicture: string | undefined;
   downloadURL: Observable<string> | undefined;
+  listSortValue = [
+  {
+    sate: 'hight',
+    title: 'Price (hight to low)'
+  },
+  {
+    sate: 'low',
+    title: 'Price (low to high)'
+  },
+  {
+    sate: 'new',
+    title: 'Time (new to old)'
+  },
+  {
+    sate: 'old',
+    title: 'Price (old to new)'
+  }
+  ]
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
@@ -70,15 +88,15 @@ export class AdminProductComponent implements OnInit {
     this.isCreate = true;
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
-    // this.productForm.reset();
     this.productPicture = '';
+    this.productForm.reset();
   }
 
   closeModal() {
     this.overlay?.nativeElement.classList.remove('dis-block');
     this.modalCreateAndEdit?.nativeElement.classList.remove('dis-block');
-    // this.productForm.reset();
     this.productPicture = '';
+    this.productForm.reset();
   }
 
   openModalEditProduct(data: Products) {
@@ -88,7 +106,6 @@ export class AdminProductComponent implements OnInit {
     this.putId = data.id + '';
     this.productPicture = data.productImg;
     this.currentDate = data.date;
-    console.log(this.currentDate)
 
     this.productForm.patchValue({
       productName: data.productName,
@@ -97,7 +114,6 @@ export class AdminProductComponent implements OnInit {
       productDesc: data.productDesc,
       productPrice: data.productPrice,
     })
-    console.log('data importEdit:' ,data)
   }
 
   Save():void {
@@ -108,7 +124,6 @@ export class AdminProductComponent implements OnInit {
       date: date,
       }
       this.productService.postProduct(putProduct).subscribe((dataCreate) => {
-        console.log('data Create',dataCreate)
         this.listProduct.push(this.productForm.value)
         this.getListProduct();
       })
@@ -120,8 +135,7 @@ export class AdminProductComponent implements OnInit {
       date: this.currentDate
       }
       this.productForm.get('productImg')?.setValue(this.productPicture)
-      this.productService.putProduct(this.putId, putProduct).subscribe(dataPut => { // truyen id vao lam key name
-          console.log('data Put', dataPut)
+      this.productService.putProduct(this.putId, putProduct).subscribe(dataPut => {
           this.getListProduct();
       })
     }
@@ -162,7 +176,6 @@ export class AdminProductComponent implements OnInit {
                 this.productForm.get('productImg')?.setValue(url)
                 this.loading?.nativeElement.classList.remove('dis-block')
               }
-              console.log(this.productPicture);
             });
           }
         })
@@ -181,12 +194,10 @@ export class AdminProductComponent implements OnInit {
     return this.listProduct = this.listProduct.filter(product =>
       product.productName.toLocaleLowerCase().match(this.searchValue.toLocaleLowerCase()) ||
       product.productPrice.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase())
-      // || product.productId.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase()),
       )
   }
 
   filterProductItem(event: any) {
-    // console.log(event.target.value)
     if(event.target.value != '') {
       setTimeout(() => {
         this.productService.getProduct().subscribe((data :Products[]) => {
@@ -195,6 +206,32 @@ export class AdminProductComponent implements OnInit {
       }, 400);
     } else {
       return this.getListProduct();
+    }
+  }
+
+  sortProductItem(event: any) {
+    switch(event.target.value) {
+      case 'hight':
+        this.productService.getProduct().subscribe((data :Products[]) => {
+            return this.listProduct = data.sort((a, b) => b.productPrice - a.productPrice)
+        })
+      break;
+      case 'low':
+        this.productService.getProduct().subscribe((data :Products[]) => {
+          return this.listProduct = data.sort((a, b) => a.productPrice - b.productPrice)
+        })
+      break;
+      case 'new':
+        this.productService.getProduct().subscribe((data :Products[]) => {
+          return this.listProduct = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        })
+      break;
+      case 'old':
+        this.productService.getProduct().subscribe((data :Products[]) => {
+          return this.listProduct = data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+        })
+      break;
+      default: return this.getListProduct();
     }
   }
 

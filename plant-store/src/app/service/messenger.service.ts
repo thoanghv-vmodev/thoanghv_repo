@@ -14,7 +14,6 @@ export class MessengerService {
   ) {}
 
   sendMsg(product: Products) {
-    // console.log(product)
     this.sendMsgSubject.next(product);
   }
 

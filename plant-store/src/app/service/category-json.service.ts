@@ -29,8 +29,8 @@ export class CategoryJsonService {
     .pipe(
       map(category => {
         let categoryList: Category[] = [];
-        for(let id in category) { // loop to get id default
-          categoryList.push({...category[id], id}); // convert id
+        for(let id in category) {
+          categoryList.push({...category[id], id});
         }
         return categoryList
       })

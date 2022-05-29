@@ -15,7 +15,6 @@ export class AppComponent {
   checkScroll() {
     const scrollPosition = window.pageYOffset ||
     document.documentElement.scrollTop || document.body.scrollTop || 0
-    // console.log(scrollPosition)
     if(scrollPosition >= this.showBtnScroll) {
       this.isShow = true
     } else {

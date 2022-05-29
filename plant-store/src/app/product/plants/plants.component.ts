@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {  map } from 'rxjs/operators';
-import {  defer, from, fromEvent, fromEventPattern, interval, of, throwError, timer } from 'rxjs';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 import { ViewportScroller } from '@angular/common';
@@ -38,7 +36,7 @@ export class PlantsComponent implements OnInit {
     title: 'Price (old to new)'
   }
   ]
-  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
+  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
   constructor(
      private productService: ProductJsonService,
      private scroller: ViewportScroller,
@@ -66,7 +64,6 @@ export class PlantsComponent implements OnInit {
     this.productService.getProduct().subscribe(data => {
       this.currentList = data;
       this.productList = this.currentList.filter((el:any) => el.productType === 'plants')
-        console.log(this.productList)
       })
    }
 

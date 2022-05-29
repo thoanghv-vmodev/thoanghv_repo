@@ -70,7 +70,6 @@ export class UserCheckOutComponent implements OnInit {
     let user = localStorage.getItem('user');
     if(user) {
       this.userCheckOut = JSON.parse(user);
-      // console.log(this.userCheckOut.name)
     }
   }
 
@@ -93,8 +92,6 @@ export class UserCheckOutComponent implements OnInit {
     this.modalService.dismissAll()
   };
 
-  // tao mot modal sua thong tin ship hang
-
   checkOut() {
     if(this.formUpdateInfo.valid) {
       let date = Date.now()
@@ -104,11 +101,9 @@ export class UserCheckOutComponent implements OnInit {
         subTotal: this.cartTotal,
         date: date
       };
-      console.log(objCheckout);
       this.toastService.showCheckoutSuccess();
       setTimeout(() => {
           this.orderService.postProductOrder(objCheckout).subscribe(data => {
-            console.log(objCheckout)
             localStorage.removeItem('products');
             localStorage.removeItem('productCheckOut');
             this.router.navigateByUrl('/home-page');
@@ -117,7 +112,7 @@ export class UserCheckOutComponent implements OnInit {
           this.close()
       }, 500);
       }else {
-        Object.values(this.formUpdateInfo.controls).forEach(control => { // set invalid if one value null
+        Object.values(this.formUpdateInfo.controls).forEach(control => {
           if(control.invalid) {
             control.markAsDirty();
             control.updateValueAndValidity({onlySelf: true})

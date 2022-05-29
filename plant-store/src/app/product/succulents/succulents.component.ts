@@ -16,7 +16,7 @@ import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
   styleUrls: ['./succulents.component.scss']
 })
 export class SucculentsComponent implements OnInit {
-
+  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
   productList: Products[] = [];
   currentList: Products[] = [];
   pagination: number = 1;
@@ -39,7 +39,6 @@ export class SucculentsComponent implements OnInit {
     title: 'Price (old to new)'
   }
   ]
-  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
   constructor(
     private productService: ProductJsonService,
     private scroller: ViewportScroller,

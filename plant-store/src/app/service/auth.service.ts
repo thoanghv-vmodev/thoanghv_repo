@@ -77,7 +77,6 @@ export class AuthService {
     this.getAccount().subscribe(
       (data: User[]) => {
         this.listAccount = data;
-        // console.log(this.listAccount);
       }, err => {
         this.toastService.showError()
       })
@@ -130,7 +129,7 @@ export class AuthService {
   }
 
   logout() {
-      localStorage.removeItem('user');
+    localStorage.removeItem('user');
   }
 
 }

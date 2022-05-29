@@ -1,9 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
-import { fromEvent, observable, Observable, Subscription } from 'rxjs';
-import { throttleTime, scan, finalize } from 'rxjs/operators';
 import { Products } from 'src/app/common/product';
 import { AuthService } from 'src/app/service/auth.service';
 import { GlobalSearchService } from 'src/app/service/list-countries.service';
@@ -39,7 +36,7 @@ export class CactiComponent implements OnInit {
     title: 'Price (old to new)'
   }
   ]
-  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent; // view đến component child
+  @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
   constructor(
     private productService: ProductJsonService,
     private scroller: ViewportScroller,

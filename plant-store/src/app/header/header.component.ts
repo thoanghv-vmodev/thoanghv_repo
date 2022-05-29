@@ -60,8 +60,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  onInput(event: any){
-     // this pushes the input value into the service's Observable.
+  onInputSearch(event: any){
      this.globalSearch.searchTerm.next(event.target.value);
   }
 

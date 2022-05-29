@@ -1,12 +1,10 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from 'src/app/common/product';
 import { AuthService } from 'src/app/service/auth.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { ToastService } from 'src/app/service/toast.service';
-import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
-
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -40,8 +38,6 @@ export class ProductDetailsComponent implements OnInit {
 
     let item:any = this.listProduct.find((el:any) => el.id == id);
     this.itemDetail.push(item)
-
-    console.log('data',this.itemDetail)
   })
   }
 
@@ -54,7 +50,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addProductToCart(product: Products) {
-    // console.log(this.listProductAddToCart)
     this.toastService.showAddToCartSuccess()
     this.getDataLocalStorage();
     let item = this.listProductAddToCart.find(element => element.id === product.id)
@@ -92,7 +87,7 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  details(data:any) {
+  detailSlider(data:any) {
     this.router.navigate(['','product-list','details', data.id]).then(()=>  {window.location.reload();});
   }
 

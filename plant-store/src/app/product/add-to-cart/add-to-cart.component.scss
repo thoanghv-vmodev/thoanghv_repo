@@ -91,11 +91,7 @@
   color: styles.$color-dark-blue;
 
   .container--list-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding-bottom: 28px;
-    border-bottom: 1px solid;
 
     .container--list-detail {
       p {
@@ -123,8 +119,6 @@
     }
 
     .container--list-img {
-      width: 80px;
-      height: 80px;
       img {
           width: 100%;
           height: 100%;

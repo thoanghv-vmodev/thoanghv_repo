@@ -18,7 +18,6 @@ export class AuthGuard implements CanActivate {
       return true
     } else {
       this.auth.setCurrentURL(this.currentURL)
-      console.log(this.currentURL)
       this.router.navigate(['login']);
       return false
     }

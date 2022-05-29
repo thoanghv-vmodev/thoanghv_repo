@@ -9,7 +9,6 @@ import { SucculentsComponent } from 'src/app/product/succulents/succulents.compo
 import { UserCheckOutComponent } from 'src/app/product/user-check-out/user-check-out.component';
 import { ViewCartComponent } from 'src/app/product/view-cart/view-cart.component';
 import { RegisterComponent } from 'src/app/register/register.component';
-import { SearchResultComponent } from 'src/app/search-result/search-result.component';
 
 const routes: Routes = [
   {
@@ -44,11 +43,6 @@ const routes: Routes = [
   {
     path: 'checkout', component: UserCheckOutComponent,
     canActivate: [AuthGuard]
-  },
-
-  {
-    path:'search-result',
-     component: SearchResultComponent,
   },
 
   {

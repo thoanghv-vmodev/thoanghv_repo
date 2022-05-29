@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Products } from 'src/app/common/product';
 import { ToastService } from 'src/app/service/toast.service';
 import { MessengerService } from '../../service/messenger.service';
@@ -10,7 +10,7 @@ import { MessengerService } from '../../service/messenger.service';
 export class AddToCartComponent implements OnInit {
   @ViewChild('addToCart') addToCart!: ElementRef<HTMLElement>;
   @ViewChild('overlay') overlay!: ElementRef<HTMLElement>;
-  @ViewChild('openCart') openCart!: ElementRef<HTMLElement> // tạo tham chiếu tới open bên parent
+  @ViewChild('openCart') openCart!: ElementRef<HTMLElement>
 
   listProductAddToCart: Products[] = [];
   cartTotal = 0;
@@ -27,7 +27,7 @@ export class AddToCartComponent implements OnInit {
 
 
   getDataMsg() {
-    this.msg.getMsg().subscribe((item: Products) => { // get item đc truyền vào
+    this.msg.getMsg().subscribe((item: Products) => {
       let data = [];
       data.push({...item})
       this.listProductAddToCart = data;
@@ -44,7 +44,11 @@ export class AddToCartComponent implements OnInit {
   }
 
   /**
-   * - Chức năng hàm :
+   * - Chức năng hàm addProductToCart():
+   * - Thêm sản phẩm vào giỏi hàng.
+   * - Lấy data từ localStorage rồi kiểm tra: nếu id trùng thì sản phẩm cũ tằng lên 1,
+   *   nếu không thì thêm 1 sản phẩm mới vào giỏi hàng,
+   * - Sau đó lưu data mới vào localStorage
    * @param product
    */
   addProductToCart(product: Products) {

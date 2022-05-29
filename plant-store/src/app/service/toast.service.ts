@@ -3,7 +3,7 @@ export interface ToastInfo {
   body: string;
   delay?: number;
 }
-import { Injectable ,TemplateRef} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'

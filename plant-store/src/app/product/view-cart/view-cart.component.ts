@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Products } from 'src/app/common/product';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { ModalConfirmService } from 'src/app/service/modal-confirm.service';
@@ -11,17 +11,17 @@ import { ModalConfirmService } from 'src/app/service/modal-confirm.service';
 })
 export class ViewCartComponent implements OnInit {
 
-  constructor(
-    private msg: MessengerService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private confirmModal: ModalConfirmService
-  ) {}
   @ViewChild ("modalCheckOut") modalCheckOut: ElementRef<HTMLElement> | undefined;
   @ViewChild ("overlay") overlay: ElementRef<HTMLElement> | undefined;
   listDataInCart: Products[]= [];
   cartTotal: number = 0;
   textNode!: string;
+  constructor(
+    private msg: MessengerService,
+    private router: Router,
+    private confirmModal: ModalConfirmService
+  ) {}
+
   ngOnInit(): void {
     this.getDataLocalStorage();
   }

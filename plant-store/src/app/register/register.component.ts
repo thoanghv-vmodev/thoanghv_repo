@@ -1,10 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { FormGroup, FormControl, FormBuilder, Validators, FormArray, AbstractControl, ValidationErrors } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
-import { User } from '../common/user';
+import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -19,14 +14,9 @@ export class RegisterComponent implements OnInit {
    @ViewChild("loading") loading: ElementRef<HTMLElement> | undefined;
   constructor(
     private fb: FormBuilder,
-    private router: Router,
-    private storageFb: AngularFireStorage,
     private authService: AuthService
   ) { }
 
-  // selectedFile: any;
-  // avatarImg: string | undefined = '';
-  // downloadURL: Observable<string> | undefined;
   registerForm!: FormGroup;
   emailIsUsed: any = [];
 
@@ -39,7 +29,6 @@ export class RegisterComponent implements OnInit {
                    this.forbiddenUsername(['admin', 'manager', ' '])]],
     email: ['', [Validators.required, Validators.email, this.emailUsed(this.emailIsUsed)]],
     phoneNumber: ['', [Validators.required, Validators.maxLength(10), this.noLetters]],
-    // avatar:[''],
     password: ['', [Validators.required,
                    Validators.maxLength(32),
                    Validators.minLength(6),
@@ -56,11 +45,8 @@ export class RegisterComponent implements OnInit {
           this.emailIsUsed.push(value.email)}
         )
       }
-    )
-    console.log(this.emailIsUsed)
-  }
+  )}
 
-  // required
   confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
     if (!control.value) {
       return { required: true };
@@ -84,7 +70,6 @@ export class RegisterComponent implements OnInit {
     return null
   };
 
-  // required bidden username
  forbiddenUsername(users:any = []) {
   return (control: AbstractControl) => {
     return (users.includes(control.value)) ? {
@@ -93,7 +78,6 @@ export class RegisterComponent implements OnInit {
     };
   }
 
-  // required duplicate email
   emailUsed(users:any = []) {
     return (control: AbstractControl) => {
       return (users.includes(control.value)) ? {
@@ -123,35 +107,6 @@ export class RegisterComponent implements OnInit {
   get email() {
     return this.registerForm.get('email')
   }
-
-  /* onFileSelected(event:any) {
-    this.loading?.nativeElement.classList.add('dis-block')
-    var   time = Date.now();
-    const file = event.target.files[0];
-    const filePath = `AvatarImages/${time}`;
-    const fileRef = this.storageFb.ref(filePath);
-    const upTask = this.storageFb.upload(`${filePath}`, file);
-    upTask
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe(url => {
-            if (url) {
-              this.avatarImg = url;
-              this.registerForm.get('avatar')?.setValue(url)
-              this.loading?.nativeElement.classList.remove('dis-block')
-            }
-            console.log('đây là url',this.avatarImg);
-          });
-        })
-      )
-      .subscribe(active => {
-        if (active) {
-          console.log(active);
-        }
-      });
-  } */
 
   onSubmit(): void {
     if(this.registerForm.valid) {

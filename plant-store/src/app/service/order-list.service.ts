@@ -19,7 +19,7 @@ export class OrderListService {
   postProductOrder(obj: Object):Observable<ProductsOrder> {
     return this.http.post<ProductsOrder>(`${environment.apiUrl}/orders.json`,obj)
     .pipe (
-      tap(() => console.log('Order success!'))
+      tap(() => console.log('Post success!'))
     )
   }
 
@@ -28,7 +28,7 @@ export class OrderListService {
     .pipe(
       map(product => {
         let listProduct: ProductsOrder[] = [];
-        for(let id in product) { // lap qua object gan key name = id
+        for(let id in product) {
           listProduct.push({...product[id], id});
         }
         return listProduct

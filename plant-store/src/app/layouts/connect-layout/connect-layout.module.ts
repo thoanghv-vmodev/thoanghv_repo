@@ -9,7 +9,6 @@ import { CategoryComponent } from 'src/app/product/category/category.component';
 import { PlantsComponent } from 'src/app/product/plants/plants.component';
 import { SucculentsComponent } from 'src/app/product/succulents/succulents.component';
 import { ViewCartComponent } from 'src/app/product/view-cart/view-cart.component';
-import { SearchResultComponent } from 'src/app/search-result/search-result.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserCheckOutComponent } from 'src/app/product/user-check-out/user-check-out.component';
 import { ShareModule } from 'src/app/share/share-com/share.module';
@@ -23,7 +22,6 @@ import { ShareModule } from 'src/app/share/share-com/share.module';
     PlantsComponent,
     SucculentsComponent,
     ViewCartComponent,
-    SearchResultComponent,
     UserCheckOutComponent
   ],
   imports: [

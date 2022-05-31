@@ -56,9 +56,11 @@
            *ngFor="let data of productList | paginate: {itemsPerPage: 8, currentPage: pagination}"
       >
         <div class="product-list-item">
-          <a [routerLink]="['details', data.id]">
-            <img src="{{data.productImg}}" onerror="this.src='../../assets/images/senda2.webp'" alt="image">
-          </a>
+          <div class="product-list-item--img">
+            <a [routerLink]="['details', data.id]">
+              <img src="{{data.productImg}}" alt="image">
+            </a>
+          </div>
         </div>
         <div class="product-list-item">
           <p>{{data.productName}}</p>

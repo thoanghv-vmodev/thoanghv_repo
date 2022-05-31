@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return !!localStorage.getItem('user') // return true of false
+    return !!localStorage.getItem('user')
   }
 
   creatAccount(user_info: Object):Observable<User> {
@@ -65,7 +65,7 @@ export class AuthService {
     .pipe(
       map(account => {
         let accountUserList: User[] = [];
-        for(let id in account) { // lap qua object gan key name = id
+        for(let id in account) {
           accountUserList.push({...account[id], id});
         }
         return accountUserList
@@ -84,19 +84,19 @@ export class AuthService {
 
   signUp(data: User) {
     this.creatAccount(data).subscribe(
-         data => {
+         () => {
            this.toastService.showSignUpSuccess();
            setTimeout(() => {
-             this.router.navigateByUrl('/login')
-           }, 3000);
+             this.router.navigate(['login'])
+           }, 2000);
          }, err => {
            this.toastService.showError()
          }
        )
+    this.getListAccount();
   }
 
   logIn(data: User) {
-
     if(data){
       const user: any = this.accountUserList.find((el: User) => {
         return el.email === data.email && el.password === data.password
@@ -116,7 +116,9 @@ export class AuthService {
             this.router.navigate([`${currentURL}`]);
             localStorage.removeItem('currentURL')
           } else {
-            this.router.navigate(['home-page'])
+            this.router.navigate(['home-page']).then(() => {
+              window.location.reload();
+              });
           }
       } else if(admin) {
         this.router.navigate(['admin']);
@@ -130,6 +132,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('user');
+    this.router.navigate(['home-page'])
   }
 
 }

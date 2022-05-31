@@ -105,7 +105,7 @@ export class UserCheckOutComponent implements OnInit {
           this.orderService.postProductOrder(objCheckout).subscribe(data => {
             localStorage.removeItem('products');
             localStorage.removeItem('productCheckOut');
-            this.router.navigateByUrl('/home-page');
+            this.router.navigate(['home-page']);
             this.msg.sendItemInCart([]);
           })
           this.closeModalBeforeCheckOut()

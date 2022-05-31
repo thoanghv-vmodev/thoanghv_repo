@@ -115,15 +115,25 @@ export class AdminProductComponent implements OnInit {
     })
   }
 
+  /**
+   * - Chức năng hàm Save():
+   * # this.isCreate == true: sẽ được hiểu là tạo mới product
+   * - tạo 1 biến date để lấy current date
+   * - tạo 1 biến putProject{} để chứa productForm.value và date
+   * - gọi service productService, truyền object putProduct{} vào hàm postProduct()
+   *   sau đó request API.
+   * # else this.isCreate == false: là hàm edit product
+   * - tạo 1 object putProduct{} rest value trong productForm, set thêm id để sửa đúng product
+   * - lấy control name "productImg" và setValue là this.productImage
+   */
   Save():void {
     if(this.isCreate == true ) {
-      let date = new Date()
+      let date = new Date();
       let putProduct = {
       ...this.productForm.value,
       date: date,
       }
       this.productService.postProduct(putProduct).subscribe((dataCreate) => {
-        this.productList.push(this.productForm.value)
         this.getProductList();
       })
     }
@@ -153,7 +163,6 @@ export class AdminProductComponent implements OnInit {
     })
     .catch((err) => console.log(err));
   }
-
 
   onFileSelected(event:any) {
     this.loading?.nativeElement.classList.add('dis-block')

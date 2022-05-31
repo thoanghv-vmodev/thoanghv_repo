@@ -63,7 +63,7 @@ export class CactiComponent implements OnInit {
   getProductList() {
     this.productService.getProduct().subscribe(data => {
       this.currentList = data;
-      this.productList = this.currentList.filter((el:any) => el.productType === 'cacti')
+      this.productList = this.currentList.filter((el:Products) => el.productType === 'cacti')
    })
   }
 

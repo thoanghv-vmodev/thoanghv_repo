@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Products } from '../common/product';
 import { User} from '../common/user';
@@ -15,9 +15,9 @@ import { MessengerService } from '../service/messenger.service';
 })
 export class HeaderComponent implements OnInit {
 
-  onActive1 = true
-  onActive2 = false
-  itemInCart: any = [];
+  onActive1 = true;
+  onActive2 = false;
+  itemInCart: Products[] = [];
   userInfo: any = [];
 
   user$ = new Observable<any>();
@@ -25,9 +25,8 @@ export class HeaderComponent implements OnInit {
   @ViewChild ('item') item: ElementRef<HTMLElement> | undefined;
   constructor(
     private scroller: ViewportScroller,
-    private router: Router,
-    private route: ActivatedRoute,
     private msg: MessengerService,
+    private router: Router,
     private authService: AuthService,
     private globalSearch: GlobalSearchService
     ) {
@@ -72,8 +71,12 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  logout() {
-    this.authService.logout()
+  onSubmit() {
+    this.authService.logout();
+    this.router.navigate(['home-page'])
+    .then(() => {
+      window.location.reload();
+    });
   }
 
   onFocus() {
@@ -90,7 +93,6 @@ export class HeaderComponent implements OnInit {
 
   goAbout() {
     this.scroller.scrollToAnchor("about");
-    this.router.navigateByUrl('/home-page')
   }
 
   goContact() {

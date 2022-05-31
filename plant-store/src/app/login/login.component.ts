@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
   ) {
     this.authService.getUser().subscribe(
       user => {
-        if(user?.userName) {
+        let userLocalStorage = localStorage.getItem('user');
+        if(user?.userName || userLocalStorage) {
           this.route.navigate(['']);
         }
       }

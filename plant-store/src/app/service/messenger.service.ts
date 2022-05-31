@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject  } from 'rxjs';
+import { Subject, BehaviorSubject, Observable  } from 'rxjs';
 import { Products } from '../common/product';
 
 @Injectable({
@@ -25,7 +25,7 @@ export class MessengerService {
     this.numOfItem.next(number);
   }
 
-  getItemInCart() {
+  getItemInCart():Observable<any> {
     return this.numOfItem.asObservable();
   }
 

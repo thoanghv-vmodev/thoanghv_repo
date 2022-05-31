@@ -63,7 +63,7 @@ export class SucculentsComponent implements OnInit {
   getProductList() {
     this.productService.getProduct().subscribe(data => {
       this.currentList = data;
-      this.productList = this.currentList.filter((el:any) => el.productType === 'succulents')
+      this.productList = this.currentList.filter((el:Products) => el.productType === 'succulents')
     })
   }
 

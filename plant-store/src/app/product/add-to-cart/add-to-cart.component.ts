@@ -57,7 +57,8 @@ export class AddToCartComponent implements OnInit {
     if(item) {
       item.qty += this.qty
     } else {
-      this.itemAddToCart.push({...product, qty: this.qty});
+      let date:any = new Date();
+      this.itemAddToCart.push({...product, qty: this.qty, date: date});
     }
     localStorage.setItem('products', JSON.stringify(this.itemAddToCart));
     this.subTotal();

@@ -29,7 +29,8 @@ export class ViewCartComponent implements OnInit {
   getDataLocalStorage() {
     let storage = localStorage.getItem('products');
     if(storage) {
-      this.productListInCart = JSON.parse(storage)
+      let item = JSON.parse(storage)
+      this.productListInCart = item.sort((a:any, b:any) => new Date(b.date).getTime() - new Date(a.date).getTime());
     };
     this.subTotal();
     this.msg.sendItemInCart(this.productListInCart);
@@ -38,7 +39,7 @@ export class ViewCartComponent implements OnInit {
   subTotal() {
     this.cartTotal = 0;
     this.productListInCart.forEach(item => {
-      this.cartTotal += (item.productPrice * item.qty)
+      this.cartTotal += (item.productPrice * item.qty);
     });
   }
 
@@ -77,6 +78,6 @@ export class ViewCartComponent implements OnInit {
 
   onOrder() {
     localStorage.setItem('productCheckOut', JSON.stringify(this.productListInCart));
-    this.router.navigateByUrl('/checkout')
+    this.router.navigate(['checkout'])
   }
 }

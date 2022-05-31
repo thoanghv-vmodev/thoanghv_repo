@@ -36,7 +36,7 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProduct().subscribe(data => {
     this.productList = data;
 
-    let item:any = this.productList.find((el:any) => el.id == id);
+    let item:any = this.productList.find((el:Products) => el.id == id);
     this.itemDetail.push(item)
   })
   }
@@ -72,7 +72,7 @@ export class ProductDetailsComponent implements OnInit {
     }
     localStorage.setItem('products', JSON.stringify(this.itemAddToCart));
     this.msg.sendItemInCart(this.itemAddToCart);
-    this.router.navigateByUrl('/cart')
+    this.router.navigate(['cart'])
   }
 
   incrementItem(){
@@ -87,7 +87,7 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  detailSlider(data:any) {
+  detailSlider(data:Products) {
     this.router.navigate(['','product-list','details', data.id]).then(()=>  {window.location.reload();});
   }
 

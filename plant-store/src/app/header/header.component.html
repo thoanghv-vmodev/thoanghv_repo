@@ -13,40 +13,38 @@
                 </div>
             </div>
             <div class="header-content--box">
-              <ng-container *ngIf="!(user$ | async)?.userName && userInfo == ''">
-                <div class="login" routerLink="/login">
-                  <a >
-                  <i class="login-item font-22 fa-solid fa-circle-user"></i>
-                  </a>
-                  <p class="login-item login-item-title">Login</p>
-                </div>
-                <div class="cart">
-                  <i class="font-22 fa-solid fa-bag-shopping" routerLink="/cart">
-                    <p class="count-item">0</p>
-                  </i>
-                </div>
-              </ng-container>
-              <ng-container *ngIf="(user$ | async)?.userName || userInfo != ''">
-                  <div class="logout">
-                    <a>
-                      <i class="login-item font-22 fa-solid fa-circle-user"></i>
+                <ng-container *ngIf="!(user$ | async)?.userName && userInfo == ''">
+                  <div class="login" routerLink="/login">
+                    <a >
+                    <i class="login-item font-22 fa-solid fa-circle-user"></i>
                     </a>
-                    <p class="login-item login-item-title" >{{(user$ | async)?.userName}} {{userInfo.userName}}</p>
-                    <div class="logout-btn">
-                      <a href="/" (click)="logout()">
-                        <p>
-                          Logout
-                        </p>
-                        <span>
-                          <i class=" px-3 fa-solid fa-arrow-right-from-bracket"></i>
-                        </span>
-                      </a>
-                    </div>
+                    <p class="login-item login-item-title">Login</p>
                   </div>
                   <div class="cart">
                     <i class="font-22 fa-solid fa-bag-shopping" routerLink="/cart">
-                      <p class="count-item">{{itemInCart.length}}</p></i>
+                      <p class="count-item">0</p>
+                    </i>
                   </div>
+              </ng-container>
+                <ng-container *ngIf="(user$ | async)?.userName || userInfo != ''">
+                    <div class="logout">
+                      <a>
+                        <i class="login-item font-22 fa-solid fa-circle-user"></i>
+                      </a>
+                      <p class="login-item login-item-title" >
+                        {{(user$ | async)?.userName}} {{userInfo.userName}}
+                      </p>
+                      <div class="logout-btn">
+                        <a (click)="onSubmit()">
+                          <p>Logout</p>
+                          <span><i class=" px-3 fa-solid fa-arrow-right-from-bracket"></i></span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="cart">
+                      <i class="font-22 fa-solid fa-bag-shopping" routerLink="/cart">
+                        <p class="count-item">{{itemInCart.length}}</p></i>
+                    </div>
                 </ng-container>
               </div>
         </div>
@@ -85,10 +83,10 @@
                 <a (click)="goContact()" routerLink="/home-page">Contact</a>
               </div>
             </nav>
-            <div class="nav-header-content">
+            <ng-container class="nav-header-content">
               <p class="nav-header-content-title " [class.actived]="onActive1">Call Us Now! 123-456-7890</p>
               <p class="nav-header-content-title actived" [class.actived]="onActive2">We Deliver to Your Doorste</p>
-            </div>
+            </ng-container>
         </div>
     </div>
 </header>

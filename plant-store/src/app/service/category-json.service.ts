@@ -16,7 +16,6 @@ export class CategoryJsonService {
     private toastService: ToastService
     ) { }
 
-
   postCategory(obj: Object):Observable<Category> {
     return this.http.post<Category>(`${environment.apiUrl}/category.json`,obj)
     .pipe (

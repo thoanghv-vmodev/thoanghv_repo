@@ -41,6 +41,7 @@ export class ToastService {
       delay: 3000
     })
   }
+
   showSignUpSuccess() {
     this.show({
      header:"Signup success!",
@@ -80,6 +81,7 @@ export class ToastService {
      delay: 3000
     })
   }
+
   showCreateSuccess() {
     this.show({
      header:"Create success!",
@@ -87,6 +89,7 @@ export class ToastService {
      delay: 3000
     })
   }
+
   showDeleteSuccess() {
     this.show({
      header:"Delete success!",

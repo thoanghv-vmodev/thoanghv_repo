@@ -1,4 +1,4 @@
-<div class="product-details size-page">
+<div class="product-details container gx-0">
   <div class="product-details--container">
     <div class="product-details--content">
       <div class="content-item" *ngFor="let data of itemDetail">
@@ -98,7 +98,7 @@
     <div class="product-slider">
         <p class="product-slider--title mb-5">YOU MAY ALSO LIKE</p>
         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" responsive="responsive">
-          <div ngxSlickItem *ngFor="let data of listProduct">
+          <div ngxSlickItem *ngFor="let data of productList">
               <div class="list-product">
               <div class="product-slide-item">
                 <a (click)="detailSlider(data)">

@@ -5,7 +5,7 @@ import { Category } from 'src/app/common/category';
 import { Products } from 'src/app/common/product';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoryJsonService } from 'src/app/service/category-json.service';
-import { GlobalSearchService } from 'src/app/service/list-countries.service';
+import { GlobalSearchService } from 'src/app/service/countries-list.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
@@ -40,7 +40,7 @@ export class ShopAllComponent implements OnInit {
   },
   {
     sate: 'old',
-    title: 'Price (old to new)'
+    title: 'Time (old to new)'
   }
   ]
 
@@ -56,13 +56,13 @@ export class ShopAllComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.getListProduct();
+    this.getProductList();
     this.getCategoryList();
 
     this.globalSearch.searchTerm.subscribe((valueSearch: string) => {
       if(!this.productList || !valueSearch) {
         this.isNull = false;
-        return this.getListProduct();
+        return this.getProductList();
       } else if(this.productList.length <=0) {
         this.isNull = true;
       } else{
@@ -75,7 +75,7 @@ export class ShopAllComponent implements OnInit {
      });
   }
 
-  getListProduct() {
+  getProductList() {
     this.productService.getProduct().subscribe(
       data => {
       this.productList = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -94,7 +94,7 @@ export class ShopAllComponent implements OnInit {
   searchProduct() {
     if(!this.productList || !this.searchValue) {
       this.isNull = false;
-      return this.getListProduct();
+      return this.getProductList();
     } else if(this.productList.length <=0) {
       this.isNull = true;
     } else{
@@ -112,7 +112,7 @@ export class ShopAllComponent implements OnInit {
           return this.productList = data.filter((value: any) => value.productType == event.target.value)
         })
     } else {
-      return this.getListProduct();
+      return this.getProductList();
     }
   }
 
@@ -138,14 +138,14 @@ export class ShopAllComponent implements OnInit {
           return this.productList = data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
         })
       break;
-      default: return this.getListProduct();
+      default: return this.getProductList();
     }
   }
 
   openAddToCart(data: Products) {
     let userLoggedIn = localStorage.getItem('user')
     if(userLoggedIn) {
-      this.msg.sendMsg(data)
+      this.msg.sendProductMsg(data)
       this.openCart.addToCart.nativeElement.classList.add('active');
       this.openCart.overlay.nativeElement.style.display = 'block';
     } else {

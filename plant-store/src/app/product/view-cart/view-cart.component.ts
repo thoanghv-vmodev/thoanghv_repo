@@ -13,7 +13,7 @@ export class ViewCartComponent implements OnInit {
 
   @ViewChild ("modalCheckOut") modalCheckOut: ElementRef<HTMLElement> | undefined;
   @ViewChild ("overlay") overlay: ElementRef<HTMLElement> | undefined;
-  listDataInCart: Products[]= [];
+  productListInCart: Products[]= [];
   cartTotal: number = 0;
   textNode!: string;
   constructor(
@@ -29,30 +29,29 @@ export class ViewCartComponent implements OnInit {
   getDataLocalStorage() {
     let storage = localStorage.getItem('products');
     if(storage) {
-      this.listDataInCart = JSON.parse(storage)
+      this.productListInCart = JSON.parse(storage)
     };
     this.subTotal();
-    this.msg.sendItemInCart(this.listDataInCart);
+    this.msg.sendItemInCart(this.productListInCart);
   }
 
   subTotal() {
     this.cartTotal = 0;
-    this.listDataInCart.forEach(item => {
+    this.productListInCart.forEach(item => {
       this.cartTotal += (item.productPrice * item.qty)
     });
   }
 
-
   removeItem(data: Products) {
     this.getDataLocalStorage();
-    this.listDataInCart = this.listDataInCart.filter(item => item.id != data.id);
-    localStorage.setItem('products', JSON.stringify(this.listDataInCart));
-    this.msg.sendItemInCart(this.listDataInCart);
+    this.productListInCart = this.productListInCart.filter(item => item.id != data.id);
+    localStorage.setItem('products', JSON.stringify(this.productListInCart));
+    this.msg.sendItemInCart(this.productListInCart);
     this.subTotal();
   }
 
   incrementItem(data: Products){
-    let item: any = this.listDataInCart.find(value => value.id === data.id);
+    let item: any = this.productListInCart.find(value => value.id === data.id);
     if(item.qty != 10) {
       item.qty++;
       this.subTotal();
@@ -60,7 +59,7 @@ export class ViewCartComponent implements OnInit {
   }
 
   decrementItem(data: Products){
-    let item: any = this.listDataInCart.find(value => value.id === data.id);
+    let item: any = this.productListInCart.find(value => value.id === data.id);
     item.qty--;
 
     if(item.qty <= 0) {
@@ -70,13 +69,14 @@ export class ViewCartComponent implements OnInit {
       if(confirmed == true) {
         this.removeItem(item)
       }
-      }).catch(() => console.log('User dismissed the dialog'));
+      })
+      .catch((err) => console.log(err));
     }
    this.subTotal();
   }
 
   onOrder() {
-    localStorage.setItem('productCheckOut', JSON.stringify(this.listDataInCart));
+    localStorage.setItem('productCheckOut', JSON.stringify(this.productListInCart));
     this.router.navigateByUrl('/checkout')
   }
 }

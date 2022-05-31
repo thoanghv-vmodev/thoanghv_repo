@@ -14,7 +14,7 @@ import { ToastService } from './toast.service';
 export class AuthService {
 
   private user: BehaviorSubject<User>;
-  listAccount: User[] = [];
+  accountUserList: User[] = [];
   accAdmin = [
   {
     name: 'admin',
@@ -64,11 +64,11 @@ export class AuthService {
     return this.http.get<{[id: string]: User}>(`${environment.apiUrl}/account.json`)
     .pipe(
       map(account => {
-        let listAccount: User[] = [];
+        let accountUserList: User[] = [];
         for(let id in account) { // lap qua object gan key name = id
-          listAccount.push({...account[id], id});
+          accountUserList.push({...account[id], id});
         }
-        return listAccount
+        return accountUserList
       })
     )
   }
@@ -76,7 +76,7 @@ export class AuthService {
   getListAccount() {
     this.getAccount().subscribe(
       (data: User[]) => {
-        this.listAccount = data;
+        this.accountUserList = data;
       }, err => {
         this.toastService.showError()
       })
@@ -98,7 +98,7 @@ export class AuthService {
   logIn(data: User) {
 
     if(data){
-      const user: any = this.listAccount.find((el: User) => {
+      const user: any = this.accountUserList.find((el: User) => {
         return el.email === data.email && el.password === data.password
       });
 

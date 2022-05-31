@@ -47,7 +47,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of listProduct">
+        <tr *ngFor="let data of productList">
           <td>{{ data.id }}</td>
           <td class="text-nowrap">{{ data.productName }}</td>
           <td class="table-img">
@@ -107,9 +107,9 @@
           <div class="preview-img">
             <label for="product-img"> Product Image: </label>
               <input class="form-control" id="product-img" type="file" (change)="onFileSelected($event)">
-            <ng-container *ngIf="productPicture != ''">
-              <a href="{{productPicture}}" target="_blank">
-                <img src="{{productPicture}}">
+            <ng-container *ngIf="productImage != ''">
+              <a href="{{productImage}}" target="_blank">
+                <img src="{{productImage}}" alt="{{productImage}}">
               </a>
             </ng-container>
           </div>

@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="history-container ">
-    <div class="row border-line" *ngFor="let dataOrder of listDataOrder">
+    <div class="row border-line" *ngFor="let dataOrder of dataOrderList">
       <div class="col-4">
         <div class="user-info">
           <p>User Name: {{dataOrder.userName}}</p>
@@ -35,12 +35,14 @@
             <ng-container *ngFor="let item of dataOrder.itemsOrder">
               <div class="product-order">
                 <div class="product-order-item">
-                  <img src="{{item.productImg}}" alt="{{item.productName}}">
+                  <a href="{{item.productImg}}" target="_blank">
+                    <img src="{{item.productImg}}" alt="{{item.productName}}">
+                  </a>
                 </div>
                 <div class="product-order-item">
                   <div class="order-item--type">
-                    <p>Product name: {{item.productName}} </p>
-                    <p>Product type: {{item.productType}} </p>
+                    <p>Name: {{item.productName}} </p>
+                    <p>Type: {{item.productType}} </p>
                   </div>
                   <p>{{item.productPrice | currency:'USD'}} <span>x {{item.qty}}</span></p>
                 </div>

@@ -1,6 +1,4 @@
-
 @use '../../styles.scss';
-
 
 /* Btn reuse */
 @mixin btn ($btn: styles.$color-dark-blue) {
@@ -40,6 +38,7 @@
   position: relative;
   top: 112px;
 }
+
 /* Intro */
 .intro-bg {
   // background-image: url('../../assets/images/bg-top.jpg_');
@@ -79,9 +78,6 @@
     font-size: 18px;
     letter-spacing: 4px;
   }
-}
-
-.product-demo {
 }
 
 .box-item-line {
@@ -139,7 +135,7 @@
 .about-box--item-img {
   display: flex;
 
-  .about-box--item-right img{
+  .item-right--img {
     width: 100%;
     height: 100%;
   }
@@ -240,7 +236,6 @@
         padding: 8px;
         margin: 12px 0;
       }
-
     }
   }
 
@@ -250,18 +245,87 @@
       padding: 8px;
       margin: 12px 0;
     }
+
+    textarea {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 100%;
+    }
   }
 }
 
-input:hover {
+
+input:hover,textarea:hover {
   border: 2px solid #000;
 }
 
-input:focus {
+input:focus,textarea:focus {
   border: 2px solid #000 !important;
   outline: none;
 }
 
-.message-input input{
-    height: 130px !important;
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+
+}
+
+/* Mobile */
+
+@media (max-width: 739px) {
+
+}
+
+/* Mobile & Tablet */
+
+@media (max-width: 1023px) {
+  .item-right--img {
+      object-fit: cover;
+  }
+  .content-bottom--sale {
+    font-size: 3rem !important;
+  }
+}
+
+/* Tablet */
+
+@media (min-width: 740px) and (max-width: 1023px) {
+  .intro-bg {
+      background-size: 100%;
+      height: 38vh;
+  }
+
+  .title-name {
+    font-size: 4rem !important;
+  }
+  .special-order {
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    padding: 28px 0;
+  }
+}
+
+/* IPad pro */
+
+@media only screen and (min-device-width: 1024px)
+and (max-device-width: 1024px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+  .intro-bg {
+      background-attachment: fixed;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      height: 38vh;
+    }
+  .special-order{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 50vh;
+    -webkit-background-size: 100%;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  }
 }

@@ -1,4 +1,4 @@
-<div class="home-page size-page">
+<div class="home-page container gx-0">
    <section>
      <div class="intro-bg" id="top">
        <div class="intro-box">
@@ -19,10 +19,8 @@
    </section>
    <section>
     <div class="product-demo row gx-5">
-      <!-- Truyen data tu parent vao child -->
       <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of categoryName" >
         <ng-container >
-         <!--  dùng ng-container để gộp lại -->
           <app-category [data]="item"></app-category>
         </ng-container>
       </div>
@@ -55,10 +53,10 @@
             </div>
             <div class="about-box--item about-box--item-img">
               <div class="about-box--item-right">
-                <img src="../../assets/images/about-right-1.webp" alt="Image">
+                <img class="item-right--img" src="../../assets/images/about-right-1.webp" alt="Image">
               </div>
               <div class="about-box--item-right">
-                <img src="../../assets/images/about-right-2.webp" alt="Image">
+                <img class="item-right--img" src="../../assets/images/about-right-2.webp" alt="Image">
               </div>
             </div>
           </div>
@@ -99,28 +97,28 @@
                                   <div class="form-item--name-input">
                                     <label for="firstName">First Name *</label>
                                     <br>
-                                    <input type="text" name="firstName"  class="input-special" placeholder="First Name">
+                                    <input type="text" name="firstName"  placeholder="First Name">
                                   </div>
                                   <div class="form-item--name-input">
                                     <label for="lastName">Last Name *</label>
                                     <br>
-                                    <input type="text" name="lastName"  class="input-special" placeholder="Last Name">
+                                    <input type="text" name="lastName"  placeholder="Last Name">
                                   </div>
                               </div>
                               <div class="form-item--input">
                                   <label for="email">Email *</label>
                                   <br>
-                                  <input type="email" name="email" class="input-specail" placeholder="Email">
+                                  <input type="email" name="email" placeholder="Email">
                               </div>
                               <div class="form-item--input">
                                   <label for="phone">Phone</label>
                                   <br>
-                                  <input type="text" name="phone" class="input-specail" placeholder="Phone number">
+                                  <input type="text" name="phone" placeholder="Phone number">
                               </div>
-                              <div class="form-item--input message-input">
+                              <div class="form-item--input">
                                   <label for="message">Message</label>
                                   <br>
-                                  <input type="text" name="message" class="input-specail" placeholder="Message">
+                                  <textarea type="text" rows="4.5" name="message" placeholder="Message"></textarea>
                               </div>
                         </div>
                         <button type="submit" class="btn-submit">Send</button>

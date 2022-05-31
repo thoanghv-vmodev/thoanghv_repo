@@ -17,7 +17,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'app-add-to-cart', component: AddToCartComponent,
+    path: 'add-to-cart', component: AddToCartComponent,
     canActivate: [AuthGuard]
   }
 

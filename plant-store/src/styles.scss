@@ -17,7 +17,7 @@ $bg-white: rgb(255 255 255);
 $bg-page: #ededee;
 $bg-color-green: rgb(18 49 50);
 $color-dark-blue: rgb(18, 48, 49);
-$bg-overlay: rgba(18, 49, 50, 0.4);
+$bg-overlay: rgba(18, 49, 50, 0.3);
 
 body {
   background-color: $bg-page !important;
@@ -26,11 +26,11 @@ input {
   box-sizing: border-box;
 }
 
-.size-page {
-  width: 1200px;
-  width: calc(100% - 50px - 50px);
-  margin: auto;
-}
+// .size-page {
+//   max-width: 1200px;
+//   width: calc(100% - 50px - 50px);
+//   margin: auto;
+// }
 
 .bg-page {
   background-color: $bg-page ;
@@ -40,3 +40,35 @@ input {
   padding: 18px 0;
 }
 
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {}
+
+
+/* Mobile */
+
+@media (max-width: 739px) {}
+
+
+/* Mobile & Tablet */
+
+@media (max-width: 1023px) {
+  .size-page {
+      width: calc(100% - 10px - 10px);
+  }
+}
+
+
+/* Tablet */
+
+@media (min-width: 740px) and (max-width: 1023px) {}
+
+
+/* IPad pro */
+
+@media only screen and (min-device-width: 1024px)
+and (max-device-width: 1024px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+}

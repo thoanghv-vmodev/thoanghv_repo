@@ -12,10 +12,10 @@ import { ToastService } from 'src/app/service/toast.service';
 })
 export class ProductDetailsComponent implements OnInit {
   currentURL = ''
-  listProduct: Products[] = [];
+  productList: Products[] = [];
   itemDetail: Products[] = [];
   url: any = this.router.url;
-  listProductAddToCart: Products[] = [];
+  itemAddToCart: Products[] = [];
   qty = 1;
   constructor(
     private route: ActivatedRoute,
@@ -34,9 +34,9 @@ export class ProductDetailsComponent implements OnInit {
   getItemDetail() {
     const id = this.route.snapshot.paramMap.get('id');
     this.productService.getProduct().subscribe(data => {
-    this.listProduct = data;
+    this.productList = data;
 
-    let item:any = this.listProduct.find((el:any) => el.id == id);
+    let item:any = this.productList.find((el:any) => el.id == id);
     this.itemDetail.push(item)
   })
   }
@@ -44,34 +44,34 @@ export class ProductDetailsComponent implements OnInit {
   getDataLocalStorage() {
     let storage = localStorage.getItem('products');
     if(storage) {
-      this.listProductAddToCart = JSON.parse(storage)
+      this.itemAddToCart = JSON.parse(storage)
     }
-    this.msg.sendItemInCart(this.listProductAddToCart)
+    this.msg.sendItemInCart(this.itemAddToCart)
   }
 
   addProductToCart(product: Products) {
     this.toastService.showAddToCartSuccess()
     this.getDataLocalStorage();
-    let item = this.listProductAddToCart.find(element => element.id === product.id)
+    let item = this.itemAddToCart.find(element => element.id === product.id)
     if(item) {
       item.qty += this.qty
     } else {
-      this.listProductAddToCart.push({...product, qty: this.qty});
+      this.itemAddToCart.push({...product, qty: this.qty});
     }
-    localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
-    this.msg.sendItemInCart(this.listProductAddToCart)
+    localStorage.setItem('products', JSON.stringify(this.itemAddToCart));
+    this.msg.sendItemInCart(this.itemAddToCart)
   }
 
   buyProductToCart(product: Products) {
     this.getDataLocalStorage();
-    let item = this.listProductAddToCart.find(element => element.id === product.id)
+    let item = this.itemAddToCart.find(element => element.id === product.id)
     if(item) {
       item.qty += this.qty
     } else {
-      this.listProductAddToCart.push({...product, qty: this.qty});
+      this.itemAddToCart.push({...product, qty: this.qty});
     }
-    localStorage.setItem('products', JSON.stringify(this.listProductAddToCart));
-    this.msg.sendItemInCart(this.listProductAddToCart);
+    localStorage.setItem('products', JSON.stringify(this.itemAddToCart));
+    this.msg.sendItemInCart(this.itemAddToCart);
     this.router.navigateByUrl('/cart')
   }
 

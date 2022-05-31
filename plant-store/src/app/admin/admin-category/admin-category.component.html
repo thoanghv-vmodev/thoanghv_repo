@@ -64,9 +64,9 @@
           <div class="preview-img">
             <label for="category-img"> Category Image: </label>
             <input class="form-control" id="category-img" type="file" (change)="onFileSelected($event)">
-            <ng-container *ngIf="categoryPicture != ''">
-              <a href="{{categoryPicture}}" target="_blank">
-                <img src="{{categoryPicture}}">
+            <ng-container *ngIf="categoryImage != ''">
+              <a href="{{categoryImage}}" target="_blank">
+                <img src="{{categoryImage}}">
               </a>
             </ng-container>
           </div>

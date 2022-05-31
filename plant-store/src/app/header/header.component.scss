@@ -9,7 +9,8 @@
 
 .header{
   position: fixed;
-  width: calc(100% - 50px - 50px);
+  max-width: 1140px;
+  width: calc(100% - 61px - 61px);
   z-index: 10;
 
   .header-content,
@@ -69,7 +70,7 @@
   }
   &:hover {
     p {
-      opacity: 0.8;
+      color: rgb(160, 88, 65);
     }
   }
 }
@@ -84,6 +85,11 @@
     color: styles.$color-dark-blue;
     cursor: pointer;
     }
+  p {
+    &:hover{
+      color: rgb(160, 88, 65);
+    }
+  }
 }
 
 .logout-btn {
@@ -94,6 +100,9 @@
   padding: 20px;
   position: absolute;
   background-color: #fff;
+  a {
+    display: flex;
+  }
 }
 
 .logout:hover>.logout-btn {
@@ -155,7 +164,7 @@
     display: inline-block;
 
     &:hover {
-      color: #000;
+      color: rgb(160, 88, 65);
       transition: all ease-in-out 0.3s;
     }
   }
@@ -177,7 +186,7 @@
   text-decoration: none;
   color: styles.$color-dark-blue;
   &:hover {
-    color: #000;
+    color: rgb(160, 88, 65);
     transition: all ease-in-out 0.3s;
   }
 }
@@ -198,5 +207,37 @@
 }
 
 .active {
-  color: #000 !important;
+  color: rgb(160, 88, 65) !important;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {}
+
+
+/* Mobile */
+
+@media (max-width: 739px) {}
+
+
+/* Mobile & Tablet */
+
+@media (max-width: 1023px) {
+  .header {
+    width: calc(100% - 45px - 0px);
+  }
+}
+
+/* Tablet */
+
+@media (min-width: 740px) and (max-width: 1023px) {}
+
+
+/* IPad pro */
+
+@media only screen and (min-device-width: 1024px)
+and (max-device-width: 1024px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+
 }

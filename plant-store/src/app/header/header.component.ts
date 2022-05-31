@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Products } from '../common/product';
 import { User} from '../common/user';
 import { AuthService } from '../service/auth.service';
-import { GlobalSearchService } from '../service/list-countries.service';
+import { GlobalSearchService } from '../service/countries-list.service';
 import { MessengerService } from '../service/messenger.service';
 
 @Component({

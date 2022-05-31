@@ -1,17 +1,17 @@
-<div class="view-cart size-page">
+<div class="view-cart container gx-0">
   <div class="view-cart-container row gx-5">
-    <ng-container *ngIf="listDataInCart.length <= 0">
+    <ng-container *ngIf="productListInCart.length <= 0">
       <p class="view-cart-content--title border-bd">My Cart</p>
       <div class="cart-empty border-bd">
         <p>Cart is empty</p>
         <a routerLink="/product-list">Continue Shopping</a>
       </div>
     </ng-container>
-      <ng-container *ngIf="listDataInCart.length > 0">
+      <ng-container *ngIf="productListInCart.length > 0">
         <section class="view-cart-content col-7">
           <p class="view-cart-content--title border-bd">My Cart</p>
           <div class="cart-list border-bd">
-            <ng-container *ngFor="let data of listDataInCart">
+            <ng-container *ngFor="let data of productListInCart">
             <div class="row gx-4 cart-list-box">
                 <div class="cart-list-item col-9" >
                   <div class="cart-list-details">

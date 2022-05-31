@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Products, ProductsOrder } from 'src/app/common/product';
-import { ListCountriesService } from 'src/app/service/list-countries.service';
+import { Products } from 'src/app/common/product';
+import { CountriesListService } from 'src/app/service/countries-list.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { OrderListService } from 'src/app/service/order-list.service';
 import { ToastService } from 'src/app/service/toast.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -16,7 +16,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UserCheckOutComponent implements OnInit {
 
   constructor(
-    private countriesService: ListCountriesService,
+    private countriesService: CountriesListService,
     private orderService: OrderListService,
     private router: Router,
     private msg: MessengerService,
@@ -25,8 +25,7 @@ export class UserCheckOutComponent implements OnInit {
     private fb: FormBuilder
   ) { }
   formUpdateInfo!: FormGroup
-  listItemCheckOut: Products[] = [];
-  listDataOrder: ProductsOrder[] = [];
+  productListCheckOut: Products[] = [];
   userCheckOut: any = [];
   listProvinces: any;
   cartTotal: number = 0;
@@ -65,7 +64,7 @@ export class UserCheckOutComponent implements OnInit {
   getProductCheckOut() {
     let storage = localStorage.getItem('productCheckOut')
     if(storage) {
-      this.listItemCheckOut = JSON.parse(storage)
+      this.productListCheckOut = JSON.parse(storage)
     }
     let user = localStorage.getItem('user');
     if(user) {
@@ -75,12 +74,12 @@ export class UserCheckOutComponent implements OnInit {
 
   subTotal() {
     this.cartTotal = 0;
-    this.listItemCheckOut.forEach(item => {
+    this.productListCheckOut.forEach(item => {
       this.cartTotal += (item.productPrice * item.qty)
     });
   }
 
-  open(content: any) {
+  openModalBeforeCheckOut(content: any) {
     this.modalService.open(content, {})
     this.formUpdateInfo.patchValue({
       userName: this.userCheckOut.userName,
@@ -88,7 +87,7 @@ export class UserCheckOutComponent implements OnInit {
     })
   }
 
-  close(){
+  closeModalBeforeCheckOut(){
     this.modalService.dismissAll()
   };
 
@@ -97,7 +96,7 @@ export class UserCheckOutComponent implements OnInit {
       let date = Date.now()
       let objCheckout= {
         ...this.formUpdateInfo.value,
-        itemsOrder: this.listItemCheckOut,
+        itemsOrder: this.productListCheckOut,
         subTotal: this.cartTotal,
         date: date
       };
@@ -109,7 +108,7 @@ export class UserCheckOutComponent implements OnInit {
             this.router.navigateByUrl('/home-page');
             this.msg.sendItemInCart([]);
           })
-          this.close()
+          this.closeModalBeforeCheckOut()
       }, 500);
       }else {
         Object.values(this.formUpdateInfo.controls).forEach(control => {

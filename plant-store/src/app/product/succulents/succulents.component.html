@@ -1,4 +1,4 @@
-<div class="succulents size-page">
+<div class="succulents container gx-0">
     <div class="banner-bg">
       <div class="banner-box">
         <div>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="product-list row gy-5 gx-4">
-      <div class="product-list-content col-3"
+      <div class="product-list-content col-lg-3 col-md-6 col-sm-12"
            *ngFor="let data of productList | paginate: {itemsPerPage: 8, currentPage: pagination}">
         <div class="product-list-item">
           <a [routerLink]="['','product-list','details', data.id]">

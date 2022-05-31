@@ -1,7 +1,7 @@
 
 <div class="add-to-card" #addToCart >
   <div class="overlay" #overlay (click)="closeCart()"></div>
-    <div class="add-to-cart__container" *ngFor="let data of listProductAddToCart">
+    <div class="add-to-cart__container" *ngFor="let data of itemAddToCart">
       <div class="container--title">
         <div class="close-cart" (click)="closeCart()">
           <i class="fa-solid fa-xmark"></i>
@@ -15,12 +15,8 @@
                   <img src="{{data.productImg}}" alt="image-product">
                 </div>
                 <div class="container--list-detail col-6">
-                  <p>
-                    {{data.productName}}
-                  </p>
-                  <p >
-                    {{data.productPrice | currency: 'USD'}}
-                  </p >
+                  <p>{{data.productName}}</p>
+                  <p >{{data.productPrice | currency: 'USD'}}</p >
                   <div class="list-detail-input">
                     <span (click)="decrementItem()"><i class="fa-solid fa-minus"></i></span>
                       <p>{{qty}}</p>

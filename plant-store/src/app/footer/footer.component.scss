@@ -41,7 +41,7 @@
   cursor: pointer;
   font-size: 15px;
   white-space: nowrap;
-  margin-left: 12px;
+  width: 100%;
 
   &:hover {
     transition: all ease-in-out 0.3s;
@@ -78,22 +78,19 @@
     }
 
     .footer-middle--box-item {
-      display: flex;
-      justify-content: space-between;
 
       input {
         width: 100%;
-        padding: 8px;
+        padding: 10px;
         border: 1px solid #fff;
         background-color: styles.$bg-color-green;
       }
 
       input:hover {
-        border: 2px solid #fff;
+        background-color: #fff;
       }
 
       input:focus {
-        border: 2px solid #fff !important;
         outline: none;
         background-color: #fff;
       }

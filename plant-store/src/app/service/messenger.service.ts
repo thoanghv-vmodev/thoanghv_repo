@@ -7,18 +7,18 @@ import { Products } from '../common/product';
 })
 export class MessengerService {
 
-  private sendMsgSubject = new Subject<Products>();
+  private sendProductMsgSubject = new Subject<Products>();
   private numOfItem = new BehaviorSubject([])
 
   constructor(
   ) {}
 
-  sendMsg(product: Products) {
-    this.sendMsgSubject.next(product);
+  sendProductMsg(product: Products) {
+    this.sendProductMsgSubject.next(product);
   }
 
-  getMsg() {
-    return this.sendMsgSubject.asObservable();
+  getProductMsg() {
+    return this.sendProductMsgSubject.asObservable();
   }
 
   sendItemInCart(number: any){

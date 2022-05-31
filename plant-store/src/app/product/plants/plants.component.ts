@@ -6,7 +6,7 @@ import { Products } from 'src/app/common/product';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
-import { GlobalSearchService } from 'src/app/service/list-countries.service';
+import { GlobalSearchService } from 'src/app/service/countries-list.service';
 @Component({
   selector: 'app-plants',
   templateUrl: './plants.component.html',
@@ -33,7 +33,7 @@ export class PlantsComponent implements OnInit {
   },
   {
     sate: 'old',
-    title: 'Price (old to new)'
+    title: 'Time (old to new)'
   }
   ]
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
@@ -47,11 +47,11 @@ export class PlantsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getListProduct();
+    this.getProductList();
 
     this.globalSearch.searchTerm.subscribe((valueSearch: string) => {
       if(!this.productList || !valueSearch) {
-        return this.getListProduct();
+        return this.getProductList();
       } else{
       return this.productList = this.productList.filter(item =>
         item.productName.toLowerCase().match(valueSearch.toLowerCase()) ||
@@ -60,7 +60,7 @@ export class PlantsComponent implements OnInit {
      });
   }
 
-  getListProduct() {
+  getProductList() {
     this.productService.getProduct().subscribe(data => {
       this.currentList = data;
       this.productList = this.currentList.filter((el:any) => el.productType === 'plants')
@@ -70,7 +70,7 @@ export class PlantsComponent implements OnInit {
   openAddToCart(data: Products) {
     let userLoggedIn = localStorage.getItem('user')
     if(userLoggedIn) {
-      this.msg.sendMsg(data)
+      this.msg.sendProductMsg(data)
       this.openCart.addToCart.nativeElement.classList.add('active');
       this.openCart.overlay.nativeElement.style.display = 'block';
     } else {
@@ -94,7 +94,7 @@ export class PlantsComponent implements OnInit {
       case 'old':
            this.productList = this.productList.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       break;
-      default:  this.getListProduct();
+      default:  this.getProductList();
     }
   }
 

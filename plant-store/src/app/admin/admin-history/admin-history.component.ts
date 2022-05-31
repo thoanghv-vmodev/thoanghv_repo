@@ -10,32 +10,32 @@ import { OrderListService } from 'src/app/service/order-list.service';
 })
 export class AdminHistoryComponent implements OnInit {
 
-  listDataOrder: ProductsOrder[] = [];
+  dataOrderList: ProductsOrder[] = [];
   constructor(
     private orderService: OrderListService,
-    private confirmModal: ModalConfirmService
+    private modalConfirm: ModalConfirmService
   ) { }
   ngOnInit(): void {
-    this.getListHistoryOrder();
+    this.getHistoryOrderList();
   }
 
-  getListHistoryOrder() {
+  getHistoryOrderList() {
      this.orderService.getProductOrder().subscribe(
       data => {
-        this.listDataOrder = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        this.dataOrderList = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
       })
   }
 
   deleteHistoryOrder(itemDelete: any) {
-    this.confirmModal.confirm('Please confirm', 'Do you really want to delete?')
+    this.modalConfirm.confirm('Please confirm', 'Do you really want to delete?')
     .then((confirmed) => {
       if(confirmed == true) {
         this.orderService.deleteProductOrder(itemDelete).subscribe(
           item => {
-             this.getListHistoryOrder();
+             this.getHistoryOrderList();
            }
          )}
     })
-    .catch(() => console.log('User dismissed the dialog'));
+    .catch((err) => console.log(err));
   }
 }

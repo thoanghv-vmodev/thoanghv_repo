@@ -1,4 +1,4 @@
-<div class="register size-page">
+<div class="register container gx-0">
       <div class="register-container">
           <p class="register-form-title">Sign Up</p>
         <form [formGroup]="registerForm"  autocomplete="off">
@@ -71,24 +71,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="form-content">
-                <div class="avatar-img">
-                  <label for="avatar"> Avatar: </label>
-                  <input class="form-control" id="avatar" type="file" (change)="onFileSelected($event)">
-                  <ng-container *ngIf="avatarImg !== ''">
-                    <a href="{{avatarImg}}" target="_blank">
-                      <img src="{{avatarImg}}">
-                    </a>
-                  </ng-container>
-                </div>
-                <div class="overlayUpload" #loading>
-                  <div class="spin-upload">
-                    <div class="spinner-border" role="status">
-                      <span class="visually-hidden">Loading...</span>
-                    </div>
-                  </div>
-                </div>
-            </div> -->
             <div class="form-content">
               <label for="password"> Password: </label>
               <input class="form-control"

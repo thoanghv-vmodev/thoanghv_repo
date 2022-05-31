@@ -11,8 +11,6 @@ import { AuthService } from '../service/auth.service';
 })
 export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
-  listAccount: User[] = [];
-  accAmin: any = [];
   constructor(
     private route: Router,
     private authService: AuthService,

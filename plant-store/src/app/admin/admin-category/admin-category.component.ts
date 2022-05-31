@@ -16,6 +16,15 @@ export class AdminCategoryComponent implements OnInit {
   @ViewChild ("modalCreateAndEdit") modalCreateAndEdit: ElementRef<HTMLElement> | undefined;
   @ViewChild ("overlay") overlay: ElementRef<HTMLElement> | undefined;
   @ViewChild("loading") loading: ElementRef<HTMLElement> | undefined;
+  categoryForm!: FormGroup;
+  isCreate = true;
+  categoryList: Category[] = [];
+  putId?: string;
+  currentDate: any;
+
+  selectedFile: any;
+  categoryImage: string | undefined;
+  downloadURL: Observable<string> | undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -24,26 +33,16 @@ export class AdminCategoryComponent implements OnInit {
     private confirmModal: ModalConfirmService
   ) { }
 
-  categoryForm!: FormGroup;
-  isCreate = true;
-  categoryList: Category[] = [];
-  putId?: string;
-  currentDate: any;
-
-  selectedFile: any;
-  categoryPicture: string | undefined;
-  downloadURL: Observable<string> | undefined;
-
   ngOnInit(): void {
     this.categoryForm = this.fb.group({
       categoryName: [''],
       categoryImg: ['']
     })
 
-    this.getCategory()
+    this.getCategoryList();
   }
 
-  getCategory() {
+  getCategoryList() {
     this.categoryService.getCategory().subscribe(
       data => {
         this.categoryList = data.sort((a, b) => new Date(b.dateCategory).getTime() - new Date(a.dateCategory).getTime());
@@ -53,7 +52,7 @@ export class AdminCategoryComponent implements OnInit {
 
   openModalCreateCategory() {
     this.isCreate = true;
-    this.categoryPicture = '';
+    this.categoryImage = '';
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
     this.categoryForm.reset();
@@ -69,7 +68,7 @@ export class AdminCategoryComponent implements OnInit {
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
     this.putId = data.id + '';
-    this.categoryPicture = data.categoryImg;
+    this.categoryImage = data.categoryImg;
     this.currentDate = data.dateCategory;
 
     this.categoryForm.patchValue({
@@ -87,7 +86,7 @@ export class AdminCategoryComponent implements OnInit {
       dateCategory: date
       }
       this.categoryService.postCategory(createCategory).subscribe((dataCreate) => {
-        this.getCategory()
+        this.getCategoryList()
       })
     }
     else {
@@ -96,9 +95,9 @@ export class AdminCategoryComponent implements OnInit {
       id: this.putId,
       dateCategory: this.currentDate
       }
-      this.categoryForm.get('categoryImg')?.setValue(this.categoryPicture)
+      this.categoryForm.get('categoryImg')?.setValue(this.categoryImage)
       this.categoryService.putCategory(this.putId, putCategory).subscribe(dataPut => {
-        this.getCategory()
+        this.getCategoryList()
       })
     }
   }
@@ -108,11 +107,11 @@ export class AdminCategoryComponent implements OnInit {
     .then((confirmed) => {
       if(confirmed == true) {
         this.categoryService.deleteCategory(itemDelete).subscribe( dataDelete => {
-        this.getCategory()
+        this.getCategoryList()
       })
       }
     })
-    .catch(() => console.log('User dismissed the dialog'));
+    .catch((err) => console.log(err));
   }
 
   onFileSelected(event:any) {
@@ -130,7 +129,7 @@ export class AdminCategoryComponent implements OnInit {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
-              this.categoryPicture = url;
+              this.categoryImage = url;
               this.categoryForm.get('categoryImg')?.setValue(url)
               this.loading?.nativeElement.classList.remove('dis-block')
             }

@@ -1,6 +1,6 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Category } from 'src/app/common/category';
@@ -19,25 +19,16 @@ export class AdminProductComponent implements OnInit {
   @ViewChild ("modalCreateAndEdit") modalCreateAndEdit: ElementRef<HTMLElement> | undefined;
   @ViewChild ("overlay") overlay: ElementRef<HTMLElement> | undefined;
   @ViewChild("loading") loading: ElementRef<HTMLElement> | undefined;
-
-  constructor(
-    private fb: FormBuilder,
-    private productService: ProductJsonService,
-    private categoryService: CategoryJsonService,
-    private storageFb: AngularFireStorage,
-    private confirmModal: ModalConfirmService
-  ) { }
-
   productForm!: FormGroup;
   isCreate = true;
-  listProduct: Products[] = [];
+  productList: Products[] = [];
   categoryList: Category[] = [];
   putId?: string;
   searchValue!: string;
   currentDate: any;
 
   selectedFile: any;
-  productPicture: string | undefined;
+  productImage: string | undefined;
   downloadURL: Observable<string> | undefined;
   listSortValue = [
   {
@@ -54,9 +45,17 @@ export class AdminProductComponent implements OnInit {
   },
   {
     sate: 'old',
-    title: 'Price (old to new)'
+    title: 'Time (old to new)'
   }
   ]
+
+  constructor(
+    private fb: FormBuilder,
+    private productService: ProductJsonService,
+    private categoryService: CategoryJsonService,
+    private storageFb: AngularFireStorage,
+    private modalConfirm: ModalConfirmService
+  ) { }
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
@@ -66,7 +65,7 @@ export class AdminProductComponent implements OnInit {
       productDesc: [''],
       productPrice: [''],
     });
-    this.getListProduct();
+    this.getProductList();
     this.getCategoryList();
   }
 
@@ -76,10 +75,10 @@ export class AdminProductComponent implements OnInit {
     })
   }
 
-  getListProduct() {
+  getProductList() {
     this.productService.getProduct().subscribe(
       data => {
-         this.listProduct = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+         this.productList = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       }
     )
   }
@@ -88,14 +87,14 @@ export class AdminProductComponent implements OnInit {
     this.isCreate = true;
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
-    this.productPicture = '';
+    this.productImage = '';
     this.productForm.reset();
   }
 
   closeModal() {
     this.overlay?.nativeElement.classList.remove('dis-block');
     this.modalCreateAndEdit?.nativeElement.classList.remove('dis-block');
-    this.productPicture = '';
+    this.productImage = '';
     this.productForm.reset();
   }
 
@@ -104,7 +103,7 @@ export class AdminProductComponent implements OnInit {
     this.modalCreateAndEdit?.nativeElement.classList.add('dis-block');
     this.overlay?.nativeElement.classList.add('dis-block');
     this.putId = data.id + '';
-    this.productPicture = data.productImg;
+    this.productImage = data.productImg;
     this.currentDate = data.date;
 
     this.productForm.patchValue({
@@ -124,8 +123,8 @@ export class AdminProductComponent implements OnInit {
       date: date,
       }
       this.productService.postProduct(putProduct).subscribe((dataCreate) => {
-        this.listProduct.push(this.productForm.value)
-        this.getListProduct();
+        this.productList.push(this.productForm.value)
+        this.getProductList();
       })
     }
     else {
@@ -134,9 +133,9 @@ export class AdminProductComponent implements OnInit {
       id: this.putId,
       date: this.currentDate
       }
-      this.productForm.get('productImg')?.setValue(this.productPicture)
+      this.productForm.get('productImg')?.setValue(this.productImage)
       this.productService.putProduct(this.putId, putProduct).subscribe(dataPut => {
-          this.getListProduct();
+          this.getProductList();
       })
     }
     this.closeModal();
@@ -144,21 +143,20 @@ export class AdminProductComponent implements OnInit {
 
 
   onDeleteProduct(itemDelete: any) {
-    this.confirmModal.confirm('Please confirm', 'Do you really want to delete?')
+    this.modalConfirm.confirm('Please confirm', 'Do you really want to delete?')
     .then((confirmed) => {
       if(confirmed == true) {
         this.productService.deleteProduct(itemDelete).subscribe( item => {
-        this.getListProduct();
+        this.getProductList();
         })
       }
     })
-    .catch(() => console.log('User dismissed the dialog'));
+    .catch((err) => console.log(err));
   }
 
 
   onFileSelected(event:any) {
     this.loading?.nativeElement.classList.add('dis-block')
-
     var   time = Date.now();
     const file = event.target.files[0];
     const filePath = `ProductImages/${time}`;
@@ -172,7 +170,7 @@ export class AdminProductComponent implements OnInit {
             this.downloadURL = fileRef.getDownloadURL();
             this.downloadURL.subscribe(url => {
               if (url !== '' && url !== null) {
-                this.productPicture = url;
+                this.productImage = url;
                 this.productForm.get('productImg')?.setValue(url)
                 this.loading?.nativeElement.classList.remove('dis-block')
               }
@@ -188,10 +186,10 @@ export class AdminProductComponent implements OnInit {
   }
 
   Search() {
-    if(!this.listProduct || !this.searchValue){
+    if(!this.productList || !this.searchValue){
       return this.ngOnInit();
     }
-    return this.listProduct = this.listProduct.filter(product =>
+    return this.productList = this.productList.filter(product =>
       product.productName.toLocaleLowerCase().match(this.searchValue.toLocaleLowerCase()) ||
       product.productPrice.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase())
       )
@@ -201,11 +199,11 @@ export class AdminProductComponent implements OnInit {
     if(event.target.value != '') {
       setTimeout(() => {
         this.productService.getProduct().subscribe((data :Products[]) => {
-          return this.listProduct = data.filter((value: any) => value.productType == event.target.value)
+          return this.productList = data.filter((value: any) => value.productType == event.target.value)
         })
       }, 400);
     } else {
-      return this.getListProduct();
+      return this.getProductList();
     }
   }
 
@@ -213,25 +211,25 @@ export class AdminProductComponent implements OnInit {
     switch(event.target.value) {
       case 'hight':
         this.productService.getProduct().subscribe((data :Products[]) => {
-            return this.listProduct = data.sort((a, b) => b.productPrice - a.productPrice)
+            return this.productList = data.sort((a, b) => b.productPrice - a.productPrice)
         })
       break;
       case 'low':
         this.productService.getProduct().subscribe((data :Products[]) => {
-          return this.listProduct = data.sort((a, b) => a.productPrice - b.productPrice)
+          return this.productList = data.sort((a, b) => a.productPrice - b.productPrice)
         })
       break;
       case 'new':
         this.productService.getProduct().subscribe((data :Products[]) => {
-          return this.listProduct = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+          return this.productList = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         })
       break;
       case 'old':
         this.productService.getProduct().subscribe((data :Products[]) => {
-          return this.listProduct = data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+          return this.productList = data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
         })
       break;
-      default: return this.getListProduct();
+      default: return this.getProductList();
     }
   }
 

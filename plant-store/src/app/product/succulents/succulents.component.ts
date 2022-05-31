@@ -1,11 +1,9 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { fromEvent, merge, of } from 'rxjs';
-import { delay, map, mapTo, pluck, reduce, scan, toArray } from 'rxjs/operators';
 import { Products } from 'src/app/common/product';
 import { AuthService } from 'src/app/service/auth.service';
-import { GlobalSearchService } from 'src/app/service/list-countries.service';
+import { GlobalSearchService } from 'src/app/service/countries-list.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
@@ -36,7 +34,7 @@ export class SucculentsComponent implements OnInit {
   },
   {
     sate: 'old',
-    title: 'Price (old to new)'
+    title: 'Time (old to new)'
   }
   ]
   constructor(
@@ -49,11 +47,11 @@ export class SucculentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getListProduct();
+    this.getProductList();
 
     this.globalSearch.searchTerm.subscribe((valueSearch: string) => {
       if(!this.productList || !valueSearch) {
-        return this.getListProduct();
+        return this.getProductList();
       } else{
       return this.productList = this.productList.filter(item =>
         item.productName.toLowerCase().match(valueSearch.toLowerCase()) ||
@@ -62,7 +60,7 @@ export class SucculentsComponent implements OnInit {
      });
   }
 
-  getListProduct() {
+  getProductList() {
     this.productService.getProduct().subscribe(data => {
       this.currentList = data;
       this.productList = this.currentList.filter((el:any) => el.productType === 'succulents')
@@ -72,7 +70,7 @@ export class SucculentsComponent implements OnInit {
   openAddToCart(data: Products) {
     let userLoggedIn = localStorage.getItem('user')
     if(userLoggedIn) {
-      this.msg.sendMsg(data)
+      this.msg.sendProductMsg(data)
       this.openCart.addToCart.nativeElement.classList.add('active');
       this.openCart.overlay.nativeElement.style.display = 'block';
     } else {
@@ -95,7 +93,7 @@ export class SucculentsComponent implements OnInit {
       case 'old':
            this.productList = this.productList.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       break;
-      default:  this.getListProduct();
+      default:  this.getProductList();
     }
   }
 

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { User } from '../common/user';
+import { User } from '../common/models/user';
 import { ToastService } from './toast.service';
 
 @Injectable({

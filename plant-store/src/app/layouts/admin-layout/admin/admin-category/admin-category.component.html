@@ -1,0 +1,91 @@
+<div class="admin-shop">
+  <div class="admin-shop-option">
+    <p>
+      Category
+    </p>
+  </div>
+  <button class="btn-add-new" (click)="openModalCreateCategory()">Create New</button>
+  <div class="table-list">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr class="table-tr">
+          <th>ID</th>
+          <th>Category Name</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of categoryList">
+          <td>{{ data.id }}</td>
+          <td>{{ data.categoryName }}</td>
+          <td class="table-img">
+            <a href="{{data.categoryImg}}" target="_blank">
+                <img src="{{data.categoryImg}}" alt="image{{data.categoryName}}">
+            </a>
+            </td>
+          <td>
+            <div class="action-btn">
+              <i class="table-icon fa-solid fa-pen" placement="top" ngbTooltip="Edit category" (click)="openModalEditCategory(data) "></i>
+              <i class="table-icon fa-solid fa-trash" placement="top" ngbTooltip="Delete category"  (click)="onDeleteCategory(data)"></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal-Add -->
+<div class="modal-container" #modalCreateAndEdit>
+  <div class="overlay" #overlay (click)="closeModal()"></div>
+  <div class="modal-box">
+    <div class="modal-content">
+
+      <ng-container *ngIf="isCreate">
+        <div class="modal-content-header">
+          Create New Category
+          <div class="icon-close">
+            <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isCreate">
+        <div class="modal-content-header">
+          Edit Category
+          <div class="icon-close">
+            <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+          </div>
+        </div>
+      </ng-container>
+      <form [formGroup]="categoryForm" (ngSubmit)="Save()">
+          <div class="form-content">
+            <label for="category-name"> Category name: </label>
+            <input class="form-control" id="category-name" type="text" formControlName="categoryName" placeholder="Name:">
+          </div>
+          <div class="form-content">
+          <div class="preview-img">
+            <label for="category-img"> Category image: </label>
+            <input class="form-control" id="category-img" type="file" (change)="onFileSelected($event)">
+            <ng-container *ngIf="categoryImage != ''">
+              <a href="{{categoryImage}}" target="_blank">
+                <img src="{{categoryImage}}">
+              </a>
+            </ng-container>
+          </div>
+            <div class="overlayUpload" #loading>
+              <div class="spin-upload">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-card">
+            <button class="btn-list" type="submit">Save</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

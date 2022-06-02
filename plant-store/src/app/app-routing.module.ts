@@ -1,8 +1,6 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
 import { PreloadAllModules } from '@angular/router';
-import { AuthInterceptor } from './common/auth.interceptor';
 import { RoleGuard } from './Guard/role.guard';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -48,7 +46,7 @@ const routes: Routes = [
   {
     onSameUrlNavigation: 'reload',
     scrollPositionRestoration: 'enabled',
-    preloadingStrategy: PreloadAllModules // load truoc module can sd
+    preloadingStrategy: PreloadAllModules
   },
 
   )],
@@ -56,15 +54,10 @@ const routes: Routes = [
    providers: [
     {
       provide: 'canActivateTeam',
-      useValue: ( // case khác để guard
+      useValue: (
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot) => false
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
   ]
 })
 export class AppRoutingModule {}

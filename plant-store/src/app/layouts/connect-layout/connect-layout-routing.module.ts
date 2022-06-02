@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/Guard/auth-guard.guard';
-import { HomePageComponent } from 'src/app/home-page/home-page.component';
+import { HomePageComponent } from 'src/app/layouts/connect-layout/home-page/home-page.component';
 import { LoginComponent } from 'src/app/login/login.component';
-import { CactiComponent } from 'src/app/product/cacti/cacti.component';
-import { PlantsComponent } from 'src/app/product/plants/plants.component';
-import { SucculentsComponent } from 'src/app/product/succulents/succulents.component';
-import { UserCheckOutComponent } from 'src/app/product/user-check-out/user-check-out.component';
-import { ViewCartComponent } from 'src/app/product/view-cart/view-cart.component';
+import { SucculentsComponent } from 'src/app/layouts/connect-layout/product/succulents/succulents.component';
 import { RegisterComponent } from 'src/app/register/register.component';
+import { CactiComponent } from './product/cacti/cacti.component';
+import { PlantsComponent } from './product/plants/plants.component';
+import { UserCheckOutComponent } from './product/user-check-out/user-check-out.component';
+import { ViewCartComponent } from './product/view-cart/view-cart.component';
 
 const routes: Routes = [
   {
@@ -47,7 +47,7 @@ const routes: Routes = [
 
   {
     path: 'product-list',
-    loadChildren: () => import('../../product/product-list/product-list.module').then(m => m.ProductListModule),
+    loadChildren: () => import('./product/product-list/product-list.module').then(m => m.ProductListModule),
   },
 ];
 

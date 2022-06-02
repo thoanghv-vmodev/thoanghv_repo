@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminCategoryComponent } from 'src/app/admin/admin-category/admin-category.component';
-import { AdminHistoryComponent } from 'src/app/admin/admin-history/admin-history.component';
-import { AdminProductComponent } from 'src/app/admin/admin-product/admin-product.component';
+import { AdminCategoryComponent } from 'src/app/layouts/admin-layout/admin/admin-category/admin-category.component';
+import { AdminHistoryComponent } from 'src/app/layouts/admin-layout/admin/admin-history/admin-history.component';
+import { AdminProductComponent } from 'src/app/layouts/admin-layout/admin/admin-product/admin-product.component';
 import { RoleGuard } from 'src/app/Guard/role.guard';
 
 const routes: Routes = [

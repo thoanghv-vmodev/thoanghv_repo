@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Products } from '../common/product';
 import { Observable} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ToastService } from './toast.service';
+import { Products } from '../common/models/product';
 @Injectable()
 export class ProductJsonService {
 

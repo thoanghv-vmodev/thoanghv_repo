@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ProductsOrder } from '../common/product';
+import { ProductsOrder } from '../common/models/product';
 import { ToastService } from './toast.service';
 
 @Injectable({
@@ -18,9 +18,6 @@ export class OrderListService {
 
   postProductOrder(obj: Object):Observable<ProductsOrder> {
     return this.http.post<ProductsOrder>(`${environment.apiUrl}/orders.json`,obj)
-    .pipe (
-      tap(() => console.log('Post success!'))
-    )
   }
 
   getProductOrder() {
@@ -36,10 +33,4 @@ export class OrderListService {
     )
   }
 
-  deleteProductOrder(data: ProductsOrder) {
-    return this.http.delete<ProductsOrder>(`${environment.apiUrl}/orders/${data.id}.json`)
-    .pipe(
-      tap(() => this.toastService.showDeleteSuccess())
-    )
-  }
 }

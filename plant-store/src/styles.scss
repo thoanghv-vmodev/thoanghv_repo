@@ -1,15 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
 html{
-  box-sizing: border-box;
   font-family: Arial,
   Helvetica,
   sans-serif;
   scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-size: 62.5%;
 }
 ul,li,p,h1,h2,h3,h4,h5,h6,ol,button {
   padding: 0;
   margin: 0;
+}
+
+input {
+  box-sizing: border-box;
 }
 
 $bg-white: rgb(255 255 255);
@@ -22,15 +27,6 @@ $bg-overlay: rgba(18, 49, 50, 0.3);
 body {
   background-color: $bg-page !important;
 }
-input {
-  box-sizing: border-box;
-}
-
-// .size-page {
-//   max-width: 1200px;
-//   width: calc(100% - 50px - 50px);
-//   margin: auto;
-// }
 
 .bg-page {
   background-color: $bg-page ;
@@ -40,6 +36,10 @@ input {
   padding: 18px 0;
 }
 
+.pd-top{
+  top: 112px;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 
 @media (min-width: 576px) {}
@@ -47,7 +47,11 @@ input {
 
 /* Mobile */
 
-@media (max-width: 739px) {}
+@media (max-width: 739px) {
+  .pd-top {
+      top: 0px;
+    }
+}
 
 
 /* Mobile & Tablet */

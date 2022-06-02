@@ -5,3 +5,7 @@
   margin: 0.5em;
   z-index: 1200;
 }
+
+:host ::ng-deep.toast-body {
+  font-size: 1.6rem;
+}

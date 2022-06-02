@@ -8,7 +8,7 @@
   padding: 12px 60px;
   transition: all ease-in-out 0.3s;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 1.5rem;
   white-space: nowrap;
 
   &:hover {
@@ -44,7 +44,7 @@
   .box-item-type {
     color: styles.$color-dark-blue;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: bold;
     letter-spacing: 4px;
     padding: 8px 0;
@@ -71,5 +71,15 @@
     border-bottom: 4px solid #a05841;
     width: 10%;
     margin: 16px 0px;
+  }
+}
+
+@media (max-width: 739px) {
+  .product-demo {
+    margin: 0;
+  }
+
+  .product-demo--box-item {
+    max-height: none !important;
   }
 }

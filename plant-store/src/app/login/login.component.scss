@@ -15,7 +15,6 @@ button {
 }
 .login {
   position: relative;
-  top: 112px;
   display: flex;
   justify-content: center;
   padding: 20px 0;
@@ -26,10 +25,15 @@ button {
   width: 368px;
   padding: 32px 18px;
   box-shadow: 0px 5px 20px 0px rgb(201, 201, 201);
+  font-size: 1.6rem;
+
+  input{
+    font-size: 1.6rem;
+  }
 }
 
 .login-form-title {
-  font-size: 26px;
+  font-size: 2.6rem;
   color:styles.$color-dark-blue;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -46,7 +50,7 @@ button {
     border-style: none;
     border-radius: 0px;
     padding: 8px 40px;
-    font-size: 16px;
+    font-size: 1.6rem;
 
     &:hover {
       background-color: styles.$color-dark-blue;
@@ -69,7 +73,7 @@ button {
 .title-form {
   color: styles.$color-dark-blue;
   text-align: center;
-  font-size: 16px;
+  font-size: 1.6rem;
   padding-top: 24px;
 }
 .form-content {

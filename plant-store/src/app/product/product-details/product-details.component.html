@@ -1,26 +1,33 @@
-<div class="product-details container gx-0">
+<div class="product-details pd-top container gx-0">
   <div class="product-details--container">
     <div class="product-details--content">
-      <div class="content-item" *ngFor="let data of itemDetail">
-        <a  routerLink="/home-page">Home</a> <span class="path-url">/</span>
-        <ng-container *ngIf="url">
-          <a routerLink="/product-list">Shop all</a> <span class="path-url">/</span>
-        </ng-container>
-        <ng-container *ngIf="data.productType == 'cacti'">
-          <a  routerLink="/cacti">Cacti</a> <span class="path-url">/</span>
-        </ng-container>
-        <ng-container *ngIf="data.productType == 'plants'">
-          <a routerLink="/plant">Plant</a> <span class="path-url">/</span>
-        </ng-container>
-        <ng-container *ngIf="data.productType == 'succulents'">
-          <a routerLink="/succulents">Succulent</a> <span class="path-url">/</span>
-        </ng-container>
-      <p class="path-url-title">{{data.productName}}</p>
+      <div class="url-mobile">
+        <div class="content-item">
+          <a routerLink="/home-page"><i class="fa-solid fa-angle-left"></i> Back to Home</a>
+        </div>
+      </div>
+      <div class="d-none d-lg-block d-md-block">
+        <div class="content-item" *ngFor="let data of itemDetail">
+          <a  routerLink="/home-page">Home</a> <span class="path-url">/</span>
+          <ng-container *ngIf="url">
+            <a routerLink="/product-list">Shop all</a> <span class="path-url">/</span>
+          </ng-container>
+          <ng-container *ngIf="data.productType == 'cacti'">
+            <a  routerLink="/cacti">Cacti</a> <span class="path-url">/</span>
+          </ng-container>
+          <ng-container *ngIf="data.productType == 'plants'">
+            <a routerLink="/plant">Plant</a> <span class="path-url">/</span>
+          </ng-container>
+          <ng-container *ngIf="data.productType == 'succulents'">
+            <a routerLink="/succulents">Succulent</a> <span class="path-url">/</span>
+          </ng-container>
+          <p class="path-url-title">{{data.productName}}</p>
+        </div>
       </div>
     </div>
-    <div class="product-details--content">
-      <ng-container *ngFor="let data of itemDetail">
-        <div class="product-box">
+    <ng-container *ngFor="let data of itemDetail">
+        <div class="row">
+        <div class="product-box col-lg-6 col-md-6 col-sm-12">
           <div class="slider-one">
             <a href="{{data.productImg}}" target="_blank">
             <img class="details-img" src="{{data.productImg}}"
@@ -45,7 +52,7 @@
           </div>
           <p class="product-desc">{{data.productDesc}}</p>
         </div>
-        <div class="product-box">
+        <div class="product-box col-lg-6 col-md-6 col-sm-12">
           <p class="product-box--name">{{data.productName}}</p>
           <div class="product-index">
             <p class="product-item">SKU: {{data.id}}</p>
@@ -64,7 +71,7 @@
             <button class="btn-buy" (click)="addProductToCart(data)">Add to cart</button>
             <button class="btn-buy" (click)="buyProductToCart(data)">Buy Now</button>
           </div>
-          <div>
+          <div class="contact-title">
             <p>
               Each purchase you make is vital to the preservation of the gardens
               and furthering the horticultural and educational mission of The PRICKLES & CO.
@@ -93,11 +100,14 @@
             </ngb-accordion>
           </div>
         </div>
+      </div>
       </ng-container>
-    </div>
     <div class="product-slider">
         <p class="product-slider--title mb-5">YOU MAY ALSO LIKE</p>
-        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" responsive="responsive">
+        <ngx-slick-carousel class="carousel"
+                            #slickModal="slick-carousel"
+                            [config]="slideConfig"
+                            responsive="responsive">
           <div ngxSlickItem *ngFor="let data of productList">
               <div class="list-product">
               <div class="product-slide-item">

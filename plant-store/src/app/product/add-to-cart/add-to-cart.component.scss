@@ -9,7 +9,7 @@
   padding: 10px 30px;
   transition: all ease-in-out 0.3s;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 1.5rem;
   white-space: nowrap;
   margin: 0 12px;
 
@@ -39,7 +39,6 @@
 }
 
 .active {
-  // transform: translateY(0) !important;
   display: block !important;
 }
 
@@ -60,7 +59,6 @@
   left: 0;
   bottom: 0;
   z-index: 110;
-  // transform: translateY(100%);
 
   .add-to-cart__container {
     margin: auto;
@@ -73,7 +71,7 @@
     .container--title {
       padding: 14px 28px;
       color: styles.$color-dark-blue;
-      font-size: 26px;
+      font-size: 2.6rem;
       .container--name{
         text-align: center;
       }
@@ -94,6 +92,7 @@
     padding-bottom: 28px;
 
     .container--list-detail {
+      font-size: 1.6rem;
       p {
         padding: 2px 0;
       }
@@ -162,7 +161,7 @@
 
 .subtotal-cart {
   color: styles.$color-dark-blue;
-  font-size: 24px;
+  font-size: 2.4rem;
 
     p {
       margin: 10px 0;
@@ -170,7 +169,7 @@
 }
 .cart-empty {
   padding-top: 60px;
-  font-size: 20px;
+  font-size: 2.0rem;
   text-align: center;
   color: styles.$color-dark-blue;
 }
@@ -181,4 +180,10 @@
       width: 100%;
       margin: 0;
     }
+}
+
+@media (max-width: 739px) {
+  .list-detail-input {
+    width: 100% !important;
+  }
 }

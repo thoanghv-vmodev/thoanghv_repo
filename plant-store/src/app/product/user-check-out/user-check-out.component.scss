@@ -9,7 +9,7 @@
   padding: 10px 30px;
   transition: all ease-in-out 0.3s;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 1.5rem;
   white-space: nowrap;
   margin: 0 12px;
 
@@ -31,7 +31,6 @@
 
 .check-out {
   position: relative;
-  top: 112px;
   padding-top: 20px;
   background-color: #fff;
 }
@@ -45,6 +44,7 @@
 
     .cart-list-box {
       padding: 12px 0;
+      font-size: 1.6rem;
     }
 
     .cart-list-item {
@@ -72,7 +72,7 @@
       .cart-list-details--info {
         padding-left: 12px;
         color: styles.$color-dark-blue;
-        font-size: 16px;
+        font-size: 1.6rem;
 
         span {
           opacity: 0.6;
@@ -85,24 +85,26 @@
       border-style: none;
       outline: none;
       color: styles.$color-dark-blue;
-      font-size: 20px;
+      font-size: 2.0rem;
     }
   }
 }
 
 .check-out-content--title {
   color: styles.$color-dark-blue;
-  font-size: 20px;
+  font-size: 2.0rem;
   width: 100%;
   padding-bottom: 12px;
 }
 
 .cart-order {
+  font-size: 1.6rem;
 
   .cart-order-box {
     display: flex;
     justify-content: space-between;
     color: styles.$color-dark-blue;
+    font-size: 1.6rem;
 
     .cart-order-item {
       padding: 8px 0;
@@ -126,7 +128,7 @@
 .cart-oder-secure {
   text-align: center;
   color: styles.$color-dark-blue;
-  font-size: 14px;
+  font-size: 1.4rem;
   padding-top: 12px;
 
   i {
@@ -142,13 +144,13 @@
   span {
     opacity: 0.6;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 2.0rem;
   }
 }
 
 .view-cart-content--title {
   color: styles.$color-dark-blue;
-  font-size: 20px;
+  font-size: 2.0rem;
   width: 100%;
   padding-bottom: 12px;
 }
@@ -159,7 +161,7 @@
   color: styles.$color-dark-blue;
 
   p {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 
   a {
@@ -175,21 +177,26 @@
   padding-left: 80px;
   color: styles.$color-dark-blue;
   h1 {
-    font-size: 22px;
+    font-size: 2.2rem;
   }
   p {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 }
 
 ::ng-deep.modal-content {
   border-radius: 0;
-  width: 460px;
+  width: 405px;
+  font-size: 1.6rem;
 }
 
 .modal-header,
 .modal-body {
   color: styles.$color-dark-blue;
+  font-size: 1.6rem;
+}
+.modal-title{
+  font-size: 2.4rem;
 }
 .modal-footer {
   display: flex;
@@ -198,13 +205,11 @@
 
 .form-select {
   border-radius: 0;
-}
-input {
-  border-radius: 0;
-}
-
-textarea {
-  border: 1px solid #ced4da;
+  font-size: 1.6rem;
+  border: 1px solid styles.$color-dark-blue;
+  option {
+  font-size: 1.6rem;
+  }
 }
 
 .alert {
@@ -214,4 +219,48 @@ textarea {
   margin: 0;
 }
 
+textarea,
+input {
+  border: 1px solid styles.$color-dark-blue;
+  outline: none;
+  width: 100%;
+  color: styles.$color-dark-blue;
+  padding: 6px 10px;
+  background-color: transparent;
+  font-size: 1.6rem;
+  border-radius: 0;
+}
 
+::placeholder {
+  color: styles.$color-dark-blue;
+  opacity: 0.6;
+}
+
+/* Mobile */
+
+@media (max-width: 739px) {
+  .check-out-container {
+    padding: 20px !important;
+    margin: 0;
+  }
+
+  .list-detail-input {
+    width: 150px !important;
+  }
+
+  .cart-list-item {
+    padding: 8px 0;
+  }
+
+  .user-info {
+    padding-left: 20px !important;
+  }
+}
+
+/* Mobile & Tablet */
+
+@media (max-width: 1023px) {}
+
+/* Tablet */
+
+@media (min-width: 740px) and (max-width: 1023px) {}

@@ -9,7 +9,7 @@
   padding: 10px 30px;
   transition: all ease-in-out 0.3s;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 1.5rem;
   white-space: nowrap;
   margin: 0 12px;
 
@@ -31,7 +31,6 @@
 
 .view-cart {
   position: relative;
-  top: 112px;
   padding-top: 20px;
   background-color: #fff;
 }
@@ -45,6 +44,7 @@
 
     .cart-list-box {
       padding: 12px 0;
+      font-size: 1.6rem;
     }
 
     .cart-list-item {
@@ -71,77 +71,39 @@
       .cart-list-details--info {
         padding-left: 12px;
         color: styles.$color-dark-blue;
-        font-size: 16px;
+        font-size: 1.6rem;
         span {
           opacity: 0.6;
         }
       }
 
     }
-    .btn-subtatol-item {
+    .btn-subtotal-item {
       background: transparent;
       border-style: none;
       outline: none;
       line-height: 0;
       color: styles.$color-dark-blue;
-      font-size: 20px;
+      font-size: 2.0rem;
     }
   }
 }
 
 .view-cart-content--title {
   color: styles.$color-dark-blue;
-  font-size: 20px;
+  font-size: 2.0rem;
   width: 100%;
   padding-bottom: 12px;
 }
 
-.cart-option {
-  padding-top: 24px;
-
-  .cart-option-box {
-    padding: 12px 0;
-    color: styles.$color-dark-blue;
-  }
-
-  .cart-option--title {
-    font-size: 16px;
-    color: styles.$color-dark-blue;
-    margin-left: 8px;
-  }
-
-  .cart-option-item {
-    padding: 8px 0;
-
-    .cart-option-apply,
-    textarea,
-    input {
-      border: 1px solid styles.$color-dark-blue;
-      outline: none;
-      color: styles.$color-dark-blue;
-      font-size: 16px;
-      padding: 6px 10px;
-      background-color: transparent;
-    }
-    ::placeholder {
-      color: styles.$color-dark-blue;
-      opacity: 0.6;
-    }
-    .cart-option-apply {
-        padding: 6px 20px;
-        &:hover {
-          opacity: 0.8;
-        }
-    }
-  }
-}
-
 .cart-order {
+  font-size: 1.6rem;
 
   .cart-order-box {
     display: flex;
     justify-content: space-between;
     color: styles.$color-dark-blue;
+    font-size: 1.6rem;
 
     .cart-order-item {
       padding: 8px 0;
@@ -165,7 +127,7 @@
 .cart-oder-secure {
    text-align: center;
    color: styles.$color-dark-blue;
-   font-size: 14px;
+   font-size: 1.4rem;
    padding-top: 12px;
 
    i {
@@ -189,7 +151,7 @@
    span {
      opacity: 0.6;
      cursor: pointer;
-     font-size: 20px;
+     font-size: 2.0rem;
    }
  }
 
@@ -198,7 +160,7 @@
   text-align: center;
   color: styles.$color-dark-blue;
   p {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
   a {
     color: styles.$color-dark-blue;
@@ -212,77 +174,26 @@ details>summary::-webkit-details-marker {
   display: none;
 }
 
-.dis-block {
-  display: block !important;
-}
+/* Mobile */
 
-.modal-container,
-.modal-edit {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
-}
-
-.overlay {
-  display: none;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.2);
-  width: 100%;
-  height: 100%;
-  animation: show ease-in-out 0.3s;
-}
-
-.modal-box {
-  position: relative;
-  margin: auto;
-  top: 40px;
-  background-color: #fff;
-  width: 600px;
-  color: styles.$color-dark-blue;
-
-  .modal-content {
-    padding: 18px 36px;
-    border: none;
+@media (max-width: 739px) {
+  .view-cart-container {
+    padding: 20px !important;
+    margin: 0;
   }
-  .card-input {
-    width: 100%;
-    padding: 6px;
-    border-style: none;
-    border: 1px solid #444;
+  .list-detail-input {
+    width: 150px !important;
   }
-
-  .form-content {
-    padding: 4px 0;
-    text-align: left;
-
-    label {
-      padding: 6px 0;
-    }
-  }
-
-}
-
-.modal-content-header {
-  text-align: center;
-  font-size: 26px;
-  color: styles.$color-dark-blue;
-}
-
-.icon-close {
-  text-align: right;
-  font-size: 24px;
-
-  i {
-    cursor: pointer;
+  .cart-list-item {
+    padding: 8px 0;
   }
 }
-.alert {
-  background-color: #fed3d3;
-  color: #820000;
-  padding: 6px;
-  margin: 0;
+/* Mobile & Tablet */
+
+@media (max-width: 1023px) {}
+
+/* Tablet */
+
+@media (min-width: 740px) and (max-width: 1023px) {
+
 }

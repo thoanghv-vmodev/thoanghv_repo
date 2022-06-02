@@ -8,9 +8,8 @@
   padding: 10px 30px;
   transition: all ease-in-out 0.3s;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 1.5rem;
   white-space: nowrap;
-  margin: 0 12px;
 
   &:hover {
     background-color: #d0b0a6;
@@ -52,11 +51,10 @@
 
 .cacti {
   position: relative;
-  top: 112px;
   .back-shop-all {
       text-decoration: none;
       color: #fff;
-      font-size: 16px;
+      font-size: 1.6rem;
       transition: all ease-in-out 0.3s;
 
       &:hover {
@@ -70,7 +68,10 @@
     text-align: center;
     text-transform: uppercase;
     color: styles.$color-dark-blue;
-    font-size: 20px;
+
+    h1 {
+      font-size: 4.5rem;
+    }
   }
 
   .product-list {
@@ -82,21 +83,21 @@
   .product-list-item {
     padding: 4px 0;
     color: styles.$color-dark-blue;
+    font-size: 1.6rem;
     a {
       text-decoration: none;
-      display: inline-block;
     }
   }
 
-  .product-list-item--flex {
-    display: flex;
-    margin: 0 -12px;
-  }
-
-  .product-list-item img {
+  .product-list-item--img {
     width: 100%;
-    max-height: 267px;
-    object-fit: cover;
+    height: 267px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 
@@ -126,14 +127,15 @@
 
 .banner-box--title {
   margin-top: 24px;
+  width: 100%;
 
   .title-name {
-    font-size: 74px;
+    font-size: 7.4rem;
     padding: 0 210px;
   }
 
   .title-desc {
-    font-size: 16px;
+    font-size: 1.6rem;
     vertical-align: baseline;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -143,7 +145,7 @@
 
 .down-icon {
   i {
-    font-size: 40px;
+    font-size: 4.0rem;
     cursor: pointer;
   }
 }
@@ -157,7 +159,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 24px;
-
+    font-size: 1.6rem;
     .form-check {
       margin: 0 24px;
     }
@@ -169,6 +171,7 @@
     .form-select {
       background-color: transparent;
       border: none;
+      font-size: 1.6rem;
     }
 
     .form-select:focus {
@@ -182,8 +185,71 @@
   text-align: center;
   color: styles.$color-dark-blue;
   justify-content: center;
+  font-size: 1.6rem;
 }
 
 :host ::ng-deep .ngx-pagination .current {
   background-color: rgba(18, 49, 50);
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {}
+
+/* Mobile */
+
+@media (max-width: 739px) {
+
+  .search-product,
+  .search-product--content {
+    display: initial !important;
+  }
+
+  .search-product--content-filter {
+    padding: 0 24px;
+  }
+
+  .product-list {
+    margin: 0;
+  }
+
+  .product-list-content {
+    padding: 16px 0;
+  }
+
+}
+
+/* Mobile & Tablet */
+
+@media (max-width: 1023px) {
+  .title-name {
+    padding: 0px !important;
+    font-size: 5rem !important;
+  }
+
+  .banner-bg {
+    height: 50vh;
+    background-attachment: inherit;
+  }
+
+  .category-title {
+    padding-top: 20px !important;
+  }
+}
+
+/* Tablet */
+
+@media (min-width: 740px) and (max-width: 1023px) {}
+
+/* IPad pro */
+
+@media only screen and (min-device-width: 1024px)
+and (max-device-width: 1024px)
+ and (orientation: portrait)
+ and (-webkit-min-device-pixel-ratio: 2) {
+  .product-list-item {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }

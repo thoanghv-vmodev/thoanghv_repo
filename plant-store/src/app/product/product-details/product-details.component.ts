@@ -96,33 +96,37 @@ export class ProductDetailsComponent implements OnInit {
     slidesToScroll: 1,
     autoplay: false,
     arrows: true,
+    dots: false,
     responsive: [{
       breakpoint: 1024,
       settings: {
         slidesToShow: 2,
-        dots: true,
+        dots: false,
       }
     },
     {
       breakpoint: 768,
       settings: {
         slidesToShow: 1,
-        dots: true,
+        dots: false,
         autoplaySpeed: 3000,
+        arrows: false
       }
     }, {
       breakpoint: 600,
       settings: {
         slidesToShow: 1,
-        dots: true,
+        dots: false,
         autoplaySpeed: 3000,
+        arrows: false
       }
     }, {
       breakpoint: 480,
       settings: {
         slidesToShow: 1,
-        dots: true,
+        dots: false,
         autoplaySpeed: 3000,
+        arrows: false
       }
     }]
   };

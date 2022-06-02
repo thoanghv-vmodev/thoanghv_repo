@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Products } from '../common/product';
 import { Observable} from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ToastService } from './toast.service';
 @Injectable()
@@ -30,7 +30,7 @@ export class ProductJsonService {
           listProduct.push({...product[id], id});
         }
         return listProduct
-      })
+      }),
     )
   }
 

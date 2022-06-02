@@ -63,13 +63,13 @@ export class ViewCartComponent implements OnInit {
     let item: any = this.productListInCart.find(value => value.id === data.id);
     item.qty--;
 
-    if(item.qty <= 0) {
+    if(item.qty < 1) {
       item.qty = 1;
       this.confirmModal.confirm('Do you really want to delete product?', `${item.productName}`)
       .then((confirmed) => {
-      if(confirmed == true) {
-        this.removeItem(item)
-      }
+        if(confirmed == true) {
+          this.removeItem(item)
+        }
       })
       .catch((err) => console.log(err));
     }

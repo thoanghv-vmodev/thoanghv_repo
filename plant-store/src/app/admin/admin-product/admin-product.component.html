@@ -17,7 +17,7 @@
     <div class="search-product--content-filter">
       <p>Collection:</p>
       <select class="form-select" aria-label="Default select example" (change)="filterProductItem($event)">
-        <option class="select-item" value="">all category</option>
+        <option class="select-item" value="">All category</option>
         <option *ngFor="let category of categoryList" class="select-item" [value]="category.categoryName">
           {{category.categoryName}}</option>
       </select>
@@ -88,15 +88,15 @@
       </ng-container>
       <form [formGroup]="productForm">
         <div class="form-content">
-          <label for="product-type"> Product Type: </label>
+          <label for="product-type"> Product type: </label>
           <select class="form-select" aria-label="Default select example" formControlName="productType">
             <option selected disabled>Select type</option>
-            <option *ngFor="let data of categoryList" class="form-control"  value="{{data.categoryName}}">
+            <option *ngFor="let data of categoryList" class="form-control" value="{{data.categoryName}}">
               {{data.categoryName}}</option>
           </select>
         </div>
         <div class="form-content">
-          <label for="product-name"> Product Name: </label>
+          <label for="product-name"> Product name: </label>
           <input class="form-control"
                  id="product-name"
                  type="text"
@@ -105,8 +105,11 @@
         </div>
         <div class="form-content">
           <div class="preview-img">
-            <label for="product-img"> Product Image: </label>
-              <input class="form-control" id="product-img" type="file" (change)="onFileSelected($event)">
+            <label for="product-img"> Product image: </label>
+              <input class="form-control"
+                     id="product-img"
+                     type="file"
+                     (change)="onFileSelected($event)">
             <ng-container *ngIf="productImage != ''">
               <a href="{{productImage}}" target="_blank">
                 <img src="{{productImage}}" alt="{{productImage}}">
@@ -122,7 +125,7 @@
           </div>
         </div>
         <div class="form-content">
-          <label for="product-desc"> Product Description: </label>
+          <label for="product-desc"> Product description: </label>
           <textarea row="1" class="form-control"
                     id="product-desc" type="text"
                     formControlName="productDesc"
@@ -130,7 +133,7 @@
           </textarea>
         </div>
         <div class="form-content">
-          <label for="product-price"> Product Price: </label>
+          <label for="product-price"> Product price: </label>
           <input class="form-control"
                  id="product-price" type="number"
                  formControlName="productPrice"

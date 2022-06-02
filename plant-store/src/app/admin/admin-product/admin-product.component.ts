@@ -206,11 +206,9 @@ export class AdminProductComponent implements OnInit {
 
   filterProductItem(event: any) {
     if(event.target.value != '') {
-      setTimeout(() => {
         this.productService.getProduct().subscribe((data :Products[]) => {
-          return this.productList = data.filter((value: any) => value.productType == event.target.value)
+          return this.productList = data.filter((value: Products) => value.productType == event.target.value)
         })
-      }, 400);
     } else {
       return this.getProductList();
     }

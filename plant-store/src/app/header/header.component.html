@@ -13,24 +13,23 @@
                 </div>
             </div>
             <div class="header-content--box">
-                <ng-container *ngIf="!(user$ | async)?.userName && userInfo == ''">
+              <ng-container *ngIf="!(user$ | async)?.userName && userInfo == ''">
+                <div class="d-none d-lg-block d-md-block">
                   <div class="login" routerLink="/login">
-                    <a >
-                    <i class="login-item font-22 fa-solid fa-circle-user"></i>
-                    </a>
+                    <a><i class="login-item font-22 fa-solid fa-circle-user"></i></a>
                     <p class="login-item login-item-title">Login</p>
                   </div>
-                  <div class="cart">
-                    <i class="font-22 fa-solid fa-bag-shopping" routerLink="/cart">
-                      <p class="count-item">0</p>
-                    </i>
-                  </div>
+                </div>
+                <div class="cart">
+                  <i class="font-22 fa-solid fa-bag-shopping" routerLink="/cart">
+                    <p class="count-item">0</p>
+                  </i>
+                </div>
               </ng-container>
                 <ng-container *ngIf="(user$ | async)?.userName || userInfo != ''">
+                  <div class="d-none d-lg-block d-md-block">
                     <div class="logout">
-                      <a>
-                        <i class="login-item font-22 fa-solid fa-circle-user"></i>
-                      </a>
+                      <a><i class="login-item font-22 fa-solid fa-circle-user"></i></a>
                       <p class="login-item login-item-title" >
                         {{(user$ | async)?.userName}} {{userInfo.userName}}
                       </p>
@@ -41,52 +40,123 @@
                         </a>
                       </div>
                     </div>
+                  </div>
                     <div class="cart">
                       <i class="font-22 fa-solid fa-bag-shopping" routerLink="/cart">
                         <p class="count-item">{{itemInCart.length}}</p></i>
                     </div>
                 </ng-container>
-              </div>
+            </div>
         </div>
         <div class="header-content bg-page">
             <nav class="nav-header-content">
               <a routerLink="/home-page" (click)="goTop()" class="name-shop font-22">
                 PRICKLES & CO.
               </a>
-              <div class="nav-menu--item nav-menu--hover">
-                  <a routerLink="/product-list" routerLinkActive="active">Shop</a>
-                    <ul class="hover-list">
-                        <li class="hover-list-item">
-                          <a routerLink="/cacti"  [routerLinkActive]="['active']">
-                            Cacti
-                          </a>
-                        </li>
-                        <li class="hover-list-item">
-                          <a routerLink="/plants" [routerLinkActive]="['active']">
-                            Plants
-                          </a>
-                        </li>
-                        <li class="hover-list-item">
-                          <a routerLink="/succulents" [routerLinkActive]="['active']">
-                            Succulents
-                          </a>
-                        </li>
-                    </ul>
+              <div class="d-none d-lg-block d-md-block">
+                <nav class="nav-menu ">
+                  <div class="nav-menu--item nav-menu--hover">
+                      <a routerLink="/product-list" [routerLinkActive]="['active']">Shop</a>
+                        <ul class="hover-list">
+                            <li class="hover-list-item">
+                              <a routerLink="/cacti"  [routerLinkActive]="['active']">
+                                Cacti
+                              </a>
+                            </li>
+                            <li class="hover-list-item">
+                              <a routerLink="/plants" [routerLinkActive]="['active']">
+                                Plants
+                              </a>
+                            </li>
+                            <li class="hover-list-item">
+                              <a routerLink="/succulents" [routerLinkActive]="['active']">
+                                Succulents
+                              </a>
+                            </li>
+                        </ul>
+                  </div>
+                  <div class="nav-menu--item">
+                    <a (click)="goAbout()">About</a>
+                  </div>
+                  <div class="nav-menu--item">
+                    <a href="#">FAQ</a>
+                  </div>
+                  <div class="nav-menu--item">
+                    <a (click)="goContact()" routerLink="/home-page">Contact</a>
+                  </div>
+                </nav>
               </div>
-              <div class="nav-menu--item">
+            </nav>
+            <div class="nav-header-content">
+              <div class="menu-mobile-btn">
+                <i class="fa-solid fa-bars" (click)="openMenuMobile()"></i>
+              </div>
+              <div class="d-none d-lg-block d-md-block">
+                <p class="nav-header-content-title " [class.actives]="onActive1">Call Us Now! 123-456-7890</p>
+                <p class="nav-header-content-title actives" [class.actives]="onActive2">We Deliver to Your Doorste</p>
+              </div>
+            </div>
+        </div>
+    <div class="overlay" #overlay (click)="closeMenuMobile()"></div>
+    <div class="nav-mobile" #menuMobile>
+      <div class="nav-mobile-modal">
+        <div class="modal-content">
+          <div class="close-menu-mobile">
+            <i class="fa-solid fa-xmark" (click)="closeMenuMobile()"></i>
+          </div>
+          <ng-container *ngIf="!(user$ | async)?.userName && userInfo == ''">
+            <div class="login-mobile" routerLink="/login">
+              <a><i class="login-item font-22 fa-solid fa-circle-user"></i></a>
+              <p class="login-item login-item-title">Login</p>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="(user$ | async)?.userName || userInfo != ''">
+              <div class="logout-mobile">
+                <div class="logout-content">
+                  <a><i class="login-item font-22 fa-solid fa-circle-user"></i></a>
+                  <p class="login-item login-item-title">
+                    {{(user$ | async)?.userName}} {{userInfo.userName}}
+                  </p>
+                </div>
+                <div class="logout-content"  (click)="onSubmit()">
+                    <p>Logout</p>
+                    <span><i class=" px-3 fa-solid fa-arrow-right-from-bracket"></i></span>
+                </div>
+              </div>
+          </ng-container>
+            <nav class="nav-menu-mobile">
+              <div class="nav-menu--item" (click)="closeMenuMobile()">
+                <a routerLink="/product-list" [routerLinkActive]="['active']">
+                  Shop
+                </a>
+              </div>
+              <div class="nav-menu--item" (click)="closeMenuMobile()">
+              <a routerLink="/cacti" [routerLinkActive]="['active']">
+                Cacti
+              </a>
+              </div>
+              <div class="nav-menu--item" (click)="closeMenuMobile()">
+                <a routerLink="/plants" [routerLinkActive]="['active']">
+                  Plants
+                </a>
+              </div>
+              <div class="nav-menu--item" (click)="closeMenuMobile()">
+                <a routerLink="/succulents" [routerLinkActive]="['active']">
+                  Succulents
+                </a>
+              </div>
+              <div class="nav-menu--item" (click)="closeMenuMobile()">
                 <a (click)="goAbout()">About</a>
               </div>
-              <div class="nav-menu--item">
+              <div class="nav-menu--item" (click)="closeMenuMobile()">
                 <a href="#">FAQ</a>
               </div>
-              <div class="nav-menu--item">
+              <div class="nav-menu--item" (click)="closeMenuMobile()">
                 <a (click)="goContact()" routerLink="/home-page">Contact</a>
               </div>
             </nav>
-            <ng-container class="nav-header-content">
-              <p class="nav-header-content-title " [class.actived]="onActive1">Call Us Now! 123-456-7890</p>
-              <p class="nav-header-content-title actived" [class.actived]="onActive2">We Deliver to Your Doorste</p>
-            </ng-container>
-        </div>
+          </div>
+      </div>
+    </div>
     </div>
 </header>

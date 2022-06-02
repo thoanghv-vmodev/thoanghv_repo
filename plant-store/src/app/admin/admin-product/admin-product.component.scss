@@ -7,7 +7,7 @@
   padding: 12px 60px;
   transition: all ease-in-out 0.3s;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 1.5rem;
   white-space: nowrap;
 
   &:hover {
@@ -24,7 +24,7 @@
 
 .icon-close {
   text-align: right;
-  font-size: 24px;
+  font-size: 2.4rem;
 
   i {
     cursor: pointer;
@@ -39,7 +39,7 @@
   .admin-shop-option {
     color: styles.$color-dark-blue;
     padding: 18px;
-    font-size: 26px;
+    font-size: 2.6rem;
   }
 
   .btn-add-new {
@@ -52,6 +52,7 @@
     margin: 18px;
     overflow-y: scroll;
     height: 400px;
+    font-size: 1.6rem;
 
     .table-tr {
       border: none;
@@ -95,32 +96,33 @@
   }
 }
 
- .search-product--content-filter {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 0 24px;
-   color: styles.$color-dark-blue;
+.search-product--content-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  color: styles.$color-dark-blue;
+  font-size: 1.6rem;
+  .form-check {
+    margin: 0 24px;
+  }
 
-   .form-check {
-     margin: 0 24px;
-   }
+  p {
+    white-space: nowrap;
+  }
 
-   p {
-     white-space: nowrap;
-   }
+  .form-select {
+    background-color: transparent;
+    border: none;
+    font-size: 1.6rem;
+  }
 
-   .form-select {
-     background-color: transparent;
-     border: none;
-   }
-
-   .form-select:focus {
-     outline: none;
-     border-style: none;
-     box-shadow: none;
-   }
- }
+  .form-select:focus {
+    outline: none;
+    border-style: none;
+    box-shadow: none;
+  }
+}
 
 /* Add new  */
 
@@ -156,13 +158,14 @@
   .modal-content {
     padding: 0 18px 8px 18px;
     border: none;
+    font-size: 1.6rem;
   }
 
   .modal-content-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 26px;
+    font-size: 2.6rem;
     color: styles.$color-dark-blue;
   }
 
@@ -181,6 +184,10 @@
   .form-select,  textarea {
     border: 1px solid;
     border-radius: 0;
+    font-size: 1.6rem;
+    option {
+      font-size: 1.6rem;
+    }
   }
 
   .preview-img {
@@ -229,12 +236,15 @@
     display: flex;
     align-items: center;
     color: styles.$color-dark-blue;
+    font-size: 1.6rem;
+
     i{
-      font-size: 20px;
+      font-size: 2rem;
       padding-right: 6px;
     }
     input {
       border: 1px solid styles.$color-dark-blue;
+      font-size: 1.6rem;
     }
   }
 }
@@ -258,10 +268,11 @@
   height: 100%;
 }
 
-input {
+input, textarea {
   border: 1px solid #444;
   border-radius: 0;
   outline: none;
+  font-size: 1.6rem;
 }
 
 input:focus {

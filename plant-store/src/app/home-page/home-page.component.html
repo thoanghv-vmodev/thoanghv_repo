@@ -1,10 +1,10 @@
-<div class="home-page container gx-0">
+<div class="home-page container pd-top gx-0">
    <section>
      <div class="intro-bg" id="top">
        <div class="intro-box">
          <div>
            <div class="intro-box--title">
-             <p class="title-top pd-tb-18 ">PLANT WORLD</p>
+             <p class="title-desc  pd-tb-18 ">PLANT WORLD</p>
              <h1 class="title-name pd-tb-18 ">PRICKLES & CO</h1>
              <p class="title-desc pd-tb-18 ">BRING NATURE INDOORS</p>
            </div>
@@ -18,8 +18,8 @@
     </div>
    </section>
    <section>
-    <div class="product-demo row gx-5">
-      <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of categoryName" >
+    <div class="category-demo row gx-lg-5 gx-md-5 gx-sm-0 gy-sm-5">
+      <div class="col-lg-4 col-md-6 col-sm-12 category-item" *ngFor="let item of categoryName" >
         <ng-container >
           <app-category [data]="item"></app-category>
         </ng-container>
@@ -28,8 +28,8 @@
    </section>
    <section>
       <div class="about" id="about">
-          <div class="about-box">
-            <div class="about-box--content">
+          <div class="about-box row">
+            <div class="about-box--content col-sm-12 col-lg-6 col-md-6">
               <article class="about-box--item-article">
                 <p class="about-box--item-title">
                   ABOUT US
@@ -51,7 +51,7 @@
                   precious plants.</p>
               </article>
             </div>
-            <div class="about-box--item about-box--item-img">
+            <div class="about-box--content about-box--item-img col-sm-12 col-lg-6 col-md-6">
               <div class="about-box--item-right">
                 <img class="item-right--img" src="../../assets/images/about-right-1.webp" alt="Image">
               </div>
@@ -60,11 +60,11 @@
               </div>
             </div>
           </div>
-          <div class="about-box">
-              <div class="about-box--content">
+          <div class="about-box row">
+              <div class="about-box--content col-sm-12 col-lg-6 col-md-6">
                   <img class="about-box--bottom-img" src="../../assets/images/about-bottom.webp" alt="Images">
               </div>
-              <div class="about-box--content">
+              <div class="about-box--content col-sm-12 col-lg-6 col-md-6">
                 <div class="about-box--content-bottom">
                   <div class="content-bottom">
                     <h1 class="content-bottom--sale">

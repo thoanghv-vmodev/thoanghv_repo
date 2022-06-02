@@ -8,7 +8,7 @@
   padding: 12px 60px;
   transition: all ease-in-out 0.3s;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 1.5rem;
   white-space: nowrap;
 
   &:hover {
@@ -42,7 +42,6 @@
 
 .product-details {
   position: relative;
-  top: 112px;
   background-color: styles.$bg-white;
 }
 
@@ -58,10 +57,9 @@
 
   .product-desc {
     padding: 12px 0;
+    font-size: 1.6rem;
   }
   .product-box {
-    padding: 0 16px;
-    width: 100%;
 
     p {
       color: styles.$color-dark-blue;
@@ -84,7 +82,7 @@
     }
 
     .product-box--name {
-      font-size: 26px;
+      font-size: 2.6rem;
     }
 
     .product-index {
@@ -98,7 +96,7 @@
     }
 
     .product-item {
-      font-size: 16px;
+      font-size: 1.6rem;
       padding: 8px 0;
       color: styles.$color-dark-blue;
     }
@@ -121,12 +119,17 @@
          cursor: pointer;
        }
      }
+
+     .contact-title {
+       font-size: 1.6rem;
+     }
   }
 
   .content-item {
     padding: 0 16px;
     display: flex;
     color: styles.$color-dark-blue;
+    font-size: 1.8rem;
     a {
       display: inline-block;
       text-decoration: none;
@@ -162,6 +165,7 @@
   .product-slider--title {
     text-align: center;
     color: styles.$color-dark-blue;
+    font-size: 2.2rem;
   }
   .list-product {
     padding: 0 12px ;
@@ -187,7 +191,7 @@
   .product-slide-details {
     text-align: center;
     color: styles.$color-dark-blue;
-    font-size: 1rem;
+    font-size: 1.6rem;
     padding: 12px 0;
     position: relative;
 
@@ -215,7 +219,7 @@
   padding-top: 10px;
   display: flex;
   align-items: center;
-
+  font-size: 1.6rem;
     a {
       display: inline-block;
       margin:  0 6px;
@@ -223,8 +227,12 @@
       text-decoration: none;
     }
     i {
-     font-size: 22px;
+     font-size: 2.2rem;
     }
+}
+
+.url-mobile{
+  display: none;
 }
 
 ::ng-deep.card{
@@ -246,12 +254,13 @@
   width: 100%;
   padding: 10px 40px;
   text-decoration: none;
+  font-size: 1.6rem;
 }
 
 :host ::ng-deep .slick-prev:before,
 :host ::ng-deep .slick-next:before {
   color: #000;
-  font-size: 2.4rem;
+  font-size: 4rem;
 }
 
 :host ::ng-deep .slick-next {
@@ -260,6 +269,43 @@
 }
 
 :host ::ng-deep .slick-prev {
-  left: -36px;
+  left: -37px;
   top: 45%;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {}
+
+/* Mobile */
+
+@media (max-width: 739px) {
+  .url-mobile {
+    display: block;
+  }
+}
+
+/* Mobile & Tablet */
+
+@media (max-width: 1023px) {
+  .product-details--container {
+      padding: 20px 28px !important;
+  }
+}
+
+/* Tablet */
+
+@media (min-width: 740px) and (max-width: 1023px) {
+  .product-slider {
+    padding: 0 48px;
+  }
+}
+
+/* IPad pro */
+
+@media only screen and (min-device-width: 1024px)
+and (max-device-width: 1024px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+
 }

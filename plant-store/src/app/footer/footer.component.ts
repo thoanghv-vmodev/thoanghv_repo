@@ -16,7 +16,7 @@ export class FooterComponent implements OnInit {
 
    }
 
-  /* ngAfterViewInit(): void {
+ /*  ngAfterViewInit(): void {
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
     center: { lat: 21.0312695, lng: 105.7818161 },
     zoom: 18,

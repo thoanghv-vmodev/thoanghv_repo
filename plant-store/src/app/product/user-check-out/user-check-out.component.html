@@ -1,4 +1,4 @@
-<div class="check-out container gx-0">
+<div class="check-out pd-top container gx-0">
   <ng-container *ngIf="productListCheckOut.length <= 0">
     <div class="cart-empty ">
       <p>Cart is empty</p>
@@ -12,12 +12,12 @@
       <p>Phone: {{userCheckOut.phoneNumber}}</p>
     </div>
     <div class="check-out-container row gx-5">
-        <section class="check-out-content col-7">
+        <section class="check-out-content col-lg-7 col-md-12 col-sm-12">
           <p class="check-out-content--title border-bd">My Cart</p>
           <div class="cart-list border-bd">
             <ng-container *ngFor="let data of productListCheckOut">
               <div class="row gx-4 cart-list-box">
-                <div class="cart-list-item col-8">
+                <div class="cart-list-item col-lg-8 col-md-8 col-sm-12">
                   <div class="cart-list-details">
                     <div class="cart-list-details--img">
                       <a href="{{data.productImg}}" target="_blank">
@@ -29,12 +29,12 @@
                       <span>{{data.productPrice | currency: 'USD'}}</span>
                     </div>
                   </div>
+
+                </div>
+                <div class="cart-list-item col-lg-4 col-md-4 col-sm-12">
                   <div class="list-detail-input">
                     x{{data.qty}}
                   </div>
-                </div>
-                <div class="cart-list-item col-4">
-                  <div></div>
                   <p class="subtatol-item">
                     {{data.productPrice * data.qty | currency: 'USD'}}
                   </p>
@@ -43,7 +43,7 @@
             </ng-container>
           </div>
         </section>
-        <section class="check-out-content col-5">
+        <section class="check-out-content col-lg-5 col-md-12 col-sm-12">
           <p class="check-out-content--title border-bd">
             Subtotal
           </p>
@@ -61,8 +61,8 @@
               </div>
             </div>
             <div class="cart-order-box">
-              <p class="py-4 fs-5">Total</p>
-              <p class="py-4 fs-5">{{cartTotal | currency: 'USD'}}</p>
+              <p class="py-4">Total</p>
+              <p class="py-4">{{cartTotal | currency: 'USD'}}</p>
             </div>
             <button class="btn-checkout" (click)="openModalBeforeCheckOut(content)">Checkout</button>
             <div class="cart-oder-secure"><i class="fa-solid fa-lock"></i>Secure Checkout</div>
@@ -101,7 +101,7 @@
           <div class="form-content py-1">
             <label for="text-note"> Specific address: </label>
             <div>
-              <textarea name="text-note" id="text-note" formControlName="specificAddress" cols="55" rows="2"
+              <textarea name="text-note" id="text-note" formControlName="specificAddress"  rows="2"
                 placeholder="Your specific address information."></textarea>
             </div>
             <div *ngIf="specificAddress?.invalid && (specificAddress?.touched || specificAddress?.dirty)" role="alert" class="alert alert-danger">
@@ -113,7 +113,7 @@
           <div class="form-content py-1">
             <label for="text-note"> Note: </label>
             <div>
-              <textarea name="text-note" id="text-note" formControlName="textNote" cols="55" rows="2"
+              <textarea name="text-note" id="text-note" formControlName="textNote"  rows="2"
                 placeholder="Instructions? Special requests? Add them here."></textarea>
             </div>
           </div>

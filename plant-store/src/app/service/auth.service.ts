@@ -87,7 +87,9 @@ export class AuthService {
          () => {
            this.toastService.showSignUpSuccess();
            setTimeout(() => {
-             this.router.navigate(['login'])
+              this.router.navigate(['login']).then(() => {
+              window.location.reload();
+              });
            }, 2000);
          }, err => {
            this.toastService.showError()
@@ -101,13 +103,11 @@ export class AuthService {
       const user: any = this.accountUserList.find((el: User) => {
         return el.email === data.email && el.password === data.password
       });
-
       const admin: any = this.accAdmin.find((el: any) => {
         return el.email === data.email && el.password === data.password
       });
 
       if(user) {
-        this.toastService.showLoginSuccess();
         localStorage.setItem('user', JSON.stringify(user));
         this.setUser(user);
 

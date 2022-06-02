@@ -57,12 +57,12 @@
       </ng-container>
       <form [formGroup]="categoryForm" (ngSubmit)="Save()">
           <div class="form-content">
-            <label for="category-name"> Category Name: </label>
+            <label for="category-name"> Category name: </label>
             <input class="form-control" id="category-name" type="text" formControlName="categoryName" placeholder="Name:">
           </div>
           <div class="form-content">
           <div class="preview-img">
-            <label for="category-img"> Category Image: </label>
+            <label for="category-img"> Category image: </label>
             <input class="form-control" id="category-img" type="file" (change)="onFileSelected($event)">
             <ng-container *ngIf="categoryImage != ''">
               <a href="{{categoryImage}}" target="_blank">

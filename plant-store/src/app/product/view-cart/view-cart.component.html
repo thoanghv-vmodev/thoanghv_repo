@@ -1,4 +1,4 @@
-<div class="view-cart container gx-0">
+<div class="view-cart container pd-top gx-0">
   <div class="view-cart-container row gx-5">
     <ng-container *ngIf="productListInCart.length <= 0">
       <p class="view-cart-content--title border-bd">My Cart</p>
@@ -8,12 +8,12 @@
       </div>
     </ng-container>
       <ng-container *ngIf="productListInCart.length > 0">
-        <section class="view-cart-content col-7">
+        <section class="view-cart-content col-lg-7 col-md-12 col-sm-12">
           <p class="view-cart-content--title border-bd">My Cart</p>
           <div class="cart-list border-bd">
             <ng-container *ngFor="let data of productListInCart">
             <div class="row gx-4 cart-list-box">
-                <div class="cart-list-item col-9" >
+                <div class="cart-list-item col-lg-6 col-md-9 col-sm-12">
                   <div class="cart-list-details">
                     <div class="cart-list-details--img">
                       <a href="{{data.productImg}}" target="_blank">
@@ -25,17 +25,17 @@
                       <span>{{data.productPrice | currency: 'USD'}}</span>
                     </div>
                   </div>
+                </div>
+                <div class="cart-list-item col-lg-6 col-md-3 col-sm-12 py-sm-4">
                   <div class="list-detail-input">
                     <span (click)="decrementItem(data)"><i class="fa-solid fa-minus"></i></span>
-                         {{data.qty}}
+                    {{data.qty}}
                     <span (click)="incrementItem(data)"><i class="fa-solid fa-plus"></i></span>
                   </div>
-                </div>
-                <div class="cart-list-item col-3">
                     <p class="subtatol-item">
                       {{data.productPrice * data.qty | currency: 'USD'}}
                     </p>
-                    <button class="btn-subtatol-item">
+                    <button class="btn-subtotal-item">
                       <i class="fa-solid fa-xmark" (click)="removeItem(data)"></i>
                     </button>
                   </div>
@@ -43,7 +43,7 @@
               </ng-container>
           </div>
         </section>
-        <section class="view-cart-content col-5">
+        <section class="view-cart-content col-lg-5 col-md-12 col-sm-12">
           <p class="view-cart-content--title border-bd">
             Subtotal
           </p>
@@ -61,8 +61,8 @@
               </div>
             </div>
           <div class="cart-order-box">
-              <p class="py-4 fs-5">Total</p>
-              <p class="py-4 fs-5">{{cartTotal | currency: 'USD'}}</p>
+              <p class="py-4">Total</p>
+              <p class="py-4">{{cartTotal | currency: 'USD'}}</p>
           </div>
           <button class="btn-checkout" (click)="onOrder()">Order now</button>
         </div>

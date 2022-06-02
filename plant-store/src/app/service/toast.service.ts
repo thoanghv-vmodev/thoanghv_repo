@@ -34,14 +34,6 @@ export class ToastService {
     })
   }
 
-  showLoginSuccess() {
-    this.show({
-      header:"Login success!",
-      body: 'bg-success text-light',
-      delay: 3000
-    })
-  }
-
   showSignUpSuccess() {
     this.show({
      header:"Signup success!",

@@ -23,6 +23,8 @@ export class HeaderComponent implements OnInit {
   user$ = new Observable<any>();
 
   @ViewChild ('item') item: ElementRef<HTMLElement> | undefined;
+  @ViewChild ('menuMobile') menuMobile: ElementRef<HTMLElement> | undefined;
+  @ViewChild ('overlay') overlay!: ElementRef<HTMLElement>;
   constructor(
     private scroller: ViewportScroller,
     private msg: MessengerService,
@@ -97,6 +99,16 @@ export class HeaderComponent implements OnInit {
 
   goContact() {
     this.scroller.scrollToAnchor("contact");
+  }
+
+  openMenuMobile() {
+    this.menuMobile?.nativeElement.classList.add('dis-block');
+    this.overlay?.nativeElement.classList.add('overlay-block')
+  }
+
+  closeMenuMobile() {
+    this.menuMobile?.nativeElement.classList.remove('dis-block');
+    this.overlay?.nativeElement.classList.remove('overlay-block')
   }
 
 }

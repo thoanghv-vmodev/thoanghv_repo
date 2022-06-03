@@ -4,7 +4,7 @@ import { Observable} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ToastService } from './toast.service';
-import { Products } from '../common/models/product';
+import { Products } from '../models/product';
 @Injectable()
 export class ProductJsonService {
 

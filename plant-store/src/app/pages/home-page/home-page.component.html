@@ -1,0 +1,130 @@
+<div class="home-page container pd-top gx-0">
+   <section>
+     <div class="intro-bg" id="top">
+       <div class="intro-box">
+         <div>
+           <div class="intro-box--title">
+             <p class="title-desc  pd-tb-18 ">PLANT WORLD</p>
+             <h1 class="title-name pd-tb-18 ">PRICKLES & CO</h1>
+             <p class="title-desc pd-tb-18 ">BRING NATURE INDOORS</p>
+           </div>
+           <div class="pd-tb-18">
+             <button type="button" class="btn-shop" routerLink="/all-category">
+               Shop Now
+             </button>
+           </div>
+         </div>
+       </div>
+    </div>
+   </section>
+   <section>
+    <div class="category-demo row gx-lg-5 gx-md-5 gx-sm-0 gy-sm-5">
+      <div class="col-lg-4 col-md-6 col-sm-12 category-item" *ngFor="let item of categoryName" >
+        <ng-container >
+          <app-category [data]="item"></app-category>
+        </ng-container>
+      </div>
+    </div>
+   </section>
+   <section>
+      <div class="about" id="about">
+          <div class="about-box row">
+            <div class="about-box--content col-sm-12 col-lg-6 col-md-6">
+              <article class="about-box--item-article">
+                <p class="about-box--item-title">
+                  ABOUT US
+                </p>
+                <div class="box-item-line">
+                  <p></p>
+                </div>
+                <p class="about-box--item-desc">
+                  Each purchase you make is vital to the preservation of the gardens and
+                  furthering the horticultural and educational mission of The PRICKLES & CO Farm Foundation.
+                  If you have enjoyed your visit to the gardens, our nursery or appreciate our
+                  mission, your support insures PRICKLES & CO Farm remains a place of inspiration, education,
+                  and reconnection for generations
+                  to come.
+                </p>
+                <p class="about-box--item-desc">
+                  Taking care of trees helps you relax and immerse yourself in nature,
+                  Besides that, you can also protect beautiful and
+                  precious plants.</p>
+              </article>
+            </div>
+            <div class="about-box--content about-box--item-img col-sm-12 col-lg-6 col-md-6">
+              <div class="about-box--item-right">
+                <img class="item-right--img" src="../../assets/images/about-right-1.webp" alt="Image">
+              </div>
+              <div class="about-box--item-right">
+                <img class="item-right--img" src="../../assets/images/about-right-2.webp" alt="Image">
+              </div>
+            </div>
+          </div>
+          <div class="about-box row">
+              <div class="about-box--content col-sm-12 col-lg-6 col-md-6">
+                  <img class="about-box--bottom-img" src="../../assets/images/about-bottom.webp" alt="Images">
+              </div>
+              <div class="about-box--content col-sm-12 col-lg-6 col-md-6">
+                <div class="about-box--content-bottom">
+                  <div class="content-bottom">
+                    <h1 class="content-bottom--sale">
+                      <span>
+                        BUY ONLINE NOW & GET 10% OFF !
+                      </span>
+                    </h1>
+                    <button class="btn-about" routerLink="/all-category">Shop Now</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+   </section>
+   <section>
+        <div class="special-order" id="contact">
+            <div class="special-oder--box">
+                <form class="special-oder--form">
+                  <div class="form-content">
+                        <div class="form-content--title">
+                            <p>
+                              FOR SPECIAL REQUESTS & ORDERS
+                            </p>
+                            <div class="box-item-line">
+                              <p></p>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                              <div class="form-item--name">
+                                  <div class="form-item--name-input">
+                                    <label for="firstName">First Name *</label>
+                                    <br>
+                                    <input type="text" name="firstName"  placeholder="First Name">
+                                  </div>
+                                  <div class="form-item--name-input">
+                                    <label for="lastName">Last Name *</label>
+                                    <br>
+                                    <input type="text" name="lastName"  placeholder="Last Name">
+                                  </div>
+                              </div>
+                              <div class="form-item--input">
+                                  <label for="email">Email *</label>
+                                  <br>
+                                  <input type="email" name="email" placeholder="Email">
+                              </div>
+                              <div class="form-item--input">
+                                  <label for="phone">Phone</label>
+                                  <br>
+                                  <input type="text" name="phone" placeholder="Phone number">
+                              </div>
+                              <div class="form-item--input">
+                                  <label for="message">Message</label>
+                                  <br>
+                                  <textarea type="text" rows="4.5" name="message" placeholder="Message"></textarea>
+                              </div>
+                        </div>
+                        <button type="submit" class="btn-submit">Send</button>
+                   </div>
+                </form>
+            </div>
+        </div>
+   </section>
+</div>

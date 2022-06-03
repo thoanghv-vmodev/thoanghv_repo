@@ -1,0 +1,98 @@
+@use "../../../styles.scss";
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+button {
+  padding: 0;
+  margin: 0;
+}
+.login {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.login-container {
+  background-color: #fff;
+  width: 368px;
+  padding: 32px 18px;
+  box-shadow: 0px 5px 20px 0px rgb(201, 201, 201);
+  font-size: 1.6rem;
+
+  input{
+    font-size: 1.6rem;
+  }
+}
+
+.login-form-title {
+  font-size: 2.6rem;
+  color:styles.$color-dark-blue;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.btn-login {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+
+  .btn-success {
+    background-color: styles.$color-dark-blue;
+    border-style: none;
+    border-radius: 0px;
+    padding: 8px 40px;
+    font-size: 1.6rem;
+
+    &:hover {
+      background-color: styles.$color-dark-blue;
+      opacity: 0.8;
+    }
+    &:focus {
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+    }
+    a {
+      width: 100%;
+      padding: 8px 18px;
+      text-decoration: none;
+      color: #fff;
+    }
+    }
+}
+
+.title-form {
+  color: styles.$color-dark-blue;
+  text-align: center;
+  font-size: 1.6rem;
+  padding-top: 24px;
+}
+.form-content {
+  padding: 10px 0;
+}
+.form-control {
+
+  border-radius: 0;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+}
+
+.alert {
+  padding: 6px;
+}

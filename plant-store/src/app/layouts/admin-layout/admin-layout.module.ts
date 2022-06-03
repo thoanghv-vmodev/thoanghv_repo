@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminCategoryComponent } from 'src/app/layouts/admin-layout/admin/admin-category/admin-category.component';
-import { AdminHistoryComponent } from 'src/app/layouts/admin-layout/admin/admin-history/admin-history.component';
-import { AdminProductComponent } from 'src/app/layouts/admin-layout/admin/admin-product/admin-product.component';
 import { AdminLayoutRoutingModule } from './admin-layout-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminCategoryComponent } from 'src/app/pages/admin/admin-category/admin-category.component';
+import { AdminHistoryComponent } from 'src/app/pages/admin/admin-history/admin-history.component';
+import { AdminProductComponent } from 'src/app/pages/admin/admin-product/admin-product.component';
 import { ShareModule } from 'src/app/share/share.module';
 
 
@@ -17,11 +17,11 @@ import { ShareModule } from 'src/app/share/share.module';
   ],
   imports: [
     CommonModule,
-    AdminLayoutRoutingModule,
     FormsModule,
-    ShareModule,
-    ReactiveFormsModule,
     HttpClientModule,
+    AdminLayoutRoutingModule,
+    ReactiveFormsModule,
+    ShareModule,
   ]
 })
 export class AdminLayoutModule { }

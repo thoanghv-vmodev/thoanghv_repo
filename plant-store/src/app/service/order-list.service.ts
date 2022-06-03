@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ProductsOrder } from '../common/models/product';
-import { ToastService } from './toast.service';
+import { ProductsOrder } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,6 @@ export class OrderListService {
 
   constructor(
     private http: HttpClient,
-    private toastService: ToastService
   ) { }
 
   postProductOrder(obj: Object):Observable<ProductsOrder> {

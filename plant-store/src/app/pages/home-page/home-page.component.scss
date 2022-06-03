@@ -1,0 +1,356 @@
+@use '../../../styles.scss';
+
+/* Btn reuse */
+@mixin btn ($btn: styles.$color-dark-blue) {
+  background-color: $btn;
+  border-style: none;
+  color: #fff;
+  padding: 12px 60px;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+  font-size: 1.5rem;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #d0b0a6;
+    transition: all ease-in-out 0.3s;
+    color: #444;
+  }
+
+  &:active {
+    background-color: #a05841;
+    box-shadow: 0 2px #666;
+  }
+}
+
+.btn-shop {
+  @include btn;
+  background-color: #fff;
+  color: styles.$color-dark-blue;
+  &:hover {
+    background-color: styles.$color-dark-blue;
+    color: #fff;
+  }
+}
+
+/* Home page */
+.home-page {
+  position: relative;
+}
+
+/* Intro */
+.intro-bg {
+  background-image: url('../../../../assets/images/hinh-anh-hoa-sen-da-10.jpg');
+  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-color: styles.$bg-overlay;
+  -webkit-background-size: 100%;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+  background-blend-mode: overlay;
+}
+
+.intro-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.intro-box--title {
+  .title-name {
+   font-size: 11.2rem;
+   font-weight: 300;
+  }
+  .title-desc {
+    font-size: 2rem;
+    letter-spacing: 4px;
+  }
+}
+
+.box-item-line {
+  display: flex;
+  justify-content: center;
+
+  p {
+    border-bottom: 4px solid #a05841;
+    width: 10%;
+    margin: 16px 0px;
+  }
+}
+/* About us */
+
+.about-box{
+  margin: 0;
+  .about-box--content {
+    padding: 0;
+    .about-box--bottom-img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.about-box--item-article {
+  background-color: #fff;
+  height: 100%;
+  padding: 60px 54px;
+  text-align: center;
+  color: styles.$color-dark-blue;
+
+  .box-item-line p{
+    width: 20px;
+    margin: 20px 0 10px 0;
+  }
+
+  .about-box--item-title {
+    letter-spacing: 5px;
+    font-size: 1.8rem;
+  }
+
+  .about-box--item-desc {
+    line-height: 1.6;
+    font-size: 1.6rem;
+    padding: 12px 0;
+  }
+}
+
+
+.about-box--item-img {
+  display: flex;
+
+  .item-right--img {
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+.about-box--content-bottom {
+  background-color: styles.$bg-color-green;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .btn-about {
+    @include btn;
+    background-color: #fff;
+    color: styles.$bg-color-green;
+    margin-top: 36px;
+
+    &:hover {
+      background-color: #3e5a5b;
+      color: #fff;
+    }
+  }
+
+  .content-bottom {
+    text-align: center;
+
+    .content-bottom--sale{
+      color: #fff;
+      font-size: 6.8rem;
+      line-height: 1.1;
+    }
+  }
+}
+
+/* special-order */
+
+.special-order {
+  background-image: url('../../../../assets/images/bg-bottom.webp');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 120vh;
+  -webkit-background-size: 100%;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+.special-oder--box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  .special-oder--form {
+    background-color: rgba(252, 252, 252, 0.6);
+    width: 68%;
+    .btn-submit {
+    @include btn;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.form-content {
+  padding: 24px;
+
+  .form-content--title {
+    text-align: center;
+    color: styles.$color-dark-blue;
+    font-size: 1.8rem;
+    letter-spacing: 5px;
+
+    .box-item-line {
+      p {
+        width: 20px;
+        margin: 24px 0;
+      }
+    }
+  }
+}
+
+.form-item {
+  width: 100%;
+  color:#444;
+  font-size: 1.6rem;
+
+  .form-item--name {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -12px;
+
+    .form-item--name-input {
+      padding: 0 12px;
+      width: 100%;
+
+      input {
+        width: 100%;
+        padding: 8px;
+        margin: 12px 0;
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  .form-item--input {
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 12px 0;
+      font-size: 1.6rem;
+    }
+
+    textarea {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 100%;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+input {
+  border: 1px solid #000;
+}
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+
+}
+
+/* Mobile */
+
+@media (max-width: 739px) {
+  .intro-bg {
+      background-attachment: inherit;
+      object-fit: cover;
+      height: 50vh;
+      margin-bottom: 12px;
+  }
+
+  .category-demo {
+    margin: 0;
+  }
+
+  .category-item {
+    padding: 12px 0;
+  }
+
+  .product-demo--box-item {
+    height: 100%;
+  }
+
+  .about {
+    margin-top: 12px;
+  }
+
+  .content-bottom {
+    padding: 56px;
+  }
+
+  .special-oder--form {
+    width: 100% !important;
+  }
+}
+
+/* Mobile & Tablet */
+
+@media (max-width: 1023px) {
+  .item-right--img {
+      object-fit: cover;
+  }
+
+  .content-bottom--sale {
+    font-size: 3rem !important;
+  }
+
+  .title-name {
+    font-size: 5rem !important;
+  }
+  .special-order {
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    padding: 28px 0;
+  }
+}
+
+/* Tablet */
+
+@media (min-width: 740px) and (max-width: 1023px) {
+  .intro-bg {
+      background-size: 100%;
+      height: 38vh;
+  }
+
+  .special-order {
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    padding: 28px 0;
+  }
+}
+
+/* IPad pro */
+
+@media only screen and (min-device-width: 1024px)
+and (max-device-width: 1024px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+  .intro-bg {
+      background-attachment: fixed;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      height: 38vh;
+    }
+
+  .special-order{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 50vh;
+    -webkit-background-size: 100%;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  }
+}

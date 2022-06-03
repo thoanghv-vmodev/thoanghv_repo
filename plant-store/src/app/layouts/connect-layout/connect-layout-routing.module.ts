@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/Guard/auth-guard.guard';
-import { HomePageComponent } from 'src/app/layouts/connect-layout/home-page/home-page.component';
-import { LoginComponent } from 'src/app/login/login.component';
-import { SucculentsComponent } from 'src/app/layouts/connect-layout/product/succulents/succulents.component';
-import { RegisterComponent } from 'src/app/register/register.component';
-import { CactiComponent } from './product/cacti/cacti.component';
-import { PlantsComponent } from './product/plants/plants.component';
-import { UserCheckOutComponent } from './product/user-check-out/user-check-out.component';
-import { ViewCartComponent } from './product/view-cart/view-cart.component';
+import { HomePageComponent } from 'src/app/pages/home-page/home-page.component';
+import { LoginComponent } from 'src/app/pages/login/login.component';
+import { CategoryDetails } from 'src/app/pages/product/category-details/category-details.component';
+import { UserCheckOutComponent } from 'src/app/pages/product/user-check-out/user-check-out.component';
+import { ViewCartComponent } from 'src/app/pages/product/view-cart/view-cart.component';
+import { RegisterComponent } from 'src/app/pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -24,15 +22,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'cacti', component: CactiComponent,
-  },
-
-  {
-    path: 'plants', component: PlantsComponent
-  },
-
-  {
-    path: 'succulents', component: SucculentsComponent
+    path: 'category-details/:type', component: CategoryDetails
   },
 
   {
@@ -46,8 +36,8 @@ const routes: Routes = [
   },
 
   {
-    path: 'product-list',
-    loadChildren: () => import('./product/product-list/product-list.module').then(m => m.ProductListModule),
+    path: 'all-category',
+    loadChildren: () => import('../../pages/product/product-list/product-list.module').then(m => m.ProductListModule),
   },
 ];
 

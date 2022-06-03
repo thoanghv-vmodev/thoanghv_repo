@@ -5,7 +5,7 @@ import { RoleGuard } from './Guard/role.guard';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ConnectLayoutComponent } from './layouts/connect-layout/connect-layout.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {

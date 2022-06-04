@@ -76,6 +76,13 @@
                    type="text"
                    formControlName="categoryName"
                    placeholder="Name:">
+            <div *ngIf="categoryName?.invalid && (categoryName?.touched || categoryName?.dirty)"
+                  role="alert"
+                  class="alert alert-danger">
+              <div *ngIf="categoryName?.hasError('required')">
+                Input product name!
+              </div>
+            </div>
           </div>
           <div class="form-content">
           <div class="preview-img">
@@ -83,6 +90,7 @@
             <input class="form-control"
                    id="category-img"
                    type="file"
+                   accept="image/*"
                    (change)="onFileSelected($event)">
             <ng-container *ngIf="categoryImage != ''">
               <a href="{{categoryImage}}" target="_blank">

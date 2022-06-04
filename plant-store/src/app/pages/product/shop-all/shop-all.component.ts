@@ -18,13 +18,12 @@ export class ShopAllComponent implements OnInit {
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
 
   searchValue!: string;
-  searchTerm: string = "";
   isNull = false;
   pagination: number = 1;
   productList: Products[] = [];
   categoryList: Category[] = [];
   currentURL = window.location.href;
-  listSortValue = [
+  sortValueList = [
   {
     sate: 'hight',
     title: 'Price (hight to low)'
@@ -98,8 +97,8 @@ export class ShopAllComponent implements OnInit {
    * @returns
    */
   filterProductItem(event: any) {
+    this.searchValue = '';
     if(event.target.value != '') {
-      this.searchValue = '';
       this.productService.getProduct().subscribe((data :Products[]) => {
         return this.productList = data.filter((value: Products) => value.productType == event.target.value)
       })

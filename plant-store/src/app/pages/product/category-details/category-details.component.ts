@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Products } from 'src/app/models/product';
 import { AuthService } from 'src/app/service/auth.service';
 import { MessengerService } from 'src/app/service/messenger.service';
@@ -14,11 +14,15 @@ import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 })
 export class CategoryDetails implements OnInit {
   @ViewChild(AddToCartComponent) openCart!: AddToCartComponent;
+
   productList: Products[] = [];
   currentList: Products[] = [];
   pagination: number = 1;
+  Id: any = '';
   currentURL = window.location.href;
-  listSortValue = [
+  searchValue!: string;
+  isNull = false;
+  sortValueList = [
   {
     sate: 'hight',
     title: 'Price (hight to low)'
@@ -36,6 +40,7 @@ export class CategoryDetails implements OnInit {
     title: 'Time (old to new)'
   }
   ]
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductJsonService,
@@ -50,15 +55,15 @@ export class CategoryDetails implements OnInit {
   }
 
   getProductList() {
-    const type = this.route.snapshot.paramMap.get('type');
+    const id = this.route.snapshot.paramMap.get('id');
+    this.Id = id;
+    if(id) {
     this.productService.getProduct().subscribe(data => {
-      if(type) {
-        this.currentList = data.filter(el => el.productType === type)
+        this.currentList = data.filter(el => el.productType === id);
         this.productList = this.currentList.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-      } else {
-        this.productList = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-      }
-    })
+        this.goList();
+      })
+    }
   }
 
   openAddToCart(data: Products) {
@@ -70,6 +75,22 @@ export class CategoryDetails implements OnInit {
     } else {
       this.router.navigate(['login'])
       this.authService.setCurrentURL(this.currentURL)
+    }
+  }
+
+  searchProduct() {
+    if(!this.productList || !this.searchValue) {
+      this.isNull = false;
+      return this.getProductList();
+    } else if(this.productList.length <=0) {
+      this.isNull = true;
+    } else{
+      this.productService.getProduct().subscribe((data :Products[]) => {
+      return this.productList = data.filter(product =>
+      product.productName.toLocaleLowerCase().match(this.searchValue.toLocaleLowerCase()) ||
+      product.productPrice.toString().toLocaleUpperCase().match(this.searchValue.toLocaleUpperCase()))
+    }),
+      this.isNull = false;
     }
   }
 

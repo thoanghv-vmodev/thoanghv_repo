@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="category-title" id="product">
-      <h1>All Category</h1>
+      <h1>All Plants</h1>
     </div>
     <div class="search-product">
       <div class="search-product--content">
@@ -40,7 +40,7 @@
             <p>Sort By:</p>
             <select class="form-select" aria-label="Default select example" (change)="sortProductItem($event)">
               <option class="select-item" value="">Best Match</option>
-              <option *ngFor="let data of listSortValue" class="select-item" value="{{data.sate}}">
+              <option *ngFor="let data of sortValueList" class="select-item" value="{{data.sate}}">
                 {{data.title}}</option>
             </select>
           </div>

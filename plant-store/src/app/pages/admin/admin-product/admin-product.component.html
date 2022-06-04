@@ -16,7 +16,9 @@
     </div>
     <div class="search-product--content-filter">
       <p>Collection:</p>
-      <select class="form-select" aria-label="Default select example" (change)="filterProductItem($event)">
+      <select class="form-select"
+              aria-label="Default select example"
+              (change)="filterProductItem($event)">
         <option class="select-item" value="">All category</option>
         <option *ngFor="let category of categoryList" class="select-item" [value]="category.categoryName">
           {{category.categoryName}}</option>
@@ -25,7 +27,9 @@
     <div class="search-product--content">
       <div class="search-product--content-filter">
         <p>Sort By:</p>
-        <select class="form-select" aria-label="Default select example" (change)="sortProductItem($event)">
+        <select class="form-select"
+                aria-label="Default select example"
+                (change)="sortProductItem($event)">
           <option class="select-item" value="">Best Match</option>
           <option *ngFor="let data of listSortValue" class="select-item" value="{{data.sate}}">
             {{data.title}}</option>
@@ -80,8 +84,8 @@
 </div>
 
 <!-- Modal-Add -->
-<div class="overlay" #overlay (click)="closeModal()"></div>
 <div class="modal-container" #modalCreateAndEdit>
+  <div class="overlay" #overlay (click)="closeModal()"></div>
   <div class="modal-box">
     <div class="modal-content">
       <ng-container *ngIf="isCreate">
@@ -102,12 +106,18 @@
       </ng-container>
       <form [formGroup]="productForm">
         <div class="form-content">
-          <label for="product-type"> Product type: </label>
+          <label for="product-type"><span class="required-red">*</span> Product type: </label>
           <select class="form-select" aria-label="Default select example" formControlName="productType">
             <option selected disabled>Select type</option>
             <option *ngFor="let data of categoryList" class="form-control" value="{{data.categoryName}}">
               {{data.categoryName}}</option>
           </select>
+          <div *ngIf="productType?.invalid && (productType?.touched || productType?.dirty)" role="alert"
+            class="alert alert-danger">
+            <div *ngIf="productType?.hasError('required')">
+              Input product type!
+            </div>
+          </div>
         </div>
         <div class="form-content">
           <label for="product-name"> Product name: </label>
@@ -116,6 +126,13 @@
                  type="text"
                  formControlName="productName"
                  placeholder="Name:">
+          <div *ngIf="productName?.invalid && (productName?.touched || productName?.dirty)"
+                role="alert"
+                class="alert alert-danger">
+            <div *ngIf="productName?.hasError('required')">
+              Input product name!
+            </div>
+          </div>
         </div>
         <div class="form-content">
           <div class="preview-img">
@@ -123,6 +140,7 @@
               <input class="form-control"
                      id="product-img"
                      type="file"
+                     accept="image/*"
                      (change)="onFileSelected($event)">
             <ng-container *ngIf="productImage != ''">
               <a href="{{productImage}}" target="_blank">
@@ -145,6 +163,13 @@
                     formControlName="productDesc"
                     placeholder="Description:">
           </textarea>
+          <div *ngIf="productDesc?.invalid && (productDesc?.touched || productDesc?.dirty)"
+                role="alert"
+                class="alert alert-danger">
+            <div *ngIf="productDesc?.hasError('required')">
+              Input product description!
+            </div>
+          </div>
         </div>
         <div class="form-content">
           <label for="product-price"> Product price: </label>
@@ -153,6 +178,13 @@
                  formControlName="productPrice"
                  placeholder="Price:"
                  >
+          <div *ngIf="productPrice?.invalid && (productPrice?.touched || productPrice?.dirty)"
+                role="alert"
+                class="alert alert-danger">
+            <div *ngIf="productPrice?.hasError('required')">
+              Input product price!
+            </div>
+          </div>
         </div>
         <div class="btn-card">
           <button class="btn-list" (click)="Save()" type="submit">Save</button>

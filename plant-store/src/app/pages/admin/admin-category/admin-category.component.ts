@@ -36,8 +36,8 @@ export class AdminCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryForm = this.fb.group({
-      categoryName: [''],
-      categoryImg: ['']
+      categoryName: ['',Validators.required],
+      categoryImg: ['',Validators.required]
     })
 
     this.getCategoryList();
@@ -79,27 +79,36 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   Save() {
-    this.closeModal();
-    if(this.isCreate == true) {
-      let date = new Date()
-      let createCategory = {
-      ...this.categoryForm.value,
-      dateCategory: date
+    if(this.categoryForm.valid) {
+      if(this.isCreate == true) {
+        let date = new Date()
+        let createCategory = {
+          ...this.categoryForm.value,
+          dateCategory: date
+        }
+        this.categoryService.postCategory(createCategory).subscribe((dataCreate) => {
+          this.getCategoryList()
+        })
       }
-      this.categoryService.postCategory(createCategory).subscribe((dataCreate) => {
-        this.getCategoryList()
-      })
-    }
-    else {
-      let putCategory = {
-      ...this.categoryForm.value,
-      id: this.putId,
-      dateCategory: this.currentDate
+      else {
+        let putCategory = {
+          ...this.categoryForm.value,
+          id: this.putId,
+          dateCategory: this.currentDate
+        }
+        this.categoryForm.get('categoryImg')?.setValue(this.categoryImage)
+        this.categoryService.putCategory(this.putId, putCategory).subscribe(dataPut => {
+          this.getCategoryList()
+        })
       }
-      this.categoryForm.get('categoryImg')?.setValue(this.categoryImage)
-      this.categoryService.putCategory(this.putId, putCategory).subscribe(dataPut => {
-        this.getCategoryList()
-      })
+      this.closeModal();
+    } else {
+        Object.values(this.categoryForm.controls).forEach(control => {
+          if(control.invalid) {
+            control.markAsDirty();
+            control.updateValueAndValidity({onlySelf: true})
+          }
+        })
     }
   }
 
@@ -143,4 +152,5 @@ export class AdminCategoryComponent implements OnInit {
         }
       });
   }
+  get categoryName () { return this.categoryForm.get('categoryName'); }
 }

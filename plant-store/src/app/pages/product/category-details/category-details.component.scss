@@ -50,13 +50,13 @@
   }
 }
 
-.succulents {
+.category-details {
   position: relative;
 
   .back-shop-all {
     text-decoration: none;
     color: #fff;
-    font-size: 1.6rem;
+    font-size: 2rem;
     transition: all ease-in-out 0.3s;
 
     &:hover {
@@ -102,7 +102,7 @@
 }
 
 .banner-bg {
-  background-image: url('../../../../../assets/images/banner-plants3.webp');
+  background-image: url('../../../../assets/images/banner-plants3.webp');
   background-attachment: fixed;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -151,13 +151,37 @@
 
 .search-product--content {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
+
+  .search-product--input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #123132;
+    background: #fff;
+    padding: 0 12px;
+    font-size: 1.6rem;
+    margin-right: 12px;
+
+    .input-search {
+      outline: none;
+      border: none;
+      border-style: none;
+      padding: 10px;
+      width: 100%;
+      font-size: 1.6rem;
+    }
+
+    i,
+    ::placeholder {
+      font-size: 1.8rem;
+      color: rgba(18, 49, 50, 0.8);
+    }
+  }
 
   .search-product--content-filter {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 24px;
     font-size: 1.6rem;
 
     .form-check {
@@ -169,18 +193,24 @@
     }
 
     .form-select {
-      background-color: transparent;
-      border: none;
       font-size: 1.6rem;
-    }
-
-    .form-select:focus {
-      outline: none;
-      border-style: none;
-      box-shadow: none;
+      border-radius: 0px;
+      border: 1px solid styles.$color-dark-blue;
+      padding: 10px 40px 10px 6px;
     }
   }
 }
+
+.data-null {
+  border-top: 1px solid styles.$color-dark-blue;
+  border-bottom: 1px solid styles.$color-dark-blue;
+  margin: 16px 0;
+  font-size: 2rem;
+  padding: 50px 0;
+  color: styles.$color-dark-blue;
+  text-align: center;
+}
+
 .pagination {
   text-align: center;
   color: styles.$color-dark-blue;
@@ -192,15 +222,10 @@
   background-color: rgba(18, 49, 50);
 }
 
-/* Small devices (landscape phones, 576px and up) */
-
-@media (min-width: 576px) {}
-
 /* Mobile */
 
 @media (max-width: 739px) {
 
-  .search-product,
   .search-product--content {
     display: initial !important;
   }

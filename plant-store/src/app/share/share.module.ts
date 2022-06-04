@@ -19,7 +19,6 @@ import { HeaderAdminComponent } from '../pages/admin/header-admin/header-admin.c
 import { FooterComponent } from '../pages/footer/footer.component';
 import { AddToCartComponent } from '../pages/product/add-to-cart/add-to-cart.component';
 import { HeaderComponent } from '../pages/header/header.component';
-
 @NgModule({
   declarations: [
     AddToCartComponent,
@@ -59,7 +58,7 @@ import { HeaderComponent } from '../pages/header/header.component';
     NgxPaginationModule,
     NgbPaginationModule,
     NgbAlertModule,
-    NgbModule
+    NgbModule,
   ]
 })
 export class ShareModule { }

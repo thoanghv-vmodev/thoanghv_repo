@@ -6,7 +6,6 @@ import { ProductJsonService } from 'src/app/service/product-json.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShareModule } from 'src/app/share/share.module';
 import { HomePageComponent } from 'src/app/pages/home-page/home-page.component';
-import { CategoryDetails } from 'src/app/pages/product/category-details/category-details.component';
 import { CategoryComponent } from 'src/app/pages/product/category/category.component';
 import { UserCheckOutComponent } from 'src/app/pages/product/user-check-out/user-check-out.component';
 import { ViewCartComponent } from 'src/app/pages/product/view-cart/view-cart.component';
@@ -16,7 +15,6 @@ import { ViewCartComponent } from 'src/app/pages/product/view-cart/view-cart.com
   declarations: [
     HomePageComponent,
     CategoryComponent,
-    CategoryDetails,
     ViewCartComponent,
     UserCheckOutComponent,
   ],

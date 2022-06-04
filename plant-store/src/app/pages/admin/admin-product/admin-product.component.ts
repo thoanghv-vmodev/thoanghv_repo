@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Category } from 'src/app/models/category';
@@ -61,11 +61,11 @@ export class AdminProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      productName: [''],
-      productType: [''],
+      productName: ['',Validators.required],
+      productType: ['',Validators.required],
       productImg: [''],
-      productDesc: [''],
-      productPrice: [''],
+      productDesc: ['',Validators.required],
+      productPrice: ['',Validators.required   ],
     });
     this.getProductList();
     this.getCategoryList();
@@ -129,28 +129,37 @@ export class AdminProductComponent implements OnInit {
    * - lấy control name "productImg" và setValue là this.productImage
    */
   Save():void {
-    if(this.isCreate == true ) {
-      let date = new Date();
-      let putProduct = {
-      ...this.productForm.value,
-      date: date,
-      }
-      this.productService.postProduct(putProduct).subscribe((dataCreate) => {
-        this.getProductList();
-      })
-    }
-    else {
-      let putProduct = {
-      ...this.productForm.value,
-      id: this.putId,
-      date: this.currentDate
-      }
-      this.productForm.get('productImg')?.setValue(this.productImage)
-      this.productService.putProduct(this.putId, putProduct).subscribe(dataPut => {
+    if(this.productForm.valid) {
+      if(this.isCreate == true ) {
+        let date = new Date();
+        let putProduct = {
+        ...this.productForm.value,
+        date: date,
+        }
+        this.productService.postProduct(putProduct).subscribe((dataCreate) => {
           this.getProductList();
-      })
+        })
+      }
+      else {
+        let putProduct = {
+        ...this.productForm.value,
+        id: this.putId,
+        date: this.currentDate
+        }
+        this.productForm.get('productImg')?.setValue(this.productImage)
+        this.productService.putProduct(this.putId, putProduct).subscribe(dataPut => {
+            this.getProductList();
+        })
+      }
+      this.closeModal();
+    } else {
+        Object.values(this.productForm.controls).forEach(control => {
+          if(control.invalid) {
+            control.markAsDirty();
+            control.updateValueAndValidity({onlySelf: true})
+          }
+        })
     }
-    this.closeModal();
   }
 
 
@@ -208,6 +217,7 @@ export class AdminProductComponent implements OnInit {
   }
 
   filterProductItem(event: any) {
+    this.searchValue = '';
     if(event.target.value != '') {
         this.productService.getProduct().subscribe((data :Products[]) => {
         return this.productList = data.filter((value: Products) => value.productType == event.target.value)
@@ -235,4 +245,8 @@ export class AdminProductComponent implements OnInit {
     }
   }
 
+  get productName () { return this.productForm.get('productName'); }
+  get productType () { return this.productForm.get('productType'); }
+  get productDesc () { return this.productForm.get('productDesc'); }
+  get productPrice () { return this.productForm.get('productPrice'); }
 }

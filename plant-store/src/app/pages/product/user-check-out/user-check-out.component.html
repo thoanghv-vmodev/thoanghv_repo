@@ -79,20 +79,32 @@
         <form [formGroup]="formUpdateInfo">
           <div class="form-content py-1">
             <label for="user-name"> Name: </label>
-            <input type="text"  class="form-control" id="user-name"  formControlName="userName" >
+            <input type="text"
+                   class="form-control"
+                   id="user-name"
+                   formControlName="userName" >
           </div>
           <div class="form-content py-1">
             <label for="phone-number"> Phone number: </label>
-            <input type="number" class="form-control" id="phone-number" formControlName="phoneNumber">
+            <input type="number"
+                   class="form-control"
+                   id="phone-number"
+                   formControlName="phoneNumber">
           </div>
           <div class="form-content py-1">
             <label for="province"> <span class="required-red">*</span> Provincial: </label>
-            <select class="form-select" id="province" aria-label="Default select example" formControlName="province" required>
+            <select class="form-select"
+                    id="province"
+                    aria-label="Default select example"
+                    formControlName="province"
+                    required>
               <option *ngFor="let data of listProvinces" class="form-control" [value]="data.province">
                 {{data.province}}
               </option>
             </select>
-            <div *ngIf="province?.invalid && (province?.touched || province?.dirty)" role="alert" class="alert alert-danger">
+            <div *ngIf="province?.invalid && (province?.touched || province?.dirty)"
+                  role="alert"
+                  class="alert alert-danger">
               <div *ngIf="province?.hasError('required')">
                 Select your province!
               </div>
@@ -101,11 +113,16 @@
           <div class="form-content py-1">
             <label for="text-note"> <span class="required-red">*</span> Specific address: </label>
             <div>
-              <textarea name="text-note" id="text-note" formControlName="specificAddress"  rows="2"
-                placeholder="Your specific address information."></textarea>
+              <textarea name="text-note"
+                        id="text-note"
+                        formControlName="specificAddress"
+                        rows="2"
+                        placeholder="Your specific address information.">
+              </textarea>
             </div>
             <div *ngIf="specificAddress?.invalid && (specificAddress?.touched || specificAddress?.dirty)"
-                  role="alert" class="alert alert-danger">
+                  role="alert"
+                  class="alert alert-danger">
               <div *ngIf="specificAddress?.hasError('required')">
                 Please enter your specific address!
               </div>
@@ -114,8 +131,12 @@
           <div class="form-content py-1">
             <label for="text-note"> Note: </label>
             <div>
-              <textarea name="text-note" id="text-note" formControlName="textNote"  rows="2"
-                placeholder="Instructions? Special requests? Add them here."></textarea>
+              <textarea name="text-note"
+                        id="text-note"
+                        formControlName="textNote"
+                        rows="2"
+                        placeholder="Instructions? Special requests? Add them here.">
+              </textarea>
             </div>
           </div>
         </form>

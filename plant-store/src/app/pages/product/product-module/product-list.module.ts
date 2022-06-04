@@ -10,11 +10,13 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ShareModule } from 'src/app/share/share.module';
+import { CategoryDetails } from '../category-details/category-details.component';
 
 @NgModule({
   declarations: [
     ShopAllComponent,
     ProductDetailsComponent,
+    CategoryDetails,
   ],
   imports: [
     CommonModule,

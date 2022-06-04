@@ -141,8 +141,7 @@
 
 /* Add new  */
 
-.modal-container,
-.modal-edit {
+.modal-container {
   display: none;
   position: fixed;
   top: 0;
@@ -162,7 +161,6 @@
   bottom: 0;
   right: 0;
   animation: show ease-in-out 0.3s;
-  z-index: 10;
 }
 
 .modal-box {
@@ -172,6 +170,7 @@
   background-color: #fff;
   width: 400px;
   color: styles.$color-dark-blue;
+  z-index: 20;
 
   .modal-content {
     padding: 0 18px 8px 18px;
@@ -218,9 +217,7 @@
       margin-top: 4px;
     }
   }
-
 }
-
 
 @keyframes show {
   from {
@@ -287,6 +284,10 @@
   height: 100%;
 }
 
+.required-red {
+  color: red;
+  font-size: 1.8rem;
+}
 
 .ng-valid[required],
 .ng-valid.required {

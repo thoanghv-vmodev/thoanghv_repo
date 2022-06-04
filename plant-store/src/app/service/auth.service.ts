@@ -33,7 +33,7 @@ export class AuthService {
    }
 
   setCurrentURL(data: string) {
-    let url = data.split('/')[3]
+    let url = data.slice(22)
     localStorage.setItem('currentURL', url)
   }
 

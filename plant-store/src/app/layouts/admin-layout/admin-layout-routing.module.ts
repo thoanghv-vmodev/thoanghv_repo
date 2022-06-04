@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminCategoryComponent } from 'src/app/pages/admin/admin-category/admin-category.component';
 import { AdminHistoryComponent } from 'src/app/pages/admin/admin-history/admin-history.component';
 import { AdminProductComponent } from 'src/app/pages/admin/admin-product/admin-product.component';
+import { AdminLayoutComponent } from './admin-layout.component';
 
 const routes: Routes = [
 

@@ -76,8 +76,9 @@ export class HeaderComponent implements OnInit {
   }
 
   categoryDetails(data:Category) {
-    this.router.navigate(['category-details', data.categoryName]).then(()=>
-      {window.location.reload();});
+    this.router.navigate(['all-category','category-details', data.categoryName]).then(()=>
+      {window.location.reload();
+      });
   }
 
   onFocus() {

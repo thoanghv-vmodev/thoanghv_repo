@@ -109,13 +109,6 @@
     .cart-order-item {
       padding: 8px 0;
     }
-
-    .form-select {
-      border: 1px solid styles.$color-dark-blue;
-      outline: none;
-      border-radius: 0;
-      color: styles.$color-dark-blue;
-    }
   }
 }
 
@@ -207,6 +200,7 @@
 .form-select {
   border-radius: 0;
   font-size: 1.6rem;
+  padding: 6px 10px;
   border: 1px solid styles.$color-dark-blue;
   option {
   font-size: 1.6rem;

@@ -86,7 +86,7 @@
       <i class="fa-solid fa-xmark" (click)="closeMenuMobile()"></i>
     </div>
     <ng-container *ngIf="!(user$ | async)?.userName && userInfo == ''">
-      <div class="login-mobile" routerLink="/login">
+      <div class="login-mobile" routerLink="/login" (click)="closeMenuMobile()">
         <a><i class="login-item font-22 fa-solid fa-circle-user"></i></a>
         <p class="login-item login-item-title">Login</p>
       </div>

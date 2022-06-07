@@ -17,6 +17,7 @@ export class AdminCategoryComponent implements OnInit {
   @ViewChild ("modalCreateAndEdit") modalCreateAndEdit: ElementRef<HTMLElement> | undefined;
   @ViewChild ("overlay") overlay: ElementRef<HTMLElement> | undefined;
   @ViewChild("loading") loading: ElementRef<HTMLElement> | undefined;
+
   categoryForm!: FormGroup;
   isCreate = true;
   categoryList: Category[] = [];

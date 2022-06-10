@@ -11,7 +11,7 @@
         <div class="add-to-cart__container--box">
           <div class="add-to-cart__container--list" >
             <div class="container--list-item row">
-                <div class="container--list-img col-6">
+              <div class="container--list-img col-6">
                   <img src="{{data.productImg}}" alt="image-product">
                 </div>
                 <div class="container--list-detail col-6">
@@ -19,7 +19,7 @@
                   <p >{{data.productPrice | currency: 'USD'}}</p >
                   <div class="list-detail-input">
                     <span (click)="decrementItem()"><i class="fa-solid fa-minus"></i></span>
-                      <p>{{qty}}</p>
+                    <input type="text" OnlyNumber id="qty" name="qty" [(ngModel)]="qty">
                     <span (click)="incrementItem()"><i class="fa-solid fa-plus"></i></span>
                   </div>
                 </div>

@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
                    Validators.maxLength(32),
                    this.forbiddenUsername(['admin', 'manager', ' '])]],
     email: ['', [Validators.required, Validators.email, this.emailUsed(this.emailIsUsed)]],
-    phoneNumber: ['', [Validators.required, Validators.maxLength(10), this.noLetters]],
+    phoneNumber: ['', [Validators.required, Validators.maxLength(10), this.noLetters, Validators.minLength(10)]],
     password: ['', [Validators.required,
                    Validators.maxLength(32),
                    Validators.minLength(6),
@@ -46,6 +46,11 @@ export class RegisterComponent implements OnInit {
         )
       }
   )}
+
+  updateConfirmValidator(): void {
+    /** wait for refresh value */
+    Promise.resolve().then(() => this.registerForm.controls.confirmPassword.updateValueAndValidity());
+  }
 
   confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
     if (!control.value) {
@@ -69,6 +74,7 @@ export class RegisterComponent implements OnInit {
     }
     return null
   };
+
 
  forbiddenUsername(users:any = []) {
   return (control: AbstractControl) => {

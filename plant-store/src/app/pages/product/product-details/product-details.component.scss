@@ -114,6 +114,13 @@
        -moz-user-select: none;
        -webkit-user-select: none;
 
+      input {
+          width: 100%;
+          text-align: center;
+          border: none;
+          outline: none;
+      }
+
        span {
          opacity: 0.6;
          cursor: pointer;

@@ -53,6 +53,11 @@
       color: styles.$color-dark-blue;
       align-items: flex-start;
     }
+    .cart-list-item--left {
+      display: flex;
+      color: styles.$color-dark-blue;
+      align-items: center;
+    }
 
     .cart-list-details {
       display: flex;
@@ -146,6 +151,13 @@
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
+
+  input {
+      width: 100%;
+      text-align: center;
+      border: none;
+      outline: none;
+  }
 
    span {
      opacity: 0.6;

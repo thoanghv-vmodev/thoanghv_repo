@@ -8,6 +8,7 @@ import { Products } from '../models/product';
 export class MessengerService {
 
   private sendProductMsgSubject = new Subject<Products>();
+  private sendProductOrder = new Subject<Products>();
   private numOfItem = new BehaviorSubject([])
 
   constructor(
@@ -27,6 +28,15 @@ export class MessengerService {
 
   getItemInCart():Observable<any> {
     return this.numOfItem.asObservable();
+  }
+
+  sendProductOnOrder(product: any) {
+    this.sendProductOrder.next(product);
+    console.log(product)
+  }
+
+  getProductOnOrder() {
+    return this.sendProductOrder.asObservable();
   }
 
 }

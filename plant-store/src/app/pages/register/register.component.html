@@ -53,7 +53,7 @@
               <label for="phone-number"> Phone number: </label>
               <input class="form-control"
                      id="phone-number"
-                     type="tel"
+                     type="text"
                      formControlName="phoneNumber"
                      placeholder="Your phone number"
                      required
@@ -62,6 +62,9 @@
                    *ngIf="phoneNumber?.invalid && (phoneNumber?.touched || phoneNumber?.dirty)">
                 <div *ngIf="phoneNumber?.hasError('required')">
                   Please input your phone number!
+                </div>
+                <div *ngIf="phoneNumber?.hasError('minlength')">
+                  Invalid phone number
                 </div>
                 <div *ngIf="phoneNumber?.hasError('maxlength')">
                   Phone number must be shorter than 10 number.
@@ -78,6 +81,7 @@
                      type="password"
                      formControlName="password"
                      placeholder="Password"
+                     (ngModelChange)="updateConfirmValidator()"
                      required
                      >
               <div class="col alert alert-danger" role="alert"
@@ -97,9 +101,9 @@
               </div>
             </div>
             <div class="form-content">
-              <label for="confirm-password"> Confirm password: </label>
+              <label for="confirmPassword"> Confirm password: </label>
               <input class="form-control"
-                     id="confirm-password"
+                     id="confirmPassword"
                      type="password"
                      formControlName="confirmPassword"
                      placeholder="Confirm your password"

@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from 'src/app/models/product';
+import { AuthService } from 'src/app/service/auth.service';
 import { MessengerService } from 'src/app/service/messenger.service';
 import { ProductJsonService } from 'src/app/service/product-json.service';
 import { ToastService } from 'src/app/service/toast.service';
@@ -10,7 +11,7 @@ import { ToastService } from 'src/app/service/toast.service';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-  currentURL = ''
+  private currentURL = window.location.href;
   productList: Products[] = [];
   itemDetail: Products[] = [];
   url: any = this.router.url;
@@ -18,6 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   qty = 1;
   constructor(
     private route: ActivatedRoute,
+    private auth: AuthService,
     private productService: ProductJsonService,
     private router: Router,
     private msg: MessengerService,
@@ -47,16 +49,21 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addProductToCart(product: Products) {
-    this.toastService.showAddToCartSuccess()
     this.getDataLocalStorage();
     let item = this.itemAddToCart.find(element => element.id === product.id)
-    if(item) {
-      item.qty += this.qty
+    if(this.auth.isLoggedIn()) {
+      if(item) {
+        item.qty += this.qty
+      } else {
+        this.itemAddToCart.push({...product, qty: this.qty});
+      }
     } else {
-      this.itemAddToCart.push({...product, qty: this.qty});
+      this.auth.setCurrentURL(this.currentURL)
+      this.router.navigate(['login']);
     }
     localStorage.setItem('products', JSON.stringify(this.itemAddToCart));
-    this.msg.sendItemInCart(this.itemAddToCart)
+    this.msg.sendItemInCart(this.itemAddToCart);
+    this.toastService.showAddToCartSuccess();
   }
 
   buyProductToCart(product: Products) {

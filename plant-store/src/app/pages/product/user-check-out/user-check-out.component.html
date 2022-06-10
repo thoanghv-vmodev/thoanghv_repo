@@ -13,7 +13,7 @@
     </div>
     <div class="check-out-container row gx-5">
         <section class="check-out-content col-lg-7 col-md-12 col-sm-12">
-          <p class="check-out-content--title border-bd">My Cart</p>
+          <p class="check-out-content--title border-bd">Your Cart</p>
           <div class="cart-list border-bd">
             <ng-container *ngFor="let data of productListCheckOut">
               <div class="row gx-4 cart-list-box">
@@ -82,14 +82,37 @@
             <input type="text"
                    class="form-control"
                    id="user-name"
-                   formControlName="userName" >
+                   formControlName="userName"
+                   required>
+          </div>
+          <div *ngIf="userName?.invalid && (userName?.touched || userName?.dirty)" role="alert" class="alert alert-danger">
+            <div *ngIf="userName?.hasError('required')">
+              Please input your Name!
+            </div>
+            <div *ngIf="userName?.hasError('minlength')">
+              Name must be at least 4 characters long.
+            </div>
           </div>
           <div class="form-content py-1">
             <label for="phone-number"> Phone number: </label>
-            <input type="number"
+            <input type="text"
                    class="form-control"
                    id="phone-number"
                    formControlName="phoneNumber">
+          </div>
+          <div *ngIf="phoneNumber?.invalid && (phoneNumber?.touched || phoneNumber?.dirty)" role="alert" class="alert alert-danger">
+            <div *ngIf="phoneNumber?.hasError('required')">
+              Please input your phone number!
+            </div>
+            <div *ngIf="phoneNumber?.hasError('minlength')">
+              Invalid phone number
+            </div>
+            <div *ngIf="phoneNumber?.hasError('maxlength')">
+              Phone number must be shorter than 10 number.
+            </div>
+            <div *ngIf="phoneNumber?.hasError('noLetter')">
+              Phone number without letter!
+            </div>
           </div>
           <div class="form-content py-1">
             <label for="province"> <span class="required-red">*</span> Provincial: </label>
@@ -117,7 +140,8 @@
                         id="text-note"
                         formControlName="specificAddress"
                         rows="2"
-                        placeholder="Your specific address information.">
+                        placeholder="Your specific address information."
+                        required>
               </textarea>
             </div>
             <div *ngIf="specificAddress?.invalid && (specificAddress?.touched || specificAddress?.dirty)"

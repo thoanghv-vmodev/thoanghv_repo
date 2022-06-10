@@ -9,11 +9,14 @@
     </ng-container>
       <ng-container *ngIf="productListInCart.length > 0">
         <section class="view-cart-content col-lg-7 col-md-12 col-sm-12">
-          <p class="view-cart-content--title border-bd">My Cart</p>
+          <p class="view-cart-content--title border-bd">Your Cart</p>
           <div class="cart-list border-bd">
             <ng-container *ngFor="let data of productListInCart">
             <div class="row gx-4 cart-list-box">
-                <div class="cart-list-item col-lg-6 col-md-9 col-sm-12">
+                <div class="cart-list-item--left col-lg-6 col-md-9 col-sm-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="productSelect" [(ngModel)]="data.productChecked" (change)="getDataCheck(data)" id="productSelect">
+                  </div>
                   <div class="cart-list-details">
                     <div class="cart-list-details--img">
                       <a href="{{data.productImg}}" target="_blank">
@@ -29,7 +32,7 @@
                 <div class="cart-list-item col-lg-6 col-md-3 col-sm-12 py-sm-4">
                   <div class="list-detail-input">
                     <span (click)="decrementItem(data)"><i class="fa-solid fa-minus"></i></span>
-                    {{data.qty}}
+                    <input type="text" OnlyNumber id="qty" name="qty" [(ngModel)]="data.qty">
                     <span (click)="incrementItem(data)"><i class="fa-solid fa-plus"></i></span>
                   </div>
                     <p class="subtatol-item">

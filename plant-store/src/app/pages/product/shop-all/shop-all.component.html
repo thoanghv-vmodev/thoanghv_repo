@@ -29,7 +29,7 @@
         <div class="search-product--content-filter">
           <p>Collection:</p>
           <select class="form-select" aria-label="Default select example" (change)="filterProductItem($event)">
-            <option class="select-item" value="">all category</option>
+            <option class="select-item" value="">all plants</option>
             <option *ngFor="let category of categoryList" class="select-item"
                     [value]="category.categoryName">{{category.categoryName}}</option>
           </select>

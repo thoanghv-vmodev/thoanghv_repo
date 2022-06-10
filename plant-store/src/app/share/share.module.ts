@@ -19,6 +19,8 @@ import { HeaderAdminComponent } from '../pages/admin/header-admin/header-admin.c
 import { FooterComponent } from '../pages/footer/footer.component';
 import { AddToCartComponent } from '../pages/product/add-to-cart/add-to-cart.component';
 import { HeaderComponent } from '../pages/header/header.component';
+import { FormsModule } from '@angular/forms';
+import { OnlyNumberDirective } from './directive/only-number.directive';
 @NgModule({
   declarations: [
     AddToCartComponent,
@@ -28,9 +30,11 @@ import { HeaderComponent } from '../pages/header/header.component';
     FooterComponent,
     HeaderAdminComponent,
     DashboardComponent,
+    OnlyNumberDirective,
   ],
   imports: [
     CommonModule,
+    FormsModule,
     SlickCarouselModule,
     ShareRoutingModule,
     AngularFireStorageModule,
@@ -59,6 +63,7 @@ import { HeaderComponent } from '../pages/header/header.component';
     NgbPaginationModule,
     NgbAlertModule,
     NgbModule,
+    OnlyNumberDirective
   ]
 })
 export class ShareModule { }

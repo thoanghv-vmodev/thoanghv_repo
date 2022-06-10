@@ -5,7 +5,7 @@ import { MessengerService } from 'src/app/service/messenger.service';
 import { OrderListService } from 'src/app/service/order-list.service';
 import { ToastService } from 'src/app/service/toast.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Products } from 'src/app/models/product';
 
 @Component({
@@ -37,8 +37,8 @@ export class UserCheckOutComponent implements OnInit {
     this.getNumOfProduct();
 
     this.formUpdateInfo = this.fb.group({
-      userName: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
+      userName: ['', [Validators.required, Validators.minLength(4)]],
+      phoneNumber: ['', [Validators.required, Validators.maxLength(10), this.noLetters, Validators.minLength(10)]],
       province: ['', Validators.required],
       specificAddress: ['', Validators.required],
       textNote: [''],
@@ -48,6 +48,18 @@ export class UserCheckOutComponent implements OnInit {
   get province() { return this.formUpdateInfo.get('province'); }
 
   get specificAddress() { return this.formUpdateInfo.get('specificAddress'); }
+
+  get userName() {return this.formUpdateInfo.get('userName')}
+
+  get phoneNumber() {return this.formUpdateInfo.get('phoneNumber')}
+
+
+  noLetters(control: AbstractControl): ValidationErrors | null {
+    if(!/^[0-9]+$/.test(control.value)) {
+      return { noLetter: true}
+    }
+    return null
+  };
 
   getNumOfProduct() {
       let storage:any = localStorage.getItem('products')
@@ -103,10 +115,13 @@ export class UserCheckOutComponent implements OnInit {
       this.toastService.showCheckoutSuccess();
       setTimeout(() => {
           this.orderService.postProductOrder(objCheckout).subscribe(data => {
-            localStorage.removeItem('products');
             localStorage.removeItem('productCheckOut');
             this.router.navigate(['home-page']);
-            this.msg.sendItemInCart([]);
+            let obj = {
+              ...this.productListCheckOut
+            }
+            this.msg.sendProductOnOrder(obj)
+            // this.msg.sendItemInCart([]);
           })
           this.closeModalBeforeCheckOut()
       }, 500);

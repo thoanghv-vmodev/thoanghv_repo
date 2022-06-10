@@ -92,6 +92,4 @@ export class AddToCartComponent implements OnInit {
     this.addToCart.nativeElement.classList.remove('active')
     this.overlay.nativeElement.style.display = 'none';
   }
-
-
 }

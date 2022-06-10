@@ -101,7 +101,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 68px;
+        width: 80px;
         margin-top: 8px;
         padding: 4px;
         color: styles.$color-dark-blue;
@@ -109,6 +109,13 @@
         user-select: none;
         -moz-user-select: none;
         -webkit-user-select: none;
+
+        input {
+          width: 100%;
+          text-align: center;
+          border: none;
+          outline: none;
+        }
 
         span {
           opacity: 0.6;
@@ -181,4 +188,9 @@
   .list-detail-input {
     width: 100% !important;
   }
+}
+input:focus-visible {
+  border: none;
+  box-shadow: none;
+  border-style: none;
 }

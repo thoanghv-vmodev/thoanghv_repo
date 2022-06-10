@@ -50,10 +50,11 @@ export class AuthService {
   }
 
   isLoggedIn() {
+    /**return true or false*/
     return !!localStorage.getItem('user')
   }
 
-  creatAccount(user_info: Object):Observable<User> {
+  createAccount(user_info: Object):Observable<User> {
       return this.http.post<User>(`${environment.apiUrl}/account.json`, user_info)
       .pipe(
         tap(() => console.log('Crate success!'))
@@ -83,7 +84,7 @@ export class AuthService {
   }
 
   signUp(data: User) {
-    this.creatAccount(data).subscribe(
+    this.createAccount(data).subscribe(
          () => {
            this.toastService.showSignUpSuccess();
            setTimeout(() => {
@@ -132,6 +133,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('productCheckOut');
     this.router.navigate(['home-page'])
   }
 

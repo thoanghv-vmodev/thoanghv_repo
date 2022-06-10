@@ -20,8 +20,8 @@ const routes: Routes = [
   {
     path: 'details/:id', component: ProductDetailsComponent,
     pathMatch: 'full',
-    canActivate: [AuthGuard]
   },
+
   {
     path: 'add-to-cart', component: AddToCartComponent,
     canActivate: [AuthGuard]

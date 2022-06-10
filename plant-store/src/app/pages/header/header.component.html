@@ -111,26 +111,18 @@
             Shop
           </a>
         </div>
-        <div class="nav-menu--item" (click)="closeMenuMobile()">
-        <a routerLink="/cacti" [routerLinkActive]="['active']">
-          Cacti
-        </a>
-        </div>
-        <div class="nav-menu--item" (click)="closeMenuMobile()">
-          <a routerLink="/plants" [routerLinkActive]="['active']">
-            Plants
-          </a>
-        </div>
-        <div class="nav-menu--item" (click)="closeMenuMobile()">
-          <a routerLink="/succulents" [routerLinkActive]="['active']">
-            Succulents
-          </a>
+        <div (click)="closeMenuMobile()">
+          <ng-container *ngFor="let category of categoryList">
+            <div class="nav-menu--item">
+              <a (click)="categoryDetails(category)" [routerLink]="['all-category','category-details', category.categoryName]"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                {{category.categoryName}}
+              </a>
+            </div>
+        </ng-container>
         </div>
         <div class="nav-menu--item" (click)="closeMenuMobile()">
           <a (click)="goAbout()">About</a>
-        </div>
-        <div class="nav-menu--item" (click)="closeMenuMobile()">
-          <a href="#">FAQ</a>
         </div>
         <div class="nav-menu--item" (click)="closeMenuMobile()">
           <a (click)="goContact()" routerLink="/home-page">Contact</a>

@@ -14,6 +14,7 @@ export class ViewCartComponent implements OnInit {
   @ViewChild ("modalCheckOut") modalCheckOut: ElementRef<HTMLElement> | undefined;
   @ViewChild ("overlay") overlay: ElementRef<HTMLElement> | undefined;
   productListInCart: Products[]= [];
+  productListOnOrder: Products[]= [];
   cartTotal: number = 0;
   textNode!: string;
   constructor(
@@ -24,6 +25,18 @@ export class ViewCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataLocalStorage();
+    this.geProductCheckedOut();
+  }
+
+  geProductCheckedOut() {
+    this.msg.getProductOnOrder().subscribe((data:any) => {
+      // console.log(data)
+      this.getDataLocalStorage();
+      this.productListInCart = this.productListInCart.filter(item => item.id !== data.id);
+      localStorage.setItem('products', JSON.stringify(this.productListInCart));
+      this.msg.sendItemInCart(this.productListInCart);
+      this.subTotal();
+    })
   }
 
   getDataLocalStorage() {
@@ -43,17 +56,25 @@ export class ViewCartComponent implements OnInit {
     });
   }
 
-  removeItem(data: Products) {
-    this.getDataLocalStorage();
-    this.productListInCart = this.productListInCart.filter(item => item.id != data.id);
-    localStorage.setItem('products', JSON.stringify(this.productListInCart));
-    this.msg.sendItemInCart(this.productListInCart);
-    this.subTotal();
+  removeItem(data: any) {
+    if(data) {
+       this.confirmModal.confirm('Do you really want to delete product?', `${data.productName}`)
+      .then((confirmed) => {
+        if(confirmed == true) {
+          this.getDataLocalStorage();
+          this.productListInCart = this.productListInCart.filter(item => item.id !== data.id);
+          localStorage.setItem('products', JSON.stringify(this.productListInCart));
+          this.msg.sendItemInCart(this.productListInCart);
+          this.subTotal();
+        }
+      })
+      .catch((err) => console.log(err));
+    }
   }
 
   incrementItem(data: Products){
     let item: any = this.productListInCart.find(value => value.id === data.id);
-    if(item.qty != 10) {
+    if(item.qty) {
       item.qty++;
       this.subTotal();
     }
@@ -65,19 +86,21 @@ export class ViewCartComponent implements OnInit {
 
     if(item.qty < 1) {
       item.qty = 1;
-      this.confirmModal.confirm('Do you really want to delete product?', `${item.productName}`)
-      .then((confirmed) => {
-        if(confirmed == true) {
           this.removeItem(item)
-        }
-      })
-      .catch((err) => console.log(err));
     }
    this.subTotal();
   }
 
+  getDataCheck(data: Products) {
+    if(data.productChecked === false){
+      this.productListOnOrder = this.productListOnOrder.filter(el => el.id !== data.id)
+    } else {
+      this.productListOnOrder.push(data)
+    }
+  }
+
   onOrder() {
-    localStorage.setItem('productCheckOut', JSON.stringify(this.productListInCart));
+    localStorage.setItem('productCheckOut', JSON.stringify(this.productListOnOrder));
     this.router.navigate(['checkout'])
   }
 }

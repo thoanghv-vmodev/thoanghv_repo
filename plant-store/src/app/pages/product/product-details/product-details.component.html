@@ -12,15 +12,6 @@
           <ng-container *ngIf="url">
             <a routerLink="/all-category">Shop all</a> <span class="path-url">/</span>
           </ng-container>
-         <!--  <ng-container *ngIf="data.productType == 'cacti'">
-            <a routerLink="/cacti">Cacti</a> <span class="path-url">/</span>
-          </ng-container>
-          <ng-container *ngIf="data.productType == 'plants'">
-            <a routerLink="/plant">Plant</a> <span class="path-url">/</span>
-          </ng-container>
-          <ng-container *ngIf="data.productType == 'succulents'">
-            <a routerLink="/succulents">Succulent</a> <span class="path-url">/</span>
-          </ng-container> -->
           <p class="path-url-title">{{data.productName}}</p>
         </div>
       </div>
@@ -63,7 +54,7 @@
             <br>
             <div class="product-item-input">
               <span (click)="decrementItem()"><i class="fa-solid fa-minus"></i></span>
-              <p>{{qty}}</p>
+              <input type="text" OnlyNumber id="qty" name="qty" [(ngModel)]="qty">
               <span (click)="incrementItem()"><i class="fa-solid fa-plus"></i></span>
             </div>
           </div>

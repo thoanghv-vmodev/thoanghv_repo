@@ -93,6 +93,20 @@
   }
 }
 
+.selectAllProduct {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  p {
+    font-size: 1.8rem;
+  }
+
+  .form-check-input {
+    padding: 6px;
+    margin-right: 4px;
+  }
+}
+
 .view-cart-content--title {
   color: styles.$color-dark-blue;
   font-size: 2.0rem;
@@ -119,6 +133,7 @@
       border-radius: 0;
       color: styles.$color-dark-blue;
     }
+
   }
 }
 

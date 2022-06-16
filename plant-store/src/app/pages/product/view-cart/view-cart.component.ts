@@ -17,6 +17,7 @@ export class ViewCartComponent implements OnInit {
   productListOnOrder: Products[]= [];
   cartTotal: number = 0;
   textNode!: string;
+  selectAll: boolean = false;
   constructor(
     private msg: MessengerService,
     private router: Router,
@@ -25,18 +26,6 @@ export class ViewCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataLocalStorage();
-    this.geProductCheckedOut();
-  }
-
-  geProductCheckedOut() {
-    this.msg.getProductOnOrder().subscribe((data:any) => {
-      // console.log(data)
-      this.getDataLocalStorage();
-      this.productListInCart = this.productListInCart.filter(item => item.id !== data.id);
-      localStorage.setItem('products', JSON.stringify(this.productListInCart));
-      this.msg.sendItemInCart(this.productListInCart);
-      this.subTotal();
-    })
   }
 
   getDataLocalStorage() {
@@ -91,8 +80,25 @@ export class ViewCartComponent implements OnInit {
    this.subTotal();
   }
 
-  getDataCheck(data: Products) {
-    if(data.productChecked === false){
+  selectAllProduct() {
+    for( let i = 0; i < this.productListInCart.length ; i++) {
+      this.productListInCart[i].productSelected = this.selectAll
+    }
+    if(this.selectAll === false) {
+      this.productListOnOrder = []
+    } else {
+      this.productListOnOrder = this.productListInCart;
+    }
+    let checker = this.productListOnOrder.every(el => el.productSelected === true)
+      console.log(checker)
+      if(checker) {
+        this.selectAll = true;
+      }
+  }
+
+  selectProduct(data: Products) {
+    this.selectAll = false;
+    if(data.productSelected === false){
       this.productListOnOrder = this.productListOnOrder.filter(el => el.id !== data.id)
     } else {
       this.productListOnOrder.push(data)

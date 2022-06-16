@@ -26,15 +26,18 @@ export class UserCheckOutComponent implements OnInit {
   ) { }
   formUpdateInfo!: FormGroup
   productListCheckOut: Products[] = [];
+  productListInCart: Products[] = [];
   userCheckOut: any = [];
   listProvinces: any;
   cartTotal: number = 0;
 
   ngOnInit(): void {
     this.getProductCheckOut();
+    this.getDataLocalStorage();
     this.subTotal();
     this.getListCountry();
     this.getNumOfProduct();
+
 
     this.formUpdateInfo = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(4)]],
@@ -71,6 +74,13 @@ export class UserCheckOutComponent implements OnInit {
 
   getListCountry() {
     this.listProvinces = this.countriesService.getProvincesList()
+  }
+
+  getDataLocalStorage() {
+    let storage = localStorage.getItem('products');
+    if(storage) {
+      this.productListInCart = JSON.parse(storage)
+    };
   }
 
   getProductCheckOut() {
@@ -114,14 +124,15 @@ export class UserCheckOutComponent implements OnInit {
       };
       this.toastService.showCheckoutSuccess();
       setTimeout(() => {
-          this.orderService.postProductOrder(objCheckout).subscribe(data => {
+          this.orderService.postProductOrder(objCheckout).subscribe(() => {
             localStorage.removeItem('productCheckOut');
+            /** Lọc và set lại data khi check out */
+            this.productListCheckOut.forEach(data => {
+              this.productListInCart = this.productListInCart.filter(el => el.id !== data.id)
+            })
+            localStorage.setItem('products', JSON.stringify(this.productListInCart));
+            this.msg.sendItemInCart(this.productListInCart);
             this.router.navigate(['home-page']);
-            let obj = {
-              ...this.productListCheckOut
-            }
-            this.msg.sendProductOnOrder(obj)
-            // this.msg.sendItemInCart([]);
           })
           this.closeModalBeforeCheckOut()
       }, 500);

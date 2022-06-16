@@ -9,13 +9,22 @@
     </ng-container>
       <ng-container *ngIf="productListInCart.length > 0">
         <section class="view-cart-content col-lg-7 col-md-12 col-sm-12">
-          <p class="view-cart-content--title border-bd">Your Cart</p>
+          <div class="border-bd">
+            <p class="view-cart-content--title">Your Cart</p>
+          </div>
+          <div class="selectAllProduct">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="productSelectAll" [(ngModel)]="selectAll"
+                (change)="selectAllProduct()" id="productSelect">
+            </div>
+            <p>Buy all</p>
+          </div>
           <div class="cart-list border-bd">
             <ng-container *ngFor="let data of productListInCart">
             <div class="row gx-4 cart-list-box">
                 <div class="cart-list-item--left col-lg-6 col-md-9 col-sm-12">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="productSelect" [(ngModel)]="data.productChecked" (change)="getDataCheck(data)" id="productSelect">
+                    <input class="form-check-input" type="checkbox" name="productSelect" [(ngModel)]="data.productSelected" (change)="selectProduct(data)" id="productSelect">
                   </div>
                   <div class="cart-list-details">
                     <div class="cart-list-details--img">

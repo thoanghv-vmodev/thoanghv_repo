@@ -16,7 +16,7 @@ export class Products implements Product{
   productPrice!: number;
   qty!: number;
   date!: string;
-  productChecked!: boolean;
+  productSelected!: boolean;
 }
 
 export class ProductsOrder{

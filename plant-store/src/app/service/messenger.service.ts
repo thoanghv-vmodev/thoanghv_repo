@@ -32,7 +32,6 @@ export class MessengerService {
 
   sendProductOnOrder(product: any) {
     this.sendProductOrder.next(product);
-    console.log(product)
   }
 
   getProductOnOrder() {

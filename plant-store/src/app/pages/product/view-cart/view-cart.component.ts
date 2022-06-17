@@ -84,16 +84,16 @@ export class ViewCartComponent implements OnInit {
     for( let i = 0; i < this.productListInCart.length ; i++) {
       this.productListInCart[i].productSelected = this.selectAll
     }
+    let checker = this.productListOnOrder.every(el => el.productSelected === true)
     if(this.selectAll === false) {
       this.productListOnOrder = []
-    } else {
+    }/*  else if(checker) {
+       this.selectAll = true;
+    } */
+    else {
       this.productListOnOrder = this.productListInCart;
     }
-    let checker = this.productListOnOrder.every(el => el.productSelected === true)
-      console.log(checker)
-      if(checker) {
-        this.selectAll = true;
-      }
+
   }
 
   selectProduct(data: Products) {
